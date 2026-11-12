@@ -1,7 +1,7 @@
 /*
  * Jetons du design system AMF, GÉNÉRÉS : ne pas modifier à la main.
  *   Source : AMF Design System [v2.0].fig (export Figma du 2026-11-12T08:13:23.347Z)
- *   Commande : node scripts/amf-jetons.mjs
+ *   Commande : node scripts/amf-figma.mjs appliquer "<fichier.fig>" (ou node scripts/amf-jetons.mjs "<fichier.fig>")
  * Mode Default des dimensions sur :root ; mode Rounded (boutons en pilule) sous .amf-rounded.
  */
 :root {

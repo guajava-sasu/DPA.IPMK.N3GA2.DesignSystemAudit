@@ -20,7 +20,8 @@ Les composants propres à une application (états process, synoptique…) vivent
     Task Card, Login Panel, Agenda (vue mois), Chat Bubble.
   - `tokens/amf-composants.css` : Badge, Tag, Count, Status (sans équivalent Material), typographie, icônes.
   - `tokens/amf-theme.css` : point d'entrée ; mode sombre (proposition du design system), séries de données, `--mat-sys-*`.
-  - `provideAmfMaterial()` : animations et ripple coupés (postes RDS sans GPU), champs outlined, réglages AMF,
+  - `provideAmfMaterial()` : animations et ripple actifs par défaut (`provideAmfMaterial({ animations: false })` pour
+    les postes RDS sans GPU : ni transition ni animation infinie), champs outlined, réglages AMF,
     libellés du Date Picker, du Paginator et du Stepper en français (`AmfDatepickerIntl`, `AmfPaginatorIntl`,
     `AmfStepperIntl`).
   - `assets/` : Roboto (OFL) et Material Icons (Apache 2.0) embarquées, logos.
@@ -35,7 +36,8 @@ npm start                  # vitrine sur http://localhost:4200
 npm run build              # exemples + audit des contrastes (échoue sous les seuils) + vitrine dans dist/showcase
 npm run build:lib          # bibliothèque dans dist/amf-design-system
 npx ng test amf-design-system --watch=false && npx ng test showcase --watch=false
-npm run jetons             # régénère amf-tokens.css depuis ../AMF Design System [v2.0].fig
+npm run jetons             # régénère amf-tokens.css depuis ../AMF Design System [v2.0].fig (sans argument)
+npm run figma:comparer -- <nouveau.fig>   # évolutions du Figma (voir ci-dessous)
 npm run audit:contrastes   # contrastes WCAG 2.1 (+ APCA indicatif) des jetons, clair et sombre
 npm run audit:axe          # axe-core sur la vitrine servie (voir ci-dessous)
 ```
@@ -70,6 +72,34 @@ AMF : `amf-rounded` sur un conteneur ; mode sombre : `setAmfThemeMode('dark')` (
 Partage avec les autres applications AMF (Angular 18 ou 20) : `amf-tokens.css` et la correspondance `--mat-sys-*`
 conviennent à Material 19 et plus ; Material 18 demanderait un adaptateur Sass. Les composants du design system
 (Angular 22) ne se partagent pas.
+
+## Suivre une nouvelle version du Figma
+
+La version de référence du Figma est décrite par `figma/instantane.json` (jetons, pages, composants calque par calque,
+journal), rangée par identifiant Figma : un composant, une variante, une page ou un calque renommé reste reconnu. Pour
+une nouvelle version exportée en .fig :
+
+```bash
+npm run figma:comparer -- "../AMF Design System [v2.1].fig"    # rapport dans figma/rapports/<date d'export>.md
+npm run figma:appliquer -- "../AMF Design System [v2.1].fig"   # rapport + amf-tokens.css + instantané + contrastes
+```
+
+`comparer` ne modifie rien d'autre que le rapport (aucun s'il n'y a pas de différence ; un rapport existant n'est pas
+écrasé, le nouveau est suffixé -2, -3…) : jetons ajoutés, supprimés, modifiés et renommages probables (même valeur),
+modes supplémentaires compris, avec tous les fichiers du dépôt qui utilisent encore un jeton supprimé ou renommé ;
+pages ajoutées, supprimées ou renommées ; composants ajoutés, supprimés, renommés, déplacés ou modifiés, attribut par
+attribut (taille, contraintes de mise en page, marges, rayons, couleurs, traits, styles avec leur valeur, effets,
+textes, propriétés et surcharges des instances ; variables liées entre crochets), avec les pages de la vitrine
+concernées ; entrées du journal nouvelles ou réécrites, ligne à ligne.
+
+`appliquer` fait en plus ce qui est automatique : `amf-tokens.css` régénéré, instantané de référence remplacé, audit des
+contrastes. Tant qu'un jeton supprimé ou renommé est utilisé dans le dépôt, il n'écrit rien et échoue (`--force` pour
+passer outre). Un mode de variables autre que Default et Rounded (un futur mode sombre) est signalé mais pas généré.
+Les composants (fichiers
+`tokens/amf-*.css`, exemples) et la conformité au journal restent à reporter à la main d'après le rapport, puis
+`npm test`, `npm run audit:axe` et une relecture de la page Mode sombre (ses surcharges ne viennent pas du Figma).
+Committer le rapport avec l'instantané. Tests de l'outil : `npm run test:figma` (lit le .fig de référence s'il est dans
+le dossier parent, sinon l'essai de bout en bout est sauté).
 
 ## Ajouter un exemple à la vitrine
 
