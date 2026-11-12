@@ -1,0 +1,9 @@
+.ex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.ex + .ex {
+  margin-top: 16px;
+}

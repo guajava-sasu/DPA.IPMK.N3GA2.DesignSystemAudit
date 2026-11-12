@@ -1,0 +1,560 @@
+/*
+ * Composants Angular Material habillés AMF v2.0 : CSS pur, jetons de composants Material (--mat-*) reliés aux
+ * jetons AMF. Chaque bloc cite la page 🆕 du Figma dont il reprend les mesures.
+ *
+ * Variantes de couleur (classes sur le composant) : gui-secondary, gui-neutral, gui-destructive (primaire par défaut).
+ * Tailles (boutons, champs, toggle buttons) : gui-sm (32 px), défaut (40 px), gui-lg (48 px).
+ */
+
+/* ── Couleur d'action courante : primaire par défaut, surchargée par les classes de variante ─────────────── */
+.mat-mdc-button-base,
+.mat-mdc-checkbox,
+.mat-mdc-radio-button,
+.mat-mdc-slide-toggle,
+.mat-button-toggle-group {
+  --gui-c: var(--amf-action-primary-default);
+  --gui-c-hover: var(--amf-action-primary-hover);
+  --gui-c-pressed: var(--amf-action-primary-pressed);
+  --gui-c-subtle: var(--amf-action-primary-subtle);
+  --gui-c-subtle-hover: var(--amf-action-primary-subtle-hover);
+  --gui-c-fg: var(--amf-action-primary-foreground);
+}
+.gui-secondary {
+  --gui-c: var(--amf-action-secondary-default);
+  --gui-c-hover: var(--amf-action-secondary-hover);
+  --gui-c-pressed: var(--amf-action-secondary-pressed);
+  --gui-c-subtle: var(--amf-action-secondary-subtle);
+  --gui-c-subtle-hover: var(--amf-action-secondary-subtle-hover);
+  --gui-c-fg: var(--amf-action-secondary-foreground);
+}
+.gui-neutral {
+  --gui-c: var(--amf-action-neutral-default);
+  --gui-c-hover: var(--amf-action-neutral-hover);
+  --gui-c-pressed: var(--amf-action-neutral-pressed);
+  --gui-c-subtle: var(--amf-action-neutral-subtle);
+  --gui-c-subtle-hover: var(--amf-action-neutral-subtle-hover);
+  --gui-c-fg: var(--amf-action-neutral-foreground);
+}
+.gui-destructive {
+  --gui-c: var(--amf-action-error-default);
+  --gui-c-hover: var(--amf-action-error-hover);
+  --gui-c-pressed: var(--amf-action-error-pressed);
+  --gui-c-subtle: var(--amf-action-error-subtle);
+  --gui-c-subtle-hover: var(--amf-action-error-subtle-hover);
+  --gui-c-fg: var(--amf-action-error-foreground);
+}
+
+/* ── Button (page 🆕 Button) : Filled / Outlined / Text, 32 / 40 / 48, rayon Radius/Button, BUTTON 2 capitales ── */
+.mat-mdc-button-base {
+  --gui-btn-h: 40px;
+  --gui-btn-px: 16px;
+  --gui-btn-icon: 20px;
+  --gui-btn-font-size: var(--amf-text-button-2-size);
+  --gui-btn-line-height: var(--amf-text-button-2-line-height);
+}
+.mat-mdc-button-base.gui-sm { --gui-btn-h: 32px; --gui-btn-px: 12px; --gui-btn-icon: 16px; }
+.mat-mdc-button-base.gui-lg {
+  --gui-btn-h: 48px; --gui-btn-px: 24px; --gui-btn-icon: 24px;
+  --gui-btn-font-size: var(--amf-text-button-size);
+  --gui-btn-line-height: var(--amf-text-button-line-height);
+}
+.mat-mdc-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-outlined-button {
+  --mat-button-filled-container-shape: var(--amf-radius-button);
+  --mat-button-outlined-container-shape: var(--amf-radius-button);
+  --mat-button-text-container-shape: var(--amf-radius-button);
+  --mat-button-filled-container-height: var(--gui-btn-h);
+  --mat-button-outlined-container-height: var(--gui-btn-h);
+  --mat-button-text-container-height: var(--gui-btn-h);
+  --mat-button-filled-horizontal-padding: var(--gui-btn-px);
+  --mat-button-outlined-horizontal-padding: var(--gui-btn-px);
+  --mat-button-text-horizontal-padding: var(--gui-btn-px);
+  --mat-button-text-with-icon-horizontal-padding: var(--gui-btn-px);
+  --mat-button-filled-icon-spacing: 8px;
+  --mat-button-outlined-icon-spacing: 8px;
+  --mat-button-text-icon-spacing: 8px;
+  --mat-button-filled-icon-offset: 0;
+  --mat-button-outlined-icon-offset: 0;
+  --mat-button-text-icon-offset: 0;
+  --mat-button-filled-label-text-font: var(--amf-text-button-2-family);
+  --mat-button-outlined-label-text-font: var(--amf-text-button-2-family);
+  --mat-button-text-label-text-font: var(--amf-text-button-2-family);
+  --mat-button-filled-label-text-size: var(--gui-btn-font-size);
+  --mat-button-outlined-label-text-size: var(--gui-btn-font-size);
+  --mat-button-text-label-text-size: var(--gui-btn-font-size);
+  --mat-button-filled-label-text-weight: var(--amf-text-button-2-weight);
+  --mat-button-outlined-label-text-weight: var(--amf-text-button-2-weight);
+  --mat-button-text-label-text-weight: var(--amf-text-button-2-weight);
+  --mat-button-filled-label-text-tracking: var(--amf-text-button-2-letter-spacing);
+  --mat-button-outlined-label-text-tracking: var(--amf-text-button-2-letter-spacing);
+  --mat-button-text-label-text-tracking: var(--amf-text-button-2-letter-spacing);
+  --mat-button-filled-label-text-transform: var(--amf-text-button-2-transform);
+  --mat-button-outlined-label-text-transform: var(--amf-text-button-2-transform);
+  --mat-button-text-label-text-transform: var(--amf-text-button-2-transform);
+  /* Pas de zone tactile élargie : postes à la souris (RDS) et le Figma n'en dessine pas */
+  --mat-button-filled-touch-target-display: none;
+  --mat-button-outlined-touch-target-display: none;
+  --mat-button-text-touch-target-display: none;
+  /* AMF change la couleur du conteneur au survol et à l'appui, sans calque d'état */
+  --mat-button-filled-hover-state-layer-opacity: 0;
+  --mat-button-filled-focus-state-layer-opacity: 0;
+  --mat-button-filled-pressed-state-layer-opacity: 0;
+  --mat-button-outlined-hover-state-layer-opacity: 0;
+  --mat-button-outlined-focus-state-layer-opacity: 0;
+  --mat-button-outlined-pressed-state-layer-opacity: 0;
+  --mat-button-text-hover-state-layer-opacity: 0;
+  --mat-button-text-focus-state-layer-opacity: 0;
+  --mat-button-text-pressed-state-layer-opacity: 0;
+  /* Couleurs */
+  --mat-button-filled-container-color: var(--gui-c);
+  --mat-button-filled-label-text-color: var(--amf-foreground-on-primary);
+  --mat-button-filled-disabled-container-color: var(--amf-action-disabled-background);
+  --mat-button-filled-disabled-label-text-color: var(--amf-action-disabled-foreground);
+  --mat-button-outlined-outline-color: var(--amf-border-input);
+  --mat-button-outlined-outline-width: 1px;
+  --mat-button-outlined-label-text-color: var(--gui-c-fg);
+  --mat-button-outlined-disabled-outline-color: var(--amf-action-disabled-border);
+  --mat-button-outlined-disabled-label-text-color: var(--amf-action-disabled-foreground);
+  --mat-button-text-label-text-color: var(--gui-c-fg);
+  --mat-button-text-disabled-label-text-color: var(--amf-action-disabled-foreground);
+  line-height: var(--gui-btn-line-height);
+  min-width: 64px; /* Size/Button/Min Width */
+}
+.mat-mdc-unelevated-button:not(:disabled):not(.mat-mdc-button-disabled):hover {
+  --mat-button-filled-container-color: var(--gui-c-hover);
+}
+.mat-mdc-unelevated-button:not(:disabled):not(.mat-mdc-button-disabled):active {
+  --mat-button-filled-container-color: var(--gui-c-pressed);
+}
+:is(.mat-mdc-outlined-button, .mat-mdc-button):not(:disabled):not(.mat-mdc-button-disabled):hover {
+  background-color: var(--gui-c-subtle);
+}
+:is(.mat-mdc-outlined-button, .mat-mdc-button):not(:disabled):not(.mat-mdc-button-disabled):active {
+  background-color: var(--gui-c-subtle-hover);
+}
+.mat-mdc-button-base > .mat-icon,
+.mat-mdc-button-base .mat-mdc-button-touch-target ~ .mat-icon {
+  font-size: var(--gui-btn-icon);
+  width: var(--gui-btn-icon);
+  height: var(--gui-btn-icon);
+}
+
+/* Anneau de focus AMF : Border/Focus 2 px à 2-4 px du bord, rayon Radius/Button Focus (cadre Figma 48 × 48 à -4 px) */
+.mat-mdc-button-base .mat-focus-indicator::before {
+  border-radius: var(--amf-radius-button-focus);
+}
+
+/* ── Button Icon (page 🆕 Button Icon) : Standard / Filled / Outlined, 32 / 40 / 48, icônes 16 / 20 / 24 ───────── */
+.mat-mdc-icon-button {
+  --mat-icon-button-container-shape: var(--amf-radius-button);
+  --mat-icon-button-state-layer-size: var(--gui-btn-h);
+  --mat-icon-button-icon-size: var(--gui-btn-icon);
+  --mat-icon-button-touch-target-display: none;
+  --mat-icon-button-hover-state-layer-opacity: 0;
+  --mat-icon-button-focus-state-layer-opacity: 0;
+  --mat-icon-button-pressed-state-layer-opacity: 0;
+  --mat-icon-button-icon-color: var(--gui-c-fg);
+  --mat-icon-button-disabled-icon-color: var(--amf-action-disabled-foreground);
+  padding: calc((var(--gui-btn-h) - var(--gui-btn-icon)) / 2);
+}
+.mat-mdc-icon-button:not(:disabled):not(.mat-mdc-button-disabled):hover { background-color: var(--gui-c-subtle); }
+.mat-mdc-icon-button:not(:disabled):not(.mat-mdc-button-disabled):active { background-color: var(--gui-c-subtle-hover); }
+.mat-mdc-icon-button.gui-filled {
+  --mat-icon-button-icon-color: var(--amf-foreground-on-primary);
+  background-color: var(--gui-c);
+}
+.mat-mdc-icon-button.gui-filled:not(:disabled):not(.mat-mdc-button-disabled):hover { background-color: var(--gui-c-hover); }
+.mat-mdc-icon-button.gui-filled:not(:disabled):not(.mat-mdc-button-disabled):active { background-color: var(--gui-c-pressed); }
+.mat-mdc-icon-button.gui-filled:is(:disabled, .mat-mdc-button-disabled) { background-color: var(--amf-action-disabled-background); }
+.mat-mdc-icon-button.gui-outlined { border: 1px solid var(--amf-border-input); }
+.mat-mdc-icon-button.gui-outlined:is(:disabled, .mat-mdc-button-disabled) { border-color: var(--amf-action-disabled-border); }
+
+/* ── Form Field (pages 🆕 Input Base et Form Field) ──────────────────────────────────────────────────────────
+ * Libellé AU-DESSUS du champ (style Form Label), pas de libellé flottant : <div class="gui-field"> avec
+ * <label class="gui-field-label" for="…"> puis <mat-form-field appearance="outline"> sans <mat-label>.
+ * Champ obligatoire : attribut required sur l'input, sans astérisque (règle AMF du 24/09/2026).
+ * Champ 32 / 40 / 48, marge interne 8 / 12 / 16, rayon Radius/M, fond Surface, Body 2, aide en Caption. */
+.gui-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  --gui-field-h: 40px;
+  --gui-field-px: 12px;
+}
+.gui-field.gui-sm { --gui-field-h: 32px; --gui-field-px: 8px; }
+.gui-field.gui-lg { --gui-field-h: 48px; --gui-field-px: 16px; }
+.gui-field-label {
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) / var(--amf-text-form-label-line-height) var(--amf-text-form-label-family);
+  letter-spacing: var(--amf-text-form-label-letter-spacing);
+  color: var(--amf-foreground-primary);
+  display: inline-flex;
+  gap: 2px;
+}
+/* Pas d'astérisque (audit RGAA du 24/09/2026) : le formulaire annonce « Sauf indication contraire, tous les champs sont
+ * obligatoires » ; un champ facultatif porte un Tag « Facultatif » sur la ligne du libellé (.gui-field-label-row). */
+.gui-field-label-row { display: flex; align-items: center; gap: 8px; }
+.gui-field:has(.mat-form-field-disabled) .gui-field-label { color: var(--amf-foreground-disabled); }
+
+.mat-mdc-form-field {
+  --gui-field-h: 40px;
+  --gui-field-px: 12px;
+  --mat-form-field-container-height: var(--gui-field-h);
+  --mat-form-field-container-vertical-padding: calc((var(--gui-field-h) - 20px) / 2);
+  --mat-form-field-container-text-font: var(--amf-text-body-2-family);
+  --mat-form-field-container-text-size: var(--amf-text-body-2-size);
+  --mat-form-field-container-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-form-field-container-text-weight: var(--amf-text-body-2-weight);
+  --mat-form-field-container-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-form-field-outlined-container-shape: var(--amf-radius-m);
+  --mat-form-field-outlined-outline-width: 1px;
+  --mat-form-field-outlined-focus-outline-width: 2px;
+  --mat-form-field-outlined-outline-color: var(--amf-border-input);
+  --mat-form-field-outlined-hover-outline-color: var(--amf-border-input-hover);
+  --mat-form-field-outlined-focus-outline-color: var(--amf-border-focus);
+  --mat-form-field-outlined-error-outline-color: var(--amf-border-error);
+  --mat-form-field-outlined-error-hover-outline-color: var(--amf-border-error);
+  --mat-form-field-outlined-error-focus-outline-color: var(--amf-border-error);
+  --mat-form-field-outlined-disabled-outline-color: var(--amf-border-disabled);
+  --mat-form-field-outlined-input-text-color: var(--amf-foreground-primary);
+  --mat-form-field-outlined-input-text-placeholder-color: var(--amf-foreground-placeholder);
+  --mat-form-field-outlined-disabled-input-text-color: var(--amf-foreground-disabled);
+  --mat-form-field-outlined-caret-color: var(--amf-foreground-primary);
+  --mat-form-field-outlined-error-caret-color: var(--amf-border-error);
+  --mat-form-field-subscript-text-font: var(--amf-text-caption-family);
+  --mat-form-field-subscript-text-size: var(--amf-text-caption-size);
+  --mat-form-field-subscript-text-line-height: var(--amf-text-caption-line-height);
+  --mat-form-field-subscript-text-weight: var(--amf-text-caption-weight);
+  --mat-form-field-subscript-text-tracking: var(--amf-text-caption-letter-spacing);
+  --mat-form-field-supporting-text-color: var(--amf-foreground-secondary);
+  --mat-form-field-error-text-color: var(--amf-feedback-error-foreground);
+  --mat-form-field-leading-icon-color: var(--amf-foreground-secondary);
+  --mat-form-field-trailing-icon-color: var(--amf-foreground-secondary);
+  --mat-form-field-error-trailing-icon-color: var(--amf-border-error);
+}
+.gui-field.gui-sm .mat-mdc-form-field { --gui-field-h: 32px; --gui-field-px: 8px; }
+.gui-field.gui-lg .mat-mdc-form-field { --gui-field-h: 48px; --gui-field-px: 16px; }
+.mat-mdc-form-field .mdc-text-field--outlined {
+  background-color: var(--amf-background-surface);
+  border-radius: var(--amf-radius-m);
+  padding-inline: var(--gui-field-px);
+}
+.mat-mdc-form-field .mat-mdc-form-field-icon-prefix,
+.mat-mdc-form-field .mat-mdc-form-field-icon-suffix { padding: 0; }
+.mat-mdc-form-field .mat-mdc-form-field-icon-prefix > .mat-icon,
+.mat-mdc-form-field .mat-mdc-form-field-icon-suffix > .mat-icon {
+  padding: 0; font-size: 20px; width: 20px; height: 20px;
+}
+.mat-mdc-form-field .mat-mdc-form-field-icon-prefix { margin-inline-end: 8px; }
+.mat-mdc-form-field .mat-mdc-form-field-icon-suffix { margin-inline-start: 8px; }
+.mat-mdc-form-field .mat-mdc-form-field-text-prefix,
+.mat-mdc-form-field .mat-mdc-form-field-text-suffix { color: var(--amf-foreground-secondary); }
+/* Erreur : bordure 2 px même sans focus (Input Base State=Error) */
+.mat-mdc-form-field.mat-form-field-invalid .mdc-notched-outline > * { border-width: 2px; }
+/* Désactivé : Background/Disabled + Border/Disabled */
+.mat-mdc-form-field.mat-form-field-disabled .mdc-text-field--outlined { background-color: var(--amf-background-disabled); }
+/* Lecture seule (classe gui-readonly) : Surface Subtle + Border/Default */
+.mat-mdc-form-field.gui-readonly {
+  --mat-form-field-outlined-outline-color: var(--amf-border-default);
+  --mat-form-field-outlined-hover-outline-color: var(--amf-border-default);
+  --mat-form-field-outlined-focus-outline-color: var(--amf-border-focus);
+}
+.mat-mdc-form-field.gui-readonly .mdc-text-field--outlined { background-color: var(--amf-background-surface-subtle); }
+.mat-mdc-form-field-subscript-wrapper .mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-subscript-wrapper .mat-mdc-form-field-error-wrapper { padding: 0; }
+.mat-mdc-form-field-subscript-dynamic-size .mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-subscript-dynamic-size .mat-mdc-form-field-error-wrapper { position: static; }
+.mat-mdc-form-field-bottom-align::before { display: none; }
+.mat-mdc-form-field .mat-mdc-form-field-subscript-wrapper { margin-top: 4px; }
+
+/* ── Checkbox et Radio (pages 🆕 Checkbox, 🆕 Radio) : contrôle 40, calque d'état 32, case 18 Radius/XS, bord 2 ── */
+.mat-mdc-checkbox,
+.mat-mdc-radio-button {
+  --mat-checkbox-state-layer-size: 32px;
+  --mat-checkbox-touch-target-display: none;
+  --mat-checkbox-label-text-font: var(--amf-text-body-2-family);
+  --mat-checkbox-label-text-size: var(--amf-text-body-2-size);
+  --mat-checkbox-label-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-checkbox-label-text-weight: var(--amf-text-body-2-weight);
+  --mat-checkbox-label-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-checkbox-label-text-color: var(--amf-foreground-primary);
+  --mat-checkbox-disabled-label-color: var(--amf-foreground-disabled);
+  --mat-checkbox-unselected-icon-color: var(--amf-border-input);
+  --mat-checkbox-unselected-hover-icon-color: var(--amf-border-input);
+  --mat-checkbox-unselected-focus-icon-color: var(--amf-border-input);
+  --mat-checkbox-selected-icon-color: var(--gui-c);
+  --mat-checkbox-selected-hover-icon-color: var(--gui-c);
+  --mat-checkbox-selected-focus-icon-color: var(--gui-c);
+  --mat-checkbox-selected-checkmark-color: var(--amf-foreground-on-primary);
+  --mat-checkbox-disabled-unselected-icon-color: var(--amf-action-disabled-border);
+  --mat-checkbox-disabled-selected-icon-color: var(--amf-action-disabled-foreground);
+  --mat-checkbox-disabled-selected-checkmark-color: var(--amf-background-surface);
+  --mat-checkbox-unselected-hover-state-layer-color: #000;
+  --mat-checkbox-selected-hover-state-layer-color: #000;
+  --mat-checkbox-unselected-focus-state-layer-color: #000;
+  --mat-checkbox-selected-focus-state-layer-color: #000;
+  --mat-checkbox-unselected-pressed-state-layer-color: #000;
+  --mat-checkbox-selected-pressed-state-layer-color: #000;
+  --mat-checkbox-unselected-hover-state-layer-opacity: 0.08;
+  --mat-checkbox-selected-hover-state-layer-opacity: 0.08;
+  --mat-checkbox-unselected-focus-state-layer-opacity: 0.12;
+  --mat-checkbox-selected-focus-state-layer-opacity: 0.12;
+  --mat-checkbox-unselected-pressed-state-layer-opacity: 0.12;
+  --mat-checkbox-selected-pressed-state-layer-opacity: 0.12;
+
+  --mat-radio-state-layer-size: 32px;
+  --mat-radio-touch-target-display: none;
+  --mat-radio-label-text-font: var(--amf-text-body-2-family);
+  --mat-radio-label-text-size: var(--amf-text-body-2-size);
+  --mat-radio-label-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-radio-label-text-weight: var(--amf-text-body-2-weight);
+  --mat-radio-label-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-radio-label-text-color: var(--amf-foreground-primary);
+  --mat-radio-disabled-label-color: var(--amf-foreground-disabled);
+  --mat-radio-unselected-icon-color: var(--amf-border-input);
+  --mat-radio-unselected-hover-icon-color: var(--amf-border-input);
+  --mat-radio-unselected-focus-icon-color: var(--amf-border-input);
+  --mat-radio-unselected-pressed-icon-color: var(--amf-border-input);
+  --mat-radio-selected-icon-color: var(--gui-c);
+  --mat-radio-selected-hover-icon-color: var(--gui-c);
+  --mat-radio-selected-focus-icon-color: var(--gui-c);
+  --mat-radio-selected-pressed-icon-color: var(--gui-c);
+  --mat-radio-disabled-unselected-icon-color: var(--amf-action-disabled-border);
+  --mat-radio-disabled-unselected-icon-opacity: 1;
+  --mat-radio-disabled-selected-icon-color: var(--amf-action-disabled-foreground);
+  --mat-radio-disabled-selected-icon-opacity: 1;
+  --mat-radio-ripple-color: var(--amf-action-state-layer-hover);
+  --mat-radio-checked-ripple-color: var(--amf-action-state-layer-hover);
+}
+/* Contrôle de 40 px comme le Figma (calque d'état 32 px centré) */
+.mat-mdc-checkbox .mdc-checkbox,
+.mat-mdc-radio-button .mdc-radio { margin: 4px; }
+/* Erreur (classe gui-error, Checkbox State=Error) : bord Border/Error, coché Feedback/Error/Solid */
+.mat-mdc-checkbox.gui-error {
+  --mat-checkbox-unselected-icon-color: var(--amf-border-error);
+  --mat-checkbox-unselected-hover-icon-color: var(--amf-border-error);
+  --mat-checkbox-unselected-focus-icon-color: var(--amf-border-error);
+  --gui-c: var(--amf-feedback-error-solid);
+}
+/* Focus clavier : calque Pressed 12 % + anneau Border/Focus 2 px sur le cercle de 32 px */
+.mat-mdc-checkbox .mdc-checkbox__native-control:focus-visible ~ .mdc-checkbox__ripple,
+.mat-mdc-radio-button .mdc-radio__native-control:focus-visible ~ .mdc-radio__background::before {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: -2px;
+}
+
+/* ── Toggle Switch (page 🆕 Toggle Switch) : piste 44 × 24 bord 2, curseur 16 (off) / 20 (on), calque 32 ───── */
+.mat-mdc-slide-toggle {
+  --mat-slide-toggle-track-width: 44px;
+  --mat-slide-toggle-track-height: 24px;
+  --mat-slide-toggle-track-shape: var(--amf-radius-full);
+  --mat-slide-toggle-track-outline-width: 2px;
+  --mat-slide-toggle-track-outline-color: var(--amf-border-input);
+  --mat-slide-toggle-selected-track-outline-width: 2px;
+  --mat-slide-toggle-selected-track-outline-color: transparent;
+  --mat-slide-toggle-disabled-unselected-track-outline-width: 2px;
+  --mat-slide-toggle-disabled-unselected-track-outline-color: var(--amf-action-disabled-border);
+  --mat-slide-toggle-unselected-handle-size: 16px;
+  --mat-slide-toggle-selected-handle-size: 20px;
+  --mat-slide-toggle-with-icon-handle-size: 20px;
+  --mat-slide-toggle-pressed-handle-size: 20px;
+  --mat-slide-toggle-handle-shape: var(--amf-radius-full);
+  --mat-slide-toggle-unselected-handle-horizontal-margin: 0 4px;
+  --mat-slide-toggle-unselected-with-icon-handle-horizontal-margin: 0 4px;
+  --mat-slide-toggle-unselected-pressed-handle-horizontal-margin: 0 2px;
+  --mat-slide-toggle-selected-handle-horizontal-margin: 0 22px;
+  --mat-slide-toggle-selected-with-icon-handle-horizontal-margin: 0 22px;
+  --mat-slide-toggle-selected-pressed-handle-horizontal-margin: 0 22px;
+  --mat-slide-toggle-state-layer-size: 32px;
+  --mat-slide-toggle-touch-target-display: none;
+  --mat-slide-toggle-handle-elevation-shadow: none;
+  --mat-slide-toggle-disabled-handle-elevation-shadow: none;
+  --mat-slide-toggle-unselected-track-color: var(--amf-background-surface-subtle);
+  --mat-slide-toggle-unselected-hover-track-color: var(--amf-background-surface-subtle);
+  --mat-slide-toggle-unselected-focus-track-color: var(--amf-background-surface-subtle);
+  --mat-slide-toggle-unselected-pressed-track-color: var(--amf-background-surface-subtle);
+  --mat-slide-toggle-unselected-handle-color: var(--amf-border-input);
+  --mat-slide-toggle-unselected-hover-handle-color: var(--amf-border-input);
+  --mat-slide-toggle-unselected-focus-handle-color: var(--amf-border-input);
+  --mat-slide-toggle-unselected-pressed-handle-color: var(--amf-border-input);
+  --mat-slide-toggle-selected-track-color: var(--gui-c);
+  --mat-slide-toggle-selected-hover-track-color: var(--gui-c);
+  --mat-slide-toggle-selected-focus-track-color: var(--gui-c);
+  --mat-slide-toggle-selected-pressed-track-color: var(--gui-c);
+  --mat-slide-toggle-selected-handle-color: var(--amf-background-surface);
+  --mat-slide-toggle-selected-hover-handle-color: var(--amf-background-surface);
+  --mat-slide-toggle-selected-focus-handle-color: var(--amf-background-surface);
+  --mat-slide-toggle-selected-pressed-handle-color: var(--amf-background-surface);
+  --mat-slide-toggle-disabled-unselected-track-color: var(--amf-action-disabled-background);
+  --mat-slide-toggle-disabled-unselected-handle-color: var(--amf-action-disabled-foreground);
+  --mat-slide-toggle-disabled-unselected-handle-opacity: 1;
+  --mat-slide-toggle-disabled-selected-track-color: var(--amf-action-disabled-foreground);
+  --mat-slide-toggle-disabled-selected-handle-color: var(--amf-background-surface);
+  --mat-slide-toggle-disabled-selected-handle-opacity: 1;
+  --mat-slide-toggle-disabled-track-opacity: 1;
+  --mat-slide-toggle-unselected-hover-state-layer-color: #000;
+  --mat-slide-toggle-selected-hover-state-layer-color: #000;
+  --mat-slide-toggle-unselected-focus-state-layer-color: #000;
+  --mat-slide-toggle-selected-focus-state-layer-color: #000;
+  --mat-slide-toggle-unselected-pressed-state-layer-color: #000;
+  --mat-slide-toggle-selected-pressed-state-layer-color: #000;
+  --mat-slide-toggle-unselected-hover-state-layer-opacity: 0.08;
+  --mat-slide-toggle-selected-hover-state-layer-opacity: 0.08;
+  --mat-slide-toggle-unselected-focus-state-layer-opacity: 0.12;
+  --mat-slide-toggle-selected-focus-state-layer-opacity: 0.12;
+  --mat-slide-toggle-unselected-pressed-state-layer-opacity: 0.12;
+  --mat-slide-toggle-selected-pressed-state-layer-opacity: 0.12;
+  --mat-slide-toggle-label-text-font: var(--amf-text-body-2-family);
+  --mat-slide-toggle-label-text-size: var(--amf-text-body-2-size);
+  --mat-slide-toggle-label-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-slide-toggle-label-text-weight: var(--amf-text-body-2-weight);
+  --mat-slide-toggle-label-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-slide-toggle-label-text-color: var(--amf-foreground-primary);
+  --mat-slide-toggle-disabled-label-text-color: var(--amf-foreground-disabled);
+}
+.mat-mdc-slide-toggle .mdc-label { padding-inline-start: 8px; }
+.mat-mdc-slide-toggle .mdc-switch:focus-visible .mdc-switch__ripple::after,
+.mat-mdc-slide-toggle .mdc-switch:focus-visible .mat-mdc-slide-toggle-ripple {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: -2px;
+  border-radius: 50%;
+}
+:root.dark .mat-mdc-checkbox,
+:root.dark .mat-mdc-radio-button,
+:root.dark .mat-mdc-slide-toggle {
+  --mat-checkbox-unselected-hover-state-layer-color: #fff;
+  --mat-checkbox-selected-hover-state-layer-color: #fff;
+  --mat-checkbox-unselected-focus-state-layer-color: #fff;
+  --mat-checkbox-selected-focus-state-layer-color: #fff;
+  --mat-checkbox-unselected-pressed-state-layer-color: #fff;
+  --mat-checkbox-selected-pressed-state-layer-color: #fff;
+  --mat-slide-toggle-unselected-hover-state-layer-color: #fff;
+  --mat-slide-toggle-selected-hover-state-layer-color: #fff;
+  --mat-slide-toggle-unselected-focus-state-layer-color: #fff;
+  --mat-slide-toggle-selected-focus-state-layer-color: #fff;
+  --mat-slide-toggle-unselected-pressed-state-layer-color: #fff;
+  --mat-slide-toggle-selected-pressed-state-layer-color: #fff;
+}
+
+/* ── Toggle Button (page 🆕 Toggle Button) : groupe Radius/Button, items Border/Input, sélection pleine ─────── */
+.mat-button-toggle-group {
+  --mat-button-toggle-shape: var(--amf-radius-button);
+  --mat-button-toggle-height: 40px;
+  --mat-button-toggle-label-text-font: var(--amf-text-button-2-family);
+  --mat-button-toggle-label-text-size: var(--amf-text-button-2-size);
+  --mat-button-toggle-label-text-line-height: var(--amf-text-button-2-line-height);
+  --mat-button-toggle-label-text-weight: var(--amf-text-button-2-weight);
+  --mat-button-toggle-label-text-tracking: var(--amf-text-button-2-letter-spacing);
+  --mat-button-toggle-text-color: var(--amf-foreground-primary);
+  --mat-button-toggle-background-color: var(--amf-background-surface);
+  --mat-button-toggle-divider-color: var(--amf-border-input);
+  --mat-button-toggle-selected-state-background-color: var(--gui-c);
+  --mat-button-toggle-selected-state-text-color: var(--amf-foreground-on-primary);
+  --mat-button-toggle-disabled-state-background-color: var(--amf-background-surface);
+  --mat-button-toggle-disabled-state-text-color: var(--amf-action-disabled-foreground);
+  --mat-button-toggle-disabled-selected-state-background-color: var(--amf-action-disabled-background);
+  --mat-button-toggle-disabled-selected-state-text-color: var(--amf-action-disabled-foreground);
+  --mat-button-toggle-hover-state-layer-opacity: 0;
+  --mat-button-toggle-focus-state-layer-opacity: 0;
+  --gui-tb-px: 16px;
+  border-color: var(--amf-border-input);
+}
+.mat-button-toggle-group.gui-sm { --mat-button-toggle-height: 32px; --gui-tb-px: 12px; }
+.mat-button-toggle-group.gui-lg {
+  --mat-button-toggle-height: 48px; --gui-tb-px: 24px;
+  --mat-button-toggle-label-text-size: var(--amf-text-button-size);
+  --mat-button-toggle-label-text-line-height: var(--amf-text-button-line-height);
+}
+.mat-button-toggle-group .mat-button-toggle-button {
+  height: var(--mat-button-toggle-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mat-button-toggle-group .mat-button-toggle-label-content {
+  padding-inline: var(--gui-tb-px);
+  text-transform: var(--amf-text-button-2-transform);
+}
+.mat-button-toggle-group .mat-button-toggle-checkbox-wrapper { display: none; } /* pas de coche : sélection par le fond */
+.mat-button-toggle-group .mat-button-toggle-appearance-standard.mat-button-toggle-checked .mat-button-toggle-label-content { padding-inline: var(--gui-tb-px); }
+.mat-button-toggle:not(.mat-button-toggle-checked):not(.mat-button-toggle-disabled):hover { background-color: var(--amf-action-neutral-subtle); }
+.mat-button-toggle-checked:not(.mat-button-toggle-disabled):hover { background-color: var(--gui-c-hover); }
+.mat-button-toggle .mat-button-toggle-button:focus-visible { outline: 2px solid var(--amf-border-focus); outline-offset: -2px; }
+.mat-button-toggle-group .mat-button-toggle .mat-icon { font-size: 20px; width: 20px; height: 20px; }
+
+/* ── Tabs (page 🆕 Tabs) : onglet 48, BUTTON 2 capitales, actif Foreground/Brand + indicateur 2 px primaire ─── */
+.mat-mdc-tab-group,
+.mat-mdc-tab-nav-bar {
+  --mat-tab-container-height: 48px;
+  --mat-tab-label-text-font: var(--amf-text-button-2-family);
+  --mat-tab-label-text-size: var(--amf-text-button-2-size);
+  --mat-tab-label-text-line-height: var(--amf-text-button-2-line-height);
+  --mat-tab-label-text-weight: var(--amf-text-button-2-weight);
+  --mat-tab-label-text-tracking: var(--amf-text-button-2-letter-spacing);
+  --mat-tab-active-label-text-color: var(--amf-foreground-brand);
+  --mat-tab-active-hover-label-text-color: var(--amf-foreground-brand);
+  --mat-tab-active-focus-label-text-color: var(--amf-foreground-brand);
+  --mat-tab-inactive-label-text-color: var(--amf-foreground-secondary);
+  --mat-tab-inactive-hover-label-text-color: var(--amf-foreground-secondary);
+  --mat-tab-inactive-focus-label-text-color: var(--amf-foreground-secondary);
+  --mat-tab-active-indicator-color: var(--amf-action-primary-default);
+  --mat-tab-active-hover-indicator-color: var(--amf-action-primary-default);
+  --mat-tab-active-focus-indicator-color: var(--amf-action-primary-default);
+  --mat-tab-active-indicator-height: 2px;
+  --mat-tab-active-indicator-shape: var(--amf-radius-xs);
+  --mat-tab-divider-color: var(--amf-border-default);
+  --mat-tab-divider-height: 1px;
+  --mat-tab-active-ripple-color: transparent;
+  --mat-tab-inactive-ripple-color: transparent;
+  --mat-tab-pagination-icon-color: var(--amf-foreground-secondary);
+  --mat-tab-header-animation-duration: 0ms;
+  --mat-tab-body-animation-duration: 0ms;
+}
+.mat-mdc-tab .mdc-tab__text-label { text-transform: var(--amf-text-button-2-transform); }
+.mat-mdc-tab.mdc-tab { padding-inline: 16px; border-radius: var(--amf-radius-s) var(--amf-radius-s) 0 0; }
+.mat-mdc-tab:not(.mdc-tab--active):not(.mat-mdc-tab-disabled):hover { background-color: var(--amf-action-neutral-subtle); }
+.mat-mdc-tab.mat-mdc-tab-disabled .mdc-tab__text-label { color: var(--amf-action-disabled-foreground); }
+.mat-mdc-tab:focus-visible { outline: 2px solid var(--amf-border-focus); outline-offset: -2px; }
+.mat-mdc-tab .mat-mdc-focus-indicator { display: none; }
+
+/* ── Card (page 🆕 Card) : Radius/L, Border/Strong, marge 16, espacement 16, titre Body 1 Medium ──────────── */
+.mat-mdc-card {
+  --mat-card-outlined-container-color: var(--amf-background-surface);
+  --mat-card-outlined-container-shape: var(--amf-radius-l);
+  --mat-card-outlined-outline-color: var(--amf-border-strong);
+  --mat-card-outlined-outline-width: 1px;
+  --mat-card-outlined-container-elevation: none;
+  --mat-card-elevated-container-color: var(--amf-background-surface);
+  --mat-card-elevated-container-shape: var(--amf-radius-l);
+  --mat-card-title-text-font: var(--amf-text-body-1-medium-family);
+  --mat-card-title-text-size: var(--amf-text-body-1-medium-size);
+  --mat-card-title-text-line-height: var(--amf-text-body-1-medium-line-height);
+  --mat-card-title-text-weight: var(--amf-text-body-1-medium-weight);
+  --mat-card-title-text-tracking: var(--amf-text-body-1-medium-letter-spacing);
+  --mat-card-subtitle-text-font: var(--amf-text-caption-family);
+  --mat-card-subtitle-text-size: var(--amf-text-caption-size);
+  --mat-card-subtitle-text-line-height: var(--amf-text-caption-line-height);
+  --mat-card-subtitle-text-weight: var(--amf-text-caption-weight);
+  --mat-card-subtitle-text-tracking: var(--amf-text-caption-letter-spacing);
+  --mat-card-subtitle-text-color: var(--amf-foreground-secondary);
+  color: var(--amf-foreground-primary);
+  padding: 16px;
+  gap: 16px;
+}
+.mat-mdc-card .mat-mdc-card-header,
+.mat-mdc-card .mat-mdc-card-content,
+.mat-mdc-card .mat-mdc-card-actions { padding: 0; }
+.mat-mdc-card .mat-mdc-card-header-text { display: flex; flex-direction: column; gap: 4px; }
+.mat-mdc-card .mat-mdc-card-title,
+.mat-mdc-card .mat-mdc-card-subtitle { margin: 0; }
+.mat-mdc-card .mat-mdc-card-content { font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--amf-text-body-2-family); }
+.mat-mdc-card .mat-mdc-card-actions { gap: 8px; min-height: 0; justify-content: flex-end; }
+
+/* ── Divider (page 🆕 Divider) : 1 px Border/Default (gui-subtle : Border/Subtle) ────────────────────────────── */
+.mat-divider { --mat-divider-color: var(--amf-border-default); --mat-divider-width: 1px; }
+.mat-divider.gui-subtle { --mat-divider-color: var(--amf-border-subtle); }
+.mat-divider.gui-inset { margin-inline: var(--amf-spacing-16); }
+.mat-divider.mat-divider-vertical.gui-inset { margin-inline: 0; margin-block: var(--amf-spacing-8); }
+
+/* ── Icônes : Material Icons (jeu AMF « Icons 2026 », 1 417 glyphes classiques), couleur Icon/Default ────────── */
+.mat-icon { color: inherit; }

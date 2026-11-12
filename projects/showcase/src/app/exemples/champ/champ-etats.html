@@ -1,0 +1,20 @@
+<div class="ex">
+  <div class="gui-field">
+    <label class="gui-field-label" for="ex-poids">Poids</label>
+    <mat-form-field>
+      <input matInput id="ex-poids" [formControl]="poids" />
+      <span matTextSuffix>kg</span>
+      <mat-error>Le poids est obligatoire</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="gui-field">
+    <label class="gui-field-label" for="ex-ligne">Ligne</label>
+    <mat-form-field><input matInput id="ex-ligne" value="Galma 2" disabled /></mat-form-field>
+  </div>
+  <div class="gui-field">
+    <label class="gui-field-label" for="ex-of">Ordre de fabrication</label>
+    <mat-form-field class="gui-readonly"
+      ><input matInput id="ex-of" value="OF-2026-1142" readonly
+    /></mat-form-field>
+  </div>
+</div>

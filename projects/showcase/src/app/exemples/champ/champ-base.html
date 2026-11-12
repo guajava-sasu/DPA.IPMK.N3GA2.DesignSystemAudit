@@ -1,0 +1,29 @@
+<p class="gui-caption gui-secondary-text consigne">
+  Sauf indication contraire, tous les champs sont obligatoires.
+</p>
+<div class="ex">
+  <div class="gui-field">
+    <label class="gui-field-label" for="ex-bobine">Numéro de bobine</label>
+    <mat-form-field>
+      <input matInput id="ex-bobine" placeholder="Saisir une valeur" required />
+      <mat-hint>Dix chiffres, sans espace</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="gui-field">
+    <div class="gui-field-label-row">
+      <label class="gui-field-label" for="ex-commentaire">Commentaire</label>
+      <span class="gui-tag gui-sm">Facultatif</span>
+    </div>
+    <mat-form-field>
+      <input matInput id="ex-commentaire" maxlength="100" #commentaire />
+      <mat-hint align="end">{{ commentaire.value.length }} / 100</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="gui-field">
+    <label class="gui-field-label" for="ex-epaisseur">Épaisseur</label>
+    <mat-form-field>
+      <input matInput id="ex-epaisseur" type="number" value="0.65" />
+      <span matTextSuffix>mm</span>
+    </mat-form-field>
+  </div>
+</div>

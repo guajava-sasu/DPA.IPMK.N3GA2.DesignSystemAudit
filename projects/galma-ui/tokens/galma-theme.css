@@ -1,0 +1,453 @@
+/*
+ * Thème galma-ui : design system AMF v2.0 sur Angular Material (M3), sans Tailwind.
+ * Décisions 06-decisions/2026-11-12-amf-reference-visuelle-galma-ui.md et
+ * 06-decisions/2026-11-12-galma2-ui-angular-material-depuis-figma.md.
+ *
+ *   amf-tokens.css  jetons AMF GÉNÉRÉS depuis le Figma (npm run jetons) : ne jamais recopier une valeur à la main ;
+ *   ce fichier       mode sombre (AMF n'en a pas : surcharge des jetons sémantiques AMF sous .dark), variables
+ *                    système Material (--mat-sys-*) et jetons de composants (--mat-*) reliés aux jetons AMF,
+ *                    et ce qu'AMF ne couvre pas : états process (ISA-101), synoptique, séries.
+ *
+ * À importer dans les styles globaux de l'application :
+ *   @import '<chemin>/galma-ui/tokens/galma-theme.css';
+ * Fichiers : amf-tokens.css (généré), galma-material.css (composants Material), galma-composants.css (Badge, Tag,
+ * Count, Status, typographie, icônes). Polices servies sous /galma/fonts (assets de angular.json). Mode sombre : classe `dark` sur <html>.
+ */
+@import './amf-tokens.css';
+@import './galma-material.css';
+@import './galma-composants.css';
+
+/* ── Police Roboto (AMF), variable 100 → 900, embarquée : pas de CDN sur les postes RDS ─ */
+@font-face {
+  font-family: 'Roboto';
+  src: url('/galma/fonts/roboto-latin-wght-normal.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('/galma/fonts/roboto-latin-wght-italic.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('/galma/fonts/roboto-latin-ext-wght-normal.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('/galma/fonts/roboto-latin-ext-wght-italic.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+
+/* ── Mode clair : complément AMF ─────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --gui-font: 'Roboto', 'Segoe UI', Arial, sans-serif;
+
+  /* États process (ISA-101) et visualisation : propres à Galma2, absents d'AMF */
+  --status-run: #2f7a55;
+  --status-run-foreground: #ffffff;
+  --status-stop: #6b6b6b;
+  --status-stop-foreground: #ffffff;
+  --status-alarm: #c8102e;
+  --status-alarm-foreground: #ffffff;
+  --status-warning: #f2b600;
+  --status-warning-foreground: #151515;
+  --status-warning-text: #8a6100; /* jaune lisible sur fond clair */
+  --status-info: var(--amf-color-blue-500);
+  --status-info-foreground: #ffffff;
+  --status-fault: #7a3eb1;
+  --status-fault-foreground: #ffffff;
+  --chart-1: var(--amf-color-blue-500);
+  --chart-2: #ff3700;
+  --chart-3: #2f7a55;
+  --chart-4: #932184;
+  --chart-5: #f09357;
+  --process-background: #eef0f2;
+  --process-equipment: #c9cdd2;
+  --process-equipment-stroke: #7a7f86;
+  --process-strip: #4a4f56;
+  --process-flow: #ffffff;
+  --process-normal-band: #b3d4ec; /* plage normale sur les jauges */
+  --iso-floor: #e4e0d5;
+  --iso-tile: #d4d0c1;
+  --iso-edge: rgb(21 21 21 / 0.35);
+  --iso-steel: #8aa0b4;
+  --iso-violet: #8c7aa8;
+  --iso-accent: #c8513a;
+  --iso-zinc: #c9d6df;
+  --iso-strip: #7d8a96;
+  --iso-coil-1: #7d8a96;
+  --iso-coil-2: #b08d57;
+  --iso-coil-3: #6f8fbf;
+  --iso-coil-4: #b5848f;
+  --iso-coil-5: #5f9a8f;
+  --iso-coil-neutral: #c3cad1; /* bobine pas encore soudée */
+  --iso-flow: #ffffff;
+  --schema-stroke: #2b333b;
+  --schema-stroke-muted: #6b7680;
+  --series-1: var(--amf-color-blue-500);
+  --series-2: #00838f;
+  --series-3: #b0397a;
+  --series-4: #8c6d1f;
+  --series-5: #5c5c5c;
+  --code-police: ui-monospace, 'Cascadia Mono', Consolas, 'SF Mono', Menlo, monospace;
+  --code-mot-cle: var(--amf-foreground-primary);
+  --code-commentaire: var(--amf-foreground-secondary);
+  --code-role: var(--series-1);
+  --code-sortie: var(--series-3);
+  --code-reglage: var(--series-4);
+  --code-propriete: var(--series-1);
+  --code-fonction: var(--series-2);
+  --code-modele: var(--series-3);
+  --code-type: var(--series-5);
+  --code-variable: var(--amf-foreground-primary);
+  --code-nombre: var(--series-2);
+  --code-texte: var(--series-4);
+}
+
+/* ── Mode sombre : propre à galma-ui, surcharge des jetons sémantiques AMF ─────── */
+:root.dark {
+  color-scheme: dark;
+  --amf-background-page: #151515;
+  --amf-background-surface: #1f1f1f;
+  --amf-background-surface-subtle: #262626;
+  --amf-background-disabled: #2a2a2a;
+  --amf-background-inverse: #f2f2f2;
+  --amf-foreground-primary: #f2f2f2;
+  --amf-foreground-secondary: #a3a3a3;
+  --amf-foreground-placeholder: #8a8a8a;
+  --amf-foreground-disabled: #737373;
+  --amf-foreground-inverse: #151515;
+  --amf-foreground-on-primary: #151515;
+  --amf-foreground-brand: var(--amf-color-orange-300);
+  --amf-foreground-link: var(--amf-color-orange-300);
+  --amf-border-subtle: #2e2e2e;
+  --amf-border-default: #414141;
+  --amf-border-strong: #6b6b6b;
+  --amf-border-input: #7e7e7e;
+  --amf-border-input-hover: #c4c4c4;
+  --amf-border-focus: #f2f2f2;
+  --amf-border-error: var(--amf-color-ruby-400);
+  --amf-border-disabled: #3a3a3a;
+  --amf-action-primary-default: var(--amf-color-orange-300);
+  --amf-action-primary-hover: var(--amf-color-orange-200);
+  --amf-action-primary-pressed: var(--amf-color-orange-100);
+  --amf-action-primary-subtle: rgb(255 133 99 / 0.12);
+  --amf-action-primary-subtle-hover: rgb(255 133 99 / 0.2);
+  --amf-action-primary-foreground: var(--amf-color-orange-300);
+  --amf-action-primary-tint: rgb(255 133 99 / 0.2);
+  --amf-action-primary-on-tint: var(--amf-color-orange-200);
+  --amf-action-secondary-default: var(--amf-color-blue-300);
+  --amf-action-secondary-hover: var(--amf-color-blue-200);
+  --amf-action-secondary-pressed: var(--amf-color-blue-100);
+  --amf-action-secondary-subtle: rgb(106 176 233 / 0.12);
+  --amf-action-secondary-subtle-hover: rgb(106 176 233 / 0.2);
+  --amf-action-secondary-foreground: var(--amf-color-blue-300);
+  --amf-action-secondary-tint: rgb(106 176 233 / 0.2);
+  --amf-action-secondary-on-tint: var(--amf-color-blue-200);
+  --amf-action-neutral-default: #f2f2f2;
+  --amf-action-neutral-hover: #ffffff;
+  --amf-action-neutral-pressed: #d9d9d9;
+  --amf-action-neutral-subtle: #262626;
+  --amf-action-neutral-subtle-hover: #2e2e2e;
+  --amf-action-neutral-foreground: #f2f2f2;
+  --amf-action-error-default: var(--amf-color-ruby-400);
+  --amf-action-error-hover: var(--amf-color-ruby-300);
+  --amf-action-error-pressed: var(--amf-color-ruby-200);
+  --amf-action-error-subtle: rgb(235 99 103 / 0.12);
+  --amf-action-error-subtle-hover: rgb(235 99 103 / 0.2);
+  --amf-action-error-foreground: var(--amf-color-ruby-300);
+  --amf-action-disabled-background: #2a2a2a;
+  --amf-action-disabled-foreground: #737373;
+  --amf-action-disabled-border: #3a3a3a;
+  --amf-action-state-layer-hover: var(--amf-color-alpha-white-12);
+  --amf-action-state-layer-pressed: var(--amf-color-alpha-white-12);
+  --amf-feedback-success-background: rgb(79 195 151 / 0.14);
+  --amf-feedback-success-foreground: var(--amf-color-green-200);
+  --amf-feedback-success-solid: var(--amf-color-green-400);
+  --amf-feedback-warning-background: rgb(237 166 72 / 0.14);
+  --amf-feedback-warning-foreground: var(--amf-color-gold-200);
+  --amf-feedback-warning-solid: var(--amf-color-gold-400);
+  --amf-feedback-error-background: rgb(235 99 103 / 0.14);
+  --amf-feedback-error-foreground: var(--amf-color-ruby-200);
+  --amf-feedback-error-solid: var(--amf-color-ruby-400);
+  --amf-feedback-info-background: rgb(106 176 233 / 0.14);
+  --amf-feedback-info-foreground: var(--amf-color-blue-200);
+  --amf-feedback-info-solid: var(--amf-color-blue-300);
+  --amf-feedback-neutral-background: #262626;
+  --amf-feedback-neutral-foreground: #d9d9d9;
+  --amf-feedback-neutral-solid: #a3a3a3;
+  --amf-feedback-success-on-solid: #151515;
+  --amf-feedback-warning-on-solid: #151515;
+  --amf-feedback-error-on-solid: #151515;
+  --amf-feedback-info-on-solid: #151515;
+  --amf-feedback-neutral-on-solid: #151515;
+  /* Accents (Tag, Count) : fonds translucides sur les surfaces sombres, textes et pleins éclaircis sur les mêmes palettes AMF */
+  --amf-accent-orange-subtle: rgb(255 133 99 / 0.16);
+  --amf-accent-orange-on-subtle: var(--amf-color-orange-200);
+  --amf-accent-orange-strong: var(--amf-color-orange-300);
+  --amf-accent-orange-on-strong: #151515;
+  --amf-accent-blue-subtle: rgb(106 176 233 / 0.16);
+  --amf-accent-blue-on-subtle: var(--amf-color-blue-200);
+  --amf-accent-blue-strong: var(--amf-color-blue-300);
+  --amf-accent-blue-on-strong: #151515;
+  --amf-accent-green-subtle: rgb(123 210 177 / 0.16);
+  --amf-accent-green-on-subtle: var(--amf-color-green-200);
+  --amf-accent-green-strong: var(--amf-color-green-300);
+  --amf-accent-green-on-strong: #151515;
+  --amf-accent-navy-subtle: rgb(134 165 186 / 0.18);
+  --amf-accent-navy-on-subtle: var(--amf-color-navy-100);
+  --amf-accent-navy-strong: var(--amf-color-navy-200);
+  --amf-accent-navy-on-strong: #151515;
+  --amf-accent-purple-subtle: rgb(144 108 174 / 0.22);
+  --amf-accent-purple-on-subtle: var(--amf-color-purple-100);
+  --amf-accent-purple-strong: var(--amf-color-purple-100);
+  --amf-accent-purple-on-strong: #151515;
+  --amf-accent-grey-subtle: rgb(210 219 222 / 0.12);
+  --amf-accent-grey-on-subtle: var(--amf-color-light-grey-300);
+  --amf-accent-grey-strong: var(--amf-color-light-grey-500);
+  --amf-accent-grey-on-strong: #151515;
+
+  --status-run: #7fc29b;
+  --status-run-foreground: #151515;
+  --status-stop: #9a9a9a;
+  --status-stop-foreground: #151515;
+  --status-alarm: #ff4d5e;
+  --status-alarm-foreground: #151515;
+  --status-warning: #f2b600;
+  --status-warning-foreground: #151515;
+  --status-warning-text: #f2b600;
+  --status-info: #5aaae6;
+  --status-info-foreground: #151515;
+  --status-fault: #b48ae0;
+  --status-fault-foreground: #151515;
+  --chart-1: #5aaae6;
+  --chart-2: #ff6a4d;
+  --chart-3: #7fc29b;
+  --chart-4: #d36bc6;
+  --chart-5: #f09357;
+  --process-background: #1b1b1b;
+  --process-equipment: #3a3a3a;
+  --process-equipment-stroke: #6e6e6e;
+  --process-strip: #b8b8b8;
+  --process-flow: #151515;
+  --process-normal-band: #23435c;
+  --iso-floor: #1b1b1b;
+  --iso-tile: #262626;
+  --iso-edge: rgb(0 0 0 / 0.5);
+  --iso-steel: #5d7182;
+  --iso-violet: #6b5c85;
+  --iso-accent: #b5472f;
+  --iso-zinc: #7f939f;
+  --iso-strip: #9aa6b1;
+  --iso-coil-1: #9aa6b1;
+  --iso-coil-2: #c9a46a;
+  --iso-coil-3: #8fb0dd;
+  --iso-coil-4: #d3a3ae;
+  --iso-coil-5: #7fbcb0;
+  --iso-coil-neutral: #5a646d;
+  --iso-flow: #151515;
+  --schema-stroke: #d3dae0;
+  --schema-stroke-muted: #8d98a2;
+  --series-1: #5aaae6;
+  --series-2: #4dd0e1;
+  --series-3: #e07bb5;
+  --series-4: #d4b062;
+  --series-5: #bdbdbd;
+}
+
+/* ── Angular Material : variables système M3 reliées aux jetons AMF ──────────── */
+:root {
+  --mat-sys-primary: var(--amf-action-primary-default);
+  --mat-sys-on-primary: var(--amf-foreground-on-primary);
+  --mat-sys-primary-container: var(--amf-action-primary-tint);
+  --mat-sys-on-primary-container: var(--amf-action-primary-on-tint);
+  --mat-sys-primary-fixed: var(--amf-action-primary-tint);
+  --mat-sys-primary-fixed-dim: var(--amf-action-primary-subtle-hover);
+  --mat-sys-on-primary-fixed: var(--amf-action-primary-on-tint);
+  --mat-sys-on-primary-fixed-variant: var(--amf-action-primary-foreground);
+  --mat-sys-inverse-primary: var(--amf-color-orange-300);
+  --mat-sys-secondary: var(--amf-action-secondary-default);
+  --mat-sys-on-secondary: var(--amf-foreground-on-primary);
+  --mat-sys-secondary-container: var(--amf-action-secondary-tint);
+  --mat-sys-on-secondary-container: var(--amf-action-secondary-on-tint);
+  --mat-sys-secondary-fixed: var(--amf-action-secondary-tint);
+  --mat-sys-secondary-fixed-dim: var(--amf-action-secondary-subtle-hover);
+  --mat-sys-on-secondary-fixed: var(--amf-action-secondary-on-tint);
+  --mat-sys-on-secondary-fixed-variant: var(--amf-action-secondary-foreground);
+  --mat-sys-tertiary: var(--amf-accent-navy-strong);
+  --mat-sys-on-tertiary: var(--amf-accent-navy-on-strong);
+  --mat-sys-tertiary-container: var(--amf-accent-navy-subtle);
+  --mat-sys-on-tertiary-container: var(--amf-accent-navy-on-subtle);
+  --mat-sys-tertiary-fixed: var(--amf-accent-navy-subtle);
+  --mat-sys-tertiary-fixed-dim: var(--amf-accent-navy-subtle);
+  --mat-sys-on-tertiary-fixed: var(--amf-accent-navy-on-subtle);
+  --mat-sys-on-tertiary-fixed-variant: var(--amf-accent-navy-on-subtle);
+  --mat-sys-error: var(--amf-action-error-default);
+  --mat-sys-on-error: var(--amf-feedback-error-on-solid);
+  --mat-sys-error-container: var(--amf-feedback-error-background);
+  --mat-sys-on-error-container: var(--amf-feedback-error-foreground);
+  --mat-sys-background: var(--amf-background-page);
+  --mat-sys-on-background: var(--amf-foreground-primary);
+  --mat-sys-surface: var(--amf-background-surface);
+  --mat-sys-on-surface: var(--amf-foreground-primary);
+  --mat-sys-surface-variant: var(--amf-background-surface-subtle);
+  --mat-sys-on-surface-variant: var(--amf-foreground-secondary);
+  --mat-sys-surface-tint: transparent;
+  --mat-sys-surface-dim: var(--amf-background-surface-subtle);
+  --mat-sys-surface-bright: var(--amf-background-surface);
+  --mat-sys-surface-container-lowest: var(--amf-background-surface);
+  --mat-sys-surface-container-low: var(--amf-background-surface);
+  --mat-sys-surface-container: var(--amf-background-surface);
+  --mat-sys-surface-container-high: var(--amf-background-surface);
+  --mat-sys-surface-container-highest: var(--amf-background-surface-subtle);
+  --mat-sys-inverse-surface: var(--amf-background-inverse);
+  --mat-sys-inverse-on-surface: var(--amf-foreground-inverse);
+  --mat-sys-outline: var(--amf-border-input);
+  --mat-sys-outline-variant: var(--amf-border-default);
+  --mat-sys-scrim: #000000;
+  --mat-sys-shadow: #000000;
+  --mat-sys-neutral10: var(--amf-color-steel-900);
+  --mat-sys-neutral-variant20: var(--amf-color-steel-800);
+
+  /* Typographie : échelle AMF (Roboto) sur les rôles M3 */
+  --mat-sys-display-large: 400 80px / 96px var(--gui-font);
+  --mat-sys-display-large-font: var(--gui-font);
+  --mat-sys-display-large-size: 80px;
+  --mat-sys-display-large-line-height: 96px;
+  --mat-sys-display-large-weight: 400;
+  --mat-sys-display-large-tracking: 1.5px;
+  --mat-sys-display-medium: 400 56px / 60px var(--gui-font);
+  --mat-sys-display-medium-font: var(--gui-font);
+  --mat-sys-display-medium-size: 56px;
+  --mat-sys-display-medium-line-height: 60px;
+  --mat-sys-display-medium-weight: 400;
+  --mat-sys-display-medium-tracking: 0.5px;
+  --mat-sys-display-small: 400 40px / 50px var(--gui-font);
+  --mat-sys-display-small-font: var(--gui-font);
+  --mat-sys-display-small-size: 40px;
+  --mat-sys-display-small-line-height: 50px;
+  --mat-sys-display-small-weight: 400;
+  --mat-sys-display-small-tracking: 0px;
+  --mat-sys-headline-large: 400 32px / 40px var(--gui-font);
+  --mat-sys-headline-large-font: var(--gui-font);
+  --mat-sys-headline-large-size: 32px;
+  --mat-sys-headline-large-line-height: 40px;
+  --mat-sys-headline-large-weight: 400;
+  --mat-sys-headline-large-tracking: 0.25px;
+  --mat-sys-headline-medium: 400 28px / 36px var(--gui-font);
+  --mat-sys-headline-medium-font: var(--gui-font);
+  --mat-sys-headline-medium-size: 28px;
+  --mat-sys-headline-medium-line-height: 36px;
+  --mat-sys-headline-medium-weight: 400;
+  --mat-sys-headline-medium-tracking: 0px;
+  --mat-sys-headline-small: 400 24px / 32px var(--gui-font);
+  --mat-sys-headline-small-font: var(--gui-font);
+  --mat-sys-headline-small-size: 24px;
+  --mat-sys-headline-small-line-height: 32px;
+  --mat-sys-headline-small-weight: 400;
+  --mat-sys-headline-small-tracking: 0px;
+  --mat-sys-title-large: 400 20px / 32px var(--gui-font);
+  --mat-sys-title-large-font: var(--gui-font);
+  --mat-sys-title-large-size: 20px;
+  --mat-sys-title-large-line-height: 32px;
+  --mat-sys-title-large-weight: 400;
+  --mat-sys-title-large-tracking: 0.25px;
+  --mat-sys-title-medium: 500 16px / 24px var(--gui-font);
+  --mat-sys-title-medium-font: var(--gui-font);
+  --mat-sys-title-medium-size: 16px;
+  --mat-sys-title-medium-line-height: 24px;
+  --mat-sys-title-medium-weight: 500;
+  --mat-sys-title-medium-tracking: 0.15px;
+  --mat-sys-title-small: 500 14px / 20px var(--gui-font);
+  --mat-sys-title-small-font: var(--gui-font);
+  --mat-sys-title-small-size: 14px;
+  --mat-sys-title-small-line-height: 20px;
+  --mat-sys-title-small-weight: 500;
+  --mat-sys-title-small-tracking: 0px;
+  --mat-sys-body-large: 400 16px / 24px var(--gui-font);
+  --mat-sys-body-large-font: var(--gui-font);
+  --mat-sys-body-large-size: 16px;
+  --mat-sys-body-large-line-height: 24px;
+  --mat-sys-body-large-weight: 400;
+  --mat-sys-body-large-tracking: 0.5px;
+  --mat-sys-body-medium: 400 14px / 20px var(--gui-font);
+  --mat-sys-body-medium-font: var(--gui-font);
+  --mat-sys-body-medium-size: 14px;
+  --mat-sys-body-medium-line-height: 20px;
+  --mat-sys-body-medium-weight: 400;
+  --mat-sys-body-medium-tracking: 0.25px;
+  --mat-sys-body-small: 400 12px / 20px var(--gui-font);
+  --mat-sys-body-small-font: var(--gui-font);
+  --mat-sys-body-small-size: 12px;
+  --mat-sys-body-small-line-height: 20px;
+  --mat-sys-body-small-weight: 400;
+  --mat-sys-body-small-tracking: 0.4px;
+  --mat-sys-label-large: 500 14px / 20px var(--gui-font);
+  --mat-sys-label-large-font: var(--gui-font);
+  --mat-sys-label-large-size: 14px;
+  --mat-sys-label-large-line-height: 20px;
+  --mat-sys-label-large-weight: 500;
+  --mat-sys-label-large-tracking: 1.25px;
+  --mat-sys-label-medium: 500 12px / 16px var(--gui-font);
+  --mat-sys-label-medium-font: var(--gui-font);
+  --mat-sys-label-medium-size: 12px;
+  --mat-sys-label-medium-line-height: 16px;
+  --mat-sys-label-medium-weight: 500;
+  --mat-sys-label-medium-tracking: 0.4px;
+  --mat-sys-label-small: 500 11px / 14px var(--gui-font);
+  --mat-sys-label-small-font: var(--gui-font);
+  --mat-sys-label-small-size: 11px;
+  --mat-sys-label-small-line-height: 14px;
+  --mat-sys-label-small-weight: 500;
+  --mat-sys-label-small-tracking: 0.4px;
+  --mat-sys-label-large-weight-prominent: 700;
+  --mat-sys-label-medium-weight-prominent: 700;
+
+  /* Formes : Radius AMF */
+  --mat-sys-corner-none: 0;
+  --mat-sys-corner-extra-small: var(--amf-radius-xs);
+  --mat-sys-corner-extra-small-top: var(--amf-radius-xs) var(--amf-radius-xs) 0 0;
+  --mat-sys-corner-small: var(--amf-radius-s);
+  --mat-sys-corner-medium: var(--amf-radius-m);
+  --mat-sys-corner-large: var(--amf-radius-l);
+  --mat-sys-corner-large-top: var(--amf-radius-l) var(--amf-radius-l) 0 0;
+  --mat-sys-corner-large-start: var(--amf-radius-l) 0 0 var(--amf-radius-l);
+  --mat-sys-corner-large-end: 0 var(--amf-radius-l) var(--amf-radius-l) 0;
+  --mat-sys-corner-extra-large: 16px;
+  --mat-sys-corner-extra-large-top: 16px 16px 0 0;
+  --mat-sys-corner-full: var(--amf-radius-full);
+
+  /* Élévation : Dropshadow AMF Lv4 (bas) → Lv1 (haut) */
+  --mat-sys-level0: none;
+  --mat-sys-level1: var(--amf-shadow-lv4);
+  --mat-sys-level2: var(--amf-shadow-lv3);
+  --mat-sys-level3: var(--amf-shadow-lv2);
+  --mat-sys-level4: var(--amf-shadow-lv1);
+  --mat-sys-level5: var(--amf-shadow-lv1);
+
+  --mat-sys-hover-state-layer-opacity: 0.08;
+  --mat-sys-focus-state-layer-opacity: 0.12;
+  --mat-sys-pressed-state-layer-opacity: 0.12;
+  --mat-sys-dragged-state-layer-opacity: 0.16;
+
+  /* Focus AMF : anneau neutre Border/Focus 2 px, visible sur tous les composants Material */
+  --mat-focus-indicator-display: block;
+  --mat-focus-indicator-border-color: var(--amf-border-focus);
+  --mat-focus-indicator-border-width: 2px;
+  --mat-focus-indicator-border-style: solid;
+}

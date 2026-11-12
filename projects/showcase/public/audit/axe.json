@@ -1,0 +1,311 @@
+{
+ "genere": "2026-11-12T18:16:06.179Z",
+ "outil": "axe-core 4.14.0",
+ "regles": "wcag2a, wcag2aa, wcag21a, wcag21aa",
+ "pages": [
+  {
+   "route": "/",
+   "titre": "Installation",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/couleurs",
+   "titre": "Couleurs",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/typographie",
+   "titre": "Typographie et dimensions",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/bouton",
+   "titre": "Button",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/bouton-icone",
+   "titre": "Button Icon",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/champ",
+   "titre": "Form Field",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/case",
+   "titre": "Checkbox",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/radio",
+   "titre": "Radio",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/interrupteur",
+   "titre": "Toggle Switch",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/bouton-bascule",
+   "titre": "Toggle Button",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/onglets",
+   "titre": "Tabs",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/carte",
+   "titre": "Card",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/badge",
+   "titre": "Badge",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/tag",
+   "titre": "Tag",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/compteur",
+   "titre": "Count",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/statut",
+   "titre": "Status",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/separateur",
+   "titre": "Divider",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/mode-sombre",
+   "titre": "Mode sombre audité",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/conformite",
+   "titre": "Conformité au journal",
+   "mode": "clair",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/",
+   "titre": "Installation",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/couleurs",
+   "titre": "Couleurs",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/typographie",
+   "titre": "Typographie et dimensions",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/bouton",
+   "titre": "Button",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/bouton-icone",
+   "titre": "Button Icon",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/champ",
+   "titre": "Form Field",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/case",
+   "titre": "Checkbox",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/radio",
+   "titre": "Radio",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/interrupteur",
+   "titre": "Toggle Switch",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/bouton-bascule",
+   "titre": "Toggle Button",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/onglets",
+   "titre": "Tabs",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/carte",
+   "titre": "Card",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/badge",
+   "titre": "Badge",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/tag",
+   "titre": "Tag",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/compteur",
+   "titre": "Count",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/statut",
+   "titre": "Status",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/separateur",
+   "titre": "Divider",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  },
+  {
+   "route": "/mode-sombre",
+   "titre": "Mode sombre audité",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/conformite",
+   "titre": "Conformité au journal",
+   "mode": "sombre",
+   "violations": [],
+   "reussies": 21,
+   "incompletes": 1
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+mat-tab-group {
+  max-width: 640px;
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+  padding: 16px 0;
+}

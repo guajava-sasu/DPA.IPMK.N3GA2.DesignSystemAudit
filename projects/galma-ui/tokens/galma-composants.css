@@ -1,0 +1,202 @@
+/*
+ * Composants AMF sans équivalent Angular Material : CSS pur, à poser sur un <span>.
+ *   Badge  (page 🆕 Badge)  : <span class="gui-badge gui-success"><span class="material-icons">check_circle</span>Statut</span>
+ *   Tag    (page 🆕 Tag)    : <span class="gui-tag gui-blue">Label</span>
+ *   Count  (page 🆕 Count)  : <span class="gui-count">3</span>, <span class="gui-count gui-dot"></span>
+ *   Status (page 🆕 Status) : <span class="gui-status gui-success">En marche</span>
+ * Tailles : gui-sm, défaut (Medium), gui-lg. Style inversé : gui-inverted. Désactivé : gui-disabled.
+ */
+
+/* ── Base de page AMF ─────────────────────────────────────────────────────────────────────────────────────── */
+html {
+  font-family: var(--gui-font);
+  font-size: var(--amf-text-body-2-size);
+  line-height: var(--amf-text-body-2-line-height);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+  color: var(--amf-foreground-primary);
+  background: var(--amf-background-page);
+  -webkit-font-smoothing: antialiased;
+}
+body { margin: 0; }
+a { color: var(--amf-foreground-link); }
+:focus-visible { outline-color: var(--amf-border-focus); }
+
+/* Classes typographiques AMF (styles de texte du Figma) */
+.gui-h1, .gui-h2, .gui-h3, .gui-h4, .gui-h5, .gui-h6, .gui-subtitle-1, .gui-subtitle-2, .gui-body-1, .gui-body-2,
+.gui-body-1-medium, .gui-caption, .gui-caption-medium, .gui-overline, .gui-form-label { margin: 0; }
+.gui-h1 { font: var(--amf-text-heading-h1-weight) var(--amf-text-heading-h1-size) / var(--amf-text-heading-h1-line-height) var(--gui-font); letter-spacing: var(--amf-text-heading-h1-letter-spacing); }
+.gui-h2 { font: var(--amf-text-heading-h2-weight) var(--amf-text-heading-h2-size) / var(--amf-text-heading-h2-line-height) var(--gui-font); letter-spacing: var(--amf-text-heading-h2-letter-spacing); }
+.gui-h3 { font: var(--amf-text-heading-h3-weight) var(--amf-text-heading-h3-size) / var(--amf-text-heading-h3-line-height) var(--gui-font); letter-spacing: var(--amf-text-heading-h3-letter-spacing); }
+.gui-h4 { font: var(--amf-text-heading-h4-weight) var(--amf-text-heading-h4-size) / var(--amf-text-heading-h4-line-height) var(--gui-font); letter-spacing: var(--amf-text-heading-h4-letter-spacing); }
+.gui-h5 { font: var(--amf-text-heading-h5-weight) var(--amf-text-heading-h5-size) / var(--amf-text-heading-h5-line-height) var(--gui-font); letter-spacing: var(--amf-text-heading-h5-letter-spacing); }
+.gui-h6 { font: var(--amf-text-heading-h6-weight) var(--amf-text-heading-h6-size) / var(--amf-text-heading-h6-line-height) var(--gui-font); letter-spacing: var(--amf-text-heading-h6-letter-spacing); }
+.gui-subtitle-1 { font: var(--amf-text-subtitle-1-weight) var(--amf-text-subtitle-1-size) / var(--amf-text-subtitle-1-line-height) var(--gui-font); letter-spacing: var(--amf-text-subtitle-1-letter-spacing); text-transform: var(--amf-text-subtitle-1-transform, none); }
+.gui-subtitle-2 { font: var(--amf-text-subtitle-2-weight) var(--amf-text-subtitle-2-size) / var(--amf-text-subtitle-2-line-height) var(--gui-font); letter-spacing: var(--amf-text-subtitle-2-letter-spacing); text-transform: var(--amf-text-subtitle-2-transform, none); }
+.gui-body-1 { font: var(--amf-text-body-1-weight) var(--amf-text-body-1-size) / var(--amf-text-body-1-line-height) var(--gui-font); letter-spacing: var(--amf-text-body-1-letter-spacing); }
+.gui-body-1-medium { font: var(--amf-text-body-1-medium-weight) var(--amf-text-body-1-medium-size) / var(--amf-text-body-1-medium-line-height) var(--gui-font); letter-spacing: var(--amf-text-body-1-medium-letter-spacing); }
+.gui-body-2 { font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font); letter-spacing: var(--amf-text-body-2-letter-spacing); }
+.gui-caption { font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--gui-font); letter-spacing: var(--amf-text-caption-letter-spacing); }
+.gui-caption-medium { font: var(--amf-text-caption-medium-weight) var(--amf-text-caption-medium-size) / var(--amf-text-caption-medium-line-height) var(--gui-font); letter-spacing: var(--amf-text-caption-medium-letter-spacing); }
+.gui-overline { font: var(--amf-text-overline-weight) var(--amf-text-overline-size) / var(--amf-text-overline-line-height) var(--gui-font); letter-spacing: var(--amf-text-overline-letter-spacing); text-transform: var(--amf-text-overline-transform, none); }
+.gui-form-label { font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) / var(--amf-text-form-label-line-height) var(--gui-font); letter-spacing: var(--amf-text-form-label-letter-spacing); }
+.gui-secondary-text { color: var(--amf-foreground-secondary); }
+/* Texte réservé aux lecteurs d'écran */
+.gui-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ── Icônes Material Icons embarquées (pas de CDN sur les postes RDS) ─────────────────────────────────────── */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/galma/fonts/material-icons.woff2') format('woff2');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Badge (page 🆕 Badge) : pilule, bord Feedback/<T>/Solid, fond Background, texte Foreground ─────────────── */
+.gui-badge {
+  --gui-t-bg: var(--amf-feedback-neutral-background);
+  --gui-t-fg: var(--amf-feedback-neutral-foreground);
+  --gui-t-solid: var(--amf-feedback-neutral-solid);
+  --gui-t-on: var(--amf-feedback-neutral-on-solid);
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 24px;
+  padding: 0 8px;
+  gap: 4px;
+  border-radius: var(--amf-radius-full);
+  border: 1px solid var(--gui-t-solid);
+  background: var(--gui-t-bg);
+  color: var(--gui-t-fg);
+  font: var(--amf-text-caption-medium-weight) var(--amf-text-caption-medium-size) / var(--amf-text-caption-medium-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-medium-letter-spacing);
+  white-space: nowrap;
+  --gui-i: 16px;
+}
+.gui-badge.gui-info    { --gui-t-bg: var(--amf-feedback-info-background);    --gui-t-fg: var(--amf-feedback-info-foreground);    --gui-t-solid: var(--amf-feedback-info-solid);    --gui-t-on: var(--amf-feedback-info-on-solid); }
+.gui-badge.gui-success { --gui-t-bg: var(--amf-feedback-success-background); --gui-t-fg: var(--amf-feedback-success-foreground); --gui-t-solid: var(--amf-feedback-success-solid); --gui-t-on: var(--amf-feedback-success-on-solid); }
+.gui-badge.gui-warning { --gui-t-bg: var(--amf-feedback-warning-background); --gui-t-fg: var(--amf-feedback-warning-foreground); --gui-t-solid: var(--amf-feedback-warning-solid); --gui-t-on: var(--amf-feedback-warning-on-solid); }
+.gui-badge.gui-error   { --gui-t-bg: var(--amf-feedback-error-background);   --gui-t-fg: var(--amf-feedback-error-foreground);   --gui-t-solid: var(--amf-feedback-error-solid);   --gui-t-on: var(--amf-feedback-error-on-solid); }
+.gui-badge.gui-inverted { background: var(--gui-t-solid); color: var(--gui-t-on); border-color: transparent; }
+.gui-badge.gui-sm {
+  height: 20px; --gui-i: 12px;
+  font: var(--amf-text-label-11-medium-weight) var(--amf-text-label-11-medium-size) / var(--amf-text-label-11-medium-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-label-11-medium-letter-spacing);
+}
+.gui-badge.gui-lg {
+  height: 32px; padding: 0 12px; gap: 8px; --gui-i: 20px;
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) / var(--amf-text-form-label-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-form-label-letter-spacing);
+}
+.gui-badge.gui-disabled { background: var(--amf-action-disabled-background); border-color: var(--amf-action-disabled-border); color: var(--amf-action-disabled-foreground); }
+
+/* ── Tag (page 🆕 Tag) : Radius/S, Accent/<C>/Subtle + On Subtle ; inversé Strong + On Strong ─────────────── */
+.gui-tag {
+  --gui-t-bg: var(--amf-accent-grey-subtle);
+  --gui-t-fg: var(--amf-accent-grey-on-subtle);
+  --gui-t-strong: var(--amf-accent-grey-strong);
+  --gui-t-on: var(--amf-accent-grey-on-strong);
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 24px;
+  padding: 0 8px;
+  gap: 4px;
+  border-radius: var(--amf-radius-s);
+  background: var(--gui-t-bg);
+  color: var(--gui-t-fg);
+  font: var(--amf-text-caption-medium-weight) var(--amf-text-caption-medium-size) / var(--amf-text-caption-medium-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-medium-letter-spacing);
+  white-space: nowrap;
+  --gui-i: 16px;
+}
+.gui-tag.gui-brand  { --gui-t-bg: var(--amf-action-primary-subtle); --gui-t-fg: var(--amf-action-primary-foreground); --gui-t-strong: var(--amf-action-primary-default); --gui-t-on: var(--amf-foreground-on-primary); }
+.gui-tag.gui-orange { --gui-t-bg: var(--amf-accent-orange-subtle); --gui-t-fg: var(--amf-accent-orange-on-subtle); --gui-t-strong: var(--amf-accent-orange-strong); --gui-t-on: var(--amf-accent-orange-on-strong); }
+.gui-tag.gui-blue   { --gui-t-bg: var(--amf-accent-blue-subtle);   --gui-t-fg: var(--amf-accent-blue-on-subtle);   --gui-t-strong: var(--amf-accent-blue-strong);   --gui-t-on: var(--amf-accent-blue-on-strong); }
+.gui-tag.gui-green  { --gui-t-bg: var(--amf-accent-green-subtle);  --gui-t-fg: var(--amf-accent-green-on-subtle);  --gui-t-strong: var(--amf-accent-green-strong);  --gui-t-on: var(--amf-accent-green-on-strong); }
+.gui-tag.gui-navy   { --gui-t-bg: var(--amf-accent-navy-subtle);   --gui-t-fg: var(--amf-accent-navy-on-subtle);   --gui-t-strong: var(--amf-accent-navy-strong);   --gui-t-on: var(--amf-accent-navy-on-strong); }
+.gui-tag.gui-purple { --gui-t-bg: var(--amf-accent-purple-subtle); --gui-t-fg: var(--amf-accent-purple-on-subtle); --gui-t-strong: var(--amf-accent-purple-strong); --gui-t-on: var(--amf-accent-purple-on-strong); }
+.gui-tag.gui-inverted { background: var(--gui-t-strong); color: var(--gui-t-on); }
+.gui-tag.gui-sm {
+  height: 20px; --gui-i: 12px;
+  font: var(--amf-text-label-11-medium-weight) var(--amf-text-label-11-medium-size) / var(--amf-text-label-11-medium-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-label-11-medium-letter-spacing);
+}
+.gui-tag.gui-disabled { background: var(--amf-action-disabled-background); box-shadow: inset 0 0 0 1px var(--amf-action-disabled-border); color: var(--amf-action-disabled-foreground); }
+:is(.gui-badge, .gui-tag) > .material-icons { font-size: var(--gui-i); width: var(--gui-i); height: var(--gui-i); }
+
+/* ── Count (page 🆕 Count) : pastille Brand (Action/Primary), Navy ou Grey (Accent/<C>/Strong), revue du 22/09 ──────────────────── */
+.gui-count {
+  --gui-t-bg: var(--amf-action-primary-default);
+  --gui-t-fg: var(--amf-foreground-on-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: var(--amf-radius-full);
+  background: var(--gui-t-bg);
+  color: var(--gui-t-fg);
+  font: var(--amf-text-caption-medium-weight) var(--amf-text-caption-medium-size) / var(--amf-text-caption-medium-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-medium-letter-spacing);
+}
+.gui-count.gui-grey { --gui-t-bg: var(--amf-accent-grey-strong); --gui-t-fg: var(--amf-accent-grey-on-strong); }
+.gui-count.gui-navy { --gui-t-bg: var(--amf-accent-navy-strong); --gui-t-fg: var(--amf-accent-navy-on-strong); }
+.gui-count.gui-sm {
+  min-width: 16px; height: 16px;
+  font: var(--amf-text-label-10-medium-weight) var(--amf-text-label-10-medium-size) / var(--amf-text-label-10-medium-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-label-10-medium-letter-spacing);
+}
+.gui-count.gui-lg {
+  min-width: 24px; height: 24px; padding: 0 8px;
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) / var(--amf-text-form-label-line-height) var(--gui-font);
+}
+.gui-count.gui-dot { min-width: 0; width: 10px; height: 10px; padding: 0; }
+.gui-count.gui-dot.gui-sm { width: 8px; height: 8px; }
+.gui-count.gui-dot.gui-lg { width: 12px; height: 12px; }
+
+/* ── Status (page 🆕 Status) : point Feedback/<T>/Solid + libellé Foreground/Primary, espacement 8 ─────────── */
+.gui-status {
+  --gui-t-solid: var(--amf-feedback-neutral-solid);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--amf-foreground-primary);
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+}
+.gui-status::before {
+  content: '';
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gui-t-solid);
+}
+.gui-status.gui-sm {
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+}
+.gui-status.gui-sm::before { width: 8px; height: 8px; }
+.gui-status.gui-info    { --gui-t-solid: var(--amf-feedback-info-solid); }
+.gui-status.gui-success { --gui-t-solid: var(--amf-feedback-success-solid); }
+.gui-status.gui-warning { --gui-t-solid: var(--amf-feedback-warning-solid); }
+.gui-status.gui-error   { --gui-t-solid: var(--amf-feedback-error-solid); }
