@@ -1,0 +1,35 @@
+<button matButton="outlined" class="gui-neutral" [matMenuTriggerFor]="reglages">
+  <mat-icon>settings</mat-icon>Affichage
+</button>
+<mat-menu #reglages="matMenu">
+  <div class="gui-menu-subheader" role="presentation">Vue</div>
+  <button mat-menu-item [matMenuTriggerFor]="densite">
+    <mat-icon>density_medium</mat-icon><span>Densité</span>
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="unites">
+    <mat-icon>straighten</mat-icon><span>Unités</span>
+  </button>
+</mat-menu>
+<mat-menu #densite="matMenu">
+  @for (d of densites; track d) {
+    <button
+      mat-menu-item
+      role="menuitemradio"
+      [class.gui-selected]="d === densiteChoisie()"
+      [attr.aria-checked]="d === densiteChoisie()"
+      (click)="densiteChoisie.set(d)"
+    >
+      <span>{{ d }}</span>
+      @if (d === densiteChoisie()) {
+        <span class="gui-menu-check material-icons" aria-hidden="true">check</span>
+      }
+    </button>
+  }
+</mat-menu>
+<mat-menu #unites="matMenu">
+  <button mat-menu-item role="menuitemradio" aria-checked="true" class="gui-selected">
+    <span>Métriques</span
+    ><span class="gui-menu-check material-icons" aria-hidden="true">check</span>
+  </button>
+  <button mat-menu-item role="menuitemradio" aria-checked="false"><span>Impériales</span></button>
+</mat-menu>

@@ -10,16 +10,37 @@ import { BoutonBasculeBase } from './bouton-bascule/bouton-bascule-base';
 import { BoutonBasculeTailles } from './bouton-bascule/bouton-bascule-tailles';
 import { BoutonIconeStyles } from './bouton-icone/bouton-icone-styles';
 import { BoutonIconeTailles } from './bouton-icone/bouton-icone-tailles';
+import { BoutonMenuSimple } from './bouton-menu/bouton-menu-simple';
+import { BoutonMenuScinde } from './bouton-menu/bouton-menu-scinde';
 import { CarteBase } from './carte/carte-base';
 import { CaseBase } from './case/case-base';
 import { CaseCouleurs } from './case/case-couleurs';
+import { CaseGroupe } from './case/case-groupe';
 import { ChampBase } from './champ/champ-base';
 import { ChampIcones } from './champ/champ-icones';
 import { ChampEtats } from './champ/champ-etats';
+import { ChampTextarea } from './champ/champ-textarea';
+import { ChipAssist } from './chip/chip-assist';
+import { ChipFiltre } from './chip/chip-filtre';
+import { ChipSaisie } from './chip/chip-saisie';
+import { ChipTailles } from './chip/chip-tailles';
 import { CompteurBase } from './compteur/compteur-base';
+import { CurseurSimple } from './curseur/curseur-simple';
+import { CurseurPlage } from './curseur/curseur-plage';
+import { DateSimple } from './date/date-simple';
+import { DatePlage } from './date/date-plage';
+import { FichierZone } from './fichier/fichier-zone';
+import { FichierListe } from './fichier/fichier-liste';
+import { HeureSimple } from './heure/heure-simple';
 import { InterrupteurBase } from './interrupteur/interrupteur-base';
+import { MenuActions } from './menu/menu-actions';
+import { MenuSelection } from './menu/menu-selection';
 import { OngletsBase } from './onglets/onglets-base';
 import { RadioBase } from './radio/radio-base';
+import { RadioGroupe } from './radio/radio-groupe';
+import { SelectSimple } from './select/select-simple';
+import { SelectMultiple } from './select/select-multiple';
+import { SelectEtats } from './select/select-etats';
 import { SeparateurBase } from './separateur/separateur-base';
 import { StatutBase } from './statut/statut-base';
 import { TagBase } from './tag/tag-base';
@@ -137,6 +158,26 @@ export const EXEMPLES: Exemple[] = [
     css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
   },
   {
+    page: "bouton-menu",
+    id: "bouton-menu-simple",
+    titre: "Single",
+    description: "Bouton qui ouvre un Menu : chevron Arrow Drop Down à droite, Arrow Drop Up et couleur Pressed quand le menu est ouvert (journal du 14/09). Filled ou Outlined, Primary, Secondary ou Neutral (journal du 22/09), trois tailles.",
+    composant: BoutonMenuSimple,
+    ts: "import { Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatMenuModule } from '@angular/material/menu';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Single\n * Bouton qui ouvre un Menu : chevron Arrow Drop Down à droite, Arrow Drop Up et couleur Pressed quand\n * le menu est ouvert (journal du 14/09). Filled ou Outlined, Primary, Secondary ou Neutral (journal du\n * 22/09), trois tailles.\n */\n@Component({\n  selector: 'ex-bouton-menu-simple',\n  imports: [MatButtonModule, MatMenuModule, MatIconModule],\n  templateUrl: './bouton-menu-simple.html',\n  styleUrl: './bouton-menu-simple.css',\n})\nexport class BoutonMenuSimple {}\n",
+    html: "<div class=\"ex\">\n  <button matButton=\"filled\" [matMenuTriggerFor]=\"export\" #t1=\"matMenuTrigger\">\n    Exporter\n    <mat-icon iconPositionEnd class=\"gui-dropdown-icon\">{{\n      t1.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'\n    }}</mat-icon>\n  </button>\n  <button\n    matButton=\"outlined\"\n    class=\"gui-secondary\"\n    [matMenuTriggerFor]=\"export\"\n    #t2=\"matMenuTrigger\"\n  >\n    Exporter\n    <mat-icon iconPositionEnd class=\"gui-dropdown-icon\">{{\n      t2.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'\n    }}</mat-icon>\n  </button>\n  <button\n    matButton=\"outlined\"\n    class=\"gui-neutral gui-sm\"\n    [matMenuTriggerFor]=\"export\"\n    #t3=\"matMenuTrigger\"\n  >\n    Exporter\n    <mat-icon iconPositionEnd class=\"gui-dropdown-icon\">{{\n      t3.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'\n    }}</mat-icon>\n  </button>\n</div>\n<mat-menu #export=\"matMenu\">\n  <button mat-menu-item>CSV</button>\n  <button mat-menu-item>Excel</button>\n  <button mat-menu-item>PDF</button>\n</mat-menu>\n",
+    css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
+  },
+  {
+    page: "bouton-menu",
+    id: "bouton-menu-scinde",
+    titre: "Split",
+    description: "Action principale et chevron (Button Icon) accolés à 1 px, même style, même couleur et même taille (journal du 28/09) : conteneur span.gui-split. Le chevron porte son propre nom accessible.",
+    composant: BoutonMenuScinde,
+    ts: "import { Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatMenuModule } from '@angular/material/menu';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Split\n * Action principale et chevron (Button Icon) accolés à 1 px, même style, même couleur et même taille\n * (journal du 28/09) : conteneur span.gui-split. Le chevron porte son propre nom accessible.\n */\n@Component({\n  selector: 'ex-bouton-menu-scinde',\n  imports: [MatButtonModule, MatMenuModule, MatIconModule],\n  templateUrl: './bouton-menu-scinde.html',\n  styleUrl: './bouton-menu-scinde.css',\n})\nexport class BoutonMenuScinde {}\n",
+    html: "<div class=\"ex\">\n  <span class=\"gui-split\">\n    <button matButton=\"filled\">Valider</button>\n    <button\n      matIconButton\n      class=\"gui-filled\"\n      [matMenuTriggerFor]=\"suite\"\n      #t1=\"matMenuTrigger\"\n      aria-label=\"Autres validations\"\n    >\n      <mat-icon>{{ t1.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>\n    </button>\n  </span>\n  <span class=\"gui-split\">\n    <button matButton=\"outlined\">Valider</button>\n    <button\n      matIconButton\n      class=\"gui-outlined\"\n      [matMenuTriggerFor]=\"suite\"\n      #t2=\"matMenuTrigger\"\n      aria-label=\"Autres validations\"\n    >\n      <mat-icon>{{ t2.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>\n    </button>\n  </span>\n  <span class=\"gui-split\">\n    <button matButton=\"filled\" class=\"gui-neutral gui-lg\">Valider</button>\n    <button\n      matIconButton\n      class=\"gui-filled gui-neutral gui-lg\"\n      [matMenuTriggerFor]=\"suite\"\n      #t3=\"matMenuTrigger\"\n      aria-label=\"Autres validations\"\n    >\n      <mat-icon>{{ t3.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>\n    </button>\n  </span>\n</div>\n<mat-menu #suite=\"matMenu\">\n  <button mat-menu-item>Valider et suivante</button>\n  <button mat-menu-item>Valider avec réserve</button>\n</mat-menu>\n",
+    css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
+  },
+  {
     page: "carte",
     id: "carte-base",
     titre: "Carte",
@@ -165,6 +206,16 @@ export const EXEMPLES: Exemple[] = [
     ts: "import { Component } from '@angular/core';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\n\n/**\n * Secondaire et erreur\n * Classe gui-secondary pour le bleu, gui-error pour une case à corriger (bord Border/Error, cochée en\n * Feedback/Error/Solid).\n */\n@Component({\n  selector: 'ex-case-couleurs',\n  imports: [MatCheckboxModule],\n  templateUrl: './case-couleurs.html',\n  styleUrl: './case-couleurs.css',\n})\nexport class CaseCouleurs {}\n",
     html: "<div class=\"ex\">\n  <mat-checkbox class=\"gui-secondary\" [checked]=\"true\">Secondaire</mat-checkbox>\n  <mat-checkbox class=\"gui-error\">J'ai lu la consigne</mat-checkbox>\n  <mat-checkbox class=\"gui-error\" [checked]=\"true\">Erreur cochée</mat-checkbox>\n</div>\n",
     css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
+  },
+  {
+    page: "case",
+    id: "case-groupe",
+    titre: "Checkbox Group",
+    description: "Groupe de cases (journal du 29/09) : <fieldset class=\"gui-group\"> avec une légende qui pose la question, items espacés de 4 px (ou 24 px en ligne avec gui-horizontal), aide ou erreur en Caption sous le groupe. En erreur (gui-error), chaque case passe en Border/Error.",
+    composant: CaseGroupe,
+    ts: "import { Component } from '@angular/core';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\n\n/**\n * Checkbox Group\n * Groupe de cases (journal du 29/09) : <fieldset class=\"gui-group\"> avec une légende qui pose la\n * question, items espacés de 4 px (ou 24 px en ligne avec gui-horizontal), aide ou erreur en Caption\n * sous le groupe. En erreur (gui-error), chaque case passe en Border/Error.\n */\n@Component({\n  selector: 'ex-case-groupe',\n  imports: [MatCheckboxModule],\n  templateUrl: './case-groupe.html',\n  styleUrl: './case-groupe.css',\n})\nexport class CaseGroupe {}\n",
+    html: "<div class=\"ex\">\n  <fieldset class=\"gui-group\">\n    <legend>Sites concernés</legend>\n    <div class=\"gui-group-items\">\n      <mat-checkbox checked>Florange</mat-checkbox>\n      <mat-checkbox>Montataire</mat-checkbox>\n      <mat-checkbox>Mouzon</mat-checkbox>\n    </div>\n    <p class=\"gui-group-helper\">Un ou plusieurs sites</p>\n  </fieldset>\n  <fieldset class=\"gui-group gui-error\" aria-describedby=\"ex-sites-erreur\">\n    <legend>Contrôles effectués</legend>\n    <div class=\"gui-group-items\">\n      <mat-checkbox>Aspect</mat-checkbox>\n      <mat-checkbox>Épaisseur de zinc</mat-checkbox>\n      <mat-checkbox>Planéité</mat-checkbox>\n    </div>\n    <p class=\"gui-group-error\" id=\"ex-sites-erreur\">Sélectionnez au moins un contrôle</p>\n  </fieldset>\n  <fieldset class=\"gui-group gui-horizontal\">\n    <legend>Faces</legend>\n    <div class=\"gui-group-items\">\n      <mat-checkbox checked>Supérieure</mat-checkbox>\n      <mat-checkbox checked>Inférieure</mat-checkbox>\n    </div>\n  </fieldset>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
   },
   {
     page: "champ",
@@ -197,6 +248,56 @@ export const EXEMPLES: Exemple[] = [
     css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
   },
   {
+    page: "champ",
+    id: "champ-textarea",
+    titre: "Zone de texte (Textarea)",
+    description: "Form Field Type=Textarea (journal du 29/09) : hauteur minimale 96 px, poignée de redimensionnement verticale, compteur en Caption à droite. Pour une zone sans poignée : classe gui-no-resize sur le textarea.",
+    composant: ChampTextarea,
+    ts: "import { Component } from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { FormControl, Validators } from '@angular/forms';\n\n/**\n * Zone de texte (Textarea)\n * Form Field Type=Textarea (journal du 29/09) : hauteur minimale 96 px, poignée de redimensionnement\n * verticale, compteur en Caption à droite. Pour une zone sans poignée : classe gui-no-resize sur le\n * textarea.\n */\n@Component({\n  selector: 'ex-champ-textarea',\n  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],\n  templateUrl: './champ-textarea.html',\n  styleUrl: './champ-textarea.css',\n})\nexport class ChampTextarea {\n  protected readonly motif = new FormControl('', Validators.required);\n\n  constructor() {\n    this.motif.markAsTouched();\n  }\n}\n",
+    html: "<div class=\"ex\">\n  <div class=\"gui-field\">\n    <div class=\"gui-field-label-row\">\n      <label class=\"gui-field-label\" for=\"ex-obs\">Observations</label>\n      <span class=\"gui-tag gui-sm\">Facultatif</span>\n    </div>\n    <mat-form-field>\n      <textarea\n        matInput\n        id=\"ex-obs\"\n        maxlength=\"200\"\n        placeholder=\"Saisir un commentaire\"\n        #obs\n      ></textarea>\n      <mat-hint align=\"end\">{{ obs.value.length }} / 200</mat-hint>\n    </mat-form-field>\n  </div>\n  <div class=\"gui-field\">\n    <label class=\"gui-field-label\" for=\"ex-motif\">Motif de l'arrêt</label>\n    <mat-form-field>\n      <textarea matInput id=\"ex-motif\" [formControl]=\"motif\"></textarea>\n      <mat-error>Le motif est obligatoire</mat-error>\n    </mat-form-field>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
+    page: "chip",
+    id: "chip-assist",
+    titre: "Assist",
+    description: "mat-chip : action ponctuelle ou raccourci (raccourcis du Date Picker, « Afficher tout (n) » d'un groupe replié). Pilule Radius/Full, bord Border/Input, icône 16 px facultative.",
+    composant: ChipAssist,
+    ts: "import { Component } from '@angular/core';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Assist\n * mat-chip : action ponctuelle ou raccourci (raccourcis du Date Picker, « Afficher tout (n) » d'un\n * groupe replié). Pilule Radius/Full, bord Border/Input, icône 16 px facultative.\n */\n@Component({\n  selector: 'ex-chip-assist',\n  imports: [MatChipsModule, MatIconModule],\n  templateUrl: './chip-assist.html',\n  styleUrl: './chip-assist.css',\n})\nexport class ChipAssist {}\n",
+    html: "<mat-chip-set aria-label=\"Raccourcis\">\n  <mat-chip><mat-icon matChipAvatar>today</mat-icon>Aujourd'hui</mat-chip>\n  <mat-chip>Poste en cours</mat-chip>\n  <mat-chip>7 derniers jours</mat-chip>\n  <mat-chip class=\"gui-filled\">Afficher tout (12)</mat-chip>\n</mat-chip-set>\n",
+    css: "mat-chip-set {\n  display: block;\n}\n",
+  },
+  {
+    page: "chip",
+    id: "chip-filtre",
+    titre: "Filter",
+    description: "mat-chip-option dans une mat-chip-listbox : filtre activable ; sélectionné en Primary plein avec coche (journal du 15/09), les autres restent neutres.",
+    composant: ChipFiltre,
+    ts: "import { Component } from '@angular/core';\nimport { MatChipsModule } from '@angular/material/chips';\n\n/**\n * Filter\n * mat-chip-option dans une mat-chip-listbox : filtre activable ; sélectionné en Primary plein avec\n * coche (journal du 15/09), les autres restent neutres.\n */\n@Component({\n  selector: 'ex-chip-filtre',\n  imports: [MatChipsModule],\n  templateUrl: './chip-filtre.html',\n  styleUrl: './chip-filtre.css',\n})\nexport class ChipFiltre {}\n",
+    html: "<mat-chip-listbox aria-label=\"Filtrer par statut\" multiple>\n  <mat-chip-option selected>En production</mat-chip-option>\n  <mat-chip-option>En attente</mat-chip-option>\n  <mat-chip-option selected>Bloquée</mat-chip-option>\n  <mat-chip-option disabled>Expédiée</mat-chip-option>\n</mat-chip-listbox>\n",
+    css: "mat-chip-listbox {\n  display: block;\n}\n",
+  },
+  {
+    page: "chip",
+    id: "chip-saisie",
+    titre: "Input",
+    description: "mat-chip-row dans une mat-chip-grid, champ de saisie après la grille (matChipInputFor) : valeurs saisies, retirables par la croix ou la touche Retour arrière. Valider la saisie par Entrée ou virgule.",
+    composant: ChipSaisie,
+    ts: "import { Component, signal } from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatChipInputEvent } from '@angular/material/chips';\n\n/**\n * Input\n * mat-chip-row dans une mat-chip-grid, champ de saisie après la grille (matChipInputFor) : valeurs\n * saisies, retirables par la croix ou la touche Retour arrière. Valider la saisie par Entrée ou\n * virgule.\n */\n@Component({\n  selector: 'ex-chip-saisie',\n  imports: [MatFormFieldModule, MatChipsModule, MatIconModule],\n  templateUrl: './chip-saisie.html',\n  styleUrl: './chip-saisie.css',\n})\nexport class ChipSaisie {\n  protected readonly bobines = signal(['B260114', 'B260117']);\n\n  protected ajouter(e: MatChipInputEvent): void {\n    const v = (e.value ?? '').trim();\n    if (v && !this.bobines().includes(v)) this.bobines.update((l) => [...l, v]);\n    e.chipInput.clear();\n  }\n\n  protected retirer(b: string): void {\n    this.bobines.update((l) => l.filter((x) => x !== b));\n  }\n}\n",
+    html: "<div class=\"gui-field\">\n  <label class=\"gui-field-label\" for=\"ex-bobines\">Bobines à inspecter</label>\n  <mat-form-field class=\"gui-chips\">\n    <mat-chip-grid #grille aria-label=\"Bobines à inspecter\">\n      @for (b of bobines(); track b) {\n        <mat-chip-row (removed)=\"retirer(b)\">\n          {{ b }}\n          <button matChipRemove [attr.aria-label]=\"'Retirer ' + b\">\n            <mat-icon>close</mat-icon>\n          </button>\n        </mat-chip-row>\n      }\n    </mat-chip-grid>\n    <input\n      id=\"ex-bobines\"\n      placeholder=\"Ajouter\"\n      [matChipInputFor]=\"grille\"\n      (matChipInputTokenEnd)=\"ajouter($event)\"\n    />\n  </mat-form-field>\n</div>\n",
+    css: ".gui-field {\n  max-width: 480px;\n}\n",
+  },
+  {
+    page: "chip",
+    id: "chip-tailles",
+    titre: "Styles et tailles",
+    description: "Outlined (défaut) ou Filled (gui-filled, fond Neutral Subtle) ; Medium 32 px (défaut) ou Small 24 px (gui-sm, Caption). Désactivé : Action/Disabled.",
+    composant: ChipTailles,
+    ts: "import { Component } from '@angular/core';\nimport { MatChipsModule } from '@angular/material/chips';\n\n/**\n * Styles et tailles\n * Outlined (défaut) ou Filled (gui-filled, fond Neutral Subtle) ; Medium 32 px (défaut) ou Small 24 px\n * (gui-sm, Caption). Désactivé : Action/Disabled.\n */\n@Component({\n  selector: 'ex-chip-tailles',\n  imports: [MatChipsModule],\n  templateUrl: './chip-tailles.html',\n  styleUrl: './chip-tailles.css',\n})\nexport class ChipTailles {}\n",
+    html: "<div class=\"ex\">\n  <mat-chip-set aria-label=\"Exemples Medium\">\n    <mat-chip>Outlined</mat-chip>\n    <mat-chip class=\"gui-filled\">Filled</mat-chip>\n    <mat-chip disabled>Désactivé</mat-chip>\n  </mat-chip-set>\n  <mat-chip-set aria-label=\"Exemples Small\">\n    <mat-chip class=\"gui-sm\">Outlined</mat-chip>\n    <mat-chip class=\"gui-sm gui-filled\">Filled</mat-chip>\n    <mat-chip class=\"gui-sm\" disabled>Désactivé</mat-chip>\n  </mat-chip-set>\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 16px;\n}\n",
+  },
+  {
     page: "compteur",
     id: "compteur-base",
     titre: "Pastilles",
@@ -207,6 +308,76 @@ export const EXEMPLES: Exemple[] = [
     css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
   },
   {
+    page: "curseur",
+    id: "curseur-simple",
+    titre: "Valeur unique",
+    description: "mat-slider : piste 4 px, curseur 20 px bordé de blanc, étiquette de valeur (discrete) sur fond Background/Inverse pendant le glissement. Primary par défaut, gui-secondary en bleu.",
+    composant: CurseurSimple,
+    ts: "import { Component } from '@angular/core';\nimport { MatSliderModule } from '@angular/material/slider';\n\n/**\n * Valeur unique\n * mat-slider : piste 4 px, curseur 20 px bordé de blanc, étiquette de valeur (discrete) sur fond\n * Background/Inverse pendant le glissement. Primary par défaut, gui-secondary en bleu.\n */\n@Component({\n  selector: 'ex-curseur-simple',\n  imports: [MatSliderModule],\n  templateUrl: './curseur-simple.html',\n  styleUrl: './curseur-simple.css',\n})\nexport class CurseurSimple {}\n",
+    html: "<div class=\"ex\">\n  <label class=\"gui-field-label\" id=\"ex-vitesse\">Vitesse de ligne (m/min)</label>\n  <mat-slider min=\"0\" max=\"180\" step=\"5\" discrete aria-labelledby=\"ex-vitesse\">\n    <input matSliderThumb value=\"120\" aria-labelledby=\"ex-vitesse\" />\n  </mat-slider>\n  <label class=\"gui-field-label\" id=\"ex-tension\">Tension (kN)</label>\n  <mat-slider class=\"gui-secondary\" min=\"0\" max=\"50\" discrete>\n    <input matSliderThumb value=\"18\" aria-labelledby=\"ex-tension\" />\n  </mat-slider>\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\nmat-slider {\n  width: 320px;\n  max-width: 100%;\n}\n",
+  },
+  {
+    page: "curseur",
+    id: "curseur-plage",
+    titre: "Plage et désactivé",
+    description: "Deux curseurs (matSliderStartThumb, matSliderEndThumb) pour une plage. Désactivé : piste Border/Subtle, curseur Action/Disabled.",
+    composant: CurseurPlage,
+    ts: "import { Component } from '@angular/core';\nimport { MatSliderModule } from '@angular/material/slider';\n\n/**\n * Plage et désactivé\n * Deux curseurs (matSliderStartThumb, matSliderEndThumb) pour une plage. Désactivé : piste\n * Border/Subtle, curseur Action/Disabled.\n */\n@Component({\n  selector: 'ex-curseur-plage',\n  imports: [MatSliderModule],\n  templateUrl: './curseur-plage.html',\n  styleUrl: './curseur-plage.css',\n})\nexport class CurseurPlage {}\n",
+    html: "<div class=\"ex\">\n  <label class=\"gui-field-label\" id=\"ex-epaisseur\">Épaisseur (mm)</label>\n  <mat-slider min=\"0.3\" max=\"3\" step=\"0.05\" discrete>\n    <input matSliderStartThumb value=\"0.6\" aria-label=\"Épaisseur minimale\" />\n    <input matSliderEndThumb value=\"1.5\" aria-label=\"Épaisseur maximale\" />\n  </mat-slider>\n  <label class=\"gui-field-label gui-secondary-text\" id=\"ex-largeur\">Largeur (désactivé)</label>\n  <mat-slider min=\"800\" max=\"1600\" disabled>\n    <input matSliderThumb value=\"1250\" aria-labelledby=\"ex-largeur\" />\n  </mat-slider>\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\nmat-slider {\n  width: 320px;\n  max-width: 100%;\n}\n",
+  },
+  {
+    page: "date",
+    id: "date-simple",
+    titre: "Date",
+    description: "mat-datepicker : champ saisissable et calendrier de 312 px (journal du 22/09). Jour choisi en Primary plein, aujourd'hui cerclé Border/Input. Fournir un adaptateur de dates et la locale fr-FR (lundi en premier jour).",
+    composant: DateSimple,
+    ts: "import { Component } from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';\nimport { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';\nimport { GalmaDatepickerIntl } from 'galma-ui';\n\n/**\n * Date\n * mat-datepicker : champ saisissable et calendrier de 312 px (journal du 22/09). Jour choisi en\n * Primary plein, aujourd'hui cerclé Border/Input. Fournir un adaptateur de dates et la locale fr-FR\n * (lundi en premier jour).\n */\n@Component({\n  selector: 'ex-date-simple',\n  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule],\n  templateUrl: './date-simple.html',\n  styleUrl: './date-simple.css',\n  providers: [\n    provideNativeDateAdapter(),\n    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },\n    // MatDatepickerModule fournit ses libellés anglais : les remplacer au niveau du composant\n    { provide: MatDatepickerIntl, useClass: GalmaDatepickerIntl },\n  ],\n})\nexport class DateSimple {}\n",
+    html: "<div class=\"ex\">\n  <div class=\"gui-field\">\n    <label class=\"gui-field-label\" for=\"ex-date\">Date de production</label>\n    <mat-form-field>\n      <input matInput id=\"ex-date\" [matDatepicker]=\"calendrier\" placeholder=\"jj/mm/aaaa\" />\n      <mat-datepicker-toggle matIconSuffix [for]=\"calendrier\" />\n      <mat-datepicker #calendrier />\n      <mat-hint>Format jj/mm/aaaa</mat-hint>\n    </mat-form-field>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
+    page: "date",
+    id: "date-plage",
+    titre: "Plage de dates",
+    description: "mat-date-range-input et mat-date-range-picker : début et fin en Primary plein, jours compris en Primary Tint (Calendar Cell In Range).",
+    composant: DatePlage,
+    ts: "import { Component } from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';\nimport { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';\nimport { GalmaDatepickerIntl } from 'galma-ui';\n\n/**\n * Plage de dates\n * mat-date-range-input et mat-date-range-picker : début et fin en Primary plein, jours compris en\n * Primary Tint (Calendar Cell In Range).\n */\n@Component({\n  selector: 'ex-date-plage',\n  imports: [MatFormFieldModule, MatDatepickerModule],\n  templateUrl: './date-plage.html',\n  styleUrl: './date-plage.css',\n  providers: [\n    provideNativeDateAdapter(),\n    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },\n    // MatDatepickerModule fournit ses libellés anglais : les remplacer au niveau du composant\n    { provide: MatDatepickerIntl, useClass: GalmaDatepickerIntl },\n  ],\n})\nexport class DatePlage {}\n",
+    html: "<div class=\"ex\">\n  <div class=\"gui-field\">\n    <label class=\"gui-field-label\" id=\"ex-periode-l\">Période</label>\n    <mat-form-field>\n      <mat-date-range-input [rangePicker]=\"periode\" aria-labelledby=\"ex-periode-l\">\n        <input matStartDate placeholder=\"Début\" aria-label=\"Date de début\" />\n        <input matEndDate placeholder=\"Fin\" aria-label=\"Date de fin\" />\n      </mat-date-range-input>\n      <mat-datepicker-toggle matIconSuffix [for]=\"periode\" />\n      <mat-date-range-picker #periode />\n    </mat-form-field>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
+    page: "fichier",
+    id: "fichier-zone",
+    titre: "Zone de dépôt",
+    description: "CSS pur (classe gui-file-upload) : Material n'a pas d'équivalent. Le bouton Parcourir (Outlined Neutral Small) ouvre le sélecteur de fichiers ; la zone accepte aussi le glisser-déposer (gui- dragover pendant le survol). États gui-error et gui-disabled (avec aria-disabled=\"true\").",
+    composant: FichierZone,
+    ts: "import { Component, signal } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Zone de dépôt\n * CSS pur (classe gui-file-upload) : Material n'a pas d'équivalent. Le bouton Parcourir (Outlined\n * Neutral Small) ouvre le sélecteur de fichiers ; la zone accepte aussi le glisser-déposer (gui-\n * dragover pendant le survol). États gui-error et gui-disabled (avec aria-disabled=\"true\").\n */\n@Component({\n  selector: 'ex-fichier-zone',\n  imports: [MatButtonModule, MatIconModule],\n  templateUrl: './fichier-zone.html',\n  styleUrl: './fichier-zone.css',\n})\nexport class FichierZone {\n  protected readonly survol = signal(false);\n  protected readonly nom = signal('');\n\n  protected deposer(e: DragEvent): void {\n    e.preventDefault();\n    this.survol.set(false);\n    this.nom.set(e.dataTransfer?.files[0]?.name ?? '');\n  }\n\n  protected choisir(input: HTMLInputElement): void {\n    this.nom.set(input.files?.[0]?.name ?? '');\n  }\n}\n",
+    html: "<div class=\"ex\">\n  <div\n    class=\"gui-file-upload\"\n    [class.gui-dragover]=\"survol()\"\n    (dragover)=\"$event.preventDefault(); survol.set(true)\"\n    (dragleave)=\"survol.set(false)\"\n    (drop)=\"deposer($event)\"\n  >\n    <mat-icon>upload_file</mat-icon>\n    <p class=\"gui-file-upload-title\">Glissez-déposez votre fichier ici</p>\n    <div class=\"gui-file-upload-browse\">\n      ou\n      <button matButton=\"outlined\" class=\"gui-neutral gui-sm\" (click)=\"selecteur.click()\">\n        Parcourir\n      </button>\n      <input #selecteur type=\"file\" hidden accept=\".pdf,.csv\" (change)=\"choisir(selecteur)\" />\n    </div>\n    <p class=\"gui-file-upload-hint\">Formats acceptés : PDF, CSV · 10 Mo maximum</p>\n    @if (nom()) {\n      <p class=\"gui-file-upload-hint\" role=\"status\">Fichier choisi : {{ nom() }}</p>\n    }\n  </div>\n  <div class=\"gui-file-upload gui-error\">\n    <mat-icon>upload_file</mat-icon>\n    <p class=\"gui-file-upload-title\">Glissez-déposez votre fichier ici</p>\n    <div class=\"gui-file-upload-browse\">\n      ou <button matButton=\"outlined\" class=\"gui-neutral gui-sm\">Parcourir</button>\n    </div>\n    <p class=\"gui-file-upload-hint\">Formats acceptés : PDF, CSV · 10 Mo maximum</p>\n    <p class=\"gui-file-upload-error\">Fichier refusé : format non pris en charge</p>\n  </div>\n  <div class=\"gui-file-upload gui-disabled\" aria-disabled=\"true\">\n    <mat-icon>upload_file</mat-icon>\n    <p class=\"gui-file-upload-title\">Glissez-déposez votre fichier ici</p>\n    <div class=\"gui-file-upload-browse\">\n      ou <button matButton=\"outlined\" class=\"gui-neutral gui-sm\" disabled>Parcourir</button>\n    </div>\n    <p class=\"gui-file-upload-hint\">Dépôt fermé pendant l'arrêt de ligne</p>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
+    page: "fichier",
+    id: "fichier-liste",
+    titre: "Fichiers déposés (File Item)",
+    description: "Liste ul.gui-file-list : en cours (barre de progression 4 px et bouton Annuler), terminé (Status Success et bouton Retirer), refusé (bord Border/Error et message qui donne le motif et les formats acceptés, journal du 25/09).",
+    composant: FichierListe,
+    ts: "import { Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\n\n/**\n * Fichiers déposés (File Item)\n * Liste ul.gui-file-list : en cours (barre de progression 4 px et bouton Annuler), terminé (Status\n * Success et bouton Retirer), refusé (bord Border/Error et message qui donne le motif et les formats\n * acceptés, journal du 25/09).\n */\n@Component({\n  selector: 'ex-fichier-liste',\n  imports: [MatButtonModule, MatIconModule, MatProgressBarModule],\n  templateUrl: './fichier-liste.html',\n  styleUrl: './fichier-liste.css',\n})\nexport class FichierListe {}\n",
+    html: "<ul class=\"gui-file-list\">\n  <li class=\"gui-file-item\">\n    <mat-icon>description</mat-icon>\n    <div class=\"gui-file-item-texts\">\n      <span class=\"gui-file-item-name\">rapport-coulee-0912.pdf</span>\n      <span class=\"gui-file-item-meta\">2,4 Mo · 65 %</span>\n      <mat-progress-bar\n        mode=\"determinate\"\n        value=\"65\"\n        aria-label=\"Envoi de rapport-coulee-0912.pdf\"\n      />\n    </div>\n    <button matIconButton class=\"gui-neutral\" aria-label=\"Annuler l'envoi\">\n      <mat-icon>close</mat-icon>\n    </button>\n  </li>\n  <li class=\"gui-file-item\">\n    <mat-icon>description</mat-icon>\n    <div class=\"gui-file-item-texts\">\n      <span class=\"gui-file-item-name\">mesures-zinc.csv</span>\n      <span class=\"gui-file-item-meta\">180 Ko</span>\n    </div>\n    <span class=\"gui-status gui-success\">Envoyé</span>\n    <button matIconButton class=\"gui-neutral\" aria-label=\"Retirer mesures-zinc.csv\">\n      <mat-icon>delete</mat-icon>\n    </button>\n  </li>\n  <li class=\"gui-file-item gui-error\">\n    <mat-icon>error</mat-icon>\n    <div class=\"gui-file-item-texts\">\n      <span class=\"gui-file-item-name\">photo-defaut.heic</span>\n      <span class=\"gui-file-item-meta\">4,1 Mo</span>\n      <span class=\"gui-file-item-error\">Format non pris en charge : PDF ou CSV uniquement</span>\n    </div>\n    <button matIconButton class=\"gui-neutral\" aria-label=\"Retirer photo-defaut.heic\">\n      <mat-icon>delete</mat-icon>\n    </button>\n  </li>\n</ul>\n",
+    css: "ul {\n  max-width: 480px;\n}\n",
+  },
+  {
+    page: "heure",
+    id: "heure-simple",
+    titre: "Heure",
+    description: "mat-timepicker (journal du 24/09) : champ HH:MM saisissable et liste d'heures dans un panneau, au pas de 30 minutes ici (interval). L'horloge v1, jugée inaccessible, n'est pas reprise.",
+    composant: HeureSimple,
+    ts: "import { Component } from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatTimepickerModule } from '@angular/material/timepicker';\nimport { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';\n\n/**\n * Heure\n * mat-timepicker (journal du 24/09) : champ HH:MM saisissable et liste d'heures dans un panneau, au\n * pas de 30 minutes ici (interval). L'horloge v1, jugée inaccessible, n'est pas reprise.\n */\n@Component({\n  selector: 'ex-heure-simple',\n  imports: [MatFormFieldModule, MatInputModule, MatTimepickerModule],\n  templateUrl: './heure-simple.html',\n  styleUrl: './heure-simple.css',\n  providers: [provideNativeDateAdapter(), { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }],\n})\nexport class HeureSimple {\n  protected readonly debut = new Date(2026, 10, 12, 6, 0);\n}\n",
+    html: "<div class=\"ex\">\n  <div class=\"gui-field\">\n    <label class=\"gui-field-label\" for=\"ex-heure\">Début du poste</label>\n    <mat-form-field>\n      <input matInput id=\"ex-heure\" [matTimepicker]=\"heures\" [value]=\"debut\" />\n      <mat-timepicker-toggle matIconSuffix [for]=\"heures\" aria-label=\"Ouvrir la liste des heures\" />\n      <mat-timepicker #heures interval=\"30min\" />\n      <mat-hint>Format HH:MM</mat-hint>\n    </mat-form-field>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
     page: "interrupteur",
     id: "interrupteur-base",
     titre: "États",
@@ -215,6 +386,26 @@ export const EXEMPLES: Exemple[] = [
     ts: "import { Component } from '@angular/core';\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\n\n/**\n * États\n * Piste 44 × 24 bord 2 px, curseur 16 px éteint, 20 px allumé. Libellé Body 2 à 8 px.\n */\n@Component({\n  selector: 'ex-interrupteur-base',\n  imports: [MatSlideToggleModule],\n  templateUrl: './interrupteur-base.html',\n  styleUrl: './interrupteur-base.css',\n})\nexport class InterrupteurBase {}\n",
     html: "<div class=\"ex\">\n  <mat-slide-toggle>Éteint</mat-slide-toggle>\n  <mat-slide-toggle [checked]=\"true\">Allumé</mat-slide-toggle>\n  <mat-slide-toggle class=\"gui-secondary\" [checked]=\"true\">Secondaire</mat-slide-toggle>\n  <mat-slide-toggle disabled>Désactivé</mat-slide-toggle>\n  <mat-slide-toggle disabled [checked]=\"true\">Désactivé allumé</mat-slide-toggle>\n</div>\n",
     css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
+  },
+  {
+    page: "menu",
+    id: "menu-actions",
+    titre: "Menu d'actions",
+    description: "mat-menu : items de 40 px avec icône 20 px, raccourci en Caption (span gui-menu-shortcut), séparateur, action destructive isolée en bas (classe gui-destructive).",
+    composant: MenuActions,
+    ts: "import { Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatMenuModule } from '@angular/material/menu';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatDividerModule } from '@angular/material/divider';\n\n/**\n * Menu d'actions\n * mat-menu : items de 40 px avec icône 20 px, raccourci en Caption (span gui-menu-shortcut),\n * séparateur, action destructive isolée en bas (classe gui-destructive).\n */\n@Component({\n  selector: 'ex-menu-actions',\n  imports: [MatButtonModule, MatMenuModule, MatIconModule, MatDividerModule],\n  templateUrl: './menu-actions.html',\n  styleUrl: './menu-actions.css',\n})\nexport class MenuActions {}\n",
+    html: "<button matButton=\"outlined\" class=\"gui-neutral\" [matMenuTriggerFor]=\"actions\">Actions</button>\n<mat-menu #actions=\"matMenu\">\n  <button mat-menu-item>\n    <mat-icon>edit</mat-icon><span>Modifier</span><span class=\"gui-menu-shortcut\">Ctrl+E</span>\n  </button>\n  <button mat-menu-item><mat-icon>content_copy</mat-icon><span>Dupliquer</span></button>\n  <button mat-menu-item disabled>\n    <mat-icon>print</mat-icon><span>Imprimer l'étiquette</span>\n  </button>\n  <mat-divider />\n  <button mat-menu-item class=\"gui-destructive\">\n    <mat-icon>delete</mat-icon><span>Supprimer</span>\n  </button>\n</mat-menu>\n",
+    css: ":host {\n  display: block;\n}\n",
+  },
+  {
+    page: "menu",
+    id: "menu-selection",
+    titre: "Menu de réglages en cascade",
+    description: "Exemple de conception du Figma (journal du 29/09) : sous-menu aligné sur l'item parent, choix courant marqué Selected (libellé Form Label et coche à droite, classe gui-selected ; la coche est un span.material-icons, un mat-icon serait placé en tête de l'item par Material), sous-en-tête en Caption Medium.",
+    composant: MenuSelection,
+    ts: "import { Component, signal } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatMenuModule } from '@angular/material/menu';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Menu de réglages en cascade\n * Exemple de conception du Figma (journal du 29/09) : sous-menu aligné sur l'item parent, choix\n * courant marqué Selected (libellé Form Label et coche à droite, classe gui-selected ; la coche est un\n * span.material-icons, un mat-icon serait placé en tête de l'item par Material), sous-en-tête en\n * Caption Medium.\n */\n@Component({\n  selector: 'ex-menu-selection',\n  imports: [MatButtonModule, MatMenuModule, MatIconModule],\n  templateUrl: './menu-selection.html',\n  styleUrl: './menu-selection.css',\n})\nexport class MenuSelection {\n  protected readonly densites = ['Confortable', 'Standard', 'Compacte'];\n  protected readonly densiteChoisie = signal('Standard');\n}\n",
+    html: "<button matButton=\"outlined\" class=\"gui-neutral\" [matMenuTriggerFor]=\"reglages\">\n  <mat-icon>settings</mat-icon>Affichage\n</button>\n<mat-menu #reglages=\"matMenu\">\n  <div class=\"gui-menu-subheader\" role=\"presentation\">Vue</div>\n  <button mat-menu-item [matMenuTriggerFor]=\"densite\">\n    <mat-icon>density_medium</mat-icon><span>Densité</span>\n  </button>\n  <button mat-menu-item [matMenuTriggerFor]=\"unites\">\n    <mat-icon>straighten</mat-icon><span>Unités</span>\n  </button>\n</mat-menu>\n<mat-menu #densite=\"matMenu\">\n  @for (d of densites; track d) {\n    <button\n      mat-menu-item\n      role=\"menuitemradio\"\n      [class.gui-selected]=\"d === densiteChoisie()\"\n      [attr.aria-checked]=\"d === densiteChoisie()\"\n      (click)=\"densiteChoisie.set(d)\"\n    >\n      <span>{{ d }}</span>\n      @if (d === densiteChoisie()) {\n        <span class=\"gui-menu-check material-icons\" aria-hidden=\"true\">check</span>\n      }\n    </button>\n  }\n</mat-menu>\n<mat-menu #unites=\"matMenu\">\n  <button mat-menu-item role=\"menuitemradio\" aria-checked=\"true\" class=\"gui-selected\">\n    <span>Métriques</span\n    ><span class=\"gui-menu-check material-icons\" aria-hidden=\"true\">check</span>\n  </button>\n  <button mat-menu-item role=\"menuitemradio\" aria-checked=\"false\"><span>Impériales</span></button>\n</mat-menu>\n",
+    css: ":host {\n  display: block;\n}\n",
   },
   {
     page: "onglets",
@@ -235,6 +426,46 @@ export const EXEMPLES: Exemple[] = [
     ts: "import { Component } from '@angular/core';\nimport { MatRadioModule } from '@angular/material/radio';\n\n/**\n * Groupe\n * Cercle 20 px, point 10 px. Le groupe porte un aria-label (ou un aria-labelledby vers son titre).\n */\n@Component({\n  selector: 'ex-radio-base',\n  imports: [MatRadioModule],\n  templateUrl: './radio-base.html',\n  styleUrl: './radio-base.css',\n})\nexport class RadioBase {}\n",
     html: "<mat-radio-group class=\"ex\" aria-label=\"Sens de bobinage\" value=\"haut\">\n  <mat-radio-button value=\"haut\">Par le haut</mat-radio-button>\n  <mat-radio-button value=\"bas\">Par le bas</mat-radio-button>\n  <mat-radio-button value=\"aucun\" disabled>Indifférent</mat-radio-button>\n</mat-radio-group>\n<mat-radio-group class=\"ex gui-secondary\" aria-label=\"Couleur secondaire\" value=\"b\">\n  <mat-radio-button class=\"gui-secondary\" value=\"a\">Secondaire</mat-radio-button>\n  <mat-radio-button class=\"gui-secondary\" value=\"b\">Secondaire sélectionné</mat-radio-button>\n</mat-radio-group>\n",
     css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n.ex + .ex {\n  margin-top: 8px;\n}\n",
+  },
+  {
+    page: "radio",
+    id: "radio-groupe",
+    titre: "Radio Group",
+    description: "Groupe de radios (journal du 29/09) : même structure que le Checkbox Group ; le mat-radio-group porte la classe gui-group-items et le nom accessible de la légende (aria-labelledby).",
+    composant: RadioGroupe,
+    ts: "import { Component } from '@angular/core';\nimport { MatRadioModule } from '@angular/material/radio';\n\n/**\n * Radio Group\n * Groupe de radios (journal du 29/09) : même structure que le Checkbox Group ; le mat-radio-group\n * porte la classe gui-group-items et le nom accessible de la légende (aria-labelledby).\n */\n@Component({\n  selector: 'ex-radio-groupe',\n  imports: [MatRadioModule],\n  templateUrl: './radio-groupe.html',\n  styleUrl: './radio-groupe.css',\n})\nexport class RadioGroupe {}\n",
+    html: "<div class=\"ex\">\n  <fieldset class=\"gui-group\">\n    <legend id=\"ex-poste\">Poste</legend>\n    <mat-radio-group class=\"gui-group-items\" aria-labelledby=\"ex-poste\" value=\"matin\">\n      <mat-radio-button value=\"matin\">Matin</mat-radio-button>\n      <mat-radio-button value=\"apres-midi\">Après-midi</mat-radio-button>\n      <mat-radio-button value=\"nuit\">Nuit</mat-radio-button>\n    </mat-radio-group>\n  </fieldset>\n  <fieldset class=\"gui-group gui-horizontal gui-error\">\n    <legend id=\"ex-sens\">Sens de bobinage</legend>\n    <mat-radio-group\n      class=\"gui-group-items\"\n      aria-labelledby=\"ex-sens\"\n      aria-describedby=\"ex-sens-erreur\"\n    >\n      <mat-radio-button value=\"dessus\">Dessus</mat-radio-button>\n      <mat-radio-button value=\"dessous\">Dessous</mat-radio-button>\n    </mat-radio-group>\n    <p class=\"gui-group-error\" id=\"ex-sens-erreur\">Choisissez un sens</p>\n  </fieldset>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
+    page: "select",
+    id: "select-simple",
+    titre: "Choix unique",
+    description: "mat-select dans un Form Field : panneau 4 px sous le champ, Border/Strong, Radius/M, ombre Lv2 ; options de 40 px, choisie en Secondary Tint avec coche à droite.",
+    composant: SelectSimple,
+    ts: "import { Component } from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatSelectModule } from '@angular/material/select';\n\n/**\n * Choix unique\n * mat-select dans un Form Field : panneau 4 px sous le champ, Border/Strong, Radius/M, ombre Lv2 ;\n * options de 40 px, choisie en Secondary Tint avec coche à droite.\n */\n@Component({\n  selector: 'ex-select-simple',\n  imports: [MatFormFieldModule, MatSelectModule],\n  templateUrl: './select-simple.html',\n  styleUrl: './select-simple.css',\n})\nexport class SelectSimple {}\n",
+    html: "<div class=\"ex\">\n  <div class=\"gui-field\">\n    <label class=\"gui-field-label\" id=\"ex-nuance-l\">Nuance</label>\n    <mat-form-field>\n      <mat-select aria-labelledby=\"ex-nuance-l\" placeholder=\"Choisir une nuance\" value=\"dx51d\">\n        <mat-option value=\"dx51d\">DX51D</mat-option>\n        <mat-option value=\"dx52d\">DX52D</mat-option>\n        <mat-option value=\"dx53d\">DX53D</mat-option>\n        <mat-option value=\"dx54d\" disabled>DX54D (épuisée)</mat-option>\n        <mat-option value=\"s250gd\">S250GD</mat-option>\n      </mat-select>\n      <mat-hint>Selon la commande client</mat-hint>\n    </mat-form-field>\n  </div>\n  <div class=\"gui-field gui-sm\">\n    <label class=\"gui-field-label\" id=\"ex-revet-l\">Revêtement (Small)</label>\n    <mat-form-field>\n      <mat-select aria-labelledby=\"ex-revet-l\" placeholder=\"Choisir\">\n        <mat-option value=\"z100\">Z100</mat-option>\n        <mat-option value=\"z140\">Z140</mat-option>\n        <mat-option value=\"z275\">Z275</mat-option>\n      </mat-select>\n    </mat-form-field>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
+    page: "select",
+    id: "select-multiple",
+    titre: "Choix multiple",
+    description: "Attribut multiple : chaque option porte une case (Select Option Type=Multiple, case Secondary), le panneau reste ouvert pendant le choix.",
+    composant: SelectMultiple,
+    ts: "import { Component } from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatSelectModule } from '@angular/material/select';\n\n/**\n * Choix multiple\n * Attribut multiple : chaque option porte une case (Select Option Type=Multiple, case Secondary), le\n * panneau reste ouvert pendant le choix.\n */\n@Component({\n  selector: 'ex-select-multiple',\n  imports: [MatFormFieldModule, MatSelectModule],\n  templateUrl: './select-multiple.html',\n  styleUrl: './select-multiple.css',\n})\nexport class SelectMultiple {}\n",
+    html: "<div class=\"ex\">\n  <div class=\"gui-field\">\n    <label class=\"gui-field-label\" id=\"ex-defauts-l\">Défauts relevés</label>\n    <mat-form-field>\n      <mat-select\n        aria-labelledby=\"ex-defauts-l\"\n        multiple\n        [value]=\"['coulure']\"\n        placeholder=\"Choisir\"\n      >\n        <mat-option value=\"coulure\">Coulure</mat-option>\n        <mat-option value=\"crasse\">Crasse</mat-option>\n        <mat-option value=\"rayure\">Rayure</mat-option>\n        <mat-option value=\"non-revetu\">Non revêtu</mat-option>\n      </mat-select>\n    </mat-form-field>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
+    page: "select",
+    id: "select-etats",
+    titre: "Erreur et désactivé",
+    description: "Mêmes états que le Form Field : bordure Border/Error 2 px et message, ou fond Background/Disabled.",
+    composant: SelectEtats,
+    ts: "import { Component } from '@angular/core';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatSelectModule } from '@angular/material/select';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { FormControl, Validators } from '@angular/forms';\n\n/**\n * Erreur et désactivé\n * Mêmes états que le Form Field : bordure Border/Error 2 px et message, ou fond Background/Disabled.\n */\n@Component({\n  selector: 'ex-select-etats',\n  imports: [MatFormFieldModule, MatSelectModule, ReactiveFormsModule],\n  templateUrl: './select-etats.html',\n  styleUrl: './select-etats.css',\n})\nexport class SelectEtats {\n  protected readonly destination = new FormControl('', Validators.required);\n\n  constructor() {\n    this.destination.markAsTouched();\n  }\n}\n",
+    html: "<div class=\"ex\">\n  <div class=\"gui-field\">\n    <label class=\"gui-field-label\" id=\"ex-dest-l\">Destination</label>\n    <mat-form-field>\n      <mat-select aria-labelledby=\"ex-dest-l\" [formControl]=\"destination\" placeholder=\"Choisir\">\n        <mat-option value=\"stock\">Stock</mat-option>\n        <mat-option value=\"expedition\">Expédition</mat-option>\n      </mat-select>\n      <mat-error>La destination est obligatoire</mat-error>\n    </mat-form-field>\n  </div>\n  <div class=\"gui-field\">\n    <label class=\"gui-field-label\" id=\"ex-ligne-l\">Ligne</label>\n    <mat-form-field>\n      <mat-select aria-labelledby=\"ex-ligne-l\" value=\"g2\" disabled>\n        <mat-option value=\"g2\">Galma 2</mat-option>\n      </mat-select>\n    </mat-form-field>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
   },
   {
     page: "separateur",

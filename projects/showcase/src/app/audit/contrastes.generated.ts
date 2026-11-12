@@ -1,7 +1,7 @@
 // GÉNÉRÉ par scripts/audit-contrastes.mjs : ne pas modifier à la main.
 export interface MesureContraste { groupe: string; type: 'texte' | 'graphique'; fg: string; bg: string; sous: string; usage: string; avant: string; arriere: string; ratio: number; seuil: number; ok: boolean; apca: number; }
 export const CONTRASTES: { genere: string; clair: MesureContraste[]; sombre: MesureContraste[]; fondsClairsSombre: { jeton: string; couleur: string; luminance: number }[] } = {
- "genere": "2026-11-12T18:16:18.455Z",
+ "genere": "2026-11-12T19:10:48.611Z",
  "clair": [
   {
    "groupe": "Textes",
@@ -1052,6 +1052,104 @@ export const CONTRASTES: { genere: string; clair: MesureContraste[]; sombre: Mes
    "seuil": 3,
    "ok": true,
    "apca": 67
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-foreground-primary",
+   "bg": "--amf-action-neutral-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Option, item de menu, chip au survol",
+   "avant": "#414141",
+   "arriere": "#eef2f6",
+   "ratio": 9.07,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 86
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-foreground-primary",
+   "bg": "--amf-action-neutral-subtle-hover",
+   "sous": "--amf-background-surface",
+   "usage": "Chip Filled au survol",
+   "avant": "#414141",
+   "arriere": "#e1e7ed",
+   "ratio": 8.19,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 79
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-foreground-primary",
+   "bg": "--amf-action-secondary-tint",
+   "sous": "--amf-background-surface",
+   "usage": "Zone de dépôt survolée : titre",
+   "avant": "#414141",
+   "arriere": "#ebf4fb",
+   "ratio": 9.17,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 86
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-foreground-secondary",
+   "bg": "--amf-action-secondary-tint",
+   "sous": "--amf-background-surface",
+   "usage": "Zone de dépôt survolée : aide",
+   "avant": "#656565",
+   "arriere": "#ebf4fb",
+   "ratio": 5.24,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 72
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "graphique",
+   "fg": "--amf-action-secondary-default",
+   "bg": "--amf-action-secondary-tint",
+   "sous": "--amf-background-surface",
+   "usage": "Zone de dépôt survolée : bordure",
+   "avant": "#0072ce",
+   "arriere": "#ebf4fb",
+   "ratio": 4.39,
+   "seuil": 3,
+   "ok": true,
+   "apca": 66
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "graphique",
+   "fg": "--amf-border-input",
+   "bg": "--amf-action-neutral-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Bordure de chip au survol",
+   "avant": "#818c98",
+   "arriere": "#eef2f6",
+   "ratio": 3.04,
+   "seuil": 3,
+   "ok": true,
+   "apca": 54
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-action-error-foreground",
+   "bg": "--amf-background-surface",
+   "sous": "--amf-background-surface",
+   "usage": "Item de menu destructif",
+   "avant": "#a8161d",
+   "arriere": "#ffffff",
+   "ratio": 7.51,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 84
   }
  ],
  "sombre": [
@@ -1609,11 +1707,11 @@ export const CONTRASTES: { genere: string; clair: MesureContraste[]; sombre: Mes
    "sous": "--amf-background-surface",
    "usage": "Ligne sélectionnée (Tint)",
    "avant": "#99c7eb",
-   "arriere": "#2e3c47",
-   "ratio": 6.32,
+   "arriere": "#2b363f",
+   "ratio": 6.87,
    "seuil": 4.5,
    "ok": true,
-   "apca": -62
+   "apca": -63
   },
   {
    "groupe": "Feedback",
@@ -2104,6 +2202,104 @@ export const CONTRASTES: { genere: string; clair: MesureContraste[]; sombre: Mes
    "seuil": 3,
    "ok": true,
    "apca": -41
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-foreground-primary",
+   "bg": "--amf-action-neutral-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Option, item de menu, chip au survol",
+   "avant": "#f2f2f2",
+   "arriere": "#262626",
+   "ratio": 13.52,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -96
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-foreground-primary",
+   "bg": "--amf-action-neutral-subtle-hover",
+   "sous": "--amf-background-surface",
+   "usage": "Chip Filled au survol",
+   "avant": "#f2f2f2",
+   "arriere": "#2e2e2e",
+   "ratio": 12.13,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -95
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-foreground-primary",
+   "bg": "--amf-action-secondary-tint",
+   "sous": "--amf-background-surface",
+   "usage": "Zone de dépôt survolée : titre",
+   "avant": "#f2f2f2",
+   "arriere": "#2b363f",
+   "ratio": 10.99,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -93
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-foreground-secondary",
+   "bg": "--amf-action-secondary-tint",
+   "sous": "--amf-background-surface",
+   "usage": "Zone de dépôt survolée : aide",
+   "avant": "#a3a3a3",
+   "arriere": "#2b363f",
+   "ratio": 4.88,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -46
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "graphique",
+   "fg": "--amf-action-secondary-default",
+   "bg": "--amf-action-secondary-tint",
+   "sous": "--amf-background-surface",
+   "usage": "Zone de dépôt survolée : bordure",
+   "avant": "#6ab0e9",
+   "arriere": "#2b363f",
+   "ratio": 5.27,
+   "seuil": 3,
+   "ok": true,
+   "apca": -50
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "graphique",
+   "fg": "--amf-border-input",
+   "bg": "--amf-action-neutral-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Bordure de chip au survol",
+   "avant": "#7e7e7e",
+   "arriere": "#262626",
+   "ratio": 3.73,
+   "seuil": 3,
+   "ok": true,
+   "apca": -31
+  },
+  {
+   "groupe": "Formulaires",
+   "type": "texte",
+   "fg": "--amf-action-error-foreground",
+   "bg": "--amf-background-surface",
+   "sous": "--amf-background-surface",
+   "usage": "Item de menu destructif",
+   "avant": "#f08a8d",
+   "arriere": "#1f1f1f",
+   "ratio": 6.85,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -53
   }
  ],
  "fondsClairsSombre": []

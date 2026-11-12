@@ -1,0 +1,13 @@
+<div class="ex">
+  <div class="gui-field">
+    <label class="gui-field-label" id="ex-periode-l">Période</label>
+    <mat-form-field>
+      <mat-date-range-input [rangePicker]="periode" aria-labelledby="ex-periode-l">
+        <input matStartDate placeholder="Début" aria-label="Date de début" />
+        <input matEndDate placeholder="Fin" aria-label="Date de fin" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="periode" />
+      <mat-date-range-picker #periode />
+    </mat-form-field>
+  </div>
+</div>

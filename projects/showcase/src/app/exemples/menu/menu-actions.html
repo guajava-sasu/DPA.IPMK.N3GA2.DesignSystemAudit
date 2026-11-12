@@ -1,0 +1,14 @@
+<button matButton="outlined" class="gui-neutral" [matMenuTriggerFor]="actions">Actions</button>
+<mat-menu #actions="matMenu">
+  <button mat-menu-item>
+    <mat-icon>edit</mat-icon><span>Modifier</span><span class="gui-menu-shortcut">Ctrl+E</span>
+  </button>
+  <button mat-menu-item><mat-icon>content_copy</mat-icon><span>Dupliquer</span></button>
+  <button mat-menu-item disabled>
+    <mat-icon>print</mat-icon><span>Imprimer l'étiquette</span>
+  </button>
+  <mat-divider />
+  <button mat-menu-item class="gui-destructive">
+    <mat-icon>delete</mat-icon><span>Supprimer</span>
+  </button>
+</mat-menu>

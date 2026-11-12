@@ -1,0 +1,40 @@
+<div class="ex">
+  <div
+    class="gui-file-upload"
+    [class.gui-dragover]="survol()"
+    (dragover)="$event.preventDefault(); survol.set(true)"
+    (dragleave)="survol.set(false)"
+    (drop)="deposer($event)"
+  >
+    <mat-icon>upload_file</mat-icon>
+    <p class="gui-file-upload-title">Glissez-déposez votre fichier ici</p>
+    <div class="gui-file-upload-browse">
+      ou
+      <button matButton="outlined" class="gui-neutral gui-sm" (click)="selecteur.click()">
+        Parcourir
+      </button>
+      <input #selecteur type="file" hidden accept=".pdf,.csv" (change)="choisir(selecteur)" />
+    </div>
+    <p class="gui-file-upload-hint">Formats acceptés : PDF, CSV · 10 Mo maximum</p>
+    @if (nom()) {
+      <p class="gui-file-upload-hint" role="status">Fichier choisi : {{ nom() }}</p>
+    }
+  </div>
+  <div class="gui-file-upload gui-error">
+    <mat-icon>upload_file</mat-icon>
+    <p class="gui-file-upload-title">Glissez-déposez votre fichier ici</p>
+    <div class="gui-file-upload-browse">
+      ou <button matButton="outlined" class="gui-neutral gui-sm">Parcourir</button>
+    </div>
+    <p class="gui-file-upload-hint">Formats acceptés : PDF, CSV · 10 Mo maximum</p>
+    <p class="gui-file-upload-error">Fichier refusé : format non pris en charge</p>
+  </div>
+  <div class="gui-file-upload gui-disabled" aria-disabled="true">
+    <mat-icon>upload_file</mat-icon>
+    <p class="gui-file-upload-title">Glissez-déposez votre fichier ici</p>
+    <div class="gui-file-upload-browse">
+      ou <button matButton="outlined" class="gui-neutral gui-sm" disabled>Parcourir</button>
+    </div>
+    <p class="gui-file-upload-hint">Dépôt fermé pendant l'arrêt de ligne</p>
+  </div>
+</div>

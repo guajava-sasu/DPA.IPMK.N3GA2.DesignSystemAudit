@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { Affichage } from './commun/affichage';
-import { PAGES } from './pages/pages';
+import { FAMILLES, Famille, PAGES } from './pages/pages';
 
 @Component({
   selector: 'app-root',
@@ -55,9 +55,11 @@ import { PAGES } from './pages/pages';
         <p class="gui-overline gui-secondary-text">Fondations</p>
         <a routerLink="/couleurs" routerLinkActive="actif">Couleurs</a>
         <a routerLink="/typographie" routerLinkActive="actif">Typographie et dimensions</a>
-        <p class="gui-overline gui-secondary-text">Composants</p>
-        @for (p of pages; track p.id) {
-          <a [routerLink]="['/composants', p.id]" routerLinkActive="actif">{{ p.titre }}</a>
+        @for (f of familles; track f) {
+          <p class="gui-overline gui-secondary-text">{{ f }}</p>
+          @for (p of pagesDe(f); track p.id) {
+            <a [routerLink]="['/composants', p.id]" routerLinkActive="actif">{{ p.titre }}</a>
+          }
         }
         <p class="gui-overline gui-secondary-text">Contrôles</p>
         <a routerLink="/mode-sombre" routerLinkActive="actif">Mode sombre audité</a>
@@ -180,7 +182,10 @@ import { PAGES } from './pages/pages';
 })
 export class App {
   protected readonly affichage = inject(Affichage);
-  protected readonly pages = PAGES;
+  protected readonly familles = FAMILLES;
+  protected pagesDe(f: Famille) {
+    return PAGES.filter((p) => p.famille === f);
+  }
 
   protected allerAuContenu(e: Event): void {
     e.preventDefault();

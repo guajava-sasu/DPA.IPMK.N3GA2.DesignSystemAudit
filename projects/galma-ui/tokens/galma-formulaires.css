@@ -1,0 +1,505 @@
+/*
+ * Famille formulaire AMF v2.0 (lot 2) : Textarea, Select, Checkbox Group et Radio Group, Slider, Chip, Date Picker,
+ * Time Picker, Menu, Button Dropdown, File Upload. Composants Angular Material habillés en CSS pur (jetons --mat-*
+ * reliés aux jetons --amf-*), sauf File Upload et les groupes, en classes gui-* (Material n'a pas d'équivalent).
+ * Chaque bloc cite la page 🆕 du Figma et l'entrée du journal dont il reprend les mesures.
+ */
+
+/* ── Panneaux flottants (Select, Menu, Calendar, Time Picker) : Background/Surface, Border/Strong 1 px, Radius/M,
+ *    ombre Lv2, marge interne verticale 8 (journal 24/09 : conteneurs délimités par Border/Strong) ──────────── */
+html {
+  --mat-select-panel-background-color: var(--amf-background-surface);
+  --mat-select-container-elevation-shadow: var(--amf-shadow-lv2);
+  --mat-menu-container-color: var(--amf-background-surface);
+  --mat-menu-container-shape: var(--amf-radius-m);
+  --mat-menu-container-elevation-shadow: var(--amf-shadow-lv2);
+  --mat-timepicker-container-background-color: var(--amf-background-surface);
+  --mat-timepicker-container-shape: var(--amf-radius-m);
+  --mat-timepicker-container-elevation-shadow: var(--amf-shadow-lv2);
+  --mat-datepicker-calendar-container-background-color: var(--amf-background-surface);
+  --mat-datepicker-calendar-container-shape: var(--amf-radius-m);
+  --mat-datepicker-calendar-container-elevation-shadow: var(--amf-shadow-lv2);
+  --mat-datepicker-calendar-container-text-color: var(--amf-foreground-primary);
+
+  /* Options (Select Option, liste d'heures du Time Picker) : 40 px, marge 16, Body 2 ; survol Neutral Subtle ;
+   * choisie : Secondary Tint, libellé Form Label en Secondary On Tint, coche à droite (Single) ou case (Multiple) */
+  --mat-option-label-text-font: var(--amf-text-body-2-family);
+  --mat-option-label-text-size: var(--amf-text-body-2-size);
+  --mat-option-label-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-option-label-text-weight: var(--amf-text-body-2-weight);
+  --mat-option-label-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-option-label-text-color: var(--amf-foreground-primary);
+  --mat-option-hover-state-layer-color: var(--amf-action-neutral-subtle);
+  --mat-option-focus-state-layer-color: var(--amf-action-neutral-subtle);
+  --mat-option-selected-state-layer-color: var(--amf-action-secondary-tint);
+  --mat-option-selected-state-label-text-color: var(--amf-action-secondary-on-tint);
+  --mat-pseudo-checkbox-minimal-selected-checkmark-color: var(--amf-action-secondary-on-tint);
+  --mat-pseudo-checkbox-minimal-disabled-selected-checkmark-color: var(--amf-foreground-disabled);
+  --mat-pseudo-checkbox-full-unselected-icon-color: var(--amf-border-input);
+  --mat-pseudo-checkbox-full-selected-icon-color: var(--amf-action-secondary-default);
+  --mat-pseudo-checkbox-full-selected-checkmark-color: var(--amf-foreground-on-primary);
+  --mat-pseudo-checkbox-full-disabled-unselected-icon-color: var(--amf-action-disabled-border);
+  --mat-pseudo-checkbox-full-disabled-selected-icon-color: var(--amf-action-disabled-foreground);
+  --mat-pseudo-checkbox-full-disabled-selected-checkmark-color: var(--amf-background-surface);
+}
+:is(.mat-mdc-select-panel, .mat-mdc-menu-panel, .mat-timepicker-panel, .mat-datepicker-content) {
+  border: 1px solid var(--amf-border-strong);
+  box-sizing: border-box;
+}
+div.mat-mdc-select-panel,
+.mat-timepicker-panel { padding: 8px 0; border-radius: var(--amf-radius-m); }
+/* Écart de 4 px entre le champ et le panneau (Select : rangée d'aide repliée, journal 28/09) */
+.cdk-overlay-pane:not(.mat-mdc-select-panel-above) > div.mat-mdc-select-panel,
+.cdk-overlay-pane > .mat-timepicker-panel { margin-top: 4px; }
+.cdk-overlay-pane.mat-mdc-select-panel-above > div.mat-mdc-select-panel { margin-bottom: 4px; }
+.mat-mdc-option {
+  min-height: 40px;
+  padding-inline: 16px;
+  gap: 12px;
+}
+.mat-mdc-option.mat-mdc-option:not(.mdc-list-item--selected).mat-mdc-option-active { background-color: var(--amf-action-neutral-subtle); }
+.mat-mdc-option.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) { background-color: var(--amf-action-secondary-tint); }
+.mat-mdc-option.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+  color: var(--amf-action-secondary-on-tint);
+  font-weight: var(--amf-text-form-label-weight);
+}
+.mat-mdc-option.mdc-list-item--disabled { opacity: 1; }
+.mat-mdc-option.mdc-list-item--disabled .mdc-list-item__primary-text { color: var(--amf-foreground-disabled); }
+.mat-mdc-option.mat-mdc-option .mat-pseudo-checkbox { margin-inline: 0; }
+.mat-mdc-option.mat-mdc-option .mat-pseudo-checkbox-minimal { transform: scale(1.1); }
+.mat-mdc-option-multiple .mat-pseudo-checkbox-full { width: 18px; height: 18px; border-width: 2px; border-radius: var(--amf-radius-xs); }
+/* Focus clavier : contour Border/Focus 2 px dans l'option (Select Option State=Focused) */
+.mat-mdc-option.mat-mdc-option-active.mat-mdc-focus-indicator::before {
+  border: 2px solid var(--amf-border-focus);
+  border-radius: 0;
+  inset: 0;
+}
+
+/* ── Select (page 🆕 Select, journal 28/09) : Form Field + panneau ; flèche Arrow Drop Down en Foreground/Secondary ── */
+.mat-mdc-form-field {
+  --mat-select-trigger-text-font: var(--amf-text-body-2-family);
+  --mat-select-trigger-text-size: var(--amf-text-body-2-size);
+  --mat-select-trigger-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-select-trigger-text-weight: var(--amf-text-body-2-weight);
+  --mat-select-trigger-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-select-enabled-trigger-text-color: var(--amf-foreground-primary);
+  --mat-select-disabled-trigger-text-color: var(--amf-foreground-disabled);
+  --mat-select-placeholder-text-color: var(--amf-foreground-placeholder);
+  --mat-select-enabled-arrow-color: var(--amf-foreground-secondary);
+  --mat-select-focused-arrow-color: var(--amf-foreground-primary);
+  --mat-select-disabled-arrow-color: var(--amf-foreground-disabled);
+  --mat-select-invalid-arrow-color: var(--amf-border-error);
+  --mat-select-arrow-transform: none;
+}
+.mat-mdc-select-arrow-wrapper { height: 20px; }
+
+/* Boutons d'icône dans un champ (bascule du Date Picker et du Time Picker, effacement) : neutres, 32 px, icône 20 */
+.mat-mdc-form-field :is(.mat-mdc-form-field-icon-suffix, .mat-mdc-form-field-icon-prefix) .mat-mdc-icon-button {
+  --gui-btn-h: 32px;
+  --gui-btn-icon: 20px;
+  --gui-c-fg: var(--amf-foreground-secondary);
+  --gui-c-subtle: var(--amf-action-neutral-subtle);
+  --gui-c-subtle-hover: var(--amf-action-neutral-subtle-hover);
+  margin-inline: -6px;
+}
+
+/* ── Textarea (Form Field Type=Textarea, journal 16/09 et 29/09) : hauteur minimale 96, marges 12 / 10,
+ *    poignée de redimensionnement verticale (hasResizeHandle) ─────────────────────────────────────────────── */
+.mat-mdc-form-field textarea.mat-mdc-input-element {
+  min-height: 76px; /* 96 - 2 × 10 */
+  resize: vertical;
+  box-sizing: border-box;
+}
+.mat-mdc-form-field:has(textarea) { --mat-form-field-container-height: 96px; }
+.mat-mdc-form-field textarea.mat-mdc-input-element.gui-no-resize { resize: none; }
+
+/* ── Checkbox Group et Radio Group (journal 29/09) : <fieldset class="gui-group"> ; légende Form Label, écart 8,
+ *    items espacés de 4 (vertical) ou 24 (gui-horizontal), aide ou erreur en Caption sous le groupe ──────────── */
+.gui-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+.gui-group > legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) / var(--amf-text-form-label-line-height) var(--amf-text-form-label-family);
+  color: var(--amf-foreground-primary);
+}
+.gui-group-items { display: flex; flex-direction: column; gap: 4px; margin-inline-start: -4px; }
+.gui-group.gui-horizontal .gui-group-items { flex-direction: row; flex-wrap: wrap; gap: 4px 24px; }
+.gui-group-helper,
+.gui-group-error {
+  margin: 0;
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--amf-text-caption-family);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+  color: var(--amf-foreground-secondary);
+}
+.gui-group-error { color: var(--amf-feedback-error-foreground); }
+.gui-group:disabled > legend,
+.gui-group.gui-disabled > legend { color: var(--amf-foreground-disabled); }
+/* Erreur de groupe : chaque case ou radio passe en Border/Error (Checkbox / Radio State=Error) */
+.gui-group.gui-error .mat-mdc-checkbox,
+.mat-mdc-checkbox.gui-error {
+  --mat-checkbox-unselected-icon-color: var(--amf-border-error);
+  --mat-checkbox-unselected-hover-icon-color: var(--amf-border-error);
+  --mat-checkbox-unselected-focus-icon-color: var(--amf-border-error);
+}
+.gui-group.gui-error .mat-mdc-radio-button,
+.mat-mdc-radio-button.gui-error {
+  --mat-radio-unselected-icon-color: var(--amf-border-error);
+  --mat-radio-unselected-hover-icon-color: var(--amf-border-error);
+  --mat-radio-unselected-focus-icon-color: var(--amf-border-error);
+  --mat-radio-unselected-pressed-icon-color: var(--amf-border-error);
+}
+
+/* ── Slider (page 🆕 Slider, journal 18/09) : piste 4 px Radius/XS (Border/Default, active en couleur d'action),
+ *    curseur 20 bordé 2 px Background/Surface, calque d'état 40, étiquette de valeur Background/Inverse Radius/S ── */
+.mat-mdc-slider {
+  --gui-c: var(--amf-action-primary-default);
+  --mat-slider-active-track-color: var(--gui-c);
+  --mat-slider-inactive-track-color: var(--amf-border-default);
+  --mat-slider-disabled-active-track-color: var(--amf-action-disabled-foreground);
+  --mat-slider-disabled-inactive-track-color: var(--amf-border-subtle);
+  --mat-slider-active-track-height: 4px;
+  --mat-slider-inactive-track-height: 4px;
+  --mat-slider-active-track-shape: var(--amf-radius-xs);
+  --mat-slider-inactive-track-shape: var(--amf-radius-xs);
+  --mat-slider-handle-color: var(--gui-c);
+  --mat-slider-hover-handle-color: var(--gui-c);
+  --mat-slider-focus-handle-color: var(--gui-c);
+  --mat-slider-disabled-handle-color: var(--amf-action-disabled-foreground);
+  --mat-slider-handle-width: 20px;
+  --mat-slider-handle-height: 20px;
+  --mat-slider-handle-shape: 50%;
+  --mat-slider-handle-elevation: none;
+  --mat-slider-with-overlap-handle-outline-color: var(--amf-background-surface);
+  --mat-slider-with-overlap-handle-outline-width: 2px;
+  --mat-slider-hover-state-layer-color: var(--amf-action-state-layer-hover);
+  --mat-slider-focus-state-layer-color: var(--amf-action-state-layer-pressed);
+  --mat-slider-ripple-color: var(--amf-action-state-layer-pressed);
+  --mat-slider-label-container-color: var(--amf-background-inverse);
+  --mat-slider-label-label-text-color: var(--amf-foreground-inverse);
+  --mat-slider-label-label-text-font: var(--amf-text-caption-family);
+  --mat-slider-label-label-text-size: var(--amf-text-caption-size);
+  --mat-slider-label-label-text-line-height: var(--amf-text-caption-line-height);
+  --mat-slider-label-label-text-weight: var(--amf-text-caption-weight);
+  --mat-slider-label-label-text-tracking: var(--amf-text-caption-letter-spacing);
+  --mat-slider-value-indicator-border-radius: var(--amf-radius-s);
+  --mat-slider-value-indicator-caret-display: none;
+  --mat-slider-value-indicator-container-transform: translateX(-50%);
+  --mat-slider-value-indicator-height: 28px;
+  --mat-slider-value-indicator-padding: 4px 8px;
+  --mat-slider-value-indicator-width: auto;
+  --mat-slider-value-indicator-text-transform: none;
+  --mat-slider-with-tick-marks-active-container-color: var(--amf-foreground-on-primary);
+  --mat-slider-with-tick-marks-inactive-container-color: var(--amf-foreground-secondary);
+}
+.mat-mdc-slider.gui-secondary { --gui-c: var(--amf-action-secondary-default); }
+/* Curseur bordé 2 px Background/Surface (Slider Thumb), comme le chevauchement des curseurs d'une plage */
+.mat-mdc-slider .mdc-slider__thumb-knob { box-shadow: 0 0 0 2px var(--amf-background-surface); }
+/* Focus clavier : calque Pressed 12 % + anneau Border/Focus 2 px sur le cercle de 40 px */
+.mat-mdc-slider .mdc-slider__input:focus-visible + .mdc-slider__thumb .mat-mdc-focus-indicator::before,
+.mat-mdc-slider .mdc-slider__thumb--focused .mdc-slider__thumb-knob::after { content: none; }
+.mat-mdc-slider .mdc-slider__thumb--focused::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--amf-border-focus);
+  pointer-events: none;
+}
+
+/* ── Chip (page 🆕 Chip, journal 15/09 et 24/09) : Assist / Filter / Input × Outlined / Filled (gui-filled) ×
+ *    Medium 32 (défaut) / Small 24 (gui-sm) ; pilule Radius/Full, bord Border/Input, Body 2 (Caption en Small) ;
+ *    neutre (la couleur revient à Tag et Badge) ; Filter sélectionné en Primary plein, coche Foreground/On Primary ── */
+.mat-mdc-standard-chip {
+  --gui-chip-h: 32px;
+  --gui-chip-px: 12px;
+  --gui-chip-gap: 8px;
+  --mat-chip-container-height: var(--gui-chip-h);
+  --mat-chip-container-shape-radius: var(--amf-radius-full);
+  --mat-chip-outline-color: var(--amf-border-input);
+  --mat-chip-outline-width: 1px;
+  --mat-chip-disabled-outline-color: var(--amf-action-disabled-border);
+  --mat-chip-focus-outline-color: var(--amf-border-input);
+  --mat-chip-flat-selected-outline-width: 0;
+  --mat-chip-elevated-container-color: var(--amf-background-surface);
+  --mat-chip-elevated-disabled-container-color: var(--amf-background-surface);
+  --mat-chip-elevated-selected-container-color: var(--amf-action-primary-default);
+  --mat-chip-flat-disabled-selected-container-color: var(--amf-action-disabled-background);
+  --mat-chip-label-text-font: var(--amf-text-body-2-family);
+  --mat-chip-label-text-size: var(--amf-text-body-2-size);
+  --mat-chip-label-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-chip-label-text-weight: var(--amf-text-body-2-weight);
+  --mat-chip-label-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-chip-label-text-color: var(--amf-foreground-primary);
+  --mat-chip-selected-label-text-color: var(--amf-foreground-on-primary);
+  --mat-chip-disabled-label-text-color: var(--amf-action-disabled-foreground);
+  --mat-chip-disabled-container-opacity: 1;
+  --mat-chip-with-icon-icon-size: 16px;
+  --mat-chip-with-icon-icon-color: var(--amf-foreground-primary);
+  --mat-chip-with-icon-selected-icon-color: var(--amf-foreground-on-primary);
+  --mat-chip-with-icon-disabled-icon-color: var(--amf-action-disabled-foreground);
+  --mat-chip-with-icon-disabled-icon-opacity: 1;
+  --mat-chip-with-trailing-icon-trailing-icon-color: var(--amf-foreground-secondary);
+  --mat-chip-with-trailing-icon-disabled-trailing-icon-color: var(--amf-action-disabled-foreground);
+  --mat-chip-with-trailing-icon-disabled-trailing-icon-opacity: 1;
+  --mat-chip-selected-trailing-icon-color: var(--amf-foreground-on-primary);
+  --mat-chip-touch-target-display: none;
+  /* AMF change la couleur du conteneur au survol, sans calque d'état */
+  --mat-chip-hover-state-layer-opacity: 0;
+  --mat-chip-focus-state-layer-opacity: 0;
+  --mat-chip-selected-hover-state-layer-opacity: 0;
+  --mat-chip-selected-focus-state-layer-opacity: 0;
+  --mat-chip-trailing-action-hover-state-layer-opacity: 0;
+  --mat-chip-trailing-action-focus-state-layer-opacity: 0;
+  --mat-chip-trailing-action-opacity: 1;
+  --mat-chip-trailing-action-focus-opacity: 1;
+}
+.mat-mdc-standard-chip.gui-sm {
+  --gui-chip-h: 24px;
+  --gui-chip-px: 8px;
+  --gui-chip-gap: 4px;
+  --mat-chip-label-text-font: var(--amf-text-caption-family);
+  --mat-chip-label-text-size: var(--amf-text-caption-size);
+  --mat-chip-label-text-line-height: var(--amf-text-caption-line-height);
+  --mat-chip-label-text-tracking: var(--amf-text-caption-letter-spacing);
+}
+.mat-mdc-standard-chip.gui-filled {
+  --mat-chip-outline-width: 0;
+  --mat-chip-elevated-container-color: var(--amf-action-neutral-subtle);
+  --mat-chip-elevated-disabled-container-color: var(--amf-action-disabled-background);
+}
+.mat-mdc-standard-chip .mdc-evolution-chip__action--primary,
+.mat-mdc-standard-chip.mdc-evolution-chip--with-primary-graphic .mdc-evolution-chip__action--primary {
+  padding-inline: var(--gui-chip-px);
+}
+.mat-mdc-standard-chip.mdc-evolution-chip--with-trailing-action .mdc-evolution-chip__action--primary { padding-inline-end: 0; }
+.mat-mdc-standard-chip .mdc-evolution-chip__action--trailing { padding-inline: var(--gui-chip-gap) var(--gui-chip-px); }
+.mat-mdc-standard-chip .mdc-evolution-chip__graphic { padding-inline: 0 var(--gui-chip-gap); }
+.mat-mdc-standard-chip .mdc-evolution-chip__checkmark { width: 16px; height: 16px; }
+.mat-mdc-standard-chip .mdc-evolution-chip__icon--trailing { font-size: 16px; width: 16px; height: 16px; }
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled):not(.mdc-evolution-chip--selected):hover {
+  --mat-chip-elevated-container-color: var(--amf-action-neutral-subtle);
+}
+.mat-mdc-standard-chip.gui-filled:not(.mdc-evolution-chip--disabled):not(.mdc-evolution-chip--selected):hover {
+  --mat-chip-elevated-container-color: var(--amf-action-neutral-subtle-hover);
+}
+.mat-mdc-standard-chip.mdc-evolution-chip--selected:not(.mdc-evolution-chip--disabled):hover {
+  --mat-chip-elevated-selected-container-color: var(--amf-action-primary-hover);
+}
+/* Anneau de focus : Border/Focus 2 px à 4 px du chip (cadre Figma Focus Ring) */
+.mat-mdc-standard-chip .mat-focus-indicator::before { border-radius: var(--amf-radius-full); }
+.mat-mdc-chip-set .mdc-evolution-chip-set__chips { gap: 8px; margin-left: 0; }
+.mat-mdc-chip-set .mdc-evolution-chip { margin: 0; }
+
+/* ── Date Picker (page 🆕 Date Picker, journal 16/09 et 22/09) : Calendar 312 px, marges 16 / 8, cellules 40 avec
+ *    pastille 36 Radius/Full ; choisi Primary plein, aujourd'hui bord Border/Input, plage en Primary Tint ────── */
+html {
+  --mat-datepicker-calendar-text-font: var(--amf-text-body-2-family);
+  --mat-datepicker-calendar-text-size: var(--amf-text-body-2-size);
+  --mat-datepicker-calendar-body-label-text-color: var(--amf-foreground-secondary);
+  --mat-datepicker-calendar-body-label-text-size: var(--amf-text-caption-size);
+  --mat-datepicker-calendar-body-label-text-weight: var(--amf-text-form-label-weight);
+  --mat-datepicker-calendar-period-button-text-color: var(--amf-foreground-primary);
+  --mat-datepicker-calendar-period-button-text-size: var(--amf-text-form-label-size);
+  --mat-datepicker-calendar-period-button-text-weight: var(--amf-text-form-label-weight);
+  --mat-datepicker-calendar-period-button-icon-color: var(--amf-foreground-secondary);
+  --mat-datepicker-calendar-navigation-button-icon-color: var(--amf-foreground-secondary);
+  --mat-datepicker-calendar-header-divider-color: transparent;
+  --mat-datepicker-calendar-header-text-color: var(--amf-foreground-secondary);
+  --mat-datepicker-calendar-header-text-size: var(--amf-text-caption-size);
+  --mat-datepicker-calendar-header-text-weight: var(--amf-text-caption-weight);
+  --mat-datepicker-calendar-date-text-color: var(--amf-foreground-primary);
+  --mat-datepicker-calendar-date-disabled-state-text-color: var(--amf-foreground-disabled);
+  --mat-datepicker-calendar-date-outline-color: transparent;
+  --mat-datepicker-calendar-date-today-outline-color: var(--amf-border-input);
+  --mat-datepicker-calendar-date-today-disabled-state-outline-color: var(--amf-border-disabled);
+  --mat-datepicker-calendar-date-today-selected-state-outline-color: var(--amf-action-primary-default);
+  --mat-datepicker-calendar-date-hover-state-background-color: var(--amf-action-neutral-subtle);
+  --mat-datepicker-calendar-date-focus-state-background-color: var(--amf-action-neutral-subtle);
+  --mat-datepicker-calendar-date-selected-state-background-color: var(--amf-action-primary-default);
+  --mat-datepicker-calendar-date-selected-state-text-color: var(--amf-foreground-on-primary);
+  --mat-datepicker-calendar-date-selected-disabled-state-background-color: var(--amf-action-disabled-background);
+  --mat-datepicker-calendar-date-in-range-state-background-color: var(--amf-action-primary-tint);
+  --mat-datepicker-calendar-date-in-comparison-range-state-background-color: var(--amf-action-secondary-tint);
+  --mat-datepicker-calendar-date-in-overlap-range-state-background-color: var(--amf-action-secondary-tint);
+  --mat-datepicker-calendar-date-in-overlap-range-selected-state-background-color: var(--amf-action-secondary-default);
+  --mat-datepicker-calendar-date-preview-state-outline-color: var(--amf-action-primary-default);
+  --mat-datepicker-range-input-separator-color: var(--amf-foreground-secondary);
+  --mat-datepicker-range-input-disabled-state-separator-color: var(--amf-foreground-disabled);
+  --mat-datepicker-range-input-disabled-state-text-color: var(--amf-foreground-disabled);
+  --mat-datepicker-toggle-icon-color: var(--amf-foreground-secondary);
+  --mat-datepicker-toggle-active-state-icon-color: var(--amf-foreground-primary);
+}
+.mat-datepicker-content { border-radius: var(--amf-radius-m); }
+.mat-datepicker-content .mat-calendar { width: 312px; height: auto; }
+.mat-calendar .mat-calendar-header { padding: 16px 16px 0; }
+.mat-calendar .mat-calendar-content { padding: 0 16px 8px; }
+.mat-calendar .mat-calendar-controls { margin: 0 0 8px; }
+.mat-calendar .mat-calendar-table-header th { padding: 4px 0; }
+.mat-calendar .mat-calendar-body-cell-content { border-width: 1px; }
+.mat-calendar .mat-calendar-body-in-range .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+  color: var(--amf-action-primary-on-tint);
+}
+/* Focus clavier : anneau Border/Focus 2 px sur la pastille (Calendar Cell State=Focused) */
+.mat-calendar-body-cell:focus-visible .mat-focus-indicator::before { content: none; }
+.cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content,
+.cdk-program-focused .mat-calendar-body-active > .mat-calendar-body-cell-content,
+.mat-calendar-body-cell:focus-visible > .mat-calendar-body-cell-content {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: -2px;
+}
+.mat-calendar-period-button { --gui-btn-font-size: var(--amf-text-form-label-size); }
+
+/* ── Time Picker (page 🆕 Time Picker, journal 24/09) : Form Field HH:MM saisissable + liste d'heures (options du
+ *    Select) dans un panneau, référence mat-timepicker ; l'horloge v1 n'est pas reprise ───────────────────── */
+.mat-timepicker-panel { max-height: 218px; }
+
+/* ── Menu (page 🆕 Menu, journal 18/09 et 29/09) : panneau Radius/M Border/Strong, items 40 px marge 16 écart 12,
+ *    icône 20 ; Destructive en Action/Error (classe gui-destructive) ; Selected : Form Label + coche à droite
+ *    (classe gui-selected) ; raccourci en Caption Foreground/Secondary (span gui-menu-shortcut) ───────────────── */
+html {
+  --mat-menu-item-label-text-font: var(--amf-text-body-2-family);
+  --mat-menu-item-label-text-size: var(--amf-text-body-2-size);
+  --mat-menu-item-label-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-menu-item-label-text-weight: var(--amf-text-body-2-weight);
+  --mat-menu-item-label-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-menu-item-label-text-color: var(--amf-foreground-primary);
+  --mat-menu-item-icon-color: var(--amf-foreground-secondary);
+  --mat-menu-item-icon-size: 20px;
+  --mat-menu-item-hover-state-layer-color: var(--amf-action-neutral-subtle);
+  --mat-menu-item-focus-state-layer-color: var(--amf-action-neutral-subtle);
+  --mat-menu-item-spacing: 12px;
+  --mat-menu-item-leading-spacing: 16px;
+  --mat-menu-item-trailing-spacing: 16px;
+  --mat-menu-item-with-icon-leading-spacing: 16px;
+  --mat-menu-item-with-icon-trailing-spacing: 16px;
+  --mat-menu-divider-color: var(--amf-border-subtle);
+  --mat-menu-divider-top-spacing: 0;
+  --mat-menu-divider-bottom-spacing: 0;
+}
+.mat-mdc-menu-panel .mat-mdc-menu-content { padding: 8px 0; }
+.mat-mdc-menu-item { min-height: 40px; }
+.mat-mdc-menu-item:hover:not([disabled]),
+.mat-mdc-menu-item.cdk-program-focused:not([disabled]),
+.mat-mdc-menu-item.cdk-keyboard-focused:not([disabled]),
+.mat-mdc-menu-item-highlighted:not([disabled]) { background-color: var(--amf-action-neutral-subtle); }
+.mat-mdc-menu-item.cdk-keyboard-focused:not([disabled]) { background-color: var(--amf-background-surface); box-shadow: inset 0 0 0 2px var(--amf-border-focus); }
+.mat-mdc-menu-item[disabled] { opacity: 1; }
+.mat-mdc-menu-item[disabled] .mat-mdc-menu-item-text,
+.mat-mdc-menu-item[disabled] .mat-icon { color: var(--amf-foreground-disabled); }
+.mat-mdc-menu-item.gui-destructive,
+.mat-mdc-menu-item.gui-destructive .mat-icon { --mat-menu-item-label-text-color: var(--amf-action-error-foreground); color: var(--amf-action-error-foreground); }
+.mat-mdc-menu-item.gui-destructive:hover:not([disabled]) { background-color: var(--amf-action-error-subtle); }
+.mat-mdc-menu-item.gui-selected .mat-mdc-menu-item-text { font-weight: var(--amf-text-form-label-weight); }
+.mat-mdc-menu-item.mat-mdc-menu-item .mat-mdc-menu-item-text { display: flex; align-items: center; gap: 12px; flex: 1; }
+.gui-menu-shortcut,
+.gui-menu-check { margin-inline-start: auto; }
+.gui-menu-shortcut {
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--amf-text-caption-family);
+  color: var(--amf-foreground-secondary);
+}
+.mat-mdc-menu-item .gui-menu-check { font-size: 20px; width: 20px; height: 20px; color: var(--amf-foreground-primary); }
+.mat-mdc-menu-item .mat-mdc-menu-submenu-icon { fill: var(--amf-foreground-secondary); }
+.mat-mdc-menu-panel .mat-divider { margin-block: 0; }
+.gui-menu-subheader {
+  padding: 8px 16px 4px;
+  font: var(--amf-text-caption-medium-weight) var(--amf-text-caption-medium-size) / var(--amf-text-caption-medium-line-height) var(--amf-text-caption-medium-family);
+  color: var(--amf-foreground-secondary);
+}
+
+/* ── Button Dropdown (page 🆕 Button Dropdown, journal 14/09, 22/09 et 28/09) : Single = Button + chevron
+ *    Arrow Drop Down (Arrow Drop Up et couleur Pressed quand le menu est ouvert) ; Split = Action + Chevron
+ *    (Button Icon) accolés à 1 px, même style, même couleur et même taille ─────────────────────────────────── */
+.mat-mdc-unelevated-button[aria-expanded='true'] { --mat-button-filled-container-color: var(--gui-c-pressed); }
+:is(.mat-mdc-outlined-button, .mat-mdc-button, .mat-mdc-icon-button)[aria-expanded='true'] { background-color: var(--gui-c-subtle-hover); }
+.mat-mdc-icon-button.gui-filled[aria-expanded='true'] { background-color: var(--gui-c-pressed); }
+.gui-split { display: inline-flex; gap: 1px; vertical-align: middle; }
+.gui-split > .mat-mdc-button-base:first-child { border-start-end-radius: 0; border-end-end-radius: 0; --mat-button-filled-container-shape: var(--amf-radius-button) 0 0 var(--amf-radius-button); --mat-button-outlined-container-shape: var(--amf-radius-button) 0 0 var(--amf-radius-button); }
+.gui-split > .mat-mdc-button-base:last-child { border-start-start-radius: 0; border-end-start-radius: 0; --mat-icon-button-container-shape: 0 var(--amf-radius-button) var(--amf-radius-button) 0; }
+.gui-split > .mat-mdc-icon-button { border-radius: 0 var(--amf-radius-button) var(--amf-radius-button) 0; }
+.gui-split > .mat-mdc-icon-button .mat-mdc-button-persistent-ripple,
+.gui-split > .mat-mdc-icon-button .mat-mdc-button-ripple { border-radius: inherit; }
+.gui-split > .mat-mdc-button-base:first-child .mat-focus-indicator::before { border-radius: var(--amf-radius-button-focus) 0 0 var(--amf-radius-button-focus); }
+.gui-split > .mat-mdc-button-base:last-child .mat-focus-indicator::before { border-radius: 0 var(--amf-radius-button-focus) var(--amf-radius-button-focus) 0; }
+.mat-mdc-button-base > .mat-icon.gui-dropdown-icon { margin-inline: 0 -4px; }
+
+/* ── File Upload (page 🆕 File Upload, journal 25/09) : zone de dépôt Radius/M bord pointillé Border/Input,
+ *    marges 24, écart 12 ; survol Neutral Subtle ; dépôt en cours (gui-dragover) Secondary Tint bord 2 px
+ *    Secondary ; focus Border/Focus 2 px ; erreur (gui-error) Border/Error 2 px + message ; désactivé ───────── */
+.gui-file-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  border: 1px dashed var(--amf-border-input);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface);
+  text-align: center;
+  color: var(--amf-foreground-primary);
+}
+.gui-file-upload > .mat-icon { font-size: 32px; width: 32px; height: 32px; color: var(--amf-foreground-secondary); }
+.gui-file-upload-title {
+  margin: 0;
+  font: var(--amf-text-body-1-weight) var(--amf-text-body-1-size) / var(--amf-text-body-1-line-height) var(--amf-text-body-1-family);
+  letter-spacing: var(--amf-text-body-1-letter-spacing);
+}
+.gui-file-upload-browse { display: flex; align-items: center; gap: 8px; color: var(--amf-foreground-secondary); }
+.gui-file-upload-hint,
+.gui-file-upload-error {
+  margin: 0;
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--amf-text-caption-family);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+  color: var(--amf-foreground-secondary);
+}
+.gui-file-upload-error { color: var(--amf-feedback-error-foreground); }
+.gui-file-upload:hover:not(.gui-disabled) { background: var(--amf-action-neutral-subtle); }
+.gui-file-upload:focus-within:not(.gui-disabled) { border: 2px solid var(--amf-border-focus); padding: 23px; }
+.gui-file-upload:focus-within .mat-mdc-button-base .mat-focus-indicator::before { display: none; }
+.gui-file-upload.gui-dragover { background: var(--amf-action-secondary-tint); border: 2px solid var(--amf-action-secondary-default); padding: 23px; }
+.gui-file-upload.gui-error { border: 2px solid var(--amf-border-error); padding: 23px; }
+.gui-file-upload.gui-disabled { background: var(--amf-background-disabled); border-color: var(--amf-border-disabled); border-style: solid; }
+.gui-file-upload.gui-disabled :is(.gui-file-upload-title, .gui-file-upload-browse, .gui-file-upload-hint, .mat-icon) { color: var(--amf-foreground-disabled); }
+
+/* File Item : fichier déposé, Radius/M bord Border/Strong, marges 12 / 8 ; en cours (barre de progression 4 px),
+ * terminé (Status), erreur (bord Border/Error + message, journal 25/09) */
+.gui-file-list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.gui-file-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface);
+}
+.gui-file-item > .mat-icon:first-child { font-size: 24px; width: 24px; height: 24px; color: var(--amf-foreground-secondary); flex: none; }
+.gui-file-item-texts { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+.gui-file-item-name { color: var(--amf-foreground-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gui-file-item-meta,
+.gui-file-item-error {
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--amf-text-caption-family);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+  color: var(--amf-foreground-secondary);
+}
+.gui-file-item-error { color: var(--amf-feedback-error-foreground); }
+.gui-file-item.gui-error { border-color: var(--amf-border-error); }
+.gui-file-item.gui-error > .mat-icon:first-child { color: var(--amf-feedback-error-foreground); }
+
+/* Progress Bar (utilisée par File Item) : piste 4 px Border/Subtle, indicateur couleur d'action, Radius/XS */
+.mat-mdc-progress-bar {
+  --mat-progress-bar-active-indicator-color: var(--amf-action-primary-default);
+  --mat-progress-bar-track-color: var(--amf-border-subtle);
+  --mat-progress-bar-track-height: 4px;
+  --mat-progress-bar-active-indicator-height: 4px;
+  --mat-progress-bar-track-shape: var(--amf-radius-xs);
+  border-radius: var(--amf-radius-xs);
+}
+.mat-mdc-progress-bar.gui-secondary { --mat-progress-bar-active-indicator-color: var(--amf-action-secondary-default); }

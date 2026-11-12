@@ -1,0 +1,22 @@
+<div class="ex">
+  <fieldset class="gui-group">
+    <legend id="ex-poste">Poste</legend>
+    <mat-radio-group class="gui-group-items" aria-labelledby="ex-poste" value="matin">
+      <mat-radio-button value="matin">Matin</mat-radio-button>
+      <mat-radio-button value="apres-midi">Après-midi</mat-radio-button>
+      <mat-radio-button value="nuit">Nuit</mat-radio-button>
+    </mat-radio-group>
+  </fieldset>
+  <fieldset class="gui-group gui-horizontal gui-error">
+    <legend id="ex-sens">Sens de bobinage</legend>
+    <mat-radio-group
+      class="gui-group-items"
+      aria-labelledby="ex-sens"
+      aria-describedby="ex-sens-erreur"
+    >
+      <mat-radio-button value="dessus">Dessus</mat-radio-button>
+      <mat-radio-button value="dessous">Dessous</mat-radio-button>
+    </mat-radio-group>
+    <p class="gui-group-error" id="ex-sens-erreur">Choisissez un sens</p>
+  </fieldset>
+</div>

@@ -7,9 +7,12 @@ Design system AMF v2.0 (fichier Figma « AMF Design System [v2.0].fig ») appliq
 - `projects/galma-ui` : la bibliothèque (paquet `galma-ui`).
   - `tokens/amf-tokens.css` : jetons AMF **générés** depuis le .fig (`npm run jetons`). Ne jamais modifier à la main.
   - `tokens/galma-material.css` : composants Material habillés AMF (jetons `--mat-*` reliés aux jetons `--amf-*`).
+  - `tokens/galma-formulaires.css` : famille formulaire (lot 2) : Textarea, Select, groupes de cases et de radios,
+    Slider, Chip, Date Picker, Time Picker, Menu, Button Dropdown, File Upload et File Item.
   - `tokens/galma-composants.css` : Badge, Tag, Count, Status (sans équivalent Material), typographie, icônes.
   - `tokens/galma-theme.css` : point d'entrée ; mode sombre (proposition galma-ui), états process Galma2, `--mat-sys-*`.
-  - `provideGalmaMaterial()` : animations et ripple coupés (postes RDS sans GPU), champs outlined, réglages AMF.
+  - `provideGalmaMaterial()` : animations et ripple coupés (postes RDS sans GPU), champs outlined, réglages AMF,
+    libellés du Date Picker en français (`GalmaDatepickerIntl`).
   - `assets/` : Roboto (OFL) et Material Icons (Apache 2.0) embarquées, logos.
 - `projects/showcase` : la vitrine. Une page par composant AMF, code HTML / TypeScript / CSS à copier, couleurs,
   typographie, mode sombre audité, conformité au journal du Figma.
@@ -45,6 +48,11 @@ sombre de la vitrine (`projects/showcase/public/audit/axe.json`).
 ```ts
 providers: [provideGalmaMaterial()]
 ```
+
+Date Picker et Time Picker : fournir un adaptateur de dates et la locale (`provideNativeDateAdapter()`,
+`{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }`). Un composant qui importe `MatDatepickerModule` doit aussi fournir
+`{ provide: MatDatepickerIntl, useClass: GalmaDatepickerIntl }` : le module remet ses libellés anglais. Saisie clavier
+jj/mm/aaaa : l'adaptateur natif ne sait pas la lire, choisir un adaptateur (Luxon, date-fns…) : Inconnu (à confirmer).
 
 Variantes par classes : `gui-secondary`, `gui-neutral`, `gui-destructive` ; tailles `gui-sm`, `gui-lg` ; mode Rounded
 AMF : `amf-rounded` sur un conteneur ; mode sombre : `setGalmaThemeMode('dark')` (classe `dark` sur `<html>`).

@@ -14,6 +14,8 @@ import {
 } from '@angular/material/button-toggle';
 import { MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS } from '@angular/material/slide-toggle';
 import { MAT_TABS_CONFIG, MatTabsConfig } from '@angular/material/tabs';
+import { MatDatepickerIntl } from '@angular/material/datepicker';
+import { GalmaDatepickerIntl } from './galma-intl';
 
 /**
  * Réglages Angular Material du design system AMF pour Galma2.
@@ -23,6 +25,8 @@ import { MAT_TABS_CONFIG, MatTabsConfig } from '@angular/material/tabs';
  * - Toggle Button : pas de coche, la sélection se lit au fond (page 🆕 Toggle Button).
  * - Toggle Switch : pas d'icône dans le curseur (propriété Icon masquée par défaut dans le Figma).
  * - Onglets : indicateur à la largeur de l'onglet, alignés à gauche, sans étirement.
+ * - Date Picker : libellés accessibles en français (GalmaDatepickerIntl). L'adaptateur de dates et la locale
+ *   (MAT_DATE_LOCALE) restent au choix de l'application.
  */
 export function provideGalmaMaterial(): EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -55,5 +59,6 @@ export function provideGalmaMaterial(): EnvironmentProviders {
         alignTabs: 'start',
       } satisfies MatTabsConfig,
     },
+    { provide: MatDatepickerIntl, useClass: GalmaDatepickerIntl },
   ]);
 }

@@ -8,11 +8,13 @@ interface ResultatAxe {
   genere: string;
   outil: string;
   regles: string;
+  exceptions?: { regle: string; cible: string; motif: string }[];
   pages: {
     route: string;
     titre: string;
     mode: 'clair' | 'sombre';
     violations: { id: string; impact: string; aide: string; noeuds: number; cibles: string[] }[];
+    exceptions?: { id: string; cible: string; motif: string }[];
     reussies: number;
     incompletes: number;
   }[];
@@ -79,7 +81,7 @@ interface ResultatAxe {
           <code>npm run audit:axe</code> ; chaque page de la vitrine, en clair et en sombre, règles
           WCAG 2.0 / 2.1 A et AA. Les éléments « à vérifier » restants sont les libellés des Toggle
           Buttons, dont axe ne peut pas lire le fond (couche de focus Material par-dessus) ; leurs
-          couleurs sont couvertes par l’audit des jetons.
+          couleurs sont couvertes par l’audit des jetons. Panneaux flottants audités ouverts.
         </li>
       </ul>
     </section>
@@ -89,8 +91,15 @@ interface ResultatAxe {
       @if (axe(); as a) {
         <p class="gui-body-2 gui-secondary-text">
           {{ a.outil }}, règles {{ a.regles }}, exécuté le
-          {{ a.genere.slice(0, 16).replace('T', ' à ') }} (UTC).
+          {{ a.genere.slice(0, 16).replace('T', ' à ') }} (UTC). Les panneaux flottants (Select,
+          calendrier, liste d’heures, menus) sont audités ouverts.
         </p>
+        @for (e of a.exceptions ?? []; track e.cible) {
+          <p class="gui-body-2">
+            <strong>Exception documentée</strong> ({{ e.regle }}, <code>{{ e.cible }}</code>) :
+            {{ e.motif }}
+          </p>
+        }
         <div class="table" role="region" aria-label="Résultats axe-core" tabindex="0">
           <table>
             <thead>
@@ -111,6 +120,11 @@ interface ResultatAxe {
                           <span class="gui-status gui-success"
                             >0 violation · {{ m.reussies }} règles réussies</span
                           >
+                          @if (m.exceptions?.length) {
+                            <span class="gui-caption gui-secondary-text">
+                              · {{ m.exceptions!.length }} exception documentée</span
+                            >
+                          }
                         } @else {
                           <span class="gui-status gui-error"
                             >{{ m.violations.length }} violation(s)</span

@@ -4,3 +4,4 @@
  */
 export * from './lib/theme/provide-galma-material';
 export * from './lib/theme/theme-mode';
+export * from './lib/theme/galma-intl';

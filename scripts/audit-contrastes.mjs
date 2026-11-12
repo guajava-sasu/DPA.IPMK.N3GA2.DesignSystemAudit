@@ -204,6 +204,44 @@ for (const bg of ['page', 'surface'])
     `Anneau de focus sur ${bg}`,
   );
 G('Bordures et focus', '--amf-border-error', '--amf-background-surface', 'Bordure d’erreur');
+// Famille formulaire (lot 2) : options et items survolés, chips, zone de dépôt
+T(
+  'Formulaires',
+  '--amf-foreground-primary',
+  '--amf-action-neutral-subtle',
+  'Option, item de menu, chip au survol',
+);
+T(
+  'Formulaires',
+  '--amf-foreground-primary',
+  '--amf-action-neutral-subtle-hover',
+  'Chip Filled au survol',
+);
+T(
+  'Formulaires',
+  '--amf-foreground-primary',
+  '--amf-action-secondary-tint',
+  'Zone de dépôt survolée : titre',
+);
+T(
+  'Formulaires',
+  '--amf-foreground-secondary',
+  '--amf-action-secondary-tint',
+  'Zone de dépôt survolée : aide',
+);
+G(
+  'Formulaires',
+  '--amf-action-secondary-default',
+  '--amf-action-secondary-tint',
+  'Zone de dépôt survolée : bordure',
+);
+G('Formulaires', '--amf-border-input', '--amf-action-neutral-subtle', 'Bordure de chip au survol');
+T(
+  'Formulaires',
+  '--amf-action-error-foreground',
+  '--amf-background-surface',
+  'Item de menu destructif',
+);
 
 function mesurer(vars) {
   return P.map((p) => {

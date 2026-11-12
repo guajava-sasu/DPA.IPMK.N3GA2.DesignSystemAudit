@@ -1,0 +1,35 @@
+<div class="ex">
+  <button matButton="filled" [matMenuTriggerFor]="export" #t1="matMenuTrigger">
+    Exporter
+    <mat-icon iconPositionEnd class="gui-dropdown-icon">{{
+      t1.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'
+    }}</mat-icon>
+  </button>
+  <button
+    matButton="outlined"
+    class="gui-secondary"
+    [matMenuTriggerFor]="export"
+    #t2="matMenuTrigger"
+  >
+    Exporter
+    <mat-icon iconPositionEnd class="gui-dropdown-icon">{{
+      t2.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'
+    }}</mat-icon>
+  </button>
+  <button
+    matButton="outlined"
+    class="gui-neutral gui-sm"
+    [matMenuTriggerFor]="export"
+    #t3="matMenuTrigger"
+  >
+    Exporter
+    <mat-icon iconPositionEnd class="gui-dropdown-icon">{{
+      t3.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down'
+    }}</mat-icon>
+  </button>
+</div>
+<mat-menu #export="matMenu">
+  <button mat-menu-item>CSV</button>
+  <button mat-menu-item>Excel</button>
+  <button mat-menu-item>PDF</button>
+</mat-menu>

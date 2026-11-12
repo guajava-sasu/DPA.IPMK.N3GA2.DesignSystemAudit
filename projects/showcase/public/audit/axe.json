@@ -1,14 +1,22 @@
 {
- "genere": "2026-11-12T18:16:06.179Z",
+ "genere": "2026-11-12T19:12:41.425Z",
  "outil": "axe-core 4.14.0",
  "regles": "wcag2a, wcag2aa, wcag21a, wcag21aa",
+ "exceptions": [
+  {
+   "regle": "label-content-name-mismatch",
+   "cible": ".mat-calendar-period-button",
+   "motif": "Bouton de période du calendrier Material : texte affiché (« NOV. 2026 ») caché aux aides techniques, nom « Choisir le mois et l’année », période donnée en description (aria-describedby). Écart Material connu sur le critère 2.5.3 ; correction possible par un en-tête de calendrier personnalisé (calendarHeaderComponent)."
+  }
+ ],
  "pages": [
   {
    "route": "/",
    "titre": "Installation",
    "mode": "clair",
    "violations": [],
-   "reussies": 22,
+   "exceptions": [],
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -16,7 +24,8 @@
    "titre": "Couleurs",
    "mode": "clair",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -24,7 +33,8 @@
    "titre": "Typographie et dimensions",
    "mode": "clair",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -32,7 +42,8 @@
    "titre": "Button",
    "mode": "clair",
    "violations": [],
-   "reussies": 23,
+   "exceptions": [],
+   "reussies": 24,
    "incompletes": 1
   },
   {
@@ -40,7 +51,8 @@
    "titre": "Button Icon",
    "mode": "clair",
    "violations": [],
-   "reussies": 22,
+   "exceptions": [],
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -48,6 +60,7 @@
    "titre": "Form Field",
    "mode": "clair",
    "violations": [],
+   "exceptions": [],
    "reussies": 26,
    "incompletes": 1
   },
@@ -56,7 +69,8 @@
    "titre": "Checkbox",
    "mode": "clair",
    "violations": [],
-   "reussies": 23,
+   "exceptions": [],
+   "reussies": 24,
    "incompletes": 1
   },
   {
@@ -64,7 +78,8 @@
    "titre": "Radio",
    "mode": "clair",
    "violations": [],
-   "reussies": 23,
+   "exceptions": [],
+   "reussies": 24,
    "incompletes": 1
   },
   {
@@ -72,7 +87,8 @@
    "titre": "Toggle Switch",
    "mode": "clair",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -80,7 +96,8 @@
    "titre": "Toggle Button",
    "mode": "clair",
    "violations": [],
-   "reussies": 22,
+   "exceptions": [],
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -88,7 +105,8 @@
    "titre": "Tabs",
    "mode": "clair",
    "violations": [],
-   "reussies": 25,
+   "exceptions": [],
+   "reussies": 26,
    "incompletes": 1
   },
   {
@@ -96,7 +114,8 @@
    "titre": "Card",
    "mode": "clair",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -104,7 +123,8 @@
    "titre": "Badge",
    "mode": "clair",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -112,6 +132,7 @@
    "titre": "Tag",
    "mode": "clair",
    "violations": [],
+   "exceptions": [],
    "reussies": 22,
    "incompletes": 1
   },
@@ -120,7 +141,8 @@
    "titre": "Count",
    "mode": "clair",
    "violations": [],
-   "reussies": 22,
+   "exceptions": [],
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -128,7 +150,8 @@
    "titre": "Status",
    "mode": "clair",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -136,7 +159,80 @@
    "titre": "Divider",
    "mode": "clair",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/select",
+   "titre": "Select",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/curseur",
+   "titre": "Slider",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 27,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/date",
+   "titre": "Date Picker",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/heure",
+   "titre": "Time Picker",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/chip",
+   "titre": "Chip",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 30,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/fichier",
+   "titre": "File Upload",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/bouton-menu",
+   "titre": "Button Dropdown",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/menu",
+   "titre": "Menu",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -144,7 +240,8 @@
    "titre": "Mode sombre audité",
    "mode": "clair",
    "violations": [],
-   "reussies": 26,
+   "exceptions": [],
+   "reussies": 27,
    "incompletes": 1
   },
   {
@@ -152,15 +249,68 @@
    "titre": "Conformité au journal",
    "mode": "clair",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
+  },
+  {
+   "route": "/composants/select (panneau)",
+   "titre": "Select ouvert",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 29,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/date (panneau)",
+   "titre": "Calendrier ouvert",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [
+    {
+     "id": "label-content-name-mismatch",
+     "cible": ".mat-calendar-period-button",
+     "motif": "Bouton de période du calendrier Material : texte affiché (« NOV. 2026 ») caché aux aides techniques, nom « Choisir le mois et l’année », période donnée en description (aria-describedby). Écart Material connu sur le critère 2.5.3 ; correction possible par un en-tête de calendrier personnalisé (calendarHeaderComponent)."
+    }
+   ],
+   "reussies": 31,
+   "incompletes": 3
+  },
+  {
+   "route": "/composants/heure (panneau)",
+   "titre": "Liste d’heures ouverte",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 28,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/menu (panneau)",
+   "titre": "Menu ouvert",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/bouton-menu (panneau)",
+   "titre": "Button Dropdown ouvert",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 2
   },
   {
    "route": "/",
    "titre": "Installation",
    "mode": "sombre",
    "violations": [],
-   "reussies": 22,
+   "exceptions": [],
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -168,7 +318,8 @@
    "titre": "Couleurs",
    "mode": "sombre",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -176,7 +327,8 @@
    "titre": "Typographie et dimensions",
    "mode": "sombre",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -184,7 +336,8 @@
    "titre": "Button",
    "mode": "sombre",
    "violations": [],
-   "reussies": 23,
+   "exceptions": [],
+   "reussies": 24,
    "incompletes": 1
   },
   {
@@ -192,7 +345,8 @@
    "titre": "Button Icon",
    "mode": "sombre",
    "violations": [],
-   "reussies": 22,
+   "exceptions": [],
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -200,6 +354,7 @@
    "titre": "Form Field",
    "mode": "sombre",
    "violations": [],
+   "exceptions": [],
    "reussies": 26,
    "incompletes": 1
   },
@@ -208,7 +363,8 @@
    "titre": "Checkbox",
    "mode": "sombre",
    "violations": [],
-   "reussies": 23,
+   "exceptions": [],
+   "reussies": 24,
    "incompletes": 1
   },
   {
@@ -216,7 +372,8 @@
    "titre": "Radio",
    "mode": "sombre",
    "violations": [],
-   "reussies": 23,
+   "exceptions": [],
+   "reussies": 24,
    "incompletes": 1
   },
   {
@@ -224,7 +381,8 @@
    "titre": "Toggle Switch",
    "mode": "sombre",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -232,7 +390,8 @@
    "titre": "Toggle Button",
    "mode": "sombre",
    "violations": [],
-   "reussies": 22,
+   "exceptions": [],
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -240,7 +399,8 @@
    "titre": "Tabs",
    "mode": "sombre",
    "violations": [],
-   "reussies": 25,
+   "exceptions": [],
+   "reussies": 26,
    "incompletes": 1
   },
   {
@@ -248,7 +408,8 @@
    "titre": "Card",
    "mode": "sombre",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -256,7 +417,8 @@
    "titre": "Badge",
    "mode": "sombre",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -264,6 +426,7 @@
    "titre": "Tag",
    "mode": "sombre",
    "violations": [],
+   "exceptions": [],
    "reussies": 22,
    "incompletes": 1
   },
@@ -272,7 +435,8 @@
    "titre": "Count",
    "mode": "sombre",
    "violations": [],
-   "reussies": 22,
+   "exceptions": [],
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -280,7 +444,8 @@
    "titre": "Status",
    "mode": "sombre",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -288,7 +453,80 @@
    "titre": "Divider",
    "mode": "sombre",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/select",
+   "titre": "Select",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/curseur",
+   "titre": "Slider",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 27,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/date",
+   "titre": "Date Picker",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/heure",
+   "titre": "Time Picker",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/chip",
+   "titre": "Chip",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 30,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/fichier",
+   "titre": "File Upload",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/bouton-menu",
+   "titre": "Button Dropdown",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/menu",
+   "titre": "Menu",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
   },
   {
@@ -296,7 +534,8 @@
    "titre": "Mode sombre audité",
    "mode": "sombre",
    "violations": [],
-   "reussies": 26,
+   "exceptions": [],
+   "reussies": 27,
    "incompletes": 1
   },
   {
@@ -304,8 +543,60 @@
    "titre": "Conformité au journal",
    "mode": "sombre",
    "violations": [],
-   "reussies": 21,
+   "exceptions": [],
+   "reussies": 22,
    "incompletes": 1
+  },
+  {
+   "route": "/composants/select (panneau)",
+   "titre": "Select ouvert",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 29,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/date (panneau)",
+   "titre": "Calendrier ouvert",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [
+    {
+     "id": "label-content-name-mismatch",
+     "cible": ".mat-calendar-period-button",
+     "motif": "Bouton de période du calendrier Material : texte affiché (« NOV. 2026 ») caché aux aides techniques, nom « Choisir le mois et l’année », période donnée en description (aria-describedby). Écart Material connu sur le critère 2.5.3 ; correction possible par un en-tête de calendrier personnalisé (calendarHeaderComponent)."
+    }
+   ],
+   "reussies": 31,
+   "incompletes": 3
+  },
+  {
+   "route": "/composants/heure (panneau)",
+   "titre": "Liste d’heures ouverte",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 28,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/menu (panneau)",
+   "titre": "Menu ouvert",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/bouton-menu (panneau)",
+   "titre": "Button Dropdown ouvert",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 2
   }
  ]
 }

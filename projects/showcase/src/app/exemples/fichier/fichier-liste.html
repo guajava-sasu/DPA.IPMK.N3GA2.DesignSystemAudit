@@ -1,0 +1,39 @@
+<ul class="gui-file-list">
+  <li class="gui-file-item">
+    <mat-icon>description</mat-icon>
+    <div class="gui-file-item-texts">
+      <span class="gui-file-item-name">rapport-coulee-0912.pdf</span>
+      <span class="gui-file-item-meta">2,4 Mo · 65 %</span>
+      <mat-progress-bar
+        mode="determinate"
+        value="65"
+        aria-label="Envoi de rapport-coulee-0912.pdf"
+      />
+    </div>
+    <button matIconButton class="gui-neutral" aria-label="Annuler l'envoi">
+      <mat-icon>close</mat-icon>
+    </button>
+  </li>
+  <li class="gui-file-item">
+    <mat-icon>description</mat-icon>
+    <div class="gui-file-item-texts">
+      <span class="gui-file-item-name">mesures-zinc.csv</span>
+      <span class="gui-file-item-meta">180 Ko</span>
+    </div>
+    <span class="gui-status gui-success">Envoyé</span>
+    <button matIconButton class="gui-neutral" aria-label="Retirer mesures-zinc.csv">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </li>
+  <li class="gui-file-item gui-error">
+    <mat-icon>error</mat-icon>
+    <div class="gui-file-item-texts">
+      <span class="gui-file-item-name">photo-defaut.heic</span>
+      <span class="gui-file-item-meta">4,1 Mo</span>
+      <span class="gui-file-item-error">Format non pris en charge : PDF ou CSV uniquement</span>
+    </div>
+    <button matIconButton class="gui-neutral" aria-label="Retirer photo-defaut.heic">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </li>
+</ul>

@@ -10,11 +10,13 @@
  *
  * À importer dans les styles globaux de l'application :
  *   @import '<chemin>/galma-ui/tokens/galma-theme.css';
- * Fichiers : amf-tokens.css (généré), galma-material.css (composants Material), galma-composants.css (Badge, Tag,
+ * Fichiers : amf-tokens.css (généré), galma-material.css (composants Material), galma-formulaires.css (famille
+ * formulaire : Select, Slider, Chip, Date et Time Picker, Menu, Button Dropdown, File Upload), galma-composants.css (Badge, Tag,
  * Count, Status, typographie, icônes). Polices servies sous /galma/fonts (assets de angular.json). Mode sombre : classe `dark` sur <html>.
  */
 @import './amf-tokens.css';
 @import './galma-material.css';
+@import './galma-formulaires.css';
 @import './galma-composants.css';
 
 /* ── Police Roboto (AMF), variable 100 → 900, embarquée : pas de CDN sur les postes RDS ─ */
@@ -157,7 +159,7 @@
   --amf-action-secondary-subtle: rgb(106 176 233 / 0.12);
   --amf-action-secondary-subtle-hover: rgb(106 176 233 / 0.2);
   --amf-action-secondary-foreground: var(--amf-color-blue-300);
-  --amf-action-secondary-tint: rgb(106 176 233 / 0.2);
+  --amf-action-secondary-tint: rgb(106 176 233 / 0.16);
   --amf-action-secondary-on-tint: var(--amf-color-blue-200);
   --amf-action-neutral-default: #f2f2f2;
   --amf-action-neutral-hover: #ffffff;

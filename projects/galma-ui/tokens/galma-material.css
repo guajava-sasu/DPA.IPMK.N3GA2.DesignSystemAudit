@@ -241,6 +241,9 @@
 }
 .mat-mdc-form-field .mat-mdc-form-field-icon-prefix,
 .mat-mdc-form-field .mat-mdc-form-field-icon-suffix { padding: 0; }
+/* Material retire la marge interne du côté d'une icône : AMF la garde (8 / 12 / 16 selon la taille) */
+.mat-mdc-form-field.mat-mdc-form-field-has-icon-prefix .mat-mdc-text-field-wrapper { padding-inline-start: var(--gui-field-px); }
+.mat-mdc-form-field.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper { padding-inline-end: var(--gui-field-px); }
 .mat-mdc-form-field .mat-mdc-form-field-icon-prefix > .mat-icon,
 .mat-mdc-form-field .mat-mdc-form-field-icon-suffix > .mat-icon {
   padding: 0; font-size: 20px; width: 20px; height: 20px;

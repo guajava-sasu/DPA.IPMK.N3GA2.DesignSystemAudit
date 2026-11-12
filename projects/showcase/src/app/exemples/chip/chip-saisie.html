@@ -1,0 +1,21 @@
+<div class="gui-field">
+  <label class="gui-field-label" for="ex-bobines">Bobines à inspecter</label>
+  <mat-form-field class="gui-chips">
+    <mat-chip-grid #grille aria-label="Bobines à inspecter">
+      @for (b of bobines(); track b) {
+        <mat-chip-row (removed)="retirer(b)">
+          {{ b }}
+          <button matChipRemove [attr.aria-label]="'Retirer ' + b">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-chip-row>
+      }
+    </mat-chip-grid>
+    <input
+      id="ex-bobines"
+      placeholder="Ajouter"
+      [matChipInputFor]="grille"
+      (matChipInputTokenEnd)="ajouter($event)"
+    />
+  </mat-form-field>
+</div>

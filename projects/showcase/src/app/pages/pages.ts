@@ -1,7 +1,12 @@
 /** Pages composants de la vitrine : page 🆕 du Figma AMF suivie, réglage Material, écarts connus. */
+/** Familles du menu, dans l'ordre d'affichage. */
+export const FAMILLES = ['Actions', 'Formulaires', 'Navigation et contenus', 'Retours'] as const;
+export type Famille = (typeof FAMILLES)[number];
+
 export interface PageComposant {
   id: string;
   titre: string;
+  famille: Famille;
   figma: string;
   resume: string;
   material?: string;
@@ -12,6 +17,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'bouton',
     titre: 'Button',
+    famille: 'Actions',
     figma: '🆕 Button (set Button, 240 variantes ; Tonal retiré le 14/09)',
     resume:
       'Bouton Material (matButton) aux mesures AMF : 32 / 40 / 48 px, rayon Radius/Button, libellé BUTTON 2 en capitales, couleur du conteneur qui change au survol et à l’appui, anneau de focus Border/Focus.',
@@ -23,6 +29,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'bouton-icone',
     titre: 'Button Icon',
+    famille: 'Actions',
     figma: '🆕 Button Icon (240 variantes, Disabled n’est plus une couleur)',
     resume:
       'Bouton d’icône Material (matIconButton) : Standard, Filled (gui-filled) ou Outlined (gui-outlined), carré au rayon Radius/Button.',
@@ -32,6 +39,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'champ',
     titre: 'Form Field',
+    famille: 'Formulaires',
     figma: '🆕 Input Base (72 variantes) et 🆕 Form Field (18 variantes)',
     resume:
       'Champ Material en apparence outlined (la seule du Form Field AMF), libellé au-dessus du champ en Form Label, aide et erreur en Caption dessous.',
@@ -39,12 +47,14 @@ export const PAGES: PageComposant[] = [
       "import { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';",
     ecarts: [
       'Libellé : AMF le place au-dessus du champ, Material le fait flotter dans la bordure. galma-ui suit AMF avec un <label for> (classe gui-field-label) et un mat-form-field sans <mat-label>.',
-      'Apparence Fill du Figma non reprise dans ce lot (Outline seule).',
+      'Apparence Fill du Figma non reprise (Outline seule).',
+      'Textarea (Form Field Type=Textarea) : textarea matInput dans le même mat-form-field, hauteur minimale 96 px.',
     ],
   },
   {
     id: 'case',
     titre: 'Checkbox',
+    famille: 'Formulaires',
     figma: '🆕 Checkbox (60 variantes, state layer réduit le 14/09)',
     resume:
       'Case Material : 18 px, Radius/XS, bord 2 px, calque d’état de 32 px au survol et au focus, anneau Border/Focus au clavier.',
@@ -53,6 +63,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'radio',
     titre: 'Radio',
+    famille: 'Formulaires',
     figma: '🆕 Radio (40 variantes)',
     resume: 'Bouton radio Material : cercle 20 px, point 10 px, mêmes états que la Checkbox.',
     material: "import { MatRadioModule } from '@angular/material/radio';",
@@ -60,6 +71,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'interrupteur',
     titre: 'Toggle Switch',
+    famille: 'Formulaires',
     figma: '🆕 Toggle Switch (style M3 unique, piste 44 × 24, curseur 16 / 20)',
     resume:
       'Interrupteur Material (mat-slide-toggle) redimensionné aux mesures AMF, sans icône dans le curseur.',
@@ -68,6 +80,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'bouton-bascule',
     titre: 'Toggle Button',
+    famille: 'Actions',
     figma: '🆕 Toggle Button et Toggle Button Group',
     resume:
       'Groupe de boutons à bascule Material : items bordés Border/Input, sélection pleine Primary, Secondary ou Neutral, sans coche.',
@@ -76,6 +89,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'onglets',
     titre: 'Tabs',
+    famille: 'Navigation et contenus',
     figma: '🆕 Tab et Tab Bar (style line par défaut)',
     resume:
       'Onglets Material : 48 px, BUTTON 2 en capitales, actif Foreground/Brand avec indicateur primaire 2 px, sans animation.',
@@ -84,6 +98,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'carte',
     titre: 'Card',
+    famille: 'Navigation et contenus',
     figma: '🆕 Card (Elevated / Outlined, élévation par Border/Strong)',
     resume:
       'Carte Material (appearance="outlined") : Radius/L, bord Border/Strong, marges et espacement 16 px, titre Body 1 Medium.',
@@ -92,6 +107,7 @@ export const PAGES: PageComposant[] = [
   {
     id: 'badge',
     titre: 'Badge',
+    famille: 'Retours',
     figma: '🆕 Badge (Info / Success / Warning / Error / Neutral × Default / Inverted × S / M / L)',
     resume:
       'Pastille d’état en CSS pur (classe gui-badge) : Material n’a pas d’équivalent (son matBadge correspond au Count).',
@@ -99,18 +115,21 @@ export const PAGES: PageComposant[] = [
   {
     id: 'tag',
     titre: 'Tag',
+    famille: 'Retours',
     figma: '🆕 Tag (Brand + couleurs Accent × Regular / Inverted)',
     resume: 'Étiquette de classement en CSS pur (classe gui-tag).',
   },
   {
     id: 'compteur',
     titre: 'Count',
+    famille: 'Retours',
     figma: '🆕 Count (Dot / Count × Brand / Grey × S / M / L)',
     resume: 'Pastille de nombre ou point de notification en CSS pur (classe gui-count).',
   },
   {
     id: 'statut',
     titre: 'Status',
+    famille: 'Retours',
     figma: '🆕 Status (point + libellé, Small / Medium)',
     resume:
       'Statut en CSS pur (classe gui-status). À ne pas confondre avec les états process Galma2 (marche, arrêt, alarme), propres à galma-ui.',
@@ -118,8 +137,105 @@ export const PAGES: PageComposant[] = [
   {
     id: 'separateur',
     titre: 'Divider',
+    famille: 'Navigation et contenus',
     figma: '🆕 Divider (Horizontal / Vertical × Default / Subtle)',
     resume: 'Séparateur Material (mat-divider), 1 px Border/Default.',
     material: "import { MatDividerModule } from '@angular/material/divider';",
+  },
+  {
+    id: 'select',
+    titre: 'Select',
+    famille: 'Formulaires',
+    figma: '🆕 Select (Single / Multiple × Closed / Open) et Select Option (journal du 28/09)',
+    resume:
+      'Liste déroulante Material (mat-select) dans un Form Field : panneau 4 px sous le champ, Border/Strong, Radius/M, ombre Lv2, options de 40 px ; option choisie en Secondary Tint, coche à droite en choix unique, case en choix multiple.',
+    material:
+      "import { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatSelectModule } from '@angular/material/select';",
+    ecarts: [
+      'Le libellé reste au-dessus du champ : relier le mat-select à son libellé par aria-labelledby (un <label for> ne s’applique pas à un mat-select).',
+      'Flèche du champ : triangle Material (même dessin qu’Arrow Drop Down), en Foreground/Secondary.',
+    ],
+  },
+  {
+    id: 'curseur',
+    titre: 'Slider',
+    famille: 'Formulaires',
+    figma: '🆕 Slider (Single / Range × Primary / Secondary) et Slider Thumb (journal du 18/09)',
+    resume:
+      'Curseur Material (mat-slider) : piste 4 px Radius/XS, curseur 20 px bordé 2 px Background/Surface, calque d’état 40 px, étiquette de valeur sur Background/Inverse en Caption.',
+    material: "import { MatSliderModule } from '@angular/material/slider';",
+    ecarts: [
+      'L’étiquette de valeur n’apparaît qu’en mode discrete (attribut du mat-slider), pendant le glissement ou au focus, comme l’état Active du Figma.',
+    ],
+  },
+  {
+    id: 'date',
+    titre: 'Date Picker',
+    famille: 'Formulaires',
+    figma: '🆕 Date Picker, Calendar et Calendar Cell (journal du 16/09, largeur 312 px le 22/09)',
+    resume:
+      'Sélecteur de date Material (mat-datepicker, mat-date-range-picker) : calendrier 312 px, cellules 40 px à pastille 36, jour choisi en Primary plein, aujourd’hui cerclé Border/Input, plage en Primary Tint.',
+    material:
+      "import { MatDatepickerModule } from '@angular/material/datepicker';\nimport { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';",
+    ecarts: [
+      'Un adaptateur de dates est obligatoire. provideNativeDateAdapter() suffit à l’affichage, mais la saisie clavier jj/mm/aaaa demande un adaptateur qui sait lire ce format (Luxon, date-fns ou Moment) : choix à faire par les applications, Inconnu (à confirmer).',
+      'Raccourcis du Figma (Chips Assist « Aujourd’hui »…) : à composer au-dessus du calendrier, Material n’en propose pas.',
+    ],
+  },
+  {
+    id: 'heure',
+    titre: 'Time Picker',
+    famille: 'Formulaires',
+    figma: '🆕 Time Picker (Closed / Open, journal du 24/09)',
+    resume:
+      'Sélecteur d’heure Material (mat-timepicker) : champ HH:MM saisissable et liste d’heures dans le même panneau que le Select.',
+    material:
+      "import { MatTimepickerModule } from '@angular/material/timepicker';\nimport { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';",
+  },
+  {
+    id: 'chip',
+    titre: 'Chip',
+    famille: 'Formulaires',
+    figma:
+      '🆕 Chip (Assist / Filter / Input × Outlined / Filled × Small / Medium) et Chip Group (journal du 15/09)',
+    resume:
+      'Chips Material (mat-chip, mat-chip-option, mat-chip-row) : pilule 32 ou 24 px, bord Border/Input, neutres ; filtre sélectionné en Primary plein avec coche.',
+    material: "import { MatChipsModule } from '@angular/material/chips';",
+    ecarts: [
+      'Les cinq couleurs de chip de l’ancien kit ont disparu côté AMF : pas de classe de couleur, la couleur revient à Tag et Badge.',
+    ],
+  },
+  {
+    id: 'fichier',
+    titre: 'File Upload',
+    famille: 'Formulaires',
+    figma: '🆕 File Upload et File Item (journal du 25/09)',
+    resume:
+      'Zone de dépôt et liste de fichiers en CSS pur (classes gui-file-upload, gui-file-item) : Material n’a pas d’équivalent. Barre de progression Material (mat-progress-bar) dans le File Item.',
+    material:
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatProgressBarModule } from '@angular/material/progress-bar';",
+    ecarts: [
+      'Le glisser-déposer et l’envoi restent au code de l’application ; la vitrine montre les états (gui-dragover, gui-error, gui-disabled).',
+    ],
+  },
+  {
+    id: 'bouton-menu',
+    titre: 'Button Dropdown',
+    famille: 'Actions',
+    figma:
+      '🆕 Button Dropdown (Single / Split × Filled / Outlined × 3 couleurs × 3 tailles, journal des 14/09, 22/09, 28/09)',
+    resume:
+      'Bouton Material qui ouvre un mat-menu : chevron Arrow Drop Down, Arrow Drop Up et couleur Pressed à l’ouverture ; Split en deux boutons accolés à 1 px (span gui-split).',
+    material:
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatMenuModule } from '@angular/material/menu';\nimport { MatIconModule } from '@angular/material/icon';",
+  },
+  {
+    id: 'menu',
+    titre: 'Menu',
+    famille: 'Actions',
+    figma: '🆕 Menu et Menu Item (Default / Destructive, Selected le 29/09)',
+    resume:
+      'Menu Material (mat-menu) : panneau Radius/M bordé Border/Strong, ombre Lv2, items 40 px avec icône 20 px, raccourci en Caption, action destructive isolée en Action/Error, choix courant marqué (Selected).',
+    material: "import { MatMenuModule } from '@angular/material/menu';",
   },
 ];

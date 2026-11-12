@@ -1,0 +1,11 @@
+<div class="ex">
+  <div class="gui-field">
+    <label class="gui-field-label" for="ex-date">Date de production</label>
+    <mat-form-field>
+      <input matInput id="ex-date" [matDatepicker]="calendrier" placeholder="jj/mm/aaaa" />
+      <mat-datepicker-toggle matIconSuffix [for]="calendrier" />
+      <mat-datepicker #calendrier />
+      <mat-hint>Format jj/mm/aaaa</mat-hint>
+    </mat-form-field>
+  </div>
+</div>

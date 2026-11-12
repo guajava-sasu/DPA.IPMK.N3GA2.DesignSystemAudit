@@ -1,0 +1,42 @@
+<div class="ex">
+  <span class="gui-split">
+    <button matButton="filled">Valider</button>
+    <button
+      matIconButton
+      class="gui-filled"
+      [matMenuTriggerFor]="suite"
+      #t1="matMenuTrigger"
+      aria-label="Autres validations"
+    >
+      <mat-icon>{{ t1.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>
+    </button>
+  </span>
+  <span class="gui-split">
+    <button matButton="outlined">Valider</button>
+    <button
+      matIconButton
+      class="gui-outlined"
+      [matMenuTriggerFor]="suite"
+      #t2="matMenuTrigger"
+      aria-label="Autres validations"
+    >
+      <mat-icon>{{ t2.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>
+    </button>
+  </span>
+  <span class="gui-split">
+    <button matButton="filled" class="gui-neutral gui-lg">Valider</button>
+    <button
+      matIconButton
+      class="gui-filled gui-neutral gui-lg"
+      [matMenuTriggerFor]="suite"
+      #t3="matMenuTrigger"
+      aria-label="Autres validations"
+    >
+      <mat-icon>{{ t3.menuOpen ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>
+    </button>
+  </span>
+</div>
+<mat-menu #suite="matMenu">
+  <button mat-menu-item>Valider et suivante</button>
+  <button mat-menu-item>Valider avec réserve</button>
+</mat-menu>

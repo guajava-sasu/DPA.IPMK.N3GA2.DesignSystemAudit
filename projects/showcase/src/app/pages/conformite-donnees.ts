@@ -1,6 +1,6 @@
 /*
- * Contrôle de galma-ui 0.1.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
- * Une ligne par décision du journal qui touche les fondations ou un composant du lot 1. Statuts :
+ * Contrôle de galma-ui 0.2.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 et 2 (famille formulaire). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
  *   ecart     : différence connue, à corriger ou à faire valider
@@ -345,5 +345,192 @@ export const CONFORMITE: LigneConformite[] = [
     decision: '1 417 icônes Material Icons, couleur pilotée par jeton.',
     statut: 'conforme',
     galma: 'Police Material Icons (Apache 2.0) embarquée ; mat-icon hérite de la couleur du texte.',
+  },
+  // Famille formulaire (lot 2)
+  {
+    date: '16/09',
+    entree: 'Lot 5, vague 2 : préfixe / suffixe',
+    decision: 'Input Base : textes Prefix / Suffix (devise, unité) en Foreground/Secondary.',
+    statut: 'conforme',
+    galma: 'matTextPrefix / matTextSuffix en Foreground/Secondary (exemple Épaisseur en mm).',
+  },
+  {
+    date: '16/09',
+    entree: 'Lot 5, vague 2 : Textarea',
+    decision:
+      'Textarea : Outline × 6 états, poignée de redimensionnement (hasResizeHandle), hauteur minimale 96.',
+    statut: 'conforme',
+    galma:
+      'textarea matInput : min-height 96 px, resize vertical (gui-no-resize pour la retirer), mêmes états que le champ.',
+  },
+  {
+    date: '29/09',
+    entree: 'Form Field : axe Type',
+    decision:
+      'Type Input / Textarea : libellé, aide, compteur et Tag Facultatif directement sur la zone de texte.',
+    statut: 'conforme',
+    galma:
+      'Même gui-field et mat-form-field pour les deux types ; compteur par mat-hint align="end".',
+  },
+  {
+    date: '28/09',
+    entree: 'Form Field : hasLabel',
+    decision:
+      'Libellé masquable, réservé aux champs dont le libellé est porté ailleurs (aria-label ou aria-labelledby).',
+    statut: 'conforme',
+    galma: 'Omettre le gui-field-label et poser aria-label ou aria-labelledby sur le contrôle.',
+  },
+  {
+    date: '29/09',
+    entree: 'Checkbox Group et Radio Group',
+    decision: 'Orientation Vertical / Horizontal, légende, items, aide ou erreur sous le groupe.',
+    statut: 'conforme',
+    galma:
+      'fieldset.gui-group et legend, gui-horizontal, gui-group-helper / gui-group-error ; en erreur, cases et radios en Border/Error.',
+  },
+  {
+    date: '28/09',
+    entree: 'Select',
+    decision:
+      'Nouveau composant : Form Field + panneau Border/Strong Radius/M ombre Lv2 ; options Single (coche) et Multiple (Checkbox Secondary), 5 états.',
+    statut: 'conforme',
+    galma:
+      'mat-select : panneau et options aux jetons AMF ; option choisie en Secondary Tint, libellé Form Label On Tint ; case du choix multiple dessinée par le pseudo-checkbox Material aux couleurs de la Checkbox Secondary.',
+  },
+  {
+    date: '28/09',
+    entree: 'Select : écart du panneau',
+    decision: 'Panneau resserré à 4 px sous le champ (rangée d’aide repliée sans aide).',
+    statut: 'conforme',
+    galma:
+      'Marge de 4 px entre champ et panneau, au-dessus comme au-dessous ; aide en subscriptSizing dynamic.',
+  },
+  {
+    date: '15/09',
+    entree: 'Lot 5 : Chip',
+    decision:
+      'Assist / Filter / Input × Outlined / Filled × Small 24 / Medium 32 × 4 états ; Chip Group en retour à la ligne.',
+    statut: 'conforme',
+    galma:
+      'mat-chip, mat-chip-option, mat-chip-row ; gui-filled, gui-sm ; écart de 8 px dans le groupe.',
+  },
+  {
+    date: '15/09',
+    entree: 'Lot 5 : Chip (écarts)',
+    decision: 'Les cinq couleurs de mat-chip disparaissent : un chip est neutre.',
+    statut: 'conforme',
+    galma: 'Aucune classe de couleur sur les chips.',
+  },
+  {
+    date: '15/09',
+    entree: 'Retours Chip et Tabs',
+    decision:
+      'Chip Filter sélectionné en Primary inversé (fond Primary, texte et coche On Primary, survol Primary Hover).',
+    statut: 'conforme',
+    galma: '--mat-chip-elevated-selected-container-color Primary, survol Primary Hover.',
+  },
+  {
+    date: '24/09',
+    entree: 'Chip : débordement',
+    decision: 'Groupe replié + Chip Assist « Afficher tout (n) ».',
+    statut: 'conforme',
+    galma: 'Exemple Assist de la page Chip.',
+  },
+  {
+    date: '16/09',
+    entree: 'Lot 5 : Date Picker',
+    decision:
+      'Calendar Cell (10 états de jour dont plage), Calendar (vues Month, Range, Year, MultiYear, ombre Lv2), Date Picker Single / Range ; raccourcis en Chips Assist.',
+    statut: 'adapte',
+    galma:
+      'mat-datepicker et mat-date-range-picker aux jetons AMF ; raccourcis à composer par l’application (Material n’en a pas).',
+  },
+  {
+    date: '22/09',
+    entree: 'Calendar : largeur fixe commune',
+    decision: 'Quatre vues en 312 px ; MultiYear en 3 × 8 années, cellules Year de 88 px.',
+    statut: 'ecart',
+    galma:
+      'Largeur 312 px appliquée ; Material garde 4 colonnes (mois en 4 × 3, années en 4 × 6), non réglable sans réécrire les vues.',
+  },
+  {
+    date: '24/09',
+    entree: 'Time Picker',
+    decision:
+      'Form Field HH:MM saisissable + liste d’heures (Menu), référence mat-timepicker ; horloge v1 retirée.',
+    statut: 'conforme',
+    galma: 'mat-timepicker ; liste dans le même panneau que le Select.',
+  },
+  {
+    date: '18/09',
+    entree: 'Lot 5 : Menu',
+    decision:
+      'Menu Item Default / Destructive × 4 états, icône, raccourci, sous-menu ; action destructive isolée.',
+    statut: 'conforme',
+    galma:
+      'mat-menu ; gui-destructive, gui-menu-shortcut ; sous-menu Material (matMenuTriggerFor).',
+  },
+  {
+    date: '29/09',
+    entree: 'Menu Item : Selected',
+    decision:
+      'Choix courant : libellé Medium et coche à droite ; exemple « Menu de réglages en cascade ».',
+    statut: 'conforme',
+    galma:
+      'Classe gui-selected et span.material-icons gui-menu-check ; role menuitemradio et aria-checked.',
+  },
+  {
+    date: '24/09',
+    entree: 'Elevation : Border/Strong',
+    decision: 'Menu et Calendar délimités par Border/Strong.',
+    statut: 'conforme',
+    galma: 'Bordure Border/Strong 1 px sur les panneaux Select, Menu, Calendar et Time Picker.',
+  },
+  {
+    date: '14/09',
+    entree: 'Button Dropdown',
+    decision:
+      'Single / Split ; Open = bouton Pressed + chevron Arrow Drop Up ; le panneau est le Menu.',
+    statut: 'conforme',
+    galma:
+      'Bouton Material + mat-menu ; couleur Pressed sur aria-expanded ; icône arrow_drop_up à l’ouverture.',
+  },
+  {
+    date: '22/09',
+    entree: 'Button Dropdown : couleurs',
+    decision:
+      'Style Filled / Outlined × Primary / Secondary / Neutral, chevron aligné sur le bouton.',
+    statut: 'conforme',
+    galma: 'Mêmes classes de couleur sur l’action et le chevron (span gui-split).',
+  },
+  {
+    date: '28/09',
+    entree: 'Button Dropdown : taille',
+    decision: 'Axe Size sur le composant, les deux parties suivent.',
+    statut: 'conforme',
+    galma: 'Classe de taille à poser sur les deux boutons du gui-split.',
+  },
+  {
+    date: '18/09',
+    entree: 'Lot 5 : Slider',
+    decision: 'Slider Thumb 5 états × 2 couleurs, étiquette de valeur ; Slider Single / Range.',
+    statut: 'adapte',
+    galma:
+      'mat-slider aux mesures AMF ; étiquette de valeur en mode discrete seulement (au glissement et au focus).',
+  },
+  {
+    date: '25/09',
+    entree: 'File Upload',
+    decision: 'Dragover en Secondary (Tint + Default) ; message d’erreur affiché en Error.',
+    statut: 'conforme',
+    galma: 'gui-file-upload : gui-dragover, gui-error et gui-file-upload-error, gui-disabled.',
+  },
+  {
+    date: '25/09',
+    entree: 'File Item',
+    decision: 'Variante Error avec Error Message (motif du refus et formats acceptés).',
+    statut: 'conforme',
+    galma:
+      'gui-file-item gui-error et gui-file-item-error ; barre de progression mat-progress-bar 4 px.',
   },
 ];

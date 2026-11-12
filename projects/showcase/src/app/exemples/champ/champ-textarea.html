@@ -1,0 +1,25 @@
+<div class="ex">
+  <div class="gui-field">
+    <div class="gui-field-label-row">
+      <label class="gui-field-label" for="ex-obs">Observations</label>
+      <span class="gui-tag gui-sm">Facultatif</span>
+    </div>
+    <mat-form-field>
+      <textarea
+        matInput
+        id="ex-obs"
+        maxlength="200"
+        placeholder="Saisir un commentaire"
+        #obs
+      ></textarea>
+      <mat-hint align="end">{{ obs.value.length }} / 200</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="gui-field">
+    <label class="gui-field-label" for="ex-motif">Motif de l'arrêt</label>
+    <mat-form-field>
+      <textarea matInput id="ex-motif" [formControl]="motif"></textarea>
+      <mat-error>Le motif est obligatoire</mat-error>
+    </mat-form-field>
+  </div>
+</div>

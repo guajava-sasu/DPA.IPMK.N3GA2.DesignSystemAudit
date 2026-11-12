@@ -1,0 +1,11 @@
+<div class="ex">
+  <label class="gui-field-label" id="ex-epaisseur">Épaisseur (mm)</label>
+  <mat-slider min="0.3" max="3" step="0.05" discrete>
+    <input matSliderStartThumb value="0.6" aria-label="Épaisseur minimale" />
+    <input matSliderEndThumb value="1.5" aria-label="Épaisseur maximale" />
+  </mat-slider>
+  <label class="gui-field-label gui-secondary-text" id="ex-largeur">Largeur (désactivé)</label>
+  <mat-slider min="800" max="1600" disabled>
+    <input matSliderThumb value="1250" aria-labelledby="ex-largeur" />
+  </mat-slider>
+</div>

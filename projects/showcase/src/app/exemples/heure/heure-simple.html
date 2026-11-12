@@ -1,0 +1,11 @@
+<div class="ex">
+  <div class="gui-field">
+    <label class="gui-field-label" for="ex-heure">Début du poste</label>
+    <mat-form-field>
+      <input matInput id="ex-heure" [matTimepicker]="heures" [value]="debut" />
+      <mat-timepicker-toggle matIconSuffix [for]="heures" aria-label="Ouvrir la liste des heures" />
+      <mat-timepicker #heures interval="30min" />
+      <mat-hint>Format HH:MM</mat-hint>
+    </mat-form-field>
+  </div>
+</div>
