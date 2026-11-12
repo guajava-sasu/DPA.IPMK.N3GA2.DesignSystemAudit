@@ -685,8 +685,9 @@ export const CONFORMITE: LigneConformite[] = [
     date: '05/10',
     entree: 'Table',
     decision: 'Pastille décorative en quart de cercle (hasIcon) pour les tableaux de tête de page.',
-    statut: 'hors-lot',
-    galma: 'Non reprise : dégradé hors jetons, à faire valider avant de l’ajouter.',
+    statut: 'adapte',
+    galma:
+      'span gui-table-badge (aria-hidden) ; dégradé hors jetons recopié du Figma (#5B2A86, #D63A3A, #F3923C), version simplifiée du style Gradient de l’ancien thème AMF ; reprise demandée par Gunther le 12/11 malgré ses réserves esthétiques.',
   },
   {
     date: '05/10',

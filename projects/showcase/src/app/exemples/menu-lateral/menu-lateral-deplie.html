@@ -27,14 +27,10 @@
           <span class="material-icons" aria-hidden="true">{{ r.icone }}</span>
           <span class="gui-side-menu-label">{{ r.libelle }}</span>
           @if (r.compte) {
-            <span class="gui-count gui-grey gui-sm" [attr.aria-label]="r.compte + ' en attente'">{{
-              r.compte
-            }}</span>
+            <span class="gui-count gui-grey gui-sm" [attr.aria-label]="r.compte + ' en attente'">{{ r.compte }}</span>
           }
           @if (r.sousMenu) {
-            <span class="material-icons gui-side-menu-trailing" aria-hidden="true"
-              >chevron_right</span
-            >
+            <span class="material-icons gui-side-menu-trailing" aria-hidden="true">chevron_right</span>
           }
         </a>
       </li>

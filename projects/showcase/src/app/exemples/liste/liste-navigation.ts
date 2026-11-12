@@ -17,18 +17,8 @@ import { MatIconModule } from '@angular/material/icon';
 export class ListeNavigation {
   protected readonly courante = signal('Données de soudage');
   protected readonly fiches = [
-    {
-      icone: 'description',
-      titre: 'Fiche produit',
-      detail: 'Nuance, dimensions, client',
-      inactive: false,
-    },
-    {
-      icone: 'construction',
-      titre: 'Données de soudage',
-      detail: 'Bobine aval B24-0415',
-      inactive: false,
-    },
+    { icone: 'description', titre: 'Fiche produit', detail: 'Nuance, dimensions, client', inactive: false },
+    { icone: 'construction', titre: 'Données de soudage', detail: 'Bobine aval B24-0415', inactive: false },
     { icone: 'report', titre: 'Défauts', detail: '2 défauts déclarés', inactive: false },
     { icone: 'lock', titre: 'Historique Sybase', detail: 'Accès non ouvert', inactive: true },
   ];

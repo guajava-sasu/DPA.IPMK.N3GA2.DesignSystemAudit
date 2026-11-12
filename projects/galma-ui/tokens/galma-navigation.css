@@ -8,7 +8,7 @@
 
 /* ── Table (page 🆕 Table, journal 16/09, 24/09, 05/10) ────────────────────────────────────────────────────────
  * Conteneur <div class="gui-table"> : Background/Surface, Border/Strong 1 px, Radius/L. En-tête facultatif
- * (.gui-table-header : titre Subtitle Medium, description Body 2, actions), puis <table mat-table>, puis
+ * (.gui-table-header : pastille décorative facultative, titre Subtitle Medium, description Body 2, actions), puis <table mat-table>, puis
  * <mat-paginator>. Densité Compact (40 px) : classe gui-compact sur le conteneur. */
 html {
   --mat-table-background-color: var(--amf-background-surface);
@@ -68,6 +68,27 @@ html {
   font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font);
   color: var(--amf-foreground-secondary);
 }
+/* Pastille décorative (Table hasIcon, journal du 05/10) : quart de cercle de 56 px collé au coin du tableau, icône
+ * blanche 24 px. Dégradé HORS JETONS, relevé tel quel dans le Figma (Table et Section) : version simplifiée du style
+ * « Gradient » de l'ancien thème AMF (logotype, gabarits de pages). Décorative : aria-hidden="true" sur la pastille. */
+.gui-table {
+  --gui-table-badge-gradient: linear-gradient(135deg, #5b2a86 0%, #d63a3a 39%, #f3923c 71%);
+}
+.gui-table-badge {
+  flex: none;
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  padding: 14px 0 0 12px;
+  /* coin haut gauche : Radius/L moins la bordure du conteneur (9 px, seule valeur non tokenisée selon le journal) */
+  border-radius: calc(var(--amf-radius-l) - 1px) 0 var(--amf-radius-full) 0;
+  background: var(--gui-table-badge-gradient);
+  color: var(--amf-color-steel-0);
+}
+.gui-table-badge .material-icons { display: block; font-size: 24px; width: 24px; height: 24px; }
+.gui-table-header:has(> .gui-table-badge) { padding: 0 16px 0 0; gap: 0; min-height: 56px; }
+.gui-table-header:has(> .gui-table-badge) .gui-table-header-texts { padding: 8px 16px; }
+.gui-table-header:has(> .gui-table-badge) .gui-table-actions { padding-block: 8px; }
 .gui-table-actions { display: flex; align-items: center; gap: 8px; padding-block: 0; min-height: 40px; }
 
 /* Cellules : marge 16, Body 2 ; en-tête Background/Surface Subtle, séparateur Border/Default ; lignes Border/Subtle */

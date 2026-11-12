@@ -5,7 +5,7 @@ Source : page Changelog du .fig (entrées du 12/09 au 26/10/2026), extraite dans
 (`projects/showcase/src/app/pages/conformite-donnees.ts`).
 
 84 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus) : **69 conformes**,
-**10 adaptées** (même rendu, obtenu autrement à cause de Material), **2 écarts**, **3 hors lot**.
+**11 adaptées** (même rendu, obtenu autrement à cause de Material), **2 écarts**, **2 hors lot**.
 
 Adaptées :
 
@@ -21,6 +21,9 @@ Adaptées :
 - Table, tri : `unfold_more` ajouté par le CSS sur les colonnes triables non triées (Material n'affiche sa flèche qu'au
   survol).
 - Table, types Expand et Nested : lignes filles calculées par le composant (Material n'a pas de lignes filles).
+- Table, pastille décorative de l'en-tête (hasIcon) : dégradé hors jetons recopié du Figma (#5B2A86 → #D63A3A →
+  #F3923C), version simplifiée du style « Gradient » de l'ancien thème AMF (logotype, gabarits) ; repris à la demande de
+  Gunther malgré ses réserves esthétiques, à signaler au comité AMF.
 
 Écarts :
 
@@ -28,8 +31,7 @@ Adaptées :
 - Calendar : largeur 312 px appliquée, mais Material garde 4 colonnes (mois 4 × 3, années 4 × 6) là où le Figma passe
   à 3 colonnes (3 × 4, 3 × 8, journal du 22/09).
 
-Hors lot : apparence Fill du Form Field ; icône et Count dans les onglets, onglets verticaux ; pastille décorative en
-quart de cercle de l'en-tête de Table (dégradé hors jetons, à faire valider).
+Hors lot : apparence Fill du Form Field ; icône et Count dans les onglets, onglets verticaux.
 
 Corrigé grâce au contrôle : l'astérisque des champs obligatoires, retiré par AMF le 24/09 (audit RGAA Sopra), avait été
 mis dans le premier jet ; un test de la vitrine empêche son retour.

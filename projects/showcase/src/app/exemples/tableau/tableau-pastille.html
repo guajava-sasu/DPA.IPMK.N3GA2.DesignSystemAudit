@@ -1,0 +1,30 @@
+<div class="gui-table">
+  <div class="gui-table-header">
+    <span class="gui-table-badge" aria-hidden="true"
+      ><span class="material-icons">inventory_2</span></span
+    >
+    <div class="gui-table-header-texts">
+      <h3 class="gui-table-title" id="ex-stock-titre">Stock de bobines mères</h3>
+      <p class="gui-table-description">Halle d'entrée, mise à jour à 20 h 45</p>
+    </div>
+    <div class="gui-table-actions">
+      <button matButton="outlined" class="gui-neutral gui-sm">Exporter</button>
+    </div>
+  </div>
+  <table mat-table [dataSource]="stock" aria-labelledby="ex-stock-titre">
+    <ng-container matColumnDef="nuance">
+      <th mat-header-cell *matHeaderCellDef>Nuance</th>
+      <td mat-cell *matCellDef="let l">{{ l.nuance }}</td>
+    </ng-container>
+    <ng-container matColumnDef="bobines">
+      <th mat-header-cell *matHeaderCellDef class="gui-numeric">Bobines</th>
+      <td mat-cell *matCellDef="let l" class="gui-numeric">{{ l.bobines }}</td>
+    </ng-container>
+    <ng-container matColumnDef="poids">
+      <th mat-header-cell *matHeaderCellDef class="gui-numeric">Poids (t)</th>
+      <td mat-cell *matCellDef="let l" class="gui-numeric">{{ l.poids | number: '1.1-1' }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="colonnes"></tr>
+    <tr mat-row *matRowDef="let l; columns: colonnes"></tr>
+  </table>
+</div>
