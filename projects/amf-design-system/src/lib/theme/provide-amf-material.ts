@@ -17,21 +17,21 @@ import { MAT_TABS_CONFIG, MatTabsConfig } from '@angular/material/tabs';
 import { MatDatepickerIntl } from '@angular/material/datepicker';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatStepperIntl } from '@angular/material/stepper';
-import { GalmaDatepickerIntl, GalmaPaginatorIntl, GalmaStepperIntl } from './galma-intl';
+import { AmfDatepickerIntl, AmfPaginatorIntl, AmfStepperIntl } from './amf-intl';
 
 /**
- * Réglages Angular Material du design system AMF pour Galma2.
+ * Réglages Angular Material du design system AMF.
  *
- * - Animations et ripple coupés : postes RDS sans GPU (ADR 2026-11-05) ; AMF change la couleur au survol, sans onde.
+ * - Animations et ripple coupés : postes RDS sans GPU ; AMF change la couleur au survol, sans onde.
  * - Champs : apparence outlined (seule apparence AMF du Form Field), aide sous le champ sans réserver de place.
  * - Toggle Button : pas de coche, la sélection se lit au fond (page 🆕 Toggle Button).
  * - Toggle Switch : pas d'icône dans le curseur (propriété Icon masquée par défaut dans le Figma).
  * - Onglets : indicateur à la largeur de l'onglet, alignés à gauche, sans étirement.
- * - Date Picker : libellés accessibles en français (GalmaDatepickerIntl). L'adaptateur de dates et la locale
+ * - Date Picker : libellés accessibles en français (AmfDatepickerIntl). L'adaptateur de dates et la locale
  *   (MAT_DATE_LOCALE) restent au choix de l'application.
- * - Paginator et Stepper : libellés en français (GalmaPaginatorIntl, GalmaStepperIntl).
+ * - Paginator et Stepper : libellés en français (AmfPaginatorIntl, AmfStepperIntl).
  */
-export function provideGalmaMaterial(): EnvironmentProviders {
+export function provideAmfMaterial(): EnvironmentProviders {
   return makeEnvironmentProviders([
     { provide: MATERIAL_ANIMATIONS, useValue: { animationsDisabled: true } },
     {
@@ -62,8 +62,8 @@ export function provideGalmaMaterial(): EnvironmentProviders {
         alignTabs: 'start',
       } satisfies MatTabsConfig,
     },
-    { provide: MatDatepickerIntl, useClass: GalmaDatepickerIntl },
-    { provide: MatPaginatorIntl, useClass: GalmaPaginatorIntl },
-    { provide: MatStepperIntl, useClass: GalmaStepperIntl },
+    { provide: MatDatepickerIntl, useClass: AmfDatepickerIntl },
+    { provide: MatPaginatorIntl, useClass: AmfPaginatorIntl },
+    { provide: MatStepperIntl, useClass: AmfStepperIntl },
   ]);
 }

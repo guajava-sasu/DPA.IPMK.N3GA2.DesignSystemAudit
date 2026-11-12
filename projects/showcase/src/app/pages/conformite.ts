@@ -18,9 +18,9 @@ const LIBELLES: Record<StatutConformite, { texte: string; classe: string }> = {
       <h1 class="gui-h4">Conformité au journal du Figma</h1>
       <p class="gui-body-1">
         Chaque décision du journal (page Changelog du .fig, du 12/09 au 26/10/2026) qui touche les
-        fondations ou un composant déjà construit (lots 1 à 6), et ce que galma-ui en fait. Les
-        couleurs et mesures viennent des jetons générés : une décision de couleur est conforme dès
-        que le jeton porte la nouvelle valeur.
+        fondations ou un composant déjà construit (lots 1 à 6), et ce qu’amf-design-system en fait.
+        Les couleurs et mesures viennent des jetons générés : une décision de couleur est conforme
+        dès que le jeton porte la nouvelle valeur.
       </p>
       <div class="totaux" aria-live="polite">
         @for (t of totaux(); track t.statut) {
@@ -56,7 +56,7 @@ const LIBELLES: Record<StatutConformite, { texte: string; classe: string }> = {
             <th scope="col">Entrée du journal</th>
             <th scope="col">Décision</th>
             <th scope="col">Statut</th>
-            <th scope="col">Dans galma-ui</th>
+            <th scope="col">Dans amf-design-system</th>
           </tr>
         </thead>
         <tbody>
@@ -70,7 +70,7 @@ const LIBELLES: Record<StatutConformite, { texte: string; classe: string }> = {
                   libelle(l.statut).texte
                 }}</span>
               </td>
-              <td>{{ l.galma }}</td>
+              <td>{{ l.realisation }}</td>
             </tr>
           }
         </tbody>

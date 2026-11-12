@@ -2,7 +2,7 @@ import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { provideRouter, withHashLocation, withInMemoryScrolling } from '@angular/router';
-import { provideGalmaMaterial } from 'galma-ui';
+import { provideAmfMaterial } from 'amf-design-system';
 import { routes } from './app.routes';
 
 // Nombres et dates au format français (pipes number et date des exemples : « 18,4 », « 0,75 »).
@@ -18,6 +18,6 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
     ),
     { provide: LOCALE_ID, useValue: 'fr' },
-    provideGalmaMaterial(),
+    provideAmfMaterial(),
   ],
 };

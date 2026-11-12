@@ -1,5 +1,5 @@
 {
- "genere": "2026-11-12T21:47:28.039Z",
+ "genere": "2026-11-12T22:31:32.848Z",
  "outil": "axe-core 4.14.0",
  "regles": "wcag2a, wcag2aa, wcag21a, wcag21aa",
  "exceptions": [
@@ -403,7 +403,7 @@
    "mode": "clair",
    "violations": [],
    "exceptions": [],
-   "reussies": 25,
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -466,7 +466,7 @@
    "mode": "clair",
    "violations": [],
    "exceptions": [],
-   "reussies": 27,
+   "reussies": 25,
    "incompletes": 1
   },
   {
@@ -1066,7 +1066,7 @@
    "mode": "sombre",
    "violations": [],
    "exceptions": [],
-   "reussies": 25,
+   "reussies": 23,
    "incompletes": 1
   },
   {
@@ -1129,7 +1129,7 @@
    "mode": "sombre",
    "violations": [],
    "exceptions": [],
-   "reussies": 27,
+   "reussies": 25,
    "incompletes": 1
   },
   {

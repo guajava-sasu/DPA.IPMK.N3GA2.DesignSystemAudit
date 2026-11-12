@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
- * Audit des contrastes du thème galma-ui, en clair (AMF) et en sombre (proposition galma-ui).
- * Lit les jetons CSS (amf-tokens.css généré + galma-theme.css), résout les var(), compose les couleurs
+ * Audit des contrastes du thème amf-design-system, en clair (AMF) et en sombre (proposition amf-design-system).
+ * Lit les jetons CSS (amf-tokens.css généré + amf-theme.css), résout les var(), compose les couleurs
  * translucides sur leur fond, et calcule le ratio WCAG 2.1 de chaque paire d'usage des composants.
  * Seuils AMF (journal du Figma, 12/09/2026) : texte 4,5:1 ; bordures de champ, focus et éléments graphiques 3:1.
  * Calcule aussi le score APCA (Lc, indicatif : le RGAA s'appuie sur WCAG).
@@ -14,17 +14,17 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
-const jetons = join(racine, 'projects/galma-ui/tokens');
+const jetons = join(racine, 'projects/amf-design-system/tokens');
 const css =
   readFileSync(join(jetons, 'amf-tokens.css'), 'utf8') +
   '\n' +
-  readFileSync(join(jetons, 'galma-theme.css'), 'utf8') +
+  readFileSync(join(jetons, 'amf-theme.css'), 'utf8') +
   '\n' +
-  readFileSync(join(jetons, 'galma-messages.css'), 'utf8') +
+  readFileSync(join(jetons, 'amf-messages.css'), 'utf8') +
   '\n' +
-  readFileSync(join(jetons, 'galma-structure.css'), 'utf8') +
+  readFileSync(join(jetons, 'amf-structure.css'), 'utf8') +
   '\n' +
-  readFileSync(join(jetons, 'galma-metier.css'), 'utf8');
+  readFileSync(join(jetons, 'amf-metier.css'), 'utf8');
 
 function blocs(selecteur) {
   const vars = {};

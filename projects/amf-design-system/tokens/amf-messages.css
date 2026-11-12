@@ -4,7 +4,7 @@
  * mat-progress-spinner). Chaque bloc cite la page 🆕 du Figma dont il reprend les mesures.
  *
  * Type de retour (classes sur le conteneur) : gui-info (défaut), gui-success, gui-warning, gui-error, gui-neutral.
- * Postes RDS : aucune animation infinie. Les indicateurs indéterminés sont figés par provideGalmaMaterial()
+ * Postes RDS : aucune animation infinie. Les indicateurs indéterminés sont figés par provideAmfMaterial()
  * (animations désactivées) : préférer le mode déterminé ou un libellé « Chargement… ».
  */
 
@@ -510,7 +510,7 @@
   background: var(--amf-background-overlay);
 }
 
-/* ── Loader (page 🆕 Loader) : Progress Bar dans galma-formulaires.css (4 px, piste Border/Subtle) ; Buffer :
+/* ── Loader (page 🆕 Loader) : Progress Bar dans amf-formulaires.css (4 px, piste Border/Subtle) ; Buffer :
    piste Border/Default, tampon Border/Subtle. Progress Spinner 40 / trait 4 par défaut, gui-sm 24 / 3, gui-lg
    64 / 5 (à reporter dans diameter et strokeWidth) ; anneau de piste Border/Subtle ajouté par le CSS (Material
    n'en dessine pas) ; gui-secondary ; gui-inverse sur fond sombre (Foreground/Inverse, piste à 24 %). ── */

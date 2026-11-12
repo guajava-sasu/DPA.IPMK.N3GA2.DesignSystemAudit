@@ -7,11 +7,15 @@ import { ModeSombre } from './pages/mode-sombre';
 import { Conformite } from './pages/conformite';
 
 export const routes: Routes = [
-  { path: '', component: Accueil, title: 'galma-ui · Installation' },
-  { path: 'couleurs', component: Couleurs, title: 'galma-ui · Couleurs' },
-  { path: 'typographie', component: Typographie, title: 'galma-ui · Typographie et dimensions' },
-  { path: 'composants/:page', component: PageComposantVue, title: 'galma-ui · Composant' },
-  { path: 'mode-sombre', component: ModeSombre, title: 'galma-ui · Mode sombre' },
-  { path: 'conformite', component: Conformite, title: 'galma-ui · Conformité au journal' },
+  { path: '', component: Accueil, title: 'amf-design-system · Installation' },
+  { path: 'couleurs', component: Couleurs, title: 'amf-design-system · Couleurs' },
+  {
+    path: 'typographie',
+    component: Typographie,
+    title: 'amf-design-system · Typographie et dimensions',
+  },
+  { path: 'composants/:page', component: PageComposantVue, title: 'amf-design-system · Composant' },
+  { path: 'mode-sombre', component: ModeSombre, title: 'amf-design-system · Mode sombre' },
+  { path: 'conformite', component: Conformite, title: 'amf-design-system · Conformité au journal' },
   { path: '**', redirectTo: '' },
 ];

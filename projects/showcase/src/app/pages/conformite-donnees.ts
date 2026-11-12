@@ -1,5 +1,5 @@
 /*
- * Contrôle de galma-ui 0.6.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Contrôle d'amf-design-system 0.7.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
  * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 6 (famille formulaire, navigation et contenus, messages et overlays, structure et affichage, composants métier). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
@@ -12,7 +12,7 @@ export interface LigneConformite {
   entree: string;
   decision: string;
   statut: StatutConformite;
-  galma: string;
+  realisation: string;
 }
 
 export const CONFORMITE: LigneConformite[] = [
@@ -22,7 +22,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Tokens (fondations)',
     decision: 'Primitives, Semantic (alias des primitives) et Dimensions.',
     statut: 'conforme',
-    galma: 'amf-tokens.css généré depuis le .fig (380 jetons), alias conservés en var().',
+    realisation: 'amf-tokens.css généré depuis le .fig (380 jetons), alias conservés en var().',
   },
   {
     date: '12/09',
@@ -30,8 +30,8 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Mode sombre prévu en modes de variables sur AMF Semantic, sans variante de composant.',
     statut: 'adapte',
-    galma:
-      'Le .fig n’a pas ces modes : galma-ui surcharge les jetons sémantiques sous :root.dark, les composants ne changent pas. Proposition à faire valider (page Mode sombre).',
+    realisation:
+      'Le .fig n’a pas ces modes : amf-design-system surcharge les jetons sémantiques sous :root.dark, les composants ne changent pas. Proposition à faire valider (page Mode sombre).',
   },
   {
     date: '12/09',
@@ -39,14 +39,15 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'State Layer Hover / Pressed en Alpha/Black 8 et 12, à réaliaser vers Alpha/White en sombre.',
     statut: 'conforme',
-    galma: 'Calques noirs 8 / 12 % en clair, blancs en sombre (galma-material.css, :root.dark).',
+    realisation:
+      'Calques noirs 8 / 12 % en clair, blancs en sombre (amf-material.css, :root.dark).',
   },
   {
     date: '15/09',
     entree: 'Rationalisation 160 → 128',
     decision: 'Foreground remplace Text et Icon ; Accent remplace Tag ; Tags Regular sans contour.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Seuls les jetons --amf-foreground-* et --amf-accent-* sont utilisés ; gui-tag sans bordure.',
   },
   {
@@ -55,7 +56,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Action/Primary/Default = Orange/600 #B34C00 (5,3:1 sur blanc), Foreground/Brand identique.',
     statut: 'conforme',
-    galma:
+    realisation:
       '--amf-action-primary-default et --amf-foreground-brand générés à #B34C00 ; mesuré 5,3:1 (page Mode sombre, mode clair).',
   },
   {
@@ -63,7 +64,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Rationalisation dimensions 52 → 31',
     decision: 'Échelle Size/8 à 64 unique ; Border Width/Focus Ring fusionné dans Medium.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Jetons --amf-size-* et --amf-border-width-* générés ; les composants reprennent ces valeurs.',
   },
   {
@@ -71,7 +72,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Audit Sopra (RGAA 4.1.2)',
     decision: 'Élévation par Border/Strong (Steel/600) sur Card, Table, List, Dialog, Menu…',
     statut: 'conforme',
-    galma:
+    realisation:
       'Card, Table, List, Accordion, Stepper, Modale : bordure --amf-border-strong ; l’ombre de la Card Elevated s’y ajoute, comme dans le .fig.',
   },
   {
@@ -80,14 +81,14 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Warning passe en Amber ; Secondary/Tint en Blue/50 ; Foreground/Link en cuivre, lien souligné dans un paragraphe.',
     statut: 'conforme',
-    galma: 'Valeurs venues des jetons ; liens soulignés (style navigateur conservé).',
+    realisation: 'Valeurs venues des jetons ; liens soulignés (style navigateur conservé).',
   },
   {
     date: '26/10',
     entree: 'Palettes renommées',
     decision: 'Crimson → Ruby, Amber → Gold, alias sémantiques inchangés.',
     statut: 'conforme',
-    galma: 'Primitives --amf-color-ruby-* et --amf-color-gold-* générées.',
+    realisation: 'Primitives --amf-color-ruby-* et --amf-color-gold-* générées.',
   },
   // Button
   {
@@ -96,14 +97,14 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       '32 / 40 / 48 px, rayon Radius/Button, BUTTON 2, icônes de tête et de fin, largeur mini 64.',
     statut: 'conforme',
-    galma: 'Jetons --mat-button-* ; classes gui-sm / gui-lg ; mat-icon et iconPositionEnd.',
+    realisation: 'Jetons --mat-button-* ; classes gui-sm / gui-lg ; mat-icon et iconPositionEnd.',
   },
   {
     date: '12/09',
     entree: 'Button Icon et Button',
     decision: 'Mode Rounded (Radius/Button = Full) choisi par mode sur la frame, pas par variante.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Classe amf-rounded générée depuis le mode Rounded ; bascule dans l’en-tête de la vitrine.',
   },
   {
@@ -111,7 +112,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Button Icon et Button',
     decision: 'Focus : anneau Border/Focus 2 px décalé de 4 px, rayon Radius/Button Focus.',
     statut: 'adapte',
-    galma:
+    realisation:
       'Indicateur de focus Material : cadre à 4 px du bouton, trait 2 px à l’intérieur, comme le cadre « Focus Ring » du Figma (48 × 48 à -4 px). Rayon Radius/Button Focus.',
   },
   {
@@ -119,28 +120,29 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Suppression du style Tonal',
     decision: 'Filled / Outlined / Text et Standard / Filled / Outlined seulement.',
     statut: 'conforme',
-    galma: 'Pas de matButton="tonal" dans les exemples ni dans le thème.',
+    realisation: 'Pas de matButton="tonal" dans les exemples ni dans le thème.',
   },
   {
     date: '14/09',
     entree: 'Retours de revue : focus neutre',
     decision: 'Border/Focus neutre (Steel/800), ≥ 9,6:1 sur Page et Surface.',
     statut: 'conforme',
-    galma: 'Tous les anneaux utilisent --amf-border-focus ; mesuré dans l’audit des contrastes.',
+    realisation:
+      'Tous les anneaux utilisent --amf-border-focus ; mesuré dans l’audit des contrastes.',
   },
   {
     date: '16/09',
     entree: 'Error devient Destructive',
     decision: 'Couleur Destructive sur Button et Button Icon, jetons Action/Error.',
     statut: 'conforme',
-    galma: 'Classe gui-destructive reliée à --amf-action-error-*.',
+    realisation: 'Classe gui-destructive reliée à --amf-action-error-*.',
   },
   {
     date: '24/09',
     entree: 'Audit Sopra, retours',
     decision: 'Bouton désactivé : gris Action/Disabled, attribut disabled côté code.',
     statut: 'conforme',
-    galma: 'Attribut disabled ; couleurs --amf-action-disabled-*.',
+    realisation: 'Attribut disabled ; couleurs --amf-action-disabled-*.',
   },
   {
     date: '12/09',
@@ -148,7 +150,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Survol et appui : couleur du conteneur Hover / Pressed (Filled), Subtle / Subtle Hover (Outlined, Text, Standard).',
     statut: 'adapte',
-    galma:
+    realisation:
       'Calques d’état Material mis à 0 et couleur du conteneur changée en CSS, comme le Figma.',
   },
   // Form Field
@@ -157,22 +159,22 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Input Base et Form Field',
     decision: 'Libellé au-dessus du champ en Form Label, aide / erreur en Caption, compteur.',
     statut: 'adapte',
-    galma:
-      'Material fait flotter le libellé : galma-ui place un <label for> au-dessus (gui-field-label) et un mat-form-field sans mat-label ; compteur par mat-hint align="end".',
+    realisation:
+      'Material fait flotter le libellé : amf-design-system place un <label for> au-dessus (gui-field-label) et un mat-form-field sans mat-label ; compteur par mat-hint align="end".',
   },
   {
     date: '12/09',
     entree: 'Input Base et Form Field',
     decision: 'Appearance Outline / Fill ; Standard abandonné.',
     statut: 'hors-lot',
-    galma: 'Outline seule dans ce lot ; Fill à faire si un écran en a besoin.',
+    realisation: 'Outline seule dans ce lot ; Fill à faire si un écran en a besoin.',
   },
   {
     date: '12/09',
     entree: 'Input Base et Form Field',
     decision: 'États Hover, Focused (2 px), Error (2 px), Disabled, Readonly.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Jetons --mat-form-field-outlined-* ; erreur à 2 px même sans focus ; lecture seule par la classe gui-readonly.',
   },
   {
@@ -180,7 +182,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Form Field : slot Tag',
     decision: 'Tag « Facultatif » sur la ligne du libellé.',
     statut: 'conforme',
-    galma: 'Classe gui-field-label-row avec un gui-tag gui-sm.',
+    realisation: 'Classe gui-field-label-row avec un gui-tag gui-sm.',
   },
   {
     date: '24/09',
@@ -188,14 +190,15 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Astérisque et isRequired supprimés ; le formulaire annonce « Sauf indication contraire, tous les champs sont obligatoires ».',
     statut: 'conforme',
-    galma: 'Pas d’astérisque ; attribut required sur l’input ; la consigne figure dans l’exemple.',
+    realisation:
+      'Pas d’astérisque ; attribut required sur l’input ; la consigne figure dans l’exemple.',
   },
   {
     date: '16/09',
     entree: 'Lot 5, vague 2 : préfixe / suffixe et Textarea',
     decision: 'Préfixe et suffixe texte (unités, devise) ; Textarea.',
     statut: 'conforme',
-    galma: 'matTextPrefix / matTextSuffix en Foreground/Secondary. Textarea : hors lot.',
+    realisation: 'matTextPrefix / matTextSuffix en Foreground/Secondary. Textarea : hors lot.',
   },
   // Checkbox, Radio, Switch
   {
@@ -204,35 +207,36 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Case 18 px Radius/XS bord 2 ; radio 20 / point 10 ; Primary / Secondary ; état Error ; Body 2.',
     statut: 'conforme',
-    galma: 'Jetons --mat-checkbox-* / --mat-radio-* ; gui-secondary ; gui-error pour la case.',
+    realisation:
+      'Jetons --mat-checkbox-* / --mat-radio-* ; gui-secondary ; gui-error pour la case.',
   },
   {
     date: '14/09',
     entree: 'State layer réduit',
     decision: 'Calque d’état 32 px, zone de contrôle 40 px.',
     statut: 'conforme',
-    galma: 'state-layer-size 32 px et marge de 4 px : contrôle de 40 px.',
+    realisation: 'state-layer-size 32 px et marge de 4 px : contrôle de 40 px.',
   },
   {
     date: '12/09',
     entree: 'Checkbox, Radio, Switch',
     decision: 'Focus : anneau Border/Focus 2 px sur le calque.',
     statut: 'conforme',
-    galma: 'Contour 2 px --amf-border-focus sur le calque au focus clavier.',
+    realisation: 'Contour 2 px --amf-border-focus sur le calque au focus clavier.',
   },
   {
     date: '12/09',
     entree: 'Checkbox, Radio, Switch',
     decision: 'Switch : style M3 unique, piste 44 × 24, curseur 16 / 20, icône facultative.',
     statut: 'conforme',
-    galma: 'Jetons --mat-slide-toggle-* ; icône masquée par défaut (provideGalmaMaterial).',
+    realisation: 'Jetons --mat-slide-toggle-* ; icône masquée par défaut (provideAmfMaterial).',
   },
   {
     date: '12/09',
     entree: 'Checkbox, Radio, Switch',
     decision: 'Libellé à gauche ou à droite (Label Position).',
     statut: 'conforme',
-    galma: 'labelPosition="before" de Material.',
+    realisation: 'labelPosition="before" de Material.',
   },
   // Toggle Button
   {
@@ -241,7 +245,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Items Surface + Foreground/Primary, survol Neutral Subtle, sélection Action/<C>/Default, contour et séparateurs Border/Input.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Jetons --mat-button-toggle-* ; gui-secondary / gui-neutral sur le groupe ; pas de coche.',
   },
   // Tabs
@@ -251,7 +255,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Hauteur 48 (Size/Control/L), indicateur 2 px Action/Primary, séparateur Border/Default, états Hover et Focused.',
     statut: 'conforme',
-    galma: 'Jetons --mat-tab-* ; survol Neutral Subtle ; contour de focus 2 px.',
+    realisation: 'Jetons --mat-tab-* ; survol Neutral Subtle ; contour de focus 2 px.',
   },
   {
     date: '15/09',
@@ -259,21 +263,21 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Texte de l’onglet actif et indicateur de la même couleur (Foreground/Brand = Action/Primary/Default).',
     statut: 'conforme',
-    galma: 'Les deux jetons valent #B34C00.',
+    realisation: 'Les deux jetons valent #B34C00.',
   },
   {
     date: '16/09',
     entree: 'Contraste des Badges',
     decision: 'Tabs : Radius/S sur les coins hauts, Radius/XS sur l’indicateur.',
     statut: 'conforme',
-    galma: 'border-radius haut 4 px ; --mat-tab-active-indicator-shape Radius/XS.',
+    realisation: 'border-radius haut 4 px ; --mat-tab-active-indicator-shape Radius/XS.',
   },
   {
     date: '15/09',
     entree: 'Lot 5 : Tabs',
     decision: 'Icône et Count dans l’onglet ; orientation verticale.',
     statut: 'hors-lot',
-    galma:
+    realisation:
       'Icône et Count possibles par ng-template mat-tab-label, non montrés ; vertical : Material n’en a pas.',
   },
   // Badge, Tag, Count, Status
@@ -283,14 +287,14 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Badge : Info / Success / Warning / Error / Neutral × Default / Inverted × 20 / 24 / 32, Disabled.',
     statut: 'conforme',
-    galma: 'Classe gui-badge.',
+    realisation: 'Classe gui-badge.',
   },
   {
     date: '16/09',
     entree: 'Contraste des Badges',
     decision: 'Fond Feedback/Background au niveau 50, texte 700, bordure Solid.',
     statut: 'conforme',
-    galma: 'Valeurs venues des jetons ; contrastes mesurés (page Mode sombre).',
+    realisation: 'Valeurs venues des jetons ; contrastes mesurés (page Mode sombre).',
   },
   {
     date: '24/09',
@@ -298,21 +302,21 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Tag : Brand + Orange, Blue, Green, Navy, Purple, Grey × Regular / Inverted × Small / Medium.',
     statut: 'conforme',
-    galma: 'Classe gui-tag et ses sept couleurs.',
+    realisation: 'Classe gui-tag et ses sept couleurs.',
   },
   {
     date: '22/09',
     entree: 'Count réduit',
     decision: 'Count : Brand, Navy et Grey × Dot / Count × S / M / L.',
     statut: 'conforme',
-    galma: 'Classe gui-count, gui-navy, gui-grey, gui-dot.',
+    realisation: 'Classe gui-count, gui-navy, gui-grey, gui-dot.',
   },
   {
     date: '24/09',
     entree: 'Retours : Status',
     decision: 'Status : cinq couleurs sémantiques, Small / Medium.',
     statut: 'conforme',
-    galma: 'Classe gui-status.',
+    realisation: 'Classe gui-status.',
   },
   // Card, Divider
   {
@@ -321,7 +325,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Card Elevated / Outlined × Default / Hover × Small / Medium, Slot Tag, menu, actions.',
     statut: 'conforme',
-    galma:
+    realisation:
       'mat-card bordée Border/Strong dans les deux styles ; Elevated en ombre Lv3 (Lv2 au survol), Outlined sans ombre (Lv3 au survol), ombres reprises des styles d’effet du .fig ; gui-sm 280 / gui-md 400 ; en-tête avec Slot Tag et mat-menu.',
   },
   {
@@ -329,14 +333,14 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Audit Sopra, retours',
     decision: 'Card sans état Selected : la sélection passe par une Checkbox.',
     statut: 'conforme',
-    galma: 'Pas d’état sélectionné sur mat-card.',
+    realisation: 'Pas d’état sélectionné sur mat-card.',
   },
   {
     date: '12/09',
     entree: 'Divider et Badge',
     decision: 'Divider Horizontal / Vertical × Inset × Default / Subtle, retrait 16 / 8.',
     statut: 'conforme',
-    galma: 'mat-divider, classes gui-subtle et gui-inset.',
+    realisation: 'mat-divider, classes gui-subtle et gui-inset.',
   },
   // Icônes
   {
@@ -344,7 +348,8 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Icon Library aplatie',
     decision: '1 417 icônes Material Icons, couleur pilotée par jeton.',
     statut: 'conforme',
-    galma: 'Police Material Icons (Apache 2.0) embarquée ; mat-icon hérite de la couleur du texte.',
+    realisation:
+      'Police Material Icons (Apache 2.0) embarquée ; mat-icon hérite de la couleur du texte.',
   },
   // Famille formulaire (lot 2)
   {
@@ -352,7 +357,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Lot 5, vague 2 : préfixe / suffixe',
     decision: 'Input Base : textes Prefix / Suffix (devise, unité) en Foreground/Secondary.',
     statut: 'conforme',
-    galma: 'matTextPrefix / matTextSuffix en Foreground/Secondary (exemple Épaisseur en mm).',
+    realisation: 'matTextPrefix / matTextSuffix en Foreground/Secondary (exemple Épaisseur en mm).',
   },
   {
     date: '16/09',
@@ -360,7 +365,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Textarea : Outline × 6 états, poignée de redimensionnement (hasResizeHandle), hauteur minimale 96.',
     statut: 'conforme',
-    galma:
+    realisation:
       'textarea matInput : min-height 96 px, resize vertical (gui-no-resize pour la retirer), mêmes états que le champ.',
   },
   {
@@ -369,7 +374,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Type Input / Textarea : libellé, aide, compteur et Tag Facultatif directement sur la zone de texte.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Même gui-field et mat-form-field pour les deux types ; compteur par mat-hint align="end".',
   },
   {
@@ -378,14 +383,15 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Libellé masquable, réservé aux champs dont le libellé est porté ailleurs (aria-label ou aria-labelledby).',
     statut: 'conforme',
-    galma: 'Omettre le gui-field-label et poser aria-label ou aria-labelledby sur le contrôle.',
+    realisation:
+      'Omettre le gui-field-label et poser aria-label ou aria-labelledby sur le contrôle.',
   },
   {
     date: '29/09',
     entree: 'Checkbox Group et Radio Group',
     decision: 'Orientation Vertical / Horizontal, légende, items, aide ou erreur sous le groupe.',
     statut: 'conforme',
-    galma:
+    realisation:
       'fieldset.gui-group et legend, gui-horizontal, gui-group-helper / gui-group-error ; en erreur, cases et radios en Border/Error.',
   },
   {
@@ -394,7 +400,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Nouveau composant : Form Field + panneau Border/Strong Radius/M ombre Lv2 ; options Single (coche) et Multiple (Checkbox Secondary), 5 états.',
     statut: 'conforme',
-    galma:
+    realisation:
       'mat-select : panneau et options aux jetons AMF ; option choisie en Secondary Tint, libellé Form Label On Tint ; case du choix multiple dessinée par le pseudo-checkbox Material aux couleurs de la Checkbox Secondary.',
   },
   {
@@ -402,7 +408,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Select : écart du panneau',
     decision: 'Panneau resserré à 4 px sous le champ (rangée d’aide repliée sans aide).',
     statut: 'conforme',
-    galma:
+    realisation:
       'Marge de 4 px entre champ et panneau, au-dessus comme au-dessous ; aide en subscriptSizing dynamic.',
   },
   {
@@ -411,7 +417,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Assist / Filter / Input × Outlined / Filled × Small 24 / Medium 32 × 4 états ; Chip Group en retour à la ligne.',
     statut: 'conforme',
-    galma:
+    realisation:
       'mat-chip, mat-chip-option, mat-chip-row ; gui-filled, gui-sm ; écart de 8 px dans le groupe.',
   },
   {
@@ -419,7 +425,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Lot 5 : Chip (écarts)',
     decision: 'Les cinq couleurs de mat-chip disparaissent : un chip est neutre.',
     statut: 'conforme',
-    galma: 'Aucune classe de couleur sur les chips.',
+    realisation: 'Aucune classe de couleur sur les chips.',
   },
   {
     date: '15/09',
@@ -427,14 +433,14 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Chip Filter sélectionné en Primary inversé (fond Primary, texte et coche On Primary, survol Primary Hover).',
     statut: 'conforme',
-    galma: '--mat-chip-elevated-selected-container-color Primary, survol Primary Hover.',
+    realisation: '--mat-chip-elevated-selected-container-color Primary, survol Primary Hover.',
   },
   {
     date: '24/09',
     entree: 'Chip : débordement',
     decision: 'Groupe replié + Chip Assist « Afficher tout (n) ».',
     statut: 'conforme',
-    galma: 'Exemple Assist de la page Chip.',
+    realisation: 'Exemple Assist de la page Chip.',
   },
   {
     date: '16/09',
@@ -442,7 +448,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Calendar Cell (10 états de jour dont plage), Calendar (vues Month, Range, Year, MultiYear, ombre Lv2), Date Picker Single / Range ; raccourcis en Chips Assist.',
     statut: 'adapte',
-    galma:
+    realisation:
       'mat-datepicker et mat-date-range-picker aux jetons AMF ; raccourcis à composer par l’application (Material n’en a pas).',
   },
   {
@@ -450,7 +456,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Calendar : largeur fixe commune',
     decision: 'Quatre vues en 312 px ; MultiYear en 3 × 8 années, cellules Year de 88 px.',
     statut: 'ecart',
-    galma:
+    realisation:
       'Largeur 312 px appliquée ; Material garde 4 colonnes (mois en 4 × 3, années en 4 × 6), non réglable sans réécrire les vues.',
   },
   {
@@ -459,7 +465,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Form Field HH:MM saisissable + liste d’heures (Menu), référence mat-timepicker ; horloge v1 retirée.',
     statut: 'conforme',
-    galma: 'mat-timepicker ; liste dans le même panneau que le Select.',
+    realisation: 'mat-timepicker ; liste dans le même panneau que le Select.',
   },
   {
     date: '18/09',
@@ -467,7 +473,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Menu Item Default / Destructive × 4 états, icône, raccourci, sous-menu ; action destructive isolée.',
     statut: 'conforme',
-    galma:
+    realisation:
       'mat-menu ; gui-destructive, gui-menu-shortcut ; sous-menu Material (matMenuTriggerFor).',
   },
   {
@@ -476,7 +482,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Choix courant : libellé Medium et coche à droite ; exemple « Menu de réglages en cascade ».',
     statut: 'conforme',
-    galma:
+    realisation:
       'Classe gui-selected et span.material-icons gui-menu-check ; role menuitemradio et aria-checked.',
   },
   {
@@ -484,7 +490,8 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Elevation : Border/Strong',
     decision: 'Menu et Calendar délimités par Border/Strong.',
     statut: 'conforme',
-    galma: 'Bordure Border/Strong 1 px sur les panneaux Select, Menu, Calendar et Time Picker.',
+    realisation:
+      'Bordure Border/Strong 1 px sur les panneaux Select, Menu, Calendar et Time Picker.',
   },
   {
     date: '14/09',
@@ -492,7 +499,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Single / Split ; Open = bouton Pressed + chevron Arrow Drop Up ; le panneau est le Menu.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Bouton Material + mat-menu ; couleur Pressed sur aria-expanded ; icône arrow_drop_up à l’ouverture.',
   },
   {
@@ -501,21 +508,21 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Style Filled / Outlined × Primary / Secondary / Neutral, chevron aligné sur le bouton.',
     statut: 'conforme',
-    galma: 'Mêmes classes de couleur sur l’action et le chevron (span gui-split).',
+    realisation: 'Mêmes classes de couleur sur l’action et le chevron (span gui-split).',
   },
   {
     date: '28/09',
     entree: 'Button Dropdown : taille',
     decision: 'Axe Size sur le composant, les deux parties suivent.',
     statut: 'conforme',
-    galma: 'Classe de taille à poser sur les deux boutons du gui-split.',
+    realisation: 'Classe de taille à poser sur les deux boutons du gui-split.',
   },
   {
     date: '18/09',
     entree: 'Lot 5 : Slider',
     decision: 'Slider Thumb 5 états × 2 couleurs, étiquette de valeur ; Slider Single / Range.',
     statut: 'adapte',
-    galma:
+    realisation:
       'mat-slider aux mesures AMF ; étiquette de valeur en mode discrete seulement (au glissement et au focus).',
   },
   {
@@ -523,14 +530,15 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'File Upload',
     decision: 'Dragover en Secondary (Tint + Default) ; message d’erreur affiché en Error.',
     statut: 'conforme',
-    galma: 'gui-file-upload : gui-dragover, gui-error et gui-file-upload-error, gui-disabled.',
+    realisation:
+      'gui-file-upload : gui-dragover, gui-error et gui-file-upload-error, gui-disabled.',
   },
   {
     date: '25/09',
     entree: 'File Item',
     decision: 'Variante Error avec Error Message (motif du refus et formats acceptés).',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-file-item gui-error et gui-file-item-error ; barre de progression mat-progress-bar 4 px.',
   },
   // Navigation et contenus (lot 3)
@@ -540,7 +548,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Nouvelle page Table : Header Cell, Cell (Text, Numeric, Checkbox, Badge, Actions), lignes Default / Hover / Selected, densités Default / Compact.',
     statut: 'conforme',
-    galma:
+    realisation:
       'mat-table dans gui-table : en-têtes 48 px Form Label sur Surface Subtle, cellules 48 px Body 2, survol Neutral Subtle, sélection Secondary Tint (gui-selected), Compact 40 px (gui-compact).',
   },
   {
@@ -549,8 +557,8 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Table Paginator devient Paginator (mat-paginator), paginateur par défaut des tableaux et listes.',
     statut: 'conforme',
-    galma:
-      'mat-paginator 48 px, liste 80 × 32, boutons 32 ; libellés français par GalmaPaginatorIntl (« Lignes par page », « 1 à 10 sur 42 ») fourni par provideGalmaMaterial().',
+    realisation:
+      'mat-paginator 48 px, liste 80 × 32, boutons 32 ; libellés français par AmfPaginatorIntl (« Lignes par page », « 1 à 10 sur 42 ») fourni par provideAmfMaterial().',
   },
   {
     date: '16/09',
@@ -558,7 +566,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Pagination numérotée « hors Angular Material, à coder à la main » : Primary / Secondary, Small / Medium, Ellipsis.',
     statut: 'conforme',
-    galma:
+    realisation:
       '<nav class="gui-pagination"> et boutons gui-pagination-item 40 / 32 px, page courante aria-current="page" pleine en Primary ou Secondary.',
   },
   {
@@ -567,7 +575,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Expansion Panel (Collapsed / Expanded, 4 interactions, Default / Compact ; titre, description, icône) et Accordion ; chevrons expand_more / expand_less.',
     statut: 'adapte',
-    galma:
+    realisation:
       'mat-expansion-panel et mat-accordion.gui-accordion aux mesures AMF ; Material fait tourner un seul chevron au lieu de permuter expand_more / expand_less (même rendu).',
   },
   {
@@ -576,7 +584,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Items Link / Current, chevron_right en séparateur, liens en Foreground/Link ; Item Ellipsis et variante Collapsed au-delà de 4 niveaux.',
     statut: 'conforme',
-    galma:
+    realisation:
       '<nav class="gui-breadcrumb"><ol>, séparateur généré par le CSS, bouton gui-breadcrumb-ellipsis qui ouvre un mat-menu.',
   },
   {
@@ -585,7 +593,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'En-tête de page Desktop H4 / Tablet H5 (Mobile retiré en revue) : Breadcrumb, retour, Slot Tag, sous-titre, actions Outlined Neutral + Filled Primary.',
     statut: 'conforme',
-    galma:
+    realisation:
       '<header class="gui-title"> ; gui-tablet passe le titre en H5. Le niveau du titre (h1, h2) reste celui de la page.',
   },
   {
@@ -594,7 +602,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Step (Active, Completed, Upcoming, Error, Disabled ; Optional) et Stepper horizontal / vertical avec Continuer / Précédent.',
     statut: 'adapte',
-    galma:
+    realisation:
       'mat-stepper aux couleurs AMF ; coche des étapes terminées par matStepperIcon (Material affiche un crayon) ; pas d’étape désactivée dans Material (style prêt pour aria-disabled).',
   },
   {
@@ -603,7 +611,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'List Item (une ou deux lignes, Default / Hover / Selected / Disabled, Default / Compact, Slot Icon et Slot Trailing) ; sous-en-tête et séparateurs.',
     statut: 'conforme',
-    galma:
+    realisation:
       'mat-list, mat-nav-list (activated = Secondary Tint), mat-action-list ; 48 / 40 / 64 px, sous-en-tête Form Label Caps, mat-divider Border/Subtle.',
   },
   {
@@ -612,7 +620,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Structure en colonnes : séparateurs intégrés aux cellules, Header Cell avec fond et variante Checkbox.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Séparateurs Border/Default sous l’en-tête et Border/Subtle entre lignes ; colonne de cases de 56 (gui-col-checkbox).',
   },
   {
@@ -621,15 +629,15 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Sort=Sortable : unfold_more en Foreground/Disabled sur les colonnes triables non triées.',
     statut: 'adapte',
-    galma:
-      'Material n’affiche sa flèche qu’au survol : galma-ui ajoute unfold_more par le CSS tant que la colonne n’est pas triée ; flèche avant le libellé des colonnes numériques (arrowPosition="before").',
+    realisation:
+      'Material n’affiche sa flèche qu’au survol : amf-design-system ajoute unfold_more par le CSS tant que la colonne n’est pas triée ; flèche avant le libellé des colonnes numériques (arrowPosition="before").',
   },
   {
     date: '24/09',
     entree: 'Table, List, Accordion, Stepper',
     decision: 'Conteneurs délimités par Border/Strong.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-table, gui-accordion, mat-stepper, mat-expansion-panel et listes gui-outlined bordés Border/Strong.',
   },
   {
@@ -638,7 +646,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Item actif en pilule pleine Action/Primary/Default, icône et libellé On Primary en Medium ; Count Grey ; Radius/M, retrait 8 ; survol Neutral Subtle ; repliés 48 px centrés, Count en haut à droite.',
     statut: 'conforme',
-    galma:
+    realisation:
       '<nav class="gui-side-menu"> : gui-side-menu-item avec aria-current="page", gui-collapsed pour la version de 64 px (libellés gardés pour les aides techniques).',
   },
   {
@@ -647,7 +655,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Action/Secondary/Tint passe à Blue/50 (ligne sélectionnée, élément de liste courant).',
     statut: 'conforme',
-    galma:
+    realisation:
       'Valeur venue des jetons générés ; en sombre, Secondary Tint à 16 % (audit de contraste).',
   },
   {
@@ -655,7 +663,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Side Menu Item',
     decision: 'Tailles S / M / L (32 / 40 / 48 px, icônes 20 / 20 / 24, Caption en S) ; hasIcon.',
     statut: 'conforme',
-    galma: 'gui-side-menu par défaut (L), gui-md, gui-sm ; icône facultative.',
+    realisation: 'gui-side-menu par défaut (L), gui-md, gui-sm ; icône facultative.',
   },
   {
     date: '28/09',
@@ -663,14 +671,15 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Lien de retour facultatif « Accueil » (arrow_back, Foreground/Link) ; Icon Right chevron_right après le Count.',
     statut: 'conforme',
-    galma: 'gui-side-menu-back (flèche seule en 40 px une fois replié) et gui-side-menu-trailing.',
+    realisation:
+      'gui-side-menu-back (flèche seule en 40 px une fois replié) et gui-side-menu-trailing.',
   },
   {
     date: '29/09',
     entree: 'List',
     decision: 'hasElevation : Background/Surface, Radius/M, ombre Lv2.',
     statut: 'conforme',
-    galma: 'Classe gui-elevated.',
+    realisation: 'Classe gui-elevated.',
   },
   {
     date: '05/10',
@@ -678,7 +687,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'En-tête facultatif : titre (Subtitle Medium après revue), description Body 2, Slot Actions (Button Outlined Neutral Small), séparé par Border/Default ; hasPaginator.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-table-header, gui-table-title (niveau h2 / h3 au choix de la page), gui-table-description, gui-table-actions ; paginateur facultatif.',
   },
   {
@@ -686,7 +695,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Table',
     decision: 'Pastille décorative en quart de cercle (hasIcon) pour les tableaux de tête de page.',
     statut: 'adapte',
-    galma:
+    realisation:
       'span gui-table-badge (aria-hidden) ; dégradé hors jetons recopié du Figma (#5B2A86, #D63A3A, #F3923C), version simplifiée du style Gradient de l’ancien thème AMF ; reprise demandée par Gunther le 12/11 malgré ses réserves esthétiques.',
   },
   {
@@ -694,7 +703,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Table Cell',
     decision: 'Types Expand, Nested, None et Input (Input Base Small).',
     statut: 'adapte',
-    galma:
+    realisation:
       'Bascule 32 px (gui-col-expand), lignes filles gui-nested-row / gui-nested calculées par le composant (Material n’a pas de lignes filles) ; champ 32 px dans la cellule.',
   },
   // Messages et overlays (lot 4)
@@ -704,7 +713,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'L’Alert du 14/09 devient Message Info : message persistant, Filled / Soft / Outlined × 5 types × Small / Medium ; titre Alert Title (Bold 14/20), action Text et fermeture exposées.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-message (Filled par défaut), gui-soft, gui-outlined, gui-sm ; titre gui-message-title en Alert Title, actions gui-message-actions, bouton Fermer facultatif.',
   },
   {
@@ -713,7 +722,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Nouvel Alert (toast) : Light / Dark × 5 types, 360 px, hasIcon, titre, message, action Text, fermeture ; Alert Stack de 1 à 3, écart 8, haut ou bas à droite à 24 px.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-alert (Light : Surface, Border/Strong, ombre Lv2) et gui-alert gui-inverse (Dark) ; pile gui-alert-stack fixe (gui-top pour le haut), trois alertes au plus, région aria-live.',
   },
   {
@@ -722,8 +731,8 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Background/Inverse en Steel/900 ; icônes de l’Alert Dark en Feedback/<Type>/Inverse (≥ 5,9:1).',
     statut: 'adapte',
-    galma:
-      'Les variables Feedback/<Type>/Inverse sont supprimées du .fig mais toujours référencées : galma-ui reprend les teintes 300 (Blue, Green, Gold, Ruby, Steel) ; en mode sombre, où le fond inverse devient clair, les pleins du mode clair (audit de contraste).',
+    realisation:
+      'Les variables Feedback/<Type>/Inverse sont supprimées du .fig mais toujours référencées : amf-design-system reprend les teintes 300 (Blue, Green, Gold, Ruby, Steel) ; en mode sombre, où le fond inverse devient clair, les pleins du mode clair (audit de contraste).',
   },
   {
     date: '14/09',
@@ -731,7 +740,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Nouvelle page Disclaimer : 5 types, icône en slot, Caption Italic en Feedback Foreground sur Feedback Background.',
     statut: 'conforme',
-    galma: 'gui-disclaimer : Radius/S, marges 16 / 8, icône 18, Caption Italic.',
+    realisation: 'gui-disclaimer : Radius/S, marges 16 / 8, icône 18, Caption Italic.',
   },
   {
     date: '14/09',
@@ -739,14 +748,14 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Snackbar déprécié : la notification éphémère passe à Alert, dont le Style Dark correspond au snackbar Material.',
     statut: 'conforme',
-    galma: 'MatSnackBar non habillé ; Alert Dark (gui-inverse) dans une gui-alert-stack.',
+    realisation: 'MatSnackBar non habillé ; Alert Dark (gui-inverse) dans une gui-alert-stack.',
   },
   {
     date: '15/09',
     entree: 'Message Info, Disclaimer',
     decision: 'Largeurs par composant retirées des jetons, valeurs laissées en dur (480 et 800).',
     statut: 'adapte',
-    galma:
+    realisation:
       'Message Info et Disclaimer prennent la largeur de leur conteneur ; l’Alert garde 360 px (max 100 %).',
   },
   {
@@ -755,7 +764,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Dialog : Standard × S / M / L, Confirmation et Destructive × S / M, fermeture et actions exposées ; Dialog Overlay sur Background/Overlay.',
     statut: 'conforme',
-    galma:
+    realisation:
       'MatDialog : panelClass gui-modale-sm / md / lg (400 / 560 / 800), Radius/L, Border/Strong, ombre Lv1, en-tête gui-modale-header (icône, Fermer 40), actions séparées par Border/Subtle, voile Background/Overlay.',
   },
   {
@@ -763,7 +772,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Tooltip',
     decision: 'Tooltip : Plain / Rich × flèche None / Top / Bottom / Left / Right.',
     statut: 'adapte',
-    galma:
+    realisation:
       'Plain : mat-tooltip aux couleurs AMF, flèche ajoutée par le CSS (matTooltipClass gui-tooltip-arrow, suit la position réelle). Rich : Material n’en a pas, toggletip ouvert au clic (cdkConnectedOverlay, gui-tooltip-rich).',
   },
   {
@@ -772,15 +781,15 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Progress Spinner Indeterminate / Determinate × Primary / Secondary / Inverse × 24 / 40 / 64 ; Progress Bar Determinate / Indeterminate / Buffer.',
     statut: 'ecart',
-    galma:
-      'Modes déterminés et Buffer conformes (piste du spinner ajoutée par le CSS, Material n’en dessine pas). Modes indéterminés figés : pas d’animation infinie sur les postes RDS (provideGalmaMaterial désactive les animations).',
+    realisation:
+      'Modes déterminés et Buffer conformes (piste du spinner ajoutée par le CSS, Material n’en dessine pas). Modes indéterminés figés : pas d’animation infinie sur les postes RDS (provideAmfMaterial désactive les animations).',
   },
   {
     date: '22/09',
     entree: 'Progress Spinner',
     decision: 'Variante Inverse transparente, posée sur une surface sombre.',
     statut: 'conforme',
-    galma: 'gui-inverse : Foreground/Inverse, piste à 24 %, sans fond propre.',
+    realisation: 'gui-inverse : Foreground/Inverse, piste à 24 %, sans fond propre.',
   },
   {
     date: '24/09',
@@ -788,15 +797,15 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Alert sans disparition automatique, Fermer toujours présent ; hasTitle vrai par défaut, titre = mot du type.',
     statut: 'conforme',
-    galma:
-      'Aucune minuterie dans galma-ui ; exemples titrés Information, Succès, Attention, Erreur.',
+    realisation:
+      'Aucune minuterie dans amf-design-system ; exemples titrés Information, Succès, Attention, Erreur.',
   },
   {
     date: '24/09',
     entree: 'Alert, Message Info',
     decision: 'Type Neutral titré « Remarque ».',
     statut: 'conforme',
-    galma: 'Exemples Neutral titrés Remarque.',
+    realisation: 'Exemples Neutral titrés Remarque.',
   },
   {
     date: '06/10',
@@ -804,7 +813,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Feedback/Info/Background en Blue/50 ; Soft avec barre d’accent de 4 px Feedback/<Type>/Solid à gauche.',
     statut: 'conforme',
-    galma: 'Fond venu des jetons générés ; barre d’accent par une bordure gauche de 4 px.',
+    realisation: 'Fond venu des jetons générés ; barre d’accent par une bordure gauche de 4 px.',
   },
   {
     date: '06/10',
@@ -812,7 +821,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Table Empty State devient Empty State (Empty / Loading / Error) : illustration ronde, titre, message, action.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-empty-state : illustration 64 (icône 32 ou spinner 40, gui-error), titre Body 1 Medium, message Body 2, action Outlined Neutral ; état de chargement en role="status".',
   },
   {
@@ -820,7 +829,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Modale',
     decision: 'Dialog renommé Modale, Dialog Overlay → Modale Overlay.',
     statut: 'conforme',
-    galma: 'Page Modale et classes gui-modale-*.',
+    realisation: 'Page Modale et classes gui-modale-*.',
   },
   // Structure et affichage (lot 5)
   {
@@ -829,7 +838,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Avatar : 52 variantes (Initials / Icon × 6 couleurs × XS / S / M / L, Image × Neutral).',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-avatar 24 / 32 / 40 / 56 (gui-xs, gui-sm, défaut, gui-lg) ; Primary par défaut, gui-secondary, gui-neutral, gui-green, gui-navy, gui-purple ; gui-image pour une photo.',
   },
   {
@@ -838,7 +847,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Rating Star (Empty / Half / Filled × 3 tailles) et Rating (Read-only / Interactive × 3 tailles, cinq étoiles, valeur texte).',
     statut: 'adapte',
-    galma:
+    realisation:
       'Material n’a pas de note : gui-rating en CSS pur, étoiles dessinées par la police d’icônes ; saisie par cinq boutons radio natifs masqués (radiogroup, flèches du clavier), valeur gui-rating-value.',
   },
   {
@@ -847,8 +856,8 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Étoiles pleines en Amber/600 (Gold/600 après renommage), contours en Foreground/Secondary.',
     statut: 'adapte',
-    galma:
-      'Gold/600 est une primitive sans jeton sémantique : variable --gui-rating-filled ; Gold/300 en mode sombre (proposition galma-ui, audit de contraste).',
+    realisation:
+      'Gold/600 est une primitive sans jeton sémantique : variable --gui-rating-filled ; Gold/300 en mode sombre (proposition amf-design-system, audit de contraste).',
   },
   {
     date: '29/09',
@@ -856,7 +865,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Selectable Card : Radio / Checkbox × Selected × Default / Hover / Focused / Disabled ; Title, Value (H3), Description ; sélection par bordure 2 px Action/Primary/Default.',
     statut: 'adapte',
-    galma:
+    realisation:
       'gui-selectable-card en CSS pur autour d’un mat-radio-button ou d’un mat-checkbox ; états par :has() sur le contrôle ; le clic sur toute la carte est relayé par l’application ((click) dans l’exemple).',
   },
   {
@@ -865,8 +874,8 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Header (GLOBAL v2) : marque, CTA, étiquette de site, notifications avec Count Brand, compte avec Avatar ; Desktop 64 / Tablet 56.',
     statut: 'conforme',
-    galma:
-      '<header class="gui-header"> 64 px, gui-tablet 56 ; actions en slot sans retour à la ligne ; logotype remplacé par un texte dans la vitrine.',
+    realisation:
+      '<header class="gui-header"> 64 px, gui-tablet 56 ; actions en slot sans retour à la ligne ; logotype ArcelorMittal (blanc en mode sombre).',
   },
   {
     date: '25/09',
@@ -874,14 +883,14 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Footer (GLOBAL v2) : mention, liens et mention de conformité (Non / Partiellement / Totalement conforme).',
     statut: 'conforme',
-    galma: '<footer class="gui-footer"> 40 px sur Surface Subtle, liens gui-footer-links.',
+    realisation: '<footer class="gui-footer"> 40 px sur Surface Subtle, liens gui-footer-links.',
   },
   {
     date: '25/09',
     entree: 'Footer',
     decision: 'Foreground/Link passe à Orange/600 : liens du Footer en cuivre.',
     statut: 'conforme',
-    galma: 'Valeur venue des jetons générés.',
+    realisation: 'Valeur venue des jetons générés.',
   },
   {
     date: '25/09',
@@ -889,7 +898,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Expandable List (Items 3 / 4 / 5, premier déplié) ; bandeau d’accent Feedback étiré sur toute la hauteur, masqué sans résultat ; Toggle Button de résultat en Neutral.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-expandable-list et gui-expandable-item : bandeau de 4 px par ::before (gui-success, gui-error), mat-button-toggle-group Neutral, contenu déplié séparé sans chevaucher le bandeau.',
   },
   {
@@ -898,7 +907,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Scrollbar : curseur Foreground/Secondary sur piste Surface Subtle, barre dans une gouttière de 12 px.',
     statut: 'conforme',
-    galma:
+    realisation:
       'Classe gui-scrollbar (::-webkit-scrollbar, scrollbar-color pour les autres moteurs) ; longueur du curseur calculée par le navigateur.',
   },
   {
@@ -907,7 +916,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Section : carte de page à en-tête configurable (pastille, titre, description, Slot Actions, Replier / Déplier) et Slot Content, Expanded / Collapsed ; titre en Subtitle Medium après revue.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-section, gui-section-header, gui-section-title (niveau h2 / h3 au choix de la page), gui-collapsed ; bouton Replier / Déplier avec aria-expanded.',
   },
   {
@@ -915,7 +924,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Section',
     decision: 'Pastille d’en-tête en dégradé violet → rouge → orange, rayon intérieur 9 px.',
     statut: 'adapte',
-    galma:
+    realisation:
       'gui-section-badge partage le dégradé hors jetons de gui-table-badge (même décision que la pastille de Table).',
   },
   {
@@ -924,7 +933,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Divider Type Title : titre en capitales Foreground/Brand et filet, ramené à Form Label Caps sur retour de revue.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-divider-title en Form Label Caps (Medium 14/20, capitales, interlettrage 0,5), filet Border/Default ou gui-subtle, gui-inset.',
   },
   // Composants métier (lot 6)
@@ -934,7 +943,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'CTA Bloc (GLOBAL v2) : Medium / Large × Default / Hover / Focused / Selected / Disabled, icône et libellé.',
     statut: 'conforme',
-    galma:
+    realisation:
       'button.gui-cta-bloc 128 × 106 ou 160 × 120 (gui-lg), icône Foreground/Brand, libellé centré Caption / Form Label, bordure Border/Input, survol Neutral Subtle, focus 2 px Border/Focus.',
   },
   {
@@ -942,7 +951,8 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'CTA Bloc',
     decision: 'CTA Bloc Selected en Secondary (Tint + Default).',
     statut: 'conforme',
-    galma: 'aria-pressed="true" (ou gui-selected) : Secondary Tint et bordure 2 Secondary Default.',
+    realisation:
+      'aria-pressed="true" (ou gui-selected) : Secondary Tint et bordure 2 Secondary Default.',
   },
   {
     date: '25/09',
@@ -950,7 +960,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Reorderable List et Reorderable List Item (GLOBAL v2) : Default / Hover / Focused / Dragging / Disabled ; poignée, sous-titre, titre, Count, Status, Toggle Switch.',
     statut: 'adapte',
-    galma:
+    realisation:
       'gui-reorderable-list sur le glisser-déposer du CDK, sans transition (postes RDS) ; Dragging en Primary Tint, bordure 2 Primary Default, ombre Lv2 ; déplacement au clavier par la poignée (flèches haut et bas), que le CDK ne fournit pas.',
   },
   {
@@ -959,23 +969,23 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Task Card (BUSINESS) : 6 couleurs × Default / Hover ; bandeau d’accent, Tag de zone, menu, trois champs, Status, action.',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-task-card 360 px, bandeau de 4 px Accent/<Color>/Strong, Tag Regular Small de la couleur, champs en liste de définitions, ombre Lv2 au survol.',
   },
   {
     date: '25/09',
     entree: 'Login Panel',
     decision: 'Login Panel (GLOBAL v2) : SSO / Credentials / Access Denied.',
-    statut: 'adapte',
-    galma:
-      'gui-login-panel 480 px, marges 40, écart 24 ; bouton SSO sur toute la largeur du contenu (440 px dans le Figma, plus large que les 400 px disponibles) ; logotype remplacé par un texte dans la vitrine.',
+    statut: 'conforme',
+    realisation:
+      'gui-login-panel 480 px, marges 40, écart 24 ; bouton SSO de 440 px qui déborde de 20 px dans les marges, comme le Figma (gui-login-sso, libellé à la ligne si le panneau rétrécit) ; logotype ArcelorMittal (blanc en mode sombre).',
   },
   {
     date: '28/09',
     entree: 'Login Panel',
     decision: 'Rayon des champs passé à Radius/M (8 px), Login compris.',
     statut: 'conforme',
-    galma: 'Form Fields Large de galma-ui à Radius/M.',
+    realisation: 'Form Fields Large d’amf-design-system à Radius/M.',
   },
   {
     date: '25/09',
@@ -983,7 +993,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Agenda (CORE) : Agenda Event (6 Accent × Timed / All-day), Agenda Day Cell (Default / Today / Outside / Selected, trois événements, « n de plus »), Agenda Header (Aujourd’hui, navigation, titre, vues), vue mois de six semaines en tableau, Border/Strong.',
     statut: 'adapte',
-    galma:
+    realisation:
       'Material n’a pas d’agenda (mat-calendar est un sélecteur) : tableau HTML habillé (gui-agenda) ; jours hors du mois en boutons inactifs (couleur Disabled du Figma) ; au-delà de trois événements, l’exemple en montre deux et « n de plus » (règle à confirmer, le Figma ne la décrit pas).',
   },
   {
@@ -991,7 +1001,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Agenda',
     decision: 'Vues Semaine et Jour à composer avec les mêmes briques.',
     statut: 'hors-lot',
-    galma: 'Non dessinées dans le Figma : boutons Semaine et Jour désactivés dans l’exemple.',
+    realisation: 'Non dessinées dans le Figma : boutons Semaine et Jour désactivés dans l’exemple.',
   },
   {
     date: '25/09',
@@ -999,14 +1009,14 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Action/Secondary/Tint en Blue/50 (jour sélectionné) ; « n de plus » en Foreground/Link (cuivre).',
     statut: 'conforme',
-    galma: 'Valeurs venues des jetons générés.',
+    realisation: 'Valeurs venues des jetons générés.',
   },
   {
     date: '05/10',
     entree: 'Agenda Event',
     decision: 'Styles Label 11 Medium et Label 11 pour les événements d’agenda.',
     statut: 'conforme',
-    galma: 'Heure en Label 11 Medium, titre en Label 11, coupé par des points de suspension.',
+    realisation: 'Heure en Label 11 Medium, titre en Label 11, coupé par des points de suspension.',
   },
   {
     date: '06/10',
@@ -1014,7 +1024,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision:
       'Refonte : avatar rond 32 (auto_awesome sur Action/Primary ou Avatar Initials), bulle Radius/L au coin adouci côté auteur, heure sous la bulle, sources en Chips Assist numérotées, actions Copier / Utile / Pas utile / Régénérer.',
     statut: 'adapte',
-    galma:
+    realisation:
       'gui-chat-message : coin de 4 px côté auteur, colonne limitée à 80 % du fil (le Figma n’en fixe pas) ; fil en role="log", auteur de chaque message en texte masqué.',
   },
   {
@@ -1022,7 +1032,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Chat Bubble',
     decision: 'States Default / Typing (trois points) / Error (message d’erreur et Réessayer).',
     statut: 'conforme',
-    galma:
+    realisation:
       'gui-chat-typing (points fixes, comme le Figma, sans animation pour les postes RDS, annoncés en role="status") et gui-chat-error (Feedback/Error/Foreground, Button Text Neutral Small).',
   },
 ];

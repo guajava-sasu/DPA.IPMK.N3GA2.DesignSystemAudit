@@ -54,7 +54,7 @@ export const PAGES: PageComposant[] = [
     material:
       "import { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';",
     ecarts: [
-      'Libellé : AMF le place au-dessus du champ, Material le fait flotter dans la bordure. galma-ui suit AMF avec un <label for> (classe gui-field-label) et un mat-form-field sans <mat-label>.',
+      'Libellé : AMF le place au-dessus du champ, Material le fait flotter dans la bordure. amf-design-system suit AMF avec un <label for> (classe gui-field-label) et un mat-form-field sans <mat-label>.',
       'Apparence Fill du Figma non reprise (Outline seule).',
       'Textarea (Form Field Type=Textarea) : textarea matInput dans le même mat-form-field, hauteur minimale 96 px.',
     ],
@@ -141,7 +141,7 @@ export const PAGES: PageComposant[] = [
     famille: 'Retours',
     figma: '🆕 Status (point + libellé, Small / Medium)',
     resume:
-      'Statut en CSS pur (classe gui-status). À ne pas confondre avec les états process Galma2 (marche, arrêt, alarme), propres à galma-ui.',
+      'Statut en CSS pur (classe gui-status). À ne pas confondre avec les états process (marche, arrêt, alarme), propres à chaque application.',
   },
   {
     id: 'separateur',
@@ -259,7 +259,7 @@ export const PAGES: PageComposant[] = [
     material:
       "import { MatTableModule } from '@angular/material/table';\nimport { MatSortModule } from '@angular/material/sort';\nimport { MatPaginatorModule } from '@angular/material/paginator';",
     ecarts: [
-      'Tri : Material n’affiche sa flèche qu’au survol ; galma-ui montre unfold_more (Foreground/Disabled) sur les colonnes triables non triées, comme le Figma (journal du 24/09).',
+      'Tri : Material n’affiche sa flèche qu’au survol ; amf-design-system montre unfold_more (Foreground/Disabled) sur les colonnes triables non triées, comme le Figma (journal du 24/09).',
       'Lignes dépliables (Expand, Nested) : Material n’a pas de lignes filles ; la liste à plat est calculée par le composant (exemple).',
       'Nombres au format français : LOCALE_ID « fr » et registerLocaleData(localeFr) dans la configuration de l’application.',
     ],
@@ -299,7 +299,7 @@ export const PAGES: PageComposant[] = [
     material:
       "import { MatStepperModule } from '@angular/material/stepper';\nimport { MatIconModule } from '@angular/material/icon';",
     ecarts: [
-      'Coche des étapes terminées : Material affiche un crayon (edit) ; galma-ui fournit la coche par <ng-template matStepperIcon="edit"> et "done" dans chaque stepper.',
+      'Coche des étapes terminées : Material affiche un crayon (edit) ; amf-design-system fournit la coche par <ng-template matStepperIcon="edit"> et "done" dans chaque stepper.',
       'Step State=Disabled : Material n’a pas d’étape désactivée ; en mode linear, les étapes suivantes ne sont pas atteignables. Le style Action/Disabled est prêt pour un en-tête aria-disabled.',
     ],
   },
@@ -344,7 +344,7 @@ export const PAGES: PageComposant[] = [
       "import { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';",
     ecarts: [
       'Snackbar Material non repris : le Figma l’a déprécié le 14/09 au profit d’Alert, sans disparition automatique (24/09).',
-      'Icônes de l’Alert Dark : variables Feedback/<Type>/Inverse supprimées du .fig mais toujours référencées ; galma-ui reprend leurs teintes 300, encore lisibles dans le .fig, et, en mode sombre, les pleins du mode clair.',
+      'Icônes de l’Alert Dark : variables Feedback/<Type>/Inverse supprimées du .fig mais toujours référencées ; amf-design-system reprend leurs teintes 300, encore lisibles dans le .fig, et, en mode sombre, les pleins du mode clair.',
     ],
   },
   {
@@ -415,7 +415,7 @@ export const PAGES: PageComposant[] = [
     material:
       "import { MatProgressBarModule } from '@angular/material/progress-bar';\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';",
     ecarts: [
-      'Postes RDS : pas d’animation infinie. Les modes indéterminés sont figés par provideGalmaMaterial() (animations désactivées) ; préférer le mode déterminé ou un libellé « Chargement… ».',
+      'Postes RDS : pas d’animation infinie. Les modes indéterminés sont figés par provideAmfMaterial() (animations désactivées) ; préférer le mode déterminé ou un libellé « Chargement… ».',
       'Material ne dessine pas la piste du spinner : anneau ajouté par le CSS, aux tailles gui-sm / défaut / gui-lg.',
     ],
   },
@@ -436,7 +436,7 @@ export const PAGES: PageComposant[] = [
       'Note en étoiles (gui-rating) : étoiles vide, demie et pleine (Gold/600) générées par le CSS, valeur texte ; saisie par boutons radio natifs masqués dans un radiogroup.',
     ecarts: [
       'Material n’a pas de composant de note : CSS pur et boutons radio natifs.',
-      'Étoile pleine en Gold/600, primitive sans jeton sémantique dans le Figma ; Gold/300 en mode sombre (proposition galma-ui).',
+      'Étoile pleine en Gold/600, primitive sans jeton sémantique dans le Figma ; Gold/300 en mode sombre (proposition amf-design-system).',
     ],
   },
   {
@@ -459,7 +459,6 @@ export const PAGES: PageComposant[] = [
       'Bandeau d’application en CSS pur (<header class="gui-header">) : marque, CTA, statut, étiquette, notifications avec Count, compte avec Avatar.',
     material:
       "import { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';",
-    ecarts: ['Le logotype ArcelorMittal du Figma est remplacé par un texte dans la vitrine.'],
   },
   {
     id: 'pied-de-page',
@@ -535,10 +534,7 @@ export const PAGES: PageComposant[] = [
       'Panneau de connexion en CSS pur (gui-login-panel) : 480 px, marges 40, logotype, nom de l’application en H6, bouton SSO, formulaire identifiant et mot de passe, ou accès refusé avec Message Info.',
     material:
       "import { MatButtonModule } from '@angular/material/button';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';",
-    ecarts: [
-      'Le logotype ArcelorMittal du Figma est remplacé par un texte dans la vitrine, et le libellé du bouton SSO ne cite pas l’entreprise.',
-      'Bouton SSO sur toute la largeur du panneau (440 px dans le Figma, plus large que le contenu de 400 px).',
-    ],
+    ecarts: [],
   },
   {
     id: 'agenda',

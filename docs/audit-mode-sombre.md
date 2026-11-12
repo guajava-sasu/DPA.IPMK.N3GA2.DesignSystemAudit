@@ -1,8 +1,8 @@
-# Mode sombre galma-ui : proposition et audit (2026-11-12, mis à jour avec les lots 2 à 6)
+# Mode sombre amf-design-system : proposition et audit (2026-11-12, mis à jour avec les lots 2 à 6)
 
 AMF v2.0 n'a pas de mode sombre. Son journal le prévoit en modes de variables sur AMF Semantic (« Original Dark »,
-12/09/2026), avec des calques d'état en Alpha/White, sans l'avoir dessiné. galma-ui en propose un : surcharge des seuls
-jetons sémantiques AMF sous `:root.dark` (`projects/galma-ui/tokens/galma-theme.css`), aucune variante de composant.
+12/09/2026), avec des calques d'état en Alpha/White, sans l'avoir dessiné. amf-design-system en propose un : surcharge des seuls
+jetons sémantiques AMF sous `:root.dark` (`projects/amf-design-system/tokens/amf-theme.css`), aucune variante de composant.
 **Proposition à soumettre au comité de relecture AMF.**
 
 ## Principes
@@ -28,7 +28,7 @@ masqué) ; Badge et Tag désactivés marqués `aria-disabled` (états inactifs e
 Lot 2 (famille formulaire) : aide de la zone de dépôt survolée à 4,49:1 en sombre, Secondary Tint sombre ramené de 20 à
 16 % d'opacité ; grille de chips avec le champ de saisie dedans (`aria-required-children`), champ sorti de la grille comme
 le prévoit Material ; zone de dépôt désactivée marquée `aria-disabled` ; libellés du Date Picker passés en français
-(`GalmaDatepickerIntl`).
+(`AmfDatepickerIntl`).
 
 Lot 3 (navigation et contenus) : aucune violation au premier passage. Points de conception vérifiés : séparateurs du fil
 d'Ariane et icône de tri générés par le CSS avec un texte alternatif vide (`content: '…' / ''`), libellés du menu latéral
@@ -67,5 +67,5 @@ par-dessus). Leurs couleurs sont dans l'audit des jetons.
 - Les outils automatiques ne trouvent qu'une partie des défauts : clavier, sens des libellés et ordre de lecture restent
   à vérifier à la main (sections Accessibilité des pages du Figma).
 - Le ratio WCAG 2 est moins fiable sur fond sombre ; APCA est donné à titre indicatif (le RGAA s'appuie sur WCAG).
-- Les états process Galma2 (marche, arrêt, alarme…) et les couleurs du synoptique ne sont pas encore audités : ils
-  viendront avec la reprise des composants process.
+- Les états process (marche, arrêt, alarme…) et les couleurs de synoptique ne font pas partie de la charte : chaque
+  application qui en définit les audite dans son propre dépôt.

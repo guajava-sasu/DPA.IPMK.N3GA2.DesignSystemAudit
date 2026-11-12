@@ -3,7 +3,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
-import { GalmaDatepickerIntl } from 'galma-ui';
+import { AmfDatepickerIntl } from 'amf-design-system';
 
 /**
  * Date
@@ -20,7 +20,7 @@ import { GalmaDatepickerIntl } from 'galma-ui';
     provideNativeDateAdapter(),
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
     // MatDatepickerModule fournit ses libellés anglais : les remplacer au niveau du composant
-    { provide: MatDatepickerIntl, useClass: GalmaDatepickerIntl },
+    { provide: MatDatepickerIntl, useClass: AmfDatepickerIntl },
   ],
 })
 export class DateSimple {}

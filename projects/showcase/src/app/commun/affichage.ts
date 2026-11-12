@@ -1,17 +1,17 @@
 import { Injectable, signal } from '@angular/core';
-import { GalmaThemeMode, setGalmaThemeMode } from 'galma-ui';
+import { AmfThemeMode, setAmfThemeMode } from 'amf-design-system';
 
 /** Mode clair / sombre et mode de rayon AMF (Default / Rounded), mémorisés pour la vitrine. */
 @Injectable({ providedIn: 'root' })
 export class Affichage {
-  readonly mode = signal<GalmaThemeMode>(this.lire('vt-mode') === 'dark' ? 'dark' : 'light');
+  readonly mode = signal<AmfThemeMode>(this.lire('vt-mode') === 'dark' ? 'dark' : 'light');
   readonly arrondi = signal(this.lire('vt-arrondi') === '1');
 
   constructor() {
     this.appliquer();
   }
 
-  changerMode(mode: GalmaThemeMode): void {
+  changerMode(mode: AmfThemeMode): void {
     this.mode.set(mode);
     this.ecrire('vt-mode', mode);
     this.appliquer();
@@ -24,7 +24,7 @@ export class Affichage {
   }
 
   private appliquer(): void {
-    setGalmaThemeMode(this.mode());
+    setAmfThemeMode(this.mode());
     document.documentElement.classList.toggle('amf-rounded', this.arrondi());
   }
 

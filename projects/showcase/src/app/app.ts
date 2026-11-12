@@ -12,15 +12,13 @@ import { FAMILLES, Famille, PAGES } from './pages/pages';
     <header class="barre">
       <img
         [src]="
-          affichage.mode() === 'dark'
-            ? 'galma/logos/logo-white.svg'
-            : 'galma/logos/logo-primary.svg'
+          affichage.mode() === 'dark' ? 'amf/logos/logo-white.svg' : 'amf/logos/logo-primary.svg'
         "
         alt=""
         class="logo"
       />
       <div class="marque">
-        <span class="gui-subtitle-1">galma-ui</span>
+        <span class="gui-subtitle-1">amf-design-system</span>
         <span class="gui-caption gui-secondary-text"
           >Design system AMF v2.0 · Angular Material 22</span
         >

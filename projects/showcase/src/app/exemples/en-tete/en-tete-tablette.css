@@ -1,7 +1,13 @@
-.marque {
-  color: var(--amf-foreground-brand);
-  font: 700 20px / 28px var(--amf-text-body-1-family);
-  letter-spacing: 0.04em;
+.logo {
+  display: block;
+  width: auto;
+}
+.logo-sombre,
+:host-context(.dark) .logo-clair {
+  display: none;
+}
+:host-context(.dark) .logo-sombre {
+  display: block;
 }
 .ligne {
   color: var(--amf-foreground-secondary);

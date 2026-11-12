@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
  * Stepper Orientation=Horizontal : étapes de 24 px reliées par un trait Border/Default, active et
  * terminées en Primary (coche 16 px via matStepperIcon), à venir en Feedback/Neutral/Solid ; contenu
  * puis actions « Continuer » (Filled) et « Précédent » (Text). Étape facultative : libellé « Optionnel
- * » en Caption (GalmaStepperIntl).
+ * » en Caption (AmfStepperIntl).
  */
 @Component({
   selector: 'ex-etapes-horizontal',

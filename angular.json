@@ -6,20 +6,20 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "galma-ui": {
+    "amf-design-system": {
       "projectType": "library",
-      "root": "projects/galma-ui",
-      "sourceRoot": "projects/galma-ui/src",
+      "root": "projects/amf-design-system",
+      "sourceRoot": "projects/amf-design-system/src",
       "prefix": "gui",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/galma-ui/tsconfig.lib.prod.json"
+              "tsConfig": "projects/amf-design-system/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/galma-ui/tsconfig.lib.json"
+              "tsConfig": "projects/amf-design-system/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/galma-ui/tsconfig.spec.json"
+            "tsConfig": "projects/amf-design-system/tsconfig.spec.json"
           }
         }
       }
@@ -51,8 +51,8 @@
               },
               {
                 "glob": "**/*",
-                "input": "projects/galma-ui/assets",
-                "output": "galma"
+                "input": "projects/amf-design-system/assets",
+                "output": "amf"
               }
             ],
             "styles": [

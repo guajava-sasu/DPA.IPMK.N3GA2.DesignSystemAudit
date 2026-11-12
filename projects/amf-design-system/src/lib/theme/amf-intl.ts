@@ -7,7 +7,7 @@ import { MatStepperIntl } from '@angular/material/stepper';
  * Libellés accessibles du Date Picker en français (Material les fournit en anglais).
  *
  * À fournir au niveau du composant qui importe MatDatepickerModule : ce module fournit lui-même ses libellés
- * anglais et masque un fournisseur posé à la racine. provideGalmaMaterial() le pose à la racine pour les
+ * anglais et masque un fournisseur posé à la racine. provideAmfMaterial() le pose à la racine pour les
  * applications qui importent les directives une à une (MatDatepicker, MatDatepickerInput, MatDatepickerToggle…).
  *
  * Bouton de période (« NOV. 2026 ») : Material cache le texte affiché aux aides techniques et nomme le bouton
@@ -15,7 +15,7 @@ import { MatStepperIntl } from '@angular/material/stepper';
  * label-content-name-mismatch (WCAG 2.5.3) : exception documentée dans scripts/audit-axe.mjs.
  */
 @Injectable()
-export class GalmaDatepickerIntl extends MatDatepickerIntl {
+export class AmfDatepickerIntl extends MatDatepickerIntl {
   override calendarLabel = 'Calendrier';
   override openCalendarLabel = 'Ouvrir le calendrier';
   override closeCalendarLabel = 'Fermer le calendrier';
@@ -42,10 +42,10 @@ export class GalmaDatepickerIntl extends MatDatepickerIntl {
 
 /**
  * Libellés du Paginator en français (« Lignes par page », « 1 à 10 sur 42 », journal du 16/09).
- * MatPaginatorModule ne refournit pas ses libellés : un fournisseur à la racine (provideGalmaMaterial) suffit.
+ * MatPaginatorModule ne refournit pas ses libellés : un fournisseur à la racine (provideAmfMaterial) suffit.
  */
 @Injectable()
-export class GalmaPaginatorIntl extends MatPaginatorIntl {
+export class AmfPaginatorIntl extends MatPaginatorIntl {
   override itemsPerPageLabel = 'Lignes par page';
   override nextPageLabel = 'Page suivante';
   override previousPageLabel = 'Page précédente';
@@ -63,7 +63,7 @@ export class GalmaPaginatorIntl extends MatPaginatorIntl {
 
 /** Libellés du Stepper en français (Step : « Optionnel » au Figma). Fournisseur à la racine suffisant. */
 @Injectable()
-export class GalmaStepperIntl extends MatStepperIntl {
+export class AmfStepperIntl extends MatStepperIntl {
   override optionalLabel = 'Optionnel';
   override completedLabel = 'Terminée';
   override editableLabel = 'Modifiable';

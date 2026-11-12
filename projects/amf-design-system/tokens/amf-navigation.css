@@ -69,7 +69,7 @@ html {
   color: var(--amf-foreground-secondary);
 }
 /* Pastille décorative (Table hasIcon, journal du 05/10) : quart de cercle de 56 px collé au coin du tableau, icône
- * blanche 24 px ; reprise par l'en-tête de Section (galma-structure.css). Dégradé HORS JETONS, relevé tel quel dans le Figma (Table et Section) : version simplifiée du style
+ * blanche 24 px ; reprise par l'en-tête de Section (amf-structure.css). Dégradé HORS JETONS, relevé tel quel dans le Figma (Table et Section) : version simplifiée du style
  * « Gradient » de l'ancien thème AMF (logotype, gabarits de pages). Décorative : aria-hidden="true" sur la pastille. */
 .gui-table,
 .gui-section {

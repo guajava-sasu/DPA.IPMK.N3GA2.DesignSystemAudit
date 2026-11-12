@@ -5,7 +5,7 @@
   "compilerOptions": {
     "noImplicitOverride": true,
     "paths": {
-      "galma-ui": ["./projects/galma-ui/src/public-api.ts"]
+      "amf-design-system": ["./projects/amf-design-system/src/public-api.ts"]
     },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -25,10 +25,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/galma-ui/tsconfig.lib.json"
+      "path": "./projects/amf-design-system/tsconfig.lib.json"
     },
     {
-      "path": "./projects/galma-ui/tsconfig.spec.json"
+      "path": "./projects/amf-design-system/tsconfig.spec.json"
     },
     {
       "path": "./projects/showcase/tsconfig.app.json"

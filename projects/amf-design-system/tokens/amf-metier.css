@@ -315,6 +315,17 @@
 .gui-login-panel .gui-login-submit.gui-login-submit {
   align-self: stretch;
 }
+/* Bouton SSO : 440 px dans un panneau de 480 (marges 40), il déborde de 20 px dans les marges comme dans le Figma ;
+   marges internes de 16 px pour garder son libellé sur une ligne. Panneau plus étroit : le libellé passe à la ligne. */
+.gui-login-panel .gui-login-sso.gui-login-sso {
+  flex: none;
+  width: calc(100% + 40px);
+  max-width: none;
+  height: auto;
+  min-height: var(--gui-btn-h);
+  padding: 8px 16px;
+  white-space: normal;
+}
 .gui-login-panel .gui-message {
   align-self: stretch;
   text-align: start;

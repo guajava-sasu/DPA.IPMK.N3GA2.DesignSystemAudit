@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Génère projects/galma-ui/tokens/amf-tokens.css depuis le Figma du design system AMF.
+// Génère projects/amf-design-system/tokens/amf-tokens.css depuis le Figma du design system AMF.
 //
 //   node scripts/amf-jetons.mjs [chemin/vers/AMF Design System.fig] [--dtcg sortie.json]
 //
-// Sans argument, lit « ../AMF Design System [v2.0].fig » (dossier 20-socle/front).
+// Sans argument, lit « ../AMF Design System [v2.0].fig » (dossier parent du dépôt).
 // Aucune dépendance : Node ≥ 22.15 (zstd natif). Le .fig est un zip qui contient canvas.fig, document Figma au
 // format binaire Kiwi (schéma embarqué) ; le format n'est pas documenté par Figma, le schéma lu dans le fichier
 // rend le décodage tolérant aux évolutions.
@@ -25,7 +25,7 @@ const args = process.argv.slice(2);
 const iDtcg = args.indexOf('--dtcg');
 const sortieDtcg = iDtcg >= 0 ? args.splice(iDtcg, 2)[1] : null;
 const source = resolve(args[0] ?? resolve(racine, '..', 'AMF Design System [v2.0].fig'));
-const sortieCss = resolve(racine, 'projects/galma-ui/tokens/amf-tokens.css');
+const sortieCss = resolve(racine, 'projects/amf-design-system/tokens/amf-tokens.css');
 
 // ── Zip ──────────────────────────────────────────────────────────────────────
 function lireZip(buf) {

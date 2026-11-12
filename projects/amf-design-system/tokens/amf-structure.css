@@ -460,7 +460,7 @@
 }
 
 /* ── Section (page 🆕 Section) : carte de page, Radius/L, Border/Strong, Surface ; en-tête de 56 : pastille en
-   dégradé (galma-navigation.css), titre Subtitle Medium et description Body 2 (marges 16 / 8, écart 2), actions
+   dégradé (amf-navigation.css), titre Subtitle Medium et description Body 2 (marges 16 / 8, écart 2), actions
    et bouton Replier / Déplier (Text Neutral Small) à droite ; filet Border/Default sous l'en-tête déplié ;
    contenu marges 24. Repliée (gui-collapsed) : en-tête seul. ── */
 .gui-section {
