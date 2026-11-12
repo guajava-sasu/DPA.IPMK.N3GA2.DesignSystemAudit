@@ -340,7 +340,7 @@ export const PAGES: PageComposant[] = [
       'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
     ecarts: [
       'Snackbar Material non repris : le Figma l’a déprécié le 14/09 au profit d’Alert, sans disparition automatique (24/09).',
-      'Icônes de l’Alert Dark : variables Feedback/<Type>/Inverse supprimées du .fig mais toujours référencées ; galma-ui reprend les teintes 300 du journal (14/09) et, en mode sombre, les pleins du mode clair.',
+      'Icônes de l’Alert Dark : variables Feedback/<Type>/Inverse supprimées du .fig mais toujours référencées ; galma-ui reprend leurs teintes 300, encore lisibles dans le .fig, et, en mode sombre, les pleins du mode clair.',
     ],
   },
   {

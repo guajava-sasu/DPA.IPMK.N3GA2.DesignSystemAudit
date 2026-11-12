@@ -11,7 +11,7 @@
 /* ── Couleurs de retour courantes, partagées par Alert, Message Info, Disclaimer, Empty State et Modale ─────── */
 :root {
   /* Feedback/<Type>/Inverse : icônes de l'Alert Dark sur Background/Inverse (journal du 14/09, ≥ 5,9:1). Ces
-     variables sont supprimées du .fig mais toujours référencées par l'Alert : valeurs relevées dans le journal,
+     variables sont supprimées du .fig mais toujours référencées par l'Alert : valeurs lues sur ces variables supprimées,
      reliées aux palettes AMF générées. */
   --gui-feedback-info-inverse: var(--amf-color-blue-300);
   --gui-feedback-success-inverse: var(--amf-color-green-300);

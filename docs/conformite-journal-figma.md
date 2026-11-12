@@ -25,8 +25,8 @@ Adaptées :
 - Table, pastille décorative de l'en-tête (hasIcon) : dégradé hors jetons recopié du Figma (#5B2A86 → #D63A3A →
   #F3923C), version simplifiée du style « Gradient » de l'ancien thème AMF (logotype, gabarits) ; repris à la demande de
   Gunther malgré ses réserves esthétiques, à signaler au comité AMF.
-- Alert Dark : icônes en Feedback/<Type>/Inverse, variables supprimées du .fig mais toujours référencées ; teintes 300
-  reprises du journal (14/09) et, en mode sombre, pleins du mode clair.
+- Alert Dark : icônes en Feedback/<Type>/Inverse, variables supprimées du .fig mais toujours référencées ; teintes 300 de ces
+  variables reprises et, en mode sombre, pleins du mode clair.
 - Message Info et Disclaimer : largeurs laissées en dur dans le Figma (480 et 800), largeur du conteneur dans galma-ui.
 - Tooltip : flèche ajoutée par le CSS (Material n'en a pas) ; Rich en toggletip ouvert au clic (overlay CDK).
 
