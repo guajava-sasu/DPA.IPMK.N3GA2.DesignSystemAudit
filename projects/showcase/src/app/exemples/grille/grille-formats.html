@@ -1,0 +1,16 @@
+<div class="ex">
+  @for (f of formats; track f.classe) {
+    <figure>
+      <figcaption>{{ f.nom }}</figcaption>
+      <div class="defile" tabindex="0" role="region" [attr.aria-label]="'Cadre ' + f.nom">
+        <div class="cadre" [style.width.px]="f.largeur">
+          <div class="gui-grid {{ f.classe }}" aria-hidden="true">
+            @for (c of colonnes; track c) {
+              <div class="colonne gui-span-1"></div>
+            }
+          </div>
+        </div>
+      </div>
+    </figure>
+  }
+</div>

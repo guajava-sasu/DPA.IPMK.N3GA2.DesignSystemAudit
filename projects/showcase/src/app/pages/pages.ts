@@ -493,6 +493,19 @@ export const PAGES: PageComposant[] = [
       "import { MatButtonToggleModule } from '@angular/material/button-toggle';\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';",
   },
   {
+    id: 'grille',
+    titre: 'Grid & Layout',
+    famille: 'Structure et affichage',
+    figma: 'Grid & Layout (guideline v1, non refondue en 2.0, valeurs figées le 26/10)',
+    resume:
+      'Grille de mise en page en CSS pur (gui-grid) : 12 colonnes fluides, marge et gouttière par format (mobile 16 / 16, tablette 96 / 24, desktop 24 / 16), largeurs gui-span-1 à 12, variantes gui-span-md-N et gui-span-sm-N pour les petits formats.',
+    ecarts: [
+      'La page du Figma se contredit : ses cadres annotés décrivent 12 colonnes (valeurs reprises ici), son texte 8 colonnes avec une gouttière de 24 et des bords de 12. À faire trancher par le comité AMF.',
+      'Seuils des formats (744 et 1440 px) pris sur les largeurs des cadres : le Figma ne donne pas de points de rupture (à confirmer).',
+      'Découpe 1/8 dessinée dans le Figma impossible sur 12 colonnes.',
+    ],
+  },
+  {
     id: 'bloc-action',
     titre: 'CTA Bloc',
     famille: 'Composants métier',

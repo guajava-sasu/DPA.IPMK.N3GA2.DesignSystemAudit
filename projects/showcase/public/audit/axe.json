@@ -1,5 +1,5 @@
 {
- "genere": "2026-11-12T22:31:32.848Z",
+ "genere": "2026-11-12T22:43:19.620Z",
  "outil": "axe-core 4.14.0",
  "regles": "wcag2a, wcag2aa, wcag21a, wcag21aa",
  "exceptions": [
@@ -431,6 +431,15 @@
    "violations": [],
    "exceptions": [],
    "reussies": 27,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/grille",
+   "titre": "Grid & Layout",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
    "incompletes": 1
   },
   {
@@ -1094,6 +1103,15 @@
    "violations": [],
    "exceptions": [],
    "reussies": 27,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/grille",
+   "titre": "Grid & Layout",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
    "incompletes": 1
   },
   {

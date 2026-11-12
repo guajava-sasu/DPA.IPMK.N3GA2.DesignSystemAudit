@@ -59,6 +59,9 @@ import { FichierZone } from './fichier/fichier-zone';
 import { FichierListe } from './fichier/fichier-liste';
 import { FilArianeSimple } from './fil-ariane/fil-ariane-simple';
 import { FilArianeReplie } from './fil-ariane/fil-ariane-replie';
+import { GrilleDecoupes } from './grille/grille-decoupes';
+import { GrilleFormats } from './grille/grille-formats';
+import { GrilleAdaptative } from './grille/grille-adaptative';
 import { HeureSimple } from './heure/heure-simple';
 import { InfobulleSimple } from './infobulle/infobulle-simple';
 import { InfobulleRiche } from './infobulle/infobulle-riche';
@@ -702,6 +705,36 @@ export const EXEMPLES: Exemple[] = [
     ts: "import { Component } from '@angular/core';\nimport { MatMenuModule } from '@angular/material/menu';\n\n/**\n * Niveaux repliés (Collapsed)\n * Breadcrumb Items=Collapsed : au-delà de 4 niveaux, les niveaux intermédiaires se replient derrière\n * un bouton « … » (survol Action/Neutral/Subtle) qui ouvre un mat-menu.\n */\n@Component({\n  selector: 'ex-fil-ariane-replie',\n  imports: [MatMenuModule],\n  templateUrl: './fil-ariane-replie.html',\n  styleUrl: './fil-ariane-replie.css',\n})\nexport class FilArianeReplie {}\n",
     html: "<nav class=\"gui-breadcrumb\" aria-label=\"Fil d'Ariane\">\n  <ol>\n    <li><a href=\"#\" (click)=\"$event.preventDefault()\">Accueil</a></li>\n    <li>\n      <button class=\"gui-breadcrumb-ellipsis\" [matMenuTriggerFor]=\"niveaux\" aria-label=\"Afficher les niveaux masqués\">…</button>\n    </li>\n    <li><a href=\"#\" (click)=\"$event.preventDefault()\">Défauts</a></li>\n    <li><span aria-current=\"page\">Fiche défaut D-2291</span></li>\n  </ol>\n</nav>\n<mat-menu #niveaux=\"matMenu\">\n  <button mat-menu-item>Suivi de ligne</button>\n  <button mat-menu-item>Bobine B24-0412</button>\n  <button mat-menu-item>Contrôle qualité</button>\n</mat-menu>\n",
     css: ":host {\n  display: block;\n}\n",
+  },
+  {
+    page: "grille",
+    id: "grille-decoupes",
+    titre: "Découpes de la page",
+    description: "Grille de 12 colonnes au format desktop (gui-grid gui-grid-desktop : marge 24, gouttière 16) : découpes 1/1, 1/2, 1/3, 1/4, 1/6 et 1/12 par gui-span-12, 6, 4, 3, 2 et 1. Un enfant sans classe gui-span prend toute la largeur. La découpe 1/8 dessinée dans le Figma n'existe pas sur 12 colonnes.",
+    composant: GrilleDecoupes,
+    ts: "import { Component } from '@angular/core';\n\n/**\n * Découpes de la page\n * Grille de 12 colonnes au format desktop (gui-grid gui-grid-desktop : marge 24, gouttière 16) :\n * découpes 1/1, 1/2, 1/3, 1/4, 1/6 et 1/12 par gui-span-12, 6, 4, 3, 2 et 1. Un enfant sans classe\n * gui-span prend toute la largeur. La découpe 1/8 dessinée dans le Figma n'existe pas sur 12 colonnes.\n */\n@Component({\n  selector: 'ex-grille-decoupes',\n  imports: [],\n  templateUrl: './grille-decoupes.html',\n  styleUrl: './grille-decoupes.css',\n})\nexport class GrilleDecoupes {\n  protected readonly cellules = [\n    { nom: '1/1', span: 12 },\n    { nom: '1/2', span: 6 },\n    { nom: '1/3', span: 4 },\n    { nom: '1/4', span: 3 },\n    { nom: '1/6', span: 2 },\n    { nom: '1/12', span: 1 },\n  ].flatMap((d) => Array.from({ length: 12 / d.span }, (_, i) => ({ ...d, id: `${d.nom}-${i}` })));\n}\n",
+    html: "<div class=\"gui-grid gui-grid-desktop demo\">\n  @for (c of cellules; track c.id) {\n    <div class=\"cellule gui-span-{{ c.span }}\">{{ c.nom }}</div>\n  }\n</div>\n",
+    css: ".demo {\n  padding-block: 16px;\n  border: 1px solid var(--amf-border-default);\n  border-radius: var(--amf-radius-l);\n  background: var(--amf-background-surface);\n}\n.cellule {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  min-height: 48px;\n  border: 1px dashed var(--amf-border-strong);\n  border-radius: var(--amf-radius-s);\n  background: var(--amf-background-surface-subtle);\n  color: var(--amf-foreground-secondary);\n  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /\n    var(--amf-text-caption-line-height) var(--gui-font);\n}\n",
+  },
+  {
+    page: "grille",
+    id: "grille-formats",
+    titre: "Trois formats",
+    description: "Cadres du Figma à leur largeur réelle : mobile 320 px (gui-grid-mobile, marge 16, gouttière 16), tablette 744 px (gui-grid-tablet, marge 96, gouttière 24), desktop 1440 px (gui-grid-desktop, marge 24, gouttière 16). Les colonnes restent fluides, seules la marge et la gouttière changent. Sans classe de format, la grille suit la largeur de la fenêtre (seuils 744 et 1440, à confirmer).",
+    composant: GrilleFormats,
+    ts: "import { Component } from '@angular/core';\n\n/**\n * Trois formats\n * Cadres du Figma à leur largeur réelle : mobile 320 px (gui-grid-mobile, marge 16, gouttière 16),\n * tablette 744 px (gui-grid-tablet, marge 96, gouttière 24), desktop 1440 px (gui-grid-desktop, marge\n * 24, gouttière 16). Les colonnes restent fluides, seules la marge et la gouttière changent. Sans\n * classe de format, la grille suit la largeur de la fenêtre (seuils 744 et 1440, à confirmer).\n */\n@Component({\n  selector: 'ex-grille-formats',\n  imports: [],\n  templateUrl: './grille-formats.html',\n  styleUrl: './grille-formats.css',\n})\nexport class GrilleFormats {\n  protected readonly colonnes = Array.from({ length: 12 }, (_, i) => i + 1);\n  protected readonly formats = [\n    { nom: 'Mobile 320 px : marge 16, gouttière 16', classe: 'gui-grid-mobile', largeur: 320 },\n    { nom: 'Tablette 744 px : marge 96, gouttière 24', classe: 'gui-grid-tablet', largeur: 744 },\n    { nom: 'Desktop 1440 px : marge 24, gouttière 16', classe: 'gui-grid-desktop', largeur: 1440 },\n  ];\n}\n",
+    html: "<div class=\"ex\">\n  @for (f of formats; track f.classe) {\n    <figure>\n      <figcaption>{{ f.nom }}</figcaption>\n      <div class=\"defile\" tabindex=\"0\" role=\"region\" [attr.aria-label]=\"'Cadre ' + f.nom\">\n        <div class=\"cadre\" [style.width.px]=\"f.largeur\">\n          <div class=\"gui-grid {{ f.classe }}\" aria-hidden=\"true\">\n            @for (c of colonnes; track c) {\n              <div class=\"colonne gui-span-1\"></div>\n            }\n          </div>\n        </div>\n      </div>\n    </figure>\n  }\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  gap: 24px;\n}\nfigure {\n  margin: 0;\n}\nfigcaption {\n  margin-bottom: 8px;\n  color: var(--amf-foreground-secondary);\n  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) /\n    var(--amf-text-body-2-line-height) var(--gui-font);\n}\n.defile {\n  max-width: 100%;\n  overflow-x: auto;\n}\n.cadre {\n  box-sizing: border-box;\n  padding-block: 16px;\n  border: 1px solid var(--amf-border-default);\n  border-radius: var(--amf-radius-l);\n  background: var(--amf-background-surface);\n}\n.colonne {\n  height: 96px;\n  border-radius: var(--amf-radius-xs);\n  background: var(--amf-background-surface-subtle);\n  outline: 1px dashed var(--amf-border-strong);\n  outline-offset: -1px;\n}\n",
+  },
+  {
+    page: "grille",
+    id: "grille-adaptative",
+    titre: "Cartes adaptatives",
+    description: "Grille sans classe de format : elle suit la largeur de la fenêtre. Chaque carte prend 1/4 en desktop (gui-span-3), 1/2 en tablette (gui-span-md-6) et toute la largeur en mobile (gui-span-sm-12). Dans la vitrine, la marge suit donc la fenêtre et non le panneau : 96 px entre 744 et 1439 px de large.",
+    composant: GrilleAdaptative,
+    ts: "import { Component } from '@angular/core';\nimport { MatCardModule } from '@angular/material/card';\n\n/**\n * Cartes adaptatives\n * Grille sans classe de format : elle suit la largeur de la fenêtre. Chaque carte prend 1/4 en desktop\n * (gui-span-3), 1/2 en tablette (gui-span-md-6) et toute la largeur en mobile (gui-span-sm-12). Dans\n * la vitrine, la marge suit donc la fenêtre et non le panneau : 96 px entre 744 et 1439 px de large.\n */\n@Component({\n  selector: 'ex-grille-adaptative',\n  imports: [MatCardModule],\n  templateUrl: './grille-adaptative.html',\n  styleUrl: './grille-adaptative.css',\n})\nexport class GrilleAdaptative {\n  protected readonly indicateurs = [\n    { libelle: 'Bobines en ligne', valeur: '12' },\n    { libelle: 'Vitesse de ligne', valeur: '118 m/min' },\n    { libelle: 'Tonnage du poste', valeur: '1 240 t' },\n    { libelle: 'Défauts ouverts', valeur: '3' },\n  ];\n}\n",
+    html: "<div class=\"gui-grid\">\n  @for (k of indicateurs; track k.libelle) {\n    <mat-card appearance=\"outlined\" class=\"gui-span-3 gui-span-md-6 gui-span-sm-12\">\n      <mat-card-content>\n        <p class=\"libelle\">{{ k.libelle }}</p>\n        <p class=\"valeur\">{{ k.valeur }}</p>\n      </mat-card-content>\n    </mat-card>\n  }\n</div>\n",
+    css: ".libelle {\n  margin: 0;\n  color: var(--amf-foreground-secondary);\n  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) /\n    var(--amf-text-body-2-line-height) var(--gui-font);\n}\n.valeur {\n  margin: 4px 0 0;\n  font: var(--amf-text-heading-h5-weight) var(--amf-text-heading-h5-size) /\n    var(--amf-text-heading-h5-line-height) var(--gui-font);\n}\n",
   },
   {
     page: "heure",

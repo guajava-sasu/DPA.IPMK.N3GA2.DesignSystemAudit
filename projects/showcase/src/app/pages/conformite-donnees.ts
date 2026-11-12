@@ -1,5 +1,5 @@
 /*
- * Contrôle d'amf-design-system 0.7.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Contrôle d'amf-design-system 0.8.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
  * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 6 (famille formulaire, navigation et contenus, messages et overlays, structure et affichage, composants métier). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
@@ -89,6 +89,15 @@ export const CONFORMITE: LigneConformite[] = [
     decision: 'Crimson → Ruby, Amber → Gold, alias sémantiques inchangés.',
     statut: 'conforme',
     realisation: 'Primitives --amf-color-ruby-* et --amf-color-gold-* générées.',
+  },
+  {
+    date: '26/10',
+    entree: 'Guidelines v1 (Grid & Layout)',
+    decision:
+      'Pages de guidelines v1 gardées, valeurs figées en brut, à refaire sur la v2 ; Grid & Layout : cadres en 12 colonnes, texte en 8 colonnes.',
+    statut: 'ecart',
+    realisation:
+      'Grille gui-grid en 12 colonnes des cadres (marge et gouttière : mobile 16 / 16, tablette 96 / 24, desktop 24 / 16), seuils 744 et 1440 px pris sur les cadres ; contradiction du Figma à faire trancher par le comité AMF.',
   },
   // Button
   {

@@ -1,0 +1,10 @@
+<div class="gui-grid">
+  @for (k of indicateurs; track k.libelle) {
+    <mat-card appearance="outlined" class="gui-span-3 gui-span-md-6 gui-span-sm-12">
+      <mat-card-content>
+        <p class="libelle">{{ k.libelle }}</p>
+        <p class="valeur">{{ k.valeur }}</p>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

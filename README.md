@@ -14,7 +14,8 @@ Les composants propres à une application (états process, synoptique…) vivent
   - `tokens/amf-messages.css` : messages et overlays (lot 4) : Alert et Alert Stack, Message Info, Disclaimer,
     Empty State, Tooltip (Plain et Rich), Modale (MatDialog), Loader (Progress Bar et Progress Spinner).
   - `tokens/amf-structure.css` : structure et affichage (lot 5) : Avatar, Rating, Scrollbar, Card (Elevated,
-    Outlined, survol) et Selectable Card, Header, Footer, Section, Expandable List, Divider Title.
+    Outlined, survol) et Selectable Card, Header, Footer, Section, Expandable List, Divider Title ; grille de mise en
+    page `gui-grid` (12 colonnes, `gui-span-*`).
   - `tokens/amf-metier.css` : composants métier (lot 6) : CTA Bloc, Reorderable List (glisser-déposer du CDK),
     Task Card, Login Panel, Agenda (vue mois), Chat Bubble.
   - `tokens/amf-composants.css` : Badge, Tag, Count, Status (sans équivalent Material), typographie, icônes.

@@ -6,7 +6,7 @@ import { BlocCode } from '../commun/bloc-code';
   imports: [BlocCode],
   template: `
     <header class="tete">
-      <p class="gui-overline gui-secondary-text">amf-design-system 0.7.0</p>
+      <p class="gui-overline gui-secondary-text">amf-design-system 0.8.0</p>
       <h1 class="gui-h4">Thème AMF v2.0 sur Angular Material</h1>
       <p class="gui-body-1">
         Le design system AMF « officiel » (fichier Figma v2.0) appliqué à Angular Material 22, en

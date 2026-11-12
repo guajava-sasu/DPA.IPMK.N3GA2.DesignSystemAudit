@@ -1,0 +1,11 @@
+.libelle {
+  margin: 0;
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) /
+    var(--amf-text-body-2-line-height) var(--gui-font);
+}
+.valeur {
+  margin: 4px 0 0;
+  font: var(--amf-text-heading-h5-weight) var(--amf-text-heading-h5-size) /
+    var(--amf-text-heading-h5-line-height) var(--gui-font);
+}

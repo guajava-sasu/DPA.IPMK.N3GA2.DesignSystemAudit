@@ -1,7 +1,7 @@
 /*
  * Structure et affichage (lot 5) habillés AMF v2.0 : Avatar, Rating, Scrollbar, Card complète et Selectable Card,
- * Header, Footer, Section, Expandable List, Divider Title. Chaque bloc cite la page 🆕 du Figma dont il reprend
- * les mesures. Ombres : les niveaux AMF vont du plus marqué (Lv1, 16 / 32) au plus léger (Lv4, 2 / 4).
+ * Header, Footer, Section, Expandable List, Divider Title ; grille de mise en page (guideline Grid & Layout). Chaque
+ * bloc cite la page du Figma dont il reprend les mesures. Ombres : les niveaux AMF vont du plus marqué (Lv1, 16 / 32) au plus léger (Lv4, 2 / 4).
  */
 
 /* ── Avatar (page 🆕 Avatar) : rond Radius/Full ; XS 24 / S 32 / M 40 (défaut) / L 56 ; Initials (Label 10 Medium,
@@ -624,4 +624,167 @@
 }
 .gui-divider-title.gui-inset {
   padding-inline: 16px;
+}
+
+/* ── Grille (page Grid & Layout, guideline v1 non refondue en 2.0 : valeurs des cadres annotés) ──────────────────
+   12 colonnes fluides en border-box ; marge latérale et gouttière par format : mobile (moins de 744 px) 16 / 16,
+   tablette (744 à 1439 px) 96 / 24, desktop (1440 px et plus) 24 / 16. Seuils = largeurs des cadres du Figma
+   (à confirmer). Le texte de la même page décrit une autre grille (8 colonnes, gouttière 24, bords 12) : écart à
+   faire trancher. Espacement vertical entre rangées = gouttière (le Figma ne le précise pas).
+   gui-grid-mobile, gui-grid-tablet, gui-grid-desktop forcent un format ; enfants pleine largeur par défaut,
+   gui-span-1 à gui-span-12 ; gui-span-md-N (tablette et mobile) et gui-span-sm-N (mobile) changent la largeur sur
+   les petits formats. ── */
+.gui-grid {
+  --gui-grid-columns: 12;
+  --gui-grid-margin: 16px;
+  --gui-grid-gutter: 16px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(var(--gui-grid-columns), minmax(0, 1fr));
+  gap: var(--gui-grid-gutter);
+  padding-inline: var(--gui-grid-margin);
+}
+@media (min-width: 744px) {
+  .gui-grid {
+    --gui-grid-margin: 96px;
+    --gui-grid-gutter: 24px;
+  }
+}
+@media (min-width: 1440px) {
+  .gui-grid {
+    --gui-grid-margin: 24px;
+    --gui-grid-gutter: 16px;
+  }
+}
+.gui-grid.gui-grid-mobile {
+  --gui-grid-margin: 16px;
+  --gui-grid-gutter: 16px;
+}
+.gui-grid.gui-grid-tablet {
+  --gui-grid-margin: 96px;
+  --gui-grid-gutter: 24px;
+}
+.gui-grid.gui-grid-desktop {
+  --gui-grid-margin: 24px;
+  --gui-grid-gutter: 16px;
+}
+.gui-grid > * {
+  box-sizing: border-box;
+  min-width: 0;
+  grid-column: 1 / -1;
+}
+.gui-grid > .gui-span-full {
+  grid-column: 1 / -1;
+}
+.gui-grid > .gui-span-1 {
+  grid-column: span 1;
+}
+.gui-grid > .gui-span-2 {
+  grid-column: span 2;
+}
+.gui-grid > .gui-span-3 {
+  grid-column: span 3;
+}
+.gui-grid > .gui-span-4 {
+  grid-column: span 4;
+}
+.gui-grid > .gui-span-5 {
+  grid-column: span 5;
+}
+.gui-grid > .gui-span-6 {
+  grid-column: span 6;
+}
+.gui-grid > .gui-span-7 {
+  grid-column: span 7;
+}
+.gui-grid > .gui-span-8 {
+  grid-column: span 8;
+}
+.gui-grid > .gui-span-9 {
+  grid-column: span 9;
+}
+.gui-grid > .gui-span-10 {
+  grid-column: span 10;
+}
+.gui-grid > .gui-span-11 {
+  grid-column: span 11;
+}
+.gui-grid > .gui-span-12 {
+  grid-column: span 12;
+}
+@media (max-width: 1439.98px) {
+  .gui-grid > .gui-span-md-1 {
+    grid-column: span 1;
+  }
+  .gui-grid > .gui-span-md-2 {
+    grid-column: span 2;
+  }
+  .gui-grid > .gui-span-md-3 {
+    grid-column: span 3;
+  }
+  .gui-grid > .gui-span-md-4 {
+    grid-column: span 4;
+  }
+  .gui-grid > .gui-span-md-5 {
+    grid-column: span 5;
+  }
+  .gui-grid > .gui-span-md-6 {
+    grid-column: span 6;
+  }
+  .gui-grid > .gui-span-md-7 {
+    grid-column: span 7;
+  }
+  .gui-grid > .gui-span-md-8 {
+    grid-column: span 8;
+  }
+  .gui-grid > .gui-span-md-9 {
+    grid-column: span 9;
+  }
+  .gui-grid > .gui-span-md-10 {
+    grid-column: span 10;
+  }
+  .gui-grid > .gui-span-md-11 {
+    grid-column: span 11;
+  }
+  .gui-grid > .gui-span-md-12 {
+    grid-column: span 12;
+  }
+}
+@media (max-width: 743.98px) {
+  .gui-grid > .gui-span-sm-1 {
+    grid-column: span 1;
+  }
+  .gui-grid > .gui-span-sm-2 {
+    grid-column: span 2;
+  }
+  .gui-grid > .gui-span-sm-3 {
+    grid-column: span 3;
+  }
+  .gui-grid > .gui-span-sm-4 {
+    grid-column: span 4;
+  }
+  .gui-grid > .gui-span-sm-5 {
+    grid-column: span 5;
+  }
+  .gui-grid > .gui-span-sm-6 {
+    grid-column: span 6;
+  }
+  .gui-grid > .gui-span-sm-7 {
+    grid-column: span 7;
+  }
+  .gui-grid > .gui-span-sm-8 {
+    grid-column: span 8;
+  }
+  .gui-grid > .gui-span-sm-9 {
+    grid-column: span 9;
+  }
+  .gui-grid > .gui-span-sm-10 {
+    grid-column: span 10;
+  }
+  .gui-grid > .gui-span-sm-11 {
+    grid-column: span 11;
+  }
+  .gui-grid > .gui-span-sm-12 {
+    grid-column: span 12;
+  }
 }

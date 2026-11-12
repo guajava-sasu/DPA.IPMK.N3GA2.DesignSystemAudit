@@ -1,0 +1,18 @@
+.demo {
+  padding-block: 16px;
+  border: 1px solid var(--amf-border-default);
+  border-radius: var(--amf-radius-l);
+  background: var(--amf-background-surface);
+}
+.cellule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border: 1px dashed var(--amf-border-strong);
+  border-radius: var(--amf-radius-s);
+  background: var(--amf-background-surface-subtle);
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--gui-font);
+}
