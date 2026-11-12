@@ -42,6 +42,15 @@ import { FAMILLES, Famille, PAGES } from './pages/pages';
           <mat-button-toggle [value]="false">Default</mat-button-toggle>
           <mat-button-toggle [value]="true">Rounded</mat-button-toggle>
         </mat-button-toggle-group>
+        <mat-button-toggle-group
+          class="gui-sm gui-neutral"
+          [value]="affichage.animations"
+          (change)="affichage.changerAnimations($event.value)"
+          aria-label="Animations Material (coupées pour les postes RDS sans GPU)"
+        >
+          <mat-button-toggle [value]="true">Animé</mat-button-toggle>
+          <mat-button-toggle [value]="false">Sans animation</mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
     </header>
     <div class="corps">

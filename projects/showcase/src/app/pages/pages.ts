@@ -100,7 +100,7 @@ export const PAGES: PageComposant[] = [
     famille: 'Navigation et contenus',
     figma: '🆕 Tab et Tab Bar (style line par défaut)',
     resume:
-      'Onglets Material : 48 px, BUTTON 2 en capitales, actif Foreground/Brand avec indicateur primaire 2 px, sans animation.',
+      'Onglets Material : 48 px, BUTTON 2 en capitales, actif Foreground/Brand avec indicateur primaire 2 px ; animation coupée avec provideAmfMaterial({ animations: false }).',
     material: "import { MatTabsModule } from '@angular/material/tabs';",
   },
   {
@@ -415,7 +415,7 @@ export const PAGES: PageComposant[] = [
     material:
       "import { MatProgressBarModule } from '@angular/material/progress-bar';\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';",
     ecarts: [
-      'Postes RDS : pas d’animation infinie. Les modes indéterminés sont figés par provideAmfMaterial() (animations désactivées) ; préférer le mode déterminé ou un libellé « Chargement… ».',
+      'Postes RDS sans GPU : provideAmfMaterial({ animations: false }) fige les modes indéterminés (pas d’animation infinie) ; y préférer le mode déterminé ou un libellé « Chargement… ».',
       'Material ne dessine pas la piste du spinner : anneau ajouté par le CSS, aux tailles gui-sm / défaut / gui-lg.',
     ],
   },
@@ -524,7 +524,7 @@ export const PAGES: PageComposant[] = [
       'Liste réordonnable (gui-reorderable-list) sur le glisser-déposer du CDK : éléments 60 px bordés Border/Strong, poignée drag_indicator, Count, Status et Toggle Switch ; Dragging en Primary Tint avec ombre Lv2.',
     material: "import { DragDropModule } from '@angular/cdk/drag-drop';",
     ecarts: [
-      'Glisser-déposer sans transition (postes RDS).',
+      'Transitions du glisser-déposer coupées avec provideAmfMaterial({ animations: false }) (postes RDS).',
       'Le CDK ne gère pas le clavier : la poignée déplace l’élément avec les flèches haut et bas (code de l’exemple), annonce en aria-live.',
     ],
   },

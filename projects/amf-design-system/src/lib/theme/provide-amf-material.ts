@@ -1,4 +1,10 @@
-import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+import {
+  DOCUMENT,
+  EnvironmentProviders,
+  inject,
+  makeEnvironmentProviders,
+  provideEnvironmentInitializer,
+} from '@angular/core';
 import {
   MATERIAL_ANIMATIONS,
   MAT_RIPPLE_GLOBAL_OPTIONS,
@@ -19,10 +25,24 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatStepperIntl } from '@angular/material/stepper';
 import { AmfDatepickerIntl, AmfPaginatorIntl, AmfStepperIntl } from './amf-intl';
 
+/** Options de provideAmfMaterial(). */
+export interface AmfMaterialOptions {
+  /**
+   * Animations Material (ouvertures, transitions, onglets, indicateurs indéterminés). Actives par défaut ; `false`
+   * pour les postes sans GPU (bureaux distants RDS) : plus de transition ni d'animation infinie, les indicateurs
+   * indéterminés sont figés. La classe `amf-sans-animation` est alors posée sur `<html>` pour les règles CSS du
+   * design system (onglets, glisser-déposer).
+   */
+  animations?: boolean;
+  /** Onde (ripple) au clic. Par défaut, suit `animations`. */
+  ripple?: boolean;
+}
+
 /**
  * Réglages Angular Material du design system AMF.
  *
- * - Animations et ripple coupés : postes RDS sans GPU ; AMF change la couleur au survol, sans onde.
+ * - Animations et ripple actifs par défaut ; `provideAmfMaterial({ animations: false })` les coupe pour les postes
+ *   sans GPU (RDS). Sans ripple, le survol et l'appui se lisent à la couleur du conteneur, comme dans le Figma.
  * - Champs : apparence outlined (seule apparence AMF du Form Field), aide sous le champ sans réserver de place.
  * - Toggle Button : pas de coche, la sélection se lit au fond (page 🆕 Toggle Button).
  * - Toggle Switch : pas d'icône dans le curseur (propriété Icon masquée par défaut dans le Figma).
@@ -31,12 +51,14 @@ import { AmfDatepickerIntl, AmfPaginatorIntl, AmfStepperIntl } from './amf-intl'
  *   (MAT_DATE_LOCALE) restent au choix de l'application.
  * - Paginator et Stepper : libellés en français (AmfPaginatorIntl, AmfStepperIntl).
  */
-export function provideAmfMaterial(): EnvironmentProviders {
+export function provideAmfMaterial(options: AmfMaterialOptions = {}): EnvironmentProviders {
+  const animations = options.animations ?? true;
+  const ripple = options.ripple ?? animations;
   return makeEnvironmentProviders([
-    { provide: MATERIAL_ANIMATIONS, useValue: { animationsDisabled: true } },
+    { provide: MATERIAL_ANIMATIONS, useValue: { animationsDisabled: !animations } },
     {
       provide: MAT_RIPPLE_GLOBAL_OPTIONS,
-      useValue: { disabled: true } satisfies RippleGlobalOptions,
+      useValue: { disabled: !ripple } satisfies RippleGlobalOptions,
     },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -57,7 +79,7 @@ export function provideAmfMaterial(): EnvironmentProviders {
     {
       provide: MAT_TABS_CONFIG,
       useValue: {
-        animationDuration: '0ms',
+        ...(animations ? {} : { animationDuration: '0ms' }),
         stretchTabs: false,
         alignTabs: 'start',
       } satisfies MatTabsConfig,
@@ -65,5 +87,8 @@ export function provideAmfMaterial(): EnvironmentProviders {
     { provide: MatDatepickerIntl, useClass: AmfDatepickerIntl },
     { provide: MatPaginatorIntl, useClass: AmfPaginatorIntl },
     { provide: MatStepperIntl, useClass: AmfStepperIntl },
+    provideEnvironmentInitializer(() => {
+      inject(DOCUMENT).documentElement.classList.toggle('amf-sans-animation', !animations);
+    }),
   ]);
 }

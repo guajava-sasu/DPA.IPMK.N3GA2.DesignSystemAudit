@@ -7,9 +7,9 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 /**
  * Ordre des contrôles
- * Glisser-déposer du CDK (cdkDropList, cdkDrag, poignée cdkDragHandle) sans transition pour les postes
- * RDS. Au clavier, la poignée déplace l'élément avec les flèches haut et bas ; une région aria-live
- * annonce la nouvelle position. Élément désactivé : cdkDragDisabled et aria-disabled.
+ * Glisser-déposer du CDK (cdkDropList, cdkDrag, poignée cdkDragHandle), sans transition quand les
+ * animations sont coupées (postes RDS). Au clavier, la poignée déplace l'élément avec les flèches haut et
+ * bas ; une région aria-live annonce la nouvelle position. Élément désactivé : cdkDragDisabled et aria-disabled.
  */
 @Component({
   selector: 'ex-liste-reordonnable-controles',

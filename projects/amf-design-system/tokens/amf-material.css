@@ -510,6 +510,9 @@
   --mat-tab-active-ripple-color: transparent;
   --mat-tab-inactive-ripple-color: transparent;
   --mat-tab-pagination-icon-color: var(--amf-foreground-secondary);
+}
+/* Animations coupées (provideAmfMaterial({ animations: false }), classe amf-sans-animation sur <html>) */
+.amf-sans-animation {
   --mat-tab-header-animation-duration: 0ms;
   --mat-tab-body-animation-duration: 0ms;
 }

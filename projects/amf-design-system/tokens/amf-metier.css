@@ -2,7 +2,8 @@
  * Composants métier (lot 6) habillés AMF v2.0 : CTA Bloc, Reorderable List, Task Card, Login Panel, Agenda,
  * Chat Bubble. Material n'a aucun de ces composants : CSS pur, autour des boutons, chips, toggles et contrôles
  * Material quand le Figma en instancie. Chaque bloc cite la page 🆕 du Figma dont il reprend les mesures.
- * Postes RDS : aucune animation infinie (points de rédaction du Chat Bubble fixes, glisser-déposer sans transition).
+ * Points de rédaction du Chat Bubble fixes (comme le Figma) ; glisser-déposer sans transition quand les animations sont
+ * coupées (classe amf-sans-animation posée par provideAmfMaterial({ animations: false }), postes RDS sans GPU).
  */
 
 /* ── CTA Bloc (page 🆕 CTA Bloc) : tuile d'action Medium 128 × 106 / Large 160 × 120, marges 16, écart 8,
@@ -130,8 +131,8 @@
 .gui-reorderable-item.cdk-drag-placeholder {
   opacity: 0.4;
 }
-.gui-reorderable-list .cdk-drag-animating,
-.gui-reorderable-list.cdk-drop-list-dragging .gui-reorderable-item {
+.amf-sans-animation .gui-reorderable-list .cdk-drag-animating,
+.amf-sans-animation .gui-reorderable-list.cdk-drop-list-dragging .gui-reorderable-item {
   transition: none;
 }
 .gui-reorderable-item[aria-disabled='true'] {

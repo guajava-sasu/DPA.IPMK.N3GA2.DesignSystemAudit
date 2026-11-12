@@ -1,5 +1,5 @@
 /*
- * Contrôle d'amf-design-system 0.8.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Contrôle d'amf-design-system 0.9.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
  * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 6 (famille formulaire, navigation et contenus, messages et overlays, structure et affichage, composants métier). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
@@ -789,9 +789,9 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Loader',
     decision:
       'Progress Spinner Indeterminate / Determinate × Primary / Secondary / Inverse × 24 / 40 / 64 ; Progress Bar Determinate / Indeterminate / Buffer.',
-    statut: 'ecart',
+    statut: 'conforme',
     realisation:
-      'Modes déterminés et Buffer conformes (piste du spinner ajoutée par le CSS, Material n’en dessine pas). Modes indéterminés figés : pas d’animation infinie sur les postes RDS (provideAmfMaterial désactive les animations).',
+      'Tous les modes conformes (piste du spinner ajoutée par le CSS, Material n’en dessine pas). Indéterminés animés par défaut, figés avec provideAmfMaterial({ animations: false }) pour les postes RDS sans GPU.',
   },
   {
     date: '22/09',
@@ -970,7 +970,7 @@ export const CONFORMITE: LigneConformite[] = [
       'Reorderable List et Reorderable List Item (GLOBAL v2) : Default / Hover / Focused / Dragging / Disabled ; poignée, sous-titre, titre, Count, Status, Toggle Switch.',
     statut: 'adapte',
     realisation:
-      'gui-reorderable-list sur le glisser-déposer du CDK, sans transition (postes RDS) ; Dragging en Primary Tint, bordure 2 Primary Default, ombre Lv2 ; déplacement au clavier par la poignée (flèches haut et bas), que le CDK ne fournit pas.',
+      'gui-reorderable-list sur le glisser-déposer du CDK, transitions coupées avec animations: false (postes RDS) ; Dragging en Primary Tint, bordure 2 Primary Default, ombre Lv2 ; déplacement au clavier par la poignée (flèches haut et bas), que le CDK ne fournit pas.',
   },
   {
     date: '25/09',

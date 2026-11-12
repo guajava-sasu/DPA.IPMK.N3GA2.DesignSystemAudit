@@ -6,7 +6,7 @@ import { BlocCode } from '../commun/bloc-code';
   imports: [BlocCode],
   template: `
     <header class="tete">
-      <p class="gui-overline gui-secondary-text">amf-design-system 0.8.0</p>
+      <p class="gui-overline gui-secondary-text">amf-design-system 0.9.0</p>
       <h1 class="gui-h4">Thème AMF v2.0 sur Angular Material</h1>
       <p class="gui-body-1">
         Le design system AMF « officiel » (fichier Figma v2.0) appliqué à Angular Material 22, en
@@ -32,8 +32,8 @@ import { BlocCode } from '../commun/bloc-code';
     <section>
       <h2 class="gui-h6">3. Réglages Material</h2>
       <p class="gui-body-2">
-        Animations et ripple coupés (postes sans GPU), champs outlined, onglets et toggles aux
-        réglages AMF :
+        Animations et ripple actifs par défaut, à couper pour les postes sans GPU (bureaux distants
+        RDS) ; champs outlined, onglets et toggles aux réglages AMF :
       </p>
       <vt-bloc-code langue="typescript" [code]="config" />
     </section>
@@ -116,7 +116,10 @@ export class Accueil {
 import { provideAmfMaterial } from 'amf-design-system';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideAmfMaterial()],
+  providers: [
+    provideAmfMaterial(),
+    // postes sans GPU (RDS) : provideAmfMaterial({ animations: false })
+  ],
 };`;
   protected readonly sombre = `import { setAmfThemeMode } from 'amf-design-system';
 

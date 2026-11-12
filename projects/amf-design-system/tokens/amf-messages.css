@@ -4,8 +4,8 @@
  * mat-progress-spinner). Chaque bloc cite la page 🆕 du Figma dont il reprend les mesures.
  *
  * Type de retour (classes sur le conteneur) : gui-info (défaut), gui-success, gui-warning, gui-error, gui-neutral.
- * Postes RDS : aucune animation infinie. Les indicateurs indéterminés sont figés par provideAmfMaterial()
- * (animations désactivées) : préférer le mode déterminé ou un libellé « Chargement… ».
+ * Postes RDS sans GPU : provideAmfMaterial({ animations: false }) fige les indicateurs indéterminés (pas
+ * d'animation infinie) ; y préférer le mode déterminé ou un libellé « Chargement… ».
  */
 
 /* ── Couleurs de retour courantes, partagées par Alert, Message Info, Disclaimer, Empty State et Modale ─────── */
@@ -520,7 +520,7 @@
 .mat-mdc-progress-bar[mode='buffer'] .mdc-linear-progress__buffer-bar {
   background: var(--amf-border-subtle);
 }
-/* Material dessine la piste au-delà du tampon en pointillés animés : piste pleine et sans animation (postes RDS) */
+/* Material dessine la piste au-delà du tampon en pointillés animés : piste pleine comme le Figma, donc sans animation */
 .mat-mdc-progress-bar[mode='buffer'] .mdc-linear-progress__buffer-dots {
   animation: none;
   -webkit-mask: none;

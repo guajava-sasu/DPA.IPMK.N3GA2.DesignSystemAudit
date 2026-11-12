@@ -4,6 +4,7 @@ import localeFr from '@angular/common/locales/fr';
 import { provideRouter, withHashLocation, withInMemoryScrolling } from '@angular/router';
 import { provideAmfMaterial } from 'amf-design-system';
 import { routes } from './app.routes';
+import { animationsVitrine } from './commun/affichage';
 
 // Nombres et dates au format français (pipes number et date des exemples : « 18,4 », « 0,75 »).
 registerLocaleData(localeFr);
@@ -18,6 +19,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
     ),
     { provide: LOCALE_ID, useValue: 'fr' },
-    provideAmfMaterial(),
+    // Animations réglables depuis l'en-tête de la vitrine (rechargement), comme pour un poste RDS
+    provideAmfMaterial({ animations: animationsVitrine() }),
   ],
 };

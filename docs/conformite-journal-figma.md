@@ -1,12 +1,12 @@
-# Conformité d'amf-design-system 0.8.0 au journal du Figma AMF v2.0 (2026-11-12)
+# Conformité d'amf-design-system 0.9.0 au journal du Figma AMF v2.0 (2026-11-12)
 
 Source : page Changelog du .fig (entrées du 12/09 au 26/10/2026), extraite dans
 un fichier texte hors dépôt. Détail ligne à ligne : page « Conformité au journal » de la vitrine
 (`projects/showcase/src/app/pages/conformite-donnees.ts`).
 
 124 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus, lot 4 messages et
-overlays, lot 5 structure et affichage, lot 6 composants métier) : **97 conformes**, **21 adaptées** (même rendu, obtenu
-autrement à cause de Material), **3 écarts**, **3 hors lot**. Toutes les pages 🆕 du Figma ont désormais leur
+overlays, lot 5 structure et affichage, lot 6 composants métier) : **98 conformes**, **21 adaptées** (même rendu, obtenu
+autrement à cause de Material), **2 écarts**, **3 hors lot**. Toutes les pages 🆕 du Figma ont désormais leur
 composant.
 
 Adaptées :
@@ -35,7 +35,8 @@ Adaptées :
 - Selectable Card : CSS pur autour d'un `mat-radio-button` ou d'un `mat-checkbox`, clic sur la carte relayé par
   l'application.
 - Section : pastille d'en-tête au même dégradé hors jetons que celle de Table.
-- Reorderable List : glisser-déposer du CDK sans transition (postes RDS), déplacement au clavier par la poignée.
+- Reorderable List : glisser-déposer du CDK (transitions coupées avec `animations: false`), déplacement au clavier par
+  la poignée.
 - Agenda : tableau HTML habillé (Material n'a pas d'agenda) ; jours hors du mois en boutons inactifs ; règle
   « n de plus » de l'exemple (au-delà de trois événements, deux visibles) à confirmer.
 - Chat Bubble : colonne limitée à 80 % du fil, le Figma n'en fixe pas.
@@ -47,8 +48,6 @@ Adaptées :
   `gui-grid` suit les cadres, seuils 744 et 1440 px pris sur leurs largeurs. À faire trancher par le comité AMF.
 - Calendar : largeur 312 px appliquée, mais Material garde 4 colonnes (mois 4 × 3, années 4 × 6) là où le Figma passe
   à 3 colonnes (3 × 4, 3 × 8, journal du 22/09).
-- Loader : modes indéterminés du Progress Spinner et de la Progress Bar figés, pas d'animation infinie sur les postes
-  RDS (choix du design system, `provideAmfMaterial()` désactive les animations) ; préférer le mode déterminé ou un libellé.
 
 Hors lot : apparence Fill du Form Field ; icône et Count dans les onglets, onglets verticaux ; vues Semaine et Jour de
 l'Agenda (non dessinées dans le Figma).
