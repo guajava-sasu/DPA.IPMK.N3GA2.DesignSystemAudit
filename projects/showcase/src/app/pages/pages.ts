@@ -6,6 +6,7 @@ export const FAMILLES = [
   'Navigation et contenus',
   'Messages et overlays',
   'Structure et affichage',
+  'Composants métier',
   'Retours',
 ] as const;
 export type Famille = (typeof FAMILLES)[number];
@@ -340,7 +341,7 @@ export const PAGES: PageComposant[] = [
     resume:
       'Notification éphémère en CSS pur (gui-alert) : 360 px, Radius/M, icône 20, titre Alert Title, message Body 2, action facultative et bouton Fermer. Style Light (Surface, Border/Strong, ombre Lv2) ou Dark (gui-inverse, Background/Inverse). Pile gui-alert-stack fixe à 24 px du bord, trois alertes au plus.',
     material:
-      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';",
     ecarts: [
       'Snackbar Material non repris : le Figma l’a déprécié le 14/09 au profit d’Alert, sans disparition automatique (24/09).',
       'Icônes de l’Alert Dark : variables Feedback/<Type>/Inverse supprimées du .fig mais toujours référencées ; galma-ui reprend leurs teintes 300, encore lisibles dans le .fig, et, en mode sombre, les pleins du mode clair.',
@@ -355,7 +356,7 @@ export const PAGES: PageComposant[] = [
     resume:
       'Message persistant dans la page (gui-message) : Filled par défaut, gui-soft (fond atténué et barre d’accent de 4 px), gui-outlined ; taille M (marges 16, icône 24) ou gui-sm (marges 12, icône 20) ; actions facultatives sous le texte.',
     material:
-      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';",
     ecarts: [
       'Largeur fixée à 480 dans le Figma : le message occupe ici la largeur de son conteneur.',
     ],
@@ -377,7 +378,7 @@ export const PAGES: PageComposant[] = [
     resume:
       'État vide en CSS pur (gui-empty-state) : illustration ronde de 64 (icône 32 ou spinner 40), titre Body 1 Medium, message Body 2 secondaire, action Outlined Neutral.',
     material:
-      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatProgressSpinnerModule } from ’@angular/material/progress-spinner’;',
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';",
   },
   {
     id: 'infobulle',
@@ -388,7 +389,7 @@ export const PAGES: PageComposant[] = [
     resume:
       'Plain : mat-tooltip (Background/Inverse, Radius/S, Caption), flèche facultative par matTooltipClass="gui-tooltip-arrow". Rich : toggletip ouvert au clic par cdkConnectedOverlay (gui-tooltip-rich, Surface, Border/Strong, Radius/M).',
     material:
-      'import { MatTooltipModule } from ’@angular/material/tooltip’;\nimport { OverlayModule } from ’@angular/cdk/overlay’;',
+      "import { MatTooltipModule } from '@angular/material/tooltip';\nimport { OverlayModule } from '@angular/cdk/overlay';",
     ecarts: [
       'Material n’a ni flèche ni tooltip riche : flèche ajoutée par le CSS, tooltip riche en overlay CDK ouvert au clic (une bulle au survol ne peut pas contenir de texte long accessible).',
     ],
@@ -401,7 +402,7 @@ export const PAGES: PageComposant[] = [
       '🆕 Modale (ex Dialog, renommée le 06/10 ; Standard / Confirmation / Destructive × S / M / L) et Modale Overlay',
     resume:
       'MatDialog aux mesures AMF : Surface, Border/Strong, Radius/L, ombre Lv1 ; largeurs 400 / 560 / 800 par panelClass ; titre Heading H6, contenu Body 2 secondaire, actions séparées par Border/Subtle ; en-tête gui-modale-header avec icône et bouton Fermer ; voile Background/Overlay.',
-    material: 'import { MatDialogModule } from ’@angular/material/dialog’;',
+    material: "import { MatDialogModule } from '@angular/material/dialog';",
   },
   {
     id: 'chargement',
@@ -412,7 +413,7 @@ export const PAGES: PageComposant[] = [
     resume:
       'mat-progress-bar (4 px, Radius/XS, Buffer) et mat-progress-spinner (traits 3 / 4 / 5, anneau de piste Border/Subtle ajouté par le CSS, gui-secondary, gui-inverse).',
     material:
-      'import { MatProgressBarModule } from ’@angular/material/progress-bar’;\nimport { MatProgressSpinnerModule } from ’@angular/material/progress-spinner’;',
+      "import { MatProgressBarModule } from '@angular/material/progress-bar';\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';",
     ecarts: [
       'Postes RDS : pas d’animation infinie. Les modes indéterminés sont figés par provideGalmaMaterial() (animations désactivées) ; préférer le mode déterminé ou un libellé « Chargement… ».',
       'Material ne dessine pas la piste du spinner : anneau ajouté par le CSS, aux tailles gui-sm / défaut / gui-lg.',
@@ -457,7 +458,7 @@ export const PAGES: PageComposant[] = [
     resume:
       'Bandeau d’application en CSS pur (<header class="gui-header">) : marque, CTA, statut, étiquette, notifications avec Count, compte avec Avatar.',
     material:
-      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';",
     ecarts: ['Le logotype ArcelorMittal du Figma est remplacé par un texte dans la vitrine.'],
   },
   {
@@ -476,7 +477,7 @@ export const PAGES: PageComposant[] = [
     resume:
       'Carte de page repliable en CSS pur (gui-section) : pastille en dégradé, titre Subtitle Medium, description, actions et bouton Replier / Déplier, contenu marges 24.',
     material:
-      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';",
     ecarts: [
       'Pastille en dégradé hors jetons, la même que celle de l’en-tête de Table (version simplifiée du style Gradient de l’ancien thème AMF).',
     ],
@@ -490,6 +491,81 @@ export const PAGES: PageComposant[] = [
     resume:
       'Liste de contrôles d’inspection en CSS pur (gui-expandable-list) : bandeau d’accent Feedback selon le résultat, résultat en Toggle Button Neutral, photos, applicabilité, contenu déplié.',
     material:
-      'import { MatButtonToggleModule } from ’@angular/material/button-toggle’;\nimport { MatSlideToggleModule } from ’@angular/material/slide-toggle’;',
+      "import { MatButtonToggleModule } from '@angular/material/button-toggle';\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';",
+  },
+  {
+    id: 'bloc-action',
+    titre: 'CTA Bloc',
+    famille: 'Composants métier',
+    figma: '🆕 CTA Bloc (Medium / Large × Default / Hover / Focused / Selected / Disabled)',
+    resume:
+      'Tuile d’action en CSS pur (bouton gui-cta-bloc) : 128 × 106 ou 160 × 120 (gui-lg), icône Foreground/Brand, libellé centré ; Selected en Secondary Tint par aria-pressed.',
+    ecarts: ['Material n’a pas de tuile d’action : <button> natif habillé.'],
+  },
+  {
+    id: 'liste-reordonnable',
+    titre: 'Reorderable List',
+    famille: 'Composants métier',
+    figma:
+      '🆕 Reorderable List et Reorderable List Item (Default / Hover / Focused / Dragging / Disabled)',
+    resume:
+      'Liste réordonnable (gui-reorderable-list) sur le glisser-déposer du CDK : éléments 60 px bordés Border/Strong, poignée drag_indicator, Count, Status et Toggle Switch ; Dragging en Primary Tint avec ombre Lv2.',
+    material: "import { DragDropModule } from '@angular/cdk/drag-drop';",
+    ecarts: [
+      'Glisser-déposer sans transition (postes RDS).',
+      'Le CDK ne gère pas le clavier : la poignée déplace l’élément avec les flèches haut et bas (code de l’exemple), annonce en aria-live.',
+    ],
+  },
+  {
+    id: 'carte-tache',
+    titre: 'Task Card',
+    famille: 'Composants métier',
+    figma: '🆕 Task Card (6 couleurs × Default / Hover), BUSINESS',
+    resume:
+      'Carte de tâche en CSS pur (gui-task-card) : 360 px, bandeau d’accent de 4 px, titre Body 1, Tag de zone, menu, trois champs, Status et bouton Ouvrir ; ombre Lv2 au survol.',
+    material:
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatMenuModule } from '@angular/material/menu';",
+  },
+  {
+    id: 'connexion',
+    titre: 'Login Panel',
+    famille: 'Composants métier',
+    figma: '🆕 Login Panel (SSO / Credentials / Access Denied)',
+    resume:
+      'Panneau de connexion en CSS pur (gui-login-panel) : 480 px, marges 40, logotype, nom de l’application en H6, bouton SSO, formulaire identifiant et mot de passe, ou accès refusé avec Message Info.',
+    material:
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';",
+    ecarts: [
+      'Le logotype ArcelorMittal du Figma est remplacé par un texte dans la vitrine, et le libellé du bouton SSO ne cite pas l’entreprise.',
+      'Bouton SSO sur toute la largeur du panneau (440 px dans le Figma, plus large que le contenu de 400 px).',
+    ],
+  },
+  {
+    id: 'agenda',
+    titre: 'Agenda',
+    famille: 'Composants métier',
+    figma: '🆕 Agenda, Agenda Header, Agenda Day Cell, Agenda Event (vue mois)',
+    resume:
+      'Agenda mensuel en tableau (gui-agenda) : en-tête Aujourd’hui, navigation, titre H5, vues ; cellules de 116 px (Today, Outside, Selected), événements Timed ou All-day aux couleurs Accent, « n de plus » en Foreground/Link.',
+    material:
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatButtonToggleModule } from '@angular/material/button-toggle';",
+    ecarts: [
+      'Material n’a pas d’agenda (mat-calendar est un sélecteur de date) : tableau HTML habillé, logique de l’exemple à reprendre par l’application.',
+      'Vues Semaine et Jour non dessinées dans le Figma (« à composer avec les mêmes briques ») : désactivées dans l’exemple.',
+    ],
+  },
+  {
+    id: 'bulle-conversation',
+    titre: 'Chat Bubble',
+    famille: 'Composants métier',
+    figma: '🆕 Chat Bubble (User / Assistant × Default / Typing / Error), BUSINESS',
+    resume:
+      'Message de conversation en CSS pur (gui-chat-message) : avatar 32, bulle Radius/L au coin de 4 px côté auteur, sources en Chips Assist, heure et actions sous la bulle, états Typing et Error.',
+    material:
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatChipsModule } from '@angular/material/chips';",
+    ecarts: [
+      'Points de rédaction fixes : pas d’animation infinie sur les postes RDS.',
+      'Largeur de la colonne limitée à 80 % du fil (le Figma n’en fixe pas).',
+    ],
   },
 ];

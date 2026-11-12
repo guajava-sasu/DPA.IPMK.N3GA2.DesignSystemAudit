@@ -1,0 +1,32 @@
+<ul
+  class="gui-reorderable-list"
+  cdkDropList
+  aria-label="Ordre des contrôles"
+  (cdkDropListDropped)="deposer($event)"
+>
+  @for (c of controles(); track c.id; let i = $index) {
+    <li class="gui-reorderable-item" cdkDrag [cdkDragDisabled]="c.inactif" [attr.aria-disabled]="c.inactif || null">
+      <button
+        matIconButton
+        class="gui-neutral gui-reorderable-handle"
+        cdkDragHandle
+        [disabled]="c.inactif"
+        [attr.aria-label]="'Déplacer ' + c.titre + ', position ' + (i + 1) + ' sur ' + controles().length"
+        (keydown.arrowup)="deplacer(i, -1, $event)"
+        (keydown.arrowdown)="deplacer(i, 1, $event)"
+      >
+        <mat-icon>drag_indicator</mat-icon>
+      </button>
+      <div class="gui-reorderable-texts">
+        <p class="gui-reorderable-subtitle">{{ c.lieu }}</p>
+        <p class="gui-reorderable-title">{{ c.titre }}</p>
+      </div>
+      @if (c.photos) {
+        <span class="gui-count gui-navy">{{ c.photos }}<span class="gui-sr-only"> photos</span></span>
+      }
+      <span class="gui-status {{ c.statut.classe }} gui-sm">{{ c.statut.libelle }}</span>
+      <mat-slide-toggle [checked]="!c.inactif" [disabled]="c.inactif" [aria-label]="'Contrôle actif : ' + c.titre" />
+    </li>
+  }
+</ul>
+<p class="gui-sr-only" aria-live="polite">{{ annonce() }}</p>

@@ -1,0 +1,21 @@
+<section class="gui-login-panel" aria-labelledby="ex-login-id">
+  <div class="gui-login-logo"><span class="marque">GALMA2</span></div>
+  <h2 id="ex-login-id" class="gui-login-title">Suivi de la ligne de galvanisation</h2>
+  <form class="gui-login-form" (submit)="$event.preventDefault()">
+    <p class="gui-body-2 gui-secondary-text">Sauf indication contraire, tous les champs sont obligatoires.</p>
+    <div class="gui-field gui-lg">
+      <label class="gui-field-label" for="ex-login-ident">Identifiant</label>
+      <mat-form-field>
+        <input matInput id="ex-login-ident" autocomplete="username" required />
+      </mat-form-field>
+    </div>
+    <div class="gui-field gui-lg">
+      <label class="gui-field-label" for="ex-login-mdp">Mot de passe</label>
+      <mat-form-field>
+        <input matInput id="ex-login-mdp" type="password" autocomplete="current-password" required />
+      </mat-form-field>
+    </div>
+    <button matButton="filled" type="submit" class="gui-lg gui-login-submit">Se connecter</button>
+  </form>
+  <button matButton class="gui-secondary gui-sm">Mot de passe oublié</button>
+</section>

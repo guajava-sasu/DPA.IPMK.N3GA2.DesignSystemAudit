@@ -93,9 +93,9 @@ interface ResultatAxe {
           {{ a.outil }}, règles {{ a.regles }}, exécuté le
           {{ a.genere.slice(0, 16).replace('T', ' à ') }} (UTC). Les panneaux flottants (Select,
           calendrier, liste d’heures, menus, liste du paginateur, niveaux repliés du fil d’Ariane,
-          tooltips, modale, menu de carte) sont audités ouverts, de même que le menu latéral replié,
-          une ligne de tableau repliée, une pile d’alertes, une section repliée et un contrôle
-          d’inspection replié.
+          tooltips, modale, menus de carte et de Task Card) sont audités ouverts, de même que le
+          menu latéral replié, une ligne de tableau repliée, une pile d’alertes, une section
+          repliée, un contrôle d’inspection replié et un jour d’agenda déplié.
         </p>
         @for (e of a.exceptions ?? []; track e.cible) {
           <p class="gui-body-2">

@@ -1,0 +1,15 @@
+<div class="gui-cta-blocs" role="group" aria-labelledby="ex-cta-choix">
+  <p id="ex-cta-choix" class="gui-sr-only">Type de requête</p>
+  @for (t of types; track t.id) {
+    <button
+      type="button"
+      class="gui-cta-bloc"
+      [attr.aria-pressed]="choix() === t.id"
+      (click)="choix.set(t.id)"
+    >
+      <span class="material-icons gui-cta-bloc-icon" aria-hidden="true">{{ t.icone }}</span>
+      {{ t.libelle }}
+    </button>
+  }
+</div>
+<p class="gui-body-2">Choix : {{ libelle() }}</p>

@@ -18,7 +18,7 @@ const LIBELLES: Record<StatutConformite, { texte: string; classe: string }> = {
       <h1 class="gui-h4">Conformité au journal du Figma</h1>
       <p class="gui-body-1">
         Chaque décision du journal (page Changelog du .fig, du 12/09 au 26/10/2026) qui touche les
-        fondations ou un composant déjà construit (lots 1 à 5), et ce que galma-ui en fait. Les
+        fondations ou un composant déjà construit (lots 1 à 6), et ce que galma-ui en fait. Les
         couleurs et mesures viennent des jetons générés : une décision de couleur est conforme dès
         que le jeton porte la nouvelle valeur.
       </p>

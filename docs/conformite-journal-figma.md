@@ -1,12 +1,13 @@
-# Conformité de galma-ui 0.5.0 au journal du Figma AMF v2.0 (2026-11-12)
+# Conformité de galma-ui 0.6.0 au journal du Figma AMF v2.0 (2026-11-12)
 
 Source : page Changelog du .fig (entrées du 12/09 au 26/10/2026), extraite dans
 `04-analyse/figma-amf/changelog.txt`. Détail ligne à ligne : page « Conformité au journal » de la vitrine
 (`projects/showcase/src/app/pages/conformite-donnees.ts`).
 
-111 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus, lot 4 messages et
-overlays, lot 5 structure et affichage) : **89 conformes**, **18 adaptées** (même rendu, obtenu autrement à cause de
-Material), **2 écarts**, **2 hors lot**.
+123 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus, lot 4 messages et
+overlays, lot 5 structure et affichage, lot 6 composants métier) : **96 conformes**, **22 adaptées** (même rendu, obtenu
+autrement à cause de Material), **2 écarts**, **3 hors lot**. Toutes les pages 🆕 du Figma ont désormais leur
+composant.
 
 Adaptées :
 
@@ -34,6 +35,12 @@ Adaptées :
 - Selectable Card : CSS pur autour d'un `mat-radio-button` ou d'un `mat-checkbox`, clic sur la carte relayé par
   l'application.
 - Section : pastille d'en-tête au même dégradé hors jetons que celle de Table.
+- Reorderable List : glisser-déposer du CDK sans transition (postes RDS), déplacement au clavier par la poignée.
+- Login Panel : bouton SSO sur toute la largeur du contenu (440 px dans le Figma, plus large que les 400 px
+  disponibles).
+- Agenda : tableau HTML habillé (Material n'a pas d'agenda) ; jours hors du mois en boutons inactifs ; règle
+  « n de plus » de l'exemple (au-delà de trois événements, deux visibles) à confirmer.
+- Chat Bubble : colonne limitée à 80 % du fil, le Figma n'en fixe pas.
 
 Écarts :
 
@@ -42,7 +49,8 @@ Adaptées :
 - Loader : modes indéterminés du Progress Spinner et de la Progress Bar figés, pas d'animation infinie sur les postes
   RDS (choix Galma2, `provideGalmaMaterial()` désactive les animations) ; préférer le mode déterminé ou un libellé.
 
-Hors lot : apparence Fill du Form Field ; icône et Count dans les onglets, onglets verticaux.
+Hors lot : apparence Fill du Form Field ; icône et Count dans les onglets, onglets verticaux ; vues Semaine et Jour de
+l'Agenda (non dessinées dans le Figma).
 
 Corrigé grâce au contrôle : l'astérisque des champs obligatoires, retiré par AMF le 24/09 (audit RGAA Sopra), avait été
 mis dans le premier jet ; un test de la vitrine empêche son retour.

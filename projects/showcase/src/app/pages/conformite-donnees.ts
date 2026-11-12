@@ -1,6 +1,6 @@
 /*
- * Contrôle de galma-ui 0.5.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
- * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 5 (famille formulaire, navigation et contenus, messages et overlays, structure et affichage). Statuts :
+ * Contrôle de galma-ui 0.6.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 6 (famille formulaire, navigation et contenus, messages et overlays, structure et affichage, composants métier). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
  *   ecart     : différence connue, à corriger ou à faire valider
@@ -926,5 +926,103 @@ export const CONFORMITE: LigneConformite[] = [
     statut: 'conforme',
     galma:
       'gui-divider-title en Form Label Caps (Medium 14/20, capitales, interlettrage 0,5), filet Border/Default ou gui-subtle, gui-inset.',
+  },
+  // Composants métier (lot 6)
+  {
+    date: '25/09',
+    entree: 'CTA Bloc',
+    decision:
+      'CTA Bloc (GLOBAL v2) : Medium / Large × Default / Hover / Focused / Selected / Disabled, icône et libellé.',
+    statut: 'conforme',
+    galma:
+      'button.gui-cta-bloc 128 × 106 ou 160 × 120 (gui-lg), icône Foreground/Brand, libellé centré Caption / Form Label, bordure Border/Input, survol Neutral Subtle, focus 2 px Border/Focus.',
+  },
+  {
+    date: '25/09',
+    entree: 'CTA Bloc',
+    decision: 'CTA Bloc Selected en Secondary (Tint + Default).',
+    statut: 'conforme',
+    galma: 'aria-pressed="true" (ou gui-selected) : Secondary Tint et bordure 2 Secondary Default.',
+  },
+  {
+    date: '25/09',
+    entree: 'Reorderable List',
+    decision:
+      'Reorderable List et Reorderable List Item (GLOBAL v2) : Default / Hover / Focused / Dragging / Disabled ; poignée, sous-titre, titre, Count, Status, Toggle Switch.',
+    statut: 'adapte',
+    galma:
+      'gui-reorderable-list sur le glisser-déposer du CDK, sans transition (postes RDS) ; Dragging en Primary Tint, bordure 2 Primary Default, ombre Lv2 ; déplacement au clavier par la poignée (flèches haut et bas), que le CDK ne fournit pas.',
+  },
+  {
+    date: '25/09',
+    entree: 'Task Card',
+    decision:
+      'Task Card (BUSINESS) : 6 couleurs × Default / Hover ; bandeau d’accent, Tag de zone, menu, trois champs, Status, action.',
+    statut: 'conforme',
+    galma:
+      'gui-task-card 360 px, bandeau de 4 px Accent/<Color>/Strong, Tag Regular Small de la couleur, champs en liste de définitions, ombre Lv2 au survol.',
+  },
+  {
+    date: '25/09',
+    entree: 'Login Panel',
+    decision: 'Login Panel (GLOBAL v2) : SSO / Credentials / Access Denied.',
+    statut: 'adapte',
+    galma:
+      'gui-login-panel 480 px, marges 40, écart 24 ; bouton SSO sur toute la largeur du contenu (440 px dans le Figma, plus large que les 400 px disponibles) ; logotype remplacé par un texte dans la vitrine.',
+  },
+  {
+    date: '28/09',
+    entree: 'Login Panel',
+    decision: 'Rayon des champs passé à Radius/M (8 px), Login compris.',
+    statut: 'conforme',
+    galma: 'Form Fields Large de galma-ui à Radius/M.',
+  },
+  {
+    date: '25/09',
+    entree: 'Agenda',
+    decision:
+      'Agenda (CORE) : Agenda Event (6 Accent × Timed / All-day), Agenda Day Cell (Default / Today / Outside / Selected, trois événements, « n de plus »), Agenda Header (Aujourd’hui, navigation, titre, vues), vue mois de six semaines en tableau, Border/Strong.',
+    statut: 'adapte',
+    galma:
+      'Material n’a pas d’agenda (mat-calendar est un sélecteur) : tableau HTML habillé (gui-agenda) ; jours hors du mois en boutons inactifs (couleur Disabled du Figma) ; au-delà de trois événements, l’exemple en montre deux et « n de plus » (règle à confirmer, le Figma ne la décrit pas).',
+  },
+  {
+    date: '25/09',
+    entree: 'Agenda',
+    decision: 'Vues Semaine et Jour à composer avec les mêmes briques.',
+    statut: 'hors-lot',
+    galma: 'Non dessinées dans le Figma : boutons Semaine et Jour désactivés dans l’exemple.',
+  },
+  {
+    date: '25/09',
+    entree: 'Agenda',
+    decision:
+      'Action/Secondary/Tint en Blue/50 (jour sélectionné) ; « n de plus » en Foreground/Link (cuivre).',
+    statut: 'conforme',
+    galma: 'Valeurs venues des jetons générés.',
+  },
+  {
+    date: '05/10',
+    entree: 'Agenda Event',
+    decision: 'Styles Label 11 Medium et Label 11 pour les événements d’agenda.',
+    statut: 'conforme',
+    galma: 'Heure en Label 11 Medium, titre en Label 11, coupé par des points de suspension.',
+  },
+  {
+    date: '06/10',
+    entree: 'Chat Bubble',
+    decision:
+      'Refonte : avatar rond 32 (auto_awesome sur Action/Primary ou Avatar Initials), bulle Radius/L au coin adouci côté auteur, heure sous la bulle, sources en Chips Assist numérotées, actions Copier / Utile / Pas utile / Régénérer.',
+    statut: 'adapte',
+    galma:
+      'gui-chat-message : coin de 4 px côté auteur, colonne limitée à 80 % du fil (le Figma n’en fixe pas) ; fil en role="log", auteur de chaque message en texte masqué.',
+  },
+  {
+    date: '06/10',
+    entree: 'Chat Bubble',
+    decision: 'States Default / Typing (trois points) / Error (message d’erreur et Réessayer).',
+    statut: 'conforme',
+    galma:
+      'gui-chat-typing (points fixes, comme le Figma, sans animation pour les postes RDS, annoncés en role="status") et gui-chat-error (Feedback/Error/Foreground, Button Text Neutral Small).',
   },
 ];

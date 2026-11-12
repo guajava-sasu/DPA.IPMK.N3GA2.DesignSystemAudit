@@ -1,0 +1,661 @@
+/*
+ * Composants métier (lot 6) habillés AMF v2.0 : CTA Bloc, Reorderable List, Task Card, Login Panel, Agenda,
+ * Chat Bubble. Material n'a aucun de ces composants : CSS pur, autour des boutons, chips, toggles et contrôles
+ * Material quand le Figma en instancie. Chaque bloc cite la page 🆕 du Figma dont il reprend les mesures.
+ * Postes RDS : aucune animation infinie (points de rédaction du Chat Bubble fixes, glisser-déposer sans transition).
+ */
+
+/* ── CTA Bloc (page 🆕 CTA Bloc) : tuile d'action Medium 128 × 106 / Large 160 × 120, marges 16, écart 8,
+   Radius/M, Surface bordée Border/Input ; icône 24 / 32 Foreground/Brand ; libellé centré Caption / Form Label.
+   États : survol Action/Neutral/Subtle ; focus bordure 2 Border/Focus ; Selected (journal du 25/09) Secondary
+   Tint + bordure 2 Secondary Default ; Disabled Background/Disabled, Border/Disabled, Foreground/Disabled. ── */
+.gui-cta-bloc {
+  --gui-cta-border: 1px;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 128px;
+  min-height: 106px;
+  margin: 0;
+  padding: calc(16px - var(--gui-cta-border));
+  border: var(--gui-cta-border) solid var(--amf-border-input);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.gui-cta-bloc .gui-cta-bloc-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  color: var(--amf-foreground-brand);
+}
+.gui-cta-bloc.gui-lg {
+  width: 160px;
+  min-height: 120px;
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) /
+    var(--amf-text-form-label-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-form-label-letter-spacing);
+}
+.gui-cta-bloc.gui-lg .gui-cta-bloc-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+.gui-cta-bloc:hover {
+  background: var(--amf-action-neutral-subtle);
+}
+.gui-cta-bloc:focus-visible {
+  --gui-cta-border: 2px;
+  outline: none;
+  border-color: var(--amf-border-focus);
+}
+.gui-cta-bloc[aria-pressed='true'],
+.gui-cta-bloc.gui-selected {
+  --gui-cta-border: 2px;
+  border-color: var(--amf-action-secondary-default);
+  background: var(--amf-action-secondary-tint);
+}
+.gui-cta-bloc:disabled,
+.gui-cta-bloc[aria-disabled='true'] {
+  --gui-cta-border: 1px;
+  border-color: var(--amf-border-disabled);
+  background: var(--amf-background-disabled);
+  color: var(--amf-foreground-disabled);
+  cursor: default;
+}
+.gui-cta-bloc:disabled .gui-cta-bloc-icon,
+.gui-cta-bloc[aria-disabled='true'] .gui-cta-bloc-icon {
+  color: var(--amf-foreground-disabled);
+}
+.gui-cta-blocs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ── Reorderable List (page 🆕 Reorderable List) : éléments empilés à 8 px ; élément 60 px, marges 8 / 12 / 8 / 8,
+   écart 12, Radius/M, Surface bordée Border/Strong ; poignée Button Icon Standard Neutral 40 (drag_indicator) ;
+   sous-titre Caption Foreground/Secondary au-dessus du titre Form Label ; Count Navy, Status, Toggle Switch en fin.
+   États : survol Neutral Subtle ; focus bordure 2 Border/Focus ; Dragging Action/Primary/Tint, bordure 2
+   Action/Primary/Default, ombre Lv2 ; Disabled Background/Disabled, textes et poignée Disabled. ── */
+.gui-reorderable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gui-reorderable-item {
+  --gui-ri-border: 1px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: calc(8px - var(--gui-ri-border)) calc(12px - var(--gui-ri-border))
+    calc(8px - var(--gui-ri-border)) calc(8px - var(--gui-ri-border));
+  border: var(--gui-ri-border) solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+}
+.gui-reorderable-item:hover {
+  background: var(--amf-action-neutral-subtle);
+}
+.gui-reorderable-item:has(.gui-reorderable-handle:focus-visible) {
+  --gui-ri-border: 2px;
+  border-color: var(--amf-border-focus);
+}
+.gui-reorderable-item.gui-dragging,
+.gui-reorderable-item.cdk-drag-preview {
+  --gui-ri-border: 2px;
+  border-color: var(--amf-action-primary-default);
+  background: var(--amf-action-primary-tint);
+  box-shadow: var(--amf-shadow-lv2);
+}
+.gui-reorderable-item.cdk-drag-placeholder {
+  opacity: 0.4;
+}
+.gui-reorderable-list .cdk-drag-animating,
+.gui-reorderable-list.cdk-drop-list-dragging .gui-reorderable-item {
+  transition: none;
+}
+.gui-reorderable-item[aria-disabled='true'] {
+  --gui-ri-border: 1px;
+  border-color: var(--amf-border-strong);
+  background: var(--amf-background-disabled);
+  color: var(--amf-foreground-disabled);
+}
+.gui-reorderable-item[aria-disabled='true'] .gui-reorderable-subtitle {
+  color: var(--amf-foreground-disabled);
+}
+.mat-mdc-icon-button.gui-reorderable-handle {
+  flex: none;
+  cursor: grab;
+}
+.gui-reorderable-item.cdk-drag-preview .gui-reorderable-handle {
+  cursor: grabbing;
+}
+.gui-reorderable-texts {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.gui-reorderable-title {
+  margin: 0;
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) /
+    var(--amf-text-form-label-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-form-label-letter-spacing);
+}
+.gui-reorderable-subtitle {
+  margin: 0;
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+}
+
+/* ── Task Card (page 🆕 Task Card, BUSINESS) : 360 px, marges 12 / 16 / 16, écart 12, Radius/L, Surface bordée
+   Border/Strong, bandeau d'accent de 4 px Accent/<Color>/Strong en haut ; en-tête titre Body 1, Tag Regular Small
+   de la couleur, menu Button Icon Neutral Small ; trois champs (libellé Caption Foreground/Secondary, valeur Form
+   Label) écart 24 ; pied Status + Button Text Primary Small aux deux bouts. Survol : ombre Lv2.
+   Couleurs Blue (défaut), Purple, Orange, Green, Navy, Grey. ── */
+.gui-task-card {
+  --gui-tc-accent: var(--amf-accent-blue-strong);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 360px;
+  max-width: 100%;
+  padding: 11px 15px 15px;
+  overflow: hidden;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-l);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+}
+.gui-task-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--gui-tc-accent);
+}
+.gui-task-card.gui-purple {
+  --gui-tc-accent: var(--amf-accent-purple-strong);
+}
+.gui-task-card.gui-orange {
+  --gui-tc-accent: var(--amf-accent-orange-strong);
+}
+.gui-task-card.gui-green {
+  --gui-tc-accent: var(--amf-accent-green-strong);
+}
+.gui-task-card.gui-navy {
+  --gui-tc-accent: var(--amf-accent-navy-strong);
+}
+.gui-task-card.gui-grey {
+  --gui-tc-accent: var(--amf-accent-grey-strong);
+}
+.gui-task-card:hover {
+  box-shadow: var(--amf-shadow-lv2);
+}
+.gui-task-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  margin-top: 4px;
+}
+.gui-task-card-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  font: var(--amf-text-body-1-weight) var(--amf-text-body-1-size) /
+    var(--amf-text-body-1-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-body-1-letter-spacing);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gui-task-card-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin: 0;
+}
+.gui-task-card-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gui-task-card-field dt {
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+}
+.gui-task-card-field dd {
+  margin: 0;
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) /
+    var(--amf-text-form-label-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-form-label-letter-spacing);
+}
+.gui-task-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 32px;
+}
+
+/* ── Login Panel (page 🆕 Login) : 480 px, marges 40, écart 24, centré, Radius/L, Surface bordée Border/Strong ;
+   logotype, nom de l'application H6 ; Type SSO (Button Filled Primary Large, aide Body 2 Foreground/Secondary),
+   Credentials (mention des champs obligatoires, deux Form Fields Large, Filled Primary Large, Text Secondary Small),
+   Access Denied (titre H6, Message Info Soft Error, Button Outlined Neutral). ── */
+.gui-login-panel {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 480px;
+  max-width: 100%;
+  padding: 39px;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-l);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+  text-align: center;
+}
+.gui-login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+}
+.gui-login-title {
+  margin: 0;
+  font: var(--amf-text-heading-h6-weight) var(--amf-text-heading-h6-size) /
+    var(--amf-text-heading-h6-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-heading-h6-letter-spacing);
+}
+.gui-login-help {
+  align-self: stretch;
+  margin: 0;
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) /
+    var(--amf-text-body-2-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+}
+.gui-login-form {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 16px;
+  text-align: start;
+}
+.gui-login-panel .gui-login-submit.gui-login-submit {
+  align-self: stretch;
+}
+.gui-login-panel .gui-message {
+  align-self: stretch;
+  text-align: start;
+}
+
+/* ── Agenda (page 🆕 Agenda, CORE) : vue mois en tableau (structure exigée par l'audit), Radius/L, bordure
+   Border/Strong. Agenda Header 56 : Aujourd'hui (Button Outlined Neutral Small), précédent / suivant (Button Icon
+   Small), titre H5, vues Mois / Semaine / Jour (Toggle Button Group Neutral Small). Jours de la semaine Form Label
+   Foreground/Secondary sur Surface Subtle, filet Border/Default. Agenda Day Cell 116 : marges 6, écart 4, filet
+   Border/Subtle ; date ronde 24 Caption ; Today pastille Action/Primary/Default ; Outside Surface Subtle et date
+   Disabled (bouton inactif) ; Selected Secondary Tint, date cerclée Secondary Default ; « n de plus » Caption Foreground/Link.
+   Agenda Event 20 : Radius/S, marges 6, écart 4, heure Label 11 Medium + titre Label 11 sur Accent Subtle (Timed)
+   ou titre sur Accent Strong (All-day) ; couleurs Blue (défaut), Orange, Green, Navy, Purple, Grey. ── */
+.gui-agenda {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-l);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+}
+.gui-agenda-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  min-height: 56px;
+  box-sizing: border-box;
+  padding: 12px 16px;
+}
+.gui-agenda-nav {
+  display: flex;
+  gap: 4px;
+}
+.gui-agenda-title {
+  flex: 1 1 auto;
+  margin: 0;
+  font: var(--amf-text-heading-h5-weight) var(--amf-text-heading-h5-size) /
+    var(--amf-text-heading-h5-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-heading-h5-letter-spacing);
+}
+.gui-agenda-grid {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.gui-agenda-grid th {
+  height: 32px;
+  padding: 6px 0;
+  box-sizing: border-box;
+  border-top: 1px solid var(--amf-border-default);
+  border-bottom: 1px solid var(--amf-border-default);
+  background: var(--amf-background-surface-subtle);
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) /
+    var(--amf-text-form-label-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-form-label-letter-spacing);
+  text-align: center;
+}
+.gui-agenda-grid th abbr {
+  text-decoration: none;
+}
+.gui-agenda-day {
+  box-sizing: border-box;
+  height: 116px;
+  padding: 6px;
+  border: 1px solid var(--amf-border-subtle);
+  background: var(--amf-background-surface);
+  vertical-align: top;
+}
+.gui-agenda-grid tr > .gui-agenda-day:first-child {
+  border-left: 0;
+}
+.gui-agenda-grid tr > .gui-agenda-day:last-child {
+  border-right: 0;
+}
+.gui-agenda-grid tbody tr:last-child > .gui-agenda-day {
+  border-bottom: 0;
+}
+.gui-agenda-day.gui-outside {
+  background: var(--amf-background-surface-subtle);
+}
+.gui-agenda-day.gui-selected {
+  background: var(--amf-action-secondary-tint);
+}
+.gui-agenda-date {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin: 0 0 4px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--amf-radius-full);
+  background: transparent;
+  color: var(--amf-foreground-primary);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+  cursor: pointer;
+}
+button.gui-agenda-date:not(:disabled):hover {
+  background: var(--amf-action-neutral-subtle);
+}
+.gui-agenda-date:focus-visible {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: 1px;
+}
+.gui-agenda-day.gui-outside .gui-agenda-date,
+.gui-agenda-date:disabled {
+  color: var(--amf-foreground-disabled);
+  cursor: default;
+}
+.gui-agenda-day.gui-today .gui-agenda-date.gui-agenda-date {
+  background: var(--amf-action-primary-default);
+  color: var(--amf-foreground-on-primary);
+}
+.gui-agenda-day.gui-selected .gui-agenda-date {
+  border-color: var(--amf-action-secondary-default);
+}
+.gui-agenda-events {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gui-agenda-event {
+  --gui-ae-bg: var(--amf-accent-blue-subtle);
+  --gui-ae-fg: var(--amf-accent-blue-on-subtle);
+  --gui-ae-strong: var(--amf-accent-blue-strong);
+  --gui-ae-on: var(--amf-accent-blue-on-strong);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  height: 20px;
+  padding: 0 6px;
+  overflow: hidden;
+  border-radius: var(--amf-radius-s);
+  background: var(--gui-ae-bg);
+  color: var(--gui-ae-fg);
+  font: var(--amf-text-label-11-weight) var(--amf-text-label-11-size) /
+    var(--amf-text-label-11-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-label-11-letter-spacing);
+  white-space: nowrap;
+}
+.gui-agenda-event.gui-orange {
+  --gui-ae-bg: var(--amf-accent-orange-subtle);
+  --gui-ae-fg: var(--amf-accent-orange-on-subtle);
+  --gui-ae-strong: var(--amf-accent-orange-strong);
+  --gui-ae-on: var(--amf-accent-orange-on-strong);
+}
+.gui-agenda-event.gui-green {
+  --gui-ae-bg: var(--amf-accent-green-subtle);
+  --gui-ae-fg: var(--amf-accent-green-on-subtle);
+  --gui-ae-strong: var(--amf-accent-green-strong);
+  --gui-ae-on: var(--amf-accent-green-on-strong);
+}
+.gui-agenda-event.gui-navy {
+  --gui-ae-bg: var(--amf-accent-navy-subtle);
+  --gui-ae-fg: var(--amf-accent-navy-on-subtle);
+  --gui-ae-strong: var(--amf-accent-navy-strong);
+  --gui-ae-on: var(--amf-accent-navy-on-strong);
+}
+.gui-agenda-event.gui-purple {
+  --gui-ae-bg: var(--amf-accent-purple-subtle);
+  --gui-ae-fg: var(--amf-accent-purple-on-subtle);
+  --gui-ae-strong: var(--amf-accent-purple-strong);
+  --gui-ae-on: var(--amf-accent-purple-on-strong);
+}
+.gui-agenda-event.gui-grey {
+  --gui-ae-bg: var(--amf-accent-grey-subtle);
+  --gui-ae-fg: var(--amf-accent-grey-on-subtle);
+  --gui-ae-strong: var(--amf-accent-grey-strong);
+  --gui-ae-on: var(--amf-accent-grey-on-strong);
+}
+.gui-agenda-event.gui-all-day {
+  background: var(--gui-ae-strong);
+  color: var(--gui-ae-on);
+}
+.gui-agenda-event-time {
+  flex: none;
+  font: var(--amf-text-label-11-medium-weight) var(--amf-text-label-11-medium-size) /
+    var(--amf-text-label-11-medium-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-label-11-medium-letter-spacing);
+}
+.gui-agenda-event-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gui-agenda-more {
+  margin: 2px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--amf-foreground-link);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+  cursor: pointer;
+}
+.gui-agenda-more:hover {
+  text-decoration: underline;
+}
+.gui-agenda-more:focus-visible {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: 1px;
+}
+
+/* ── Chat Bubble (page 🆕 Chat Bubble, BUSINESS, refonte du 06/10) : avatar rond 32 (Avatar Initials Navy S pour
+   l'utilisateur, pastille Action/Primary/Default avec auto_awesome 18 On Primary pour l'assistant), écart 12 ;
+   colonne écart 4 ; bulle marges 16 / 12, écart 12, Radius/L avec le coin côté auteur à 4 px (utilisateur à droite
+   sur Surface Subtle, assistant à gauche sur Surface bordée Border/Subtle) ; message Body 1 ; sources en Chips
+   Assist Outlined Small (libellé Caption Foreground/Secondary) ; méta sous la bulle : heure Caption
+   Foreground/Secondary et actions Button Icon Standard Neutral Small (Copier, Utile, Pas utile, Régénérer).
+   Typing : trois points 8 px, écart 6 (Disabled, Secondary, Disabled), fixes pour les postes RDS. Error : icône 20
+   et message Feedback/Error/Foreground, Button Text Neutral Small « Réessayer ». ── */
+.gui-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gui-chat-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.gui-chat-message.gui-user {
+  flex-direction: row-reverse;
+}
+.gui-chat-avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--amf-radius-full);
+  background: var(--amf-action-primary-default);
+  color: var(--amf-foreground-on-primary);
+}
+.gui-chat-avatar .material-icons {
+  font-size: 18px;
+}
+.gui-chat-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+  max-width: 80%;
+}
+.gui-chat-message.gui-user .gui-chat-column {
+  align-items: flex-end;
+}
+.gui-chat-bubble {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 100%;
+  padding: 11px 15px;
+  border: 1px solid var(--amf-border-subtle);
+  border-radius: var(--amf-radius-l) var(--amf-radius-l) var(--amf-radius-l) var(--amf-radius-s);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+  font: var(--amf-text-body-1-weight) var(--amf-text-body-1-size) /
+    var(--amf-text-body-1-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-body-1-letter-spacing);
+}
+.gui-chat-bubble p {
+  margin: 0;
+}
+.gui-chat-message.gui-user .gui-chat-bubble {
+  border-color: transparent;
+  border-radius: var(--amf-radius-l) var(--amf-radius-l) var(--amf-radius-s) var(--amf-radius-l);
+  background: var(--amf-background-surface-subtle);
+}
+.gui-chat-sources {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gui-chat-sources-label {
+  margin: 0;
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+}
+.gui-chat-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 20px;
+  padding: 0 0 0 4px;
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+}
+.gui-chat-message.gui-user .gui-chat-meta {
+  padding: 0 4px 0 0;
+}
+.gui-chat-actions {
+  display: flex;
+}
+.gui-chat-typing {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+}
+.gui-chat-typing > span {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--amf-radius-full);
+  background: var(--amf-foreground-disabled);
+}
+.gui-chat-typing > span:nth-child(2) {
+  background: var(--amf-foreground-secondary);
+}
+.gui-chat-error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--amf-feedback-error-foreground);
+}
+.gui-chat-error > .material-icons {
+  font-size: 20px;
+}

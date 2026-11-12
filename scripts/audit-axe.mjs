@@ -138,6 +138,16 @@ const PANNEAUX = [
     ouvrir: 'ex-carte-variantes [aria-haspopup="menu"]',
   },
   {
+    route: '/composants/carte-tache',
+    titre: 'Menu de Task Card ouvert',
+    ouvrir: 'ex-carte-tache-couleurs [aria-haspopup="menu"]',
+  },
+  {
+    route: '/composants/agenda',
+    titre: 'Agenda : « n de plus » ouvert',
+    ouvrir: 'ex-agenda-mois .gui-agenda-more',
+  },
+  {
     route: '/composants/modale',
     titre: 'Modale de confirmation ouverte',
     ouvrir: 'ex-modale-confirmation button',

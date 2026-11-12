@@ -1,0 +1,60 @@
+<div class="gui-chat" role="log" aria-label="Conversation avec l’assistant">
+  <div class="gui-chat-message gui-user">
+    <span class="gui-avatar gui-sm gui-navy" aria-hidden="true">AG</span>
+    <div class="gui-chat-column">
+      <div class="gui-chat-bubble">
+        <span class="gui-sr-only">Vous :</span>
+        <p>Quelle est la procédure de consignation de la cisaille de sortie ?</p>
+      </div>
+      <div class="gui-chat-meta"><time datetime="09:42">09:42</time></div>
+    </div>
+  </div>
+  <div class="gui-chat-message">
+    <span class="gui-chat-avatar" aria-hidden="true"><span class="material-icons">auto_awesome</span></span>
+    <div class="gui-chat-column">
+      <div class="gui-chat-bubble">
+        <span class="gui-sr-only">Assistant :</span>
+        <p>
+          Arrêtez la ligne au pupitre, ouvrez le sectionneur de la cisaille puis posez votre cadenas personnel et
+          l’étiquette de consignation. Vérifiez l’absence d’énergie avant toute intervention.
+        </p>
+        <div class="gui-chat-sources">
+          <p class="gui-chat-sources-label">Sources</p>
+          <mat-chip-set aria-label="Sources">
+            <mat-chip class="gui-sm">1 · Procédure de consignation</mat-chip>
+            <mat-chip class="gui-sm">2 · Fiche poste cisaille</mat-chip>
+          </mat-chip-set>
+        </div>
+      </div>
+      <div class="gui-chat-meta">
+        <time datetime="09:42">09:42</time>
+        <div class="gui-chat-actions">
+          <button matIconButton class="gui-neutral gui-sm" aria-label="Copier la réponse"><mat-icon>content_copy</mat-icon></button>
+          <button matIconButton class="gui-neutral gui-sm" aria-label="Réponse utile" [attr.aria-pressed]="avis() === 'oui'" (click)="avis.set('oui')"><mat-icon>thumb_up</mat-icon></button>
+          <button matIconButton class="gui-neutral gui-sm" aria-label="Réponse pas utile" [attr.aria-pressed]="avis() === 'non'" (click)="avis.set('non')"><mat-icon>thumb_down</mat-icon></button>
+          <button matIconButton class="gui-neutral gui-sm" aria-label="Régénérer la réponse"><mat-icon>refresh</mat-icon></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gui-chat-message gui-user">
+    <span class="gui-avatar gui-sm gui-navy" aria-hidden="true">AG</span>
+    <div class="gui-chat-column">
+      <div class="gui-chat-bubble">
+        <span class="gui-sr-only">Vous :</span>
+        <p>Et pour la soudeuse d’entrée ?</p>
+      </div>
+      <div class="gui-chat-meta"><time datetime="09:43">09:43</time></div>
+    </div>
+  </div>
+  <div class="gui-chat-message">
+    <span class="gui-chat-avatar" aria-hidden="true"><span class="material-icons">auto_awesome</span></span>
+    <div class="gui-chat-column">
+      <div class="gui-chat-bubble" role="status">
+        <span class="gui-sr-only">L’assistant rédige sa réponse.</span>
+        <div class="gui-chat-typing" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      <div class="gui-chat-meta"><time datetime="09:43">09:43</time></div>
+    </div>
+  </div>
+</div>

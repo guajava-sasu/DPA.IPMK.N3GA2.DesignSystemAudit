@@ -1,0 +1,5 @@
+.marque {
+  color: var(--amf-foreground-brand);
+  font: 700 28px / 36px var(--amf-text-body-1-family);
+  letter-spacing: 0.04em;
+}

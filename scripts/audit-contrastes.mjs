@@ -22,7 +22,9 @@ const css =
   '\n' +
   readFileSync(join(jetons, 'galma-messages.css'), 'utf8') +
   '\n' +
-  readFileSync(join(jetons, 'galma-structure.css'), 'utf8');
+  readFileSync(join(jetons, 'galma-structure.css'), 'utf8') +
+  '\n' +
+  readFileSync(join(jetons, 'galma-metier.css'), 'utf8');
 
 function blocs(selecteur) {
   const vars = {};
@@ -309,6 +311,50 @@ T(S, '--amf-foreground-link', '--amf-background-surface-subtle', 'Lien du Footer
 T(S, '--amf-foreground-primary', '--amf-action-neutral-subtle', 'Selectable Card survolée');
 T(S, '--amf-foreground-brand', '--amf-background-surface', 'Divider Title');
 T(S, '--amf-accent-purple-on-strong', '--amf-accent-purple-strong', 'Avatar Purple');
+
+// Composants métier (lot 6) : CTA Bloc, Reorderable List, Agenda, Chat Bubble (Task Card et événements d'agenda
+// reprennent les paires Accent des Tags)
+const CM = 'Composants métier';
+G(CM, '--amf-foreground-brand', '--amf-background-surface', 'Icône du CTA Bloc');
+T(CM, '--amf-foreground-primary', '--amf-action-secondary-tint', 'CTA Bloc sélectionné');
+G(
+  CM,
+  '--amf-action-secondary-default',
+  '--amf-background-surface',
+  'Bordure du CTA Bloc sélectionné',
+);
+T(
+  CM,
+  '--amf-foreground-primary',
+  '--amf-action-primary-tint',
+  'Élément de Reorderable List déplacé',
+);
+G(CM, '--amf-action-primary-default', '--amf-background-surface', 'Bordure de l’élément déplacé');
+T(
+  CM,
+  '--amf-foreground-secondary',
+  '--amf-background-surface-subtle',
+  'Jours de la semaine de l’Agenda',
+);
+T(
+  CM,
+  '--amf-foreground-link',
+  '--amf-action-secondary-tint',
+  '« n de plus » d’un jour sélectionné',
+);
+G(
+  CM,
+  '--amf-action-secondary-default',
+  '--amf-action-secondary-tint',
+  'Date cerclée du jour sélectionné',
+);
+G(
+  CM,
+  '--amf-foreground-secondary',
+  '--amf-background-surface',
+  'Points de rédaction du Chat Bubble',
+);
+T(CM, '--amf-feedback-error-foreground', '--amf-background-surface', 'Erreur du Chat Bubble');
 
 function mesurer(vars) {
   return P.map((p) => {

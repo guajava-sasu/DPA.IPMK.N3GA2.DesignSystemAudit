@@ -1,4 +1,4 @@
-# Mode sombre galma-ui : proposition et audit (2026-11-12, mis à jour avec les lots 2 à 5)
+# Mode sombre galma-ui : proposition et audit (2026-11-12, mis à jour avec les lots 2 à 6)
 
 AMF v2.0 n'a pas de mode sombre. Son journal le prévoit en modes de variables sur AMF Semantic (« Original Dark »,
 12/09/2026), avec des calques d'état en Alpha/White, sans l'avoir dessiné. galma-ui en propose un : surcharge des seuls
@@ -16,10 +16,10 @@ jetons sémantiques AMF sous `:root.dark` (`projects/galma-ui/tokens/galma-theme
 
 ## Outils
 
-| Outil                                                   | Licence              | Ce qu'il mesure                                                                                                                                                                                                                                                                                                                                                             | Résultat du 2026-11-12                            |
-| ------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| `scripts/audit-contrastes.mjs` (dépôt, sans dépendance) | interne              | 124 paires d'usage des jetons (dont 7 de la famille formulaire, 10 de la navigation, 26 des messages et 6 de la structure), ratio WCAG 2.1 (texte 4,5:1, graphique 3:1, seuils AMF), APCA indicatif ; fonds atténués trop clairs en sombre                                                                                                                                  | clair 124/124, sombre 124/124, 0 fond trop clair  |
-| axe-core 4.14.0 + Playwright (`scripts/audit-axe.mjs`)  | MPL 2.0 / Apache 2.0 | 49 pages de la vitrine et 16 états ouverts (Select, calendrier, liste d'heures, deux menus, liste du paginateur, niveaux repliés du fil d'Ariane, menu latéral replié, ligne de tableau repliée, pile d'alertes, tooltip, tooltip riche, modale, section repliée, contrôle d'inspection replié, menu de carte) × clair et sombre, règles wcag2a, wcag2aa, wcag21a, wcag21aa | 130 analyses, 0 violation, 1 exception documentée |
+| Outil                                                   | Licence              | Ce qu'il mesure                                                                                                                                                                                                                                                                                                                                                                                                    | Résultat du 2026-11-12                            |
+| ------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| `scripts/audit-contrastes.mjs` (dépôt, sans dépendance) | interne              | 134 paires d'usage des jetons (dont 7 de la famille formulaire, 10 de la navigation, 26 des messages, 6 de la structure et 10 des composants métier), ratio WCAG 2.1 (texte 4,5:1, graphique 3:1, seuils AMF), APCA indicatif ; fonds atténués trop clairs en sombre                                                                                                                                               | clair 134/134, sombre 134/134, 0 fond trop clair  |
+| axe-core 4.14.0 + Playwright (`scripts/audit-axe.mjs`)  | MPL 2.0 / Apache 2.0 | 55 pages de la vitrine et 18 états ouverts (Select, calendrier, liste d'heures, deux menus, liste du paginateur, niveaux repliés du fil d'Ariane, menu latéral replié, ligne de tableau repliée, pile d'alertes, tooltip, tooltip riche, modale, section repliée, contrôle d'inspection replié, menus de carte et de Task Card, jour d'agenda déplié) × clair et sombre, règles wcag2a, wcag2aa, wcag21a, wcag21aa | 146 analyses, 0 violation, 1 exception documentée |
 
 Corrections faites pendant l'audit : Tags trop clairs en sombre (accents non surchargés, contraste bon donc invisible
 au calcul WCAG : contrôle « fond atténué trop clair » ajouté) ; pastilles Count sans nom accessible (`role="img"` et texte
@@ -46,6 +46,13 @@ Lot 5 (structure et affichage) : une violation corrigée, le contraste de la Sel
 texte alternatif vide, note en lecture seule nommée par `role="img"` et `aria-label`, saisie par boutons radio natifs
 dans un `radiogroup` ; bouton Replier / Déplier de la Section et des contrôles d'inspection en `aria-expanded` ; Count de
 notification de l'en-tête nommé dans le libellé du bouton.
+
+Lot 6 (composants métier) : une violation corrigée, le contraste des jours hors du mois de l'Agenda (Foreground/Disabled
+du Figma) ; ces jours deviennent des boutons inactifs, exemptés comme les autres états inactifs. Points de conception :
+Agenda en tableau (en-têtes de colonnes abrégés par `abbr`, date en bouton avec `aria-pressed` et `aria-current="date"`),
+Reorderable List déplaçable au clavier avec annonce en `aria-live`, CTA Bloc sélectionnable par `aria-pressed`, fil
+de conversation en `role="log"` avec l'auteur de chaque message en texte masqué et points de rédaction en
+`role="status"`.
 
 Exception documentée (`label-content-name-mismatch`, critère 2.5.3) : le bouton de période du calendrier Material cache
 le texte affiché (« NOV. 2026 ») aux aides techniques et se nomme « Choisir le mois et l'année », la période étant donnée

@@ -1,0 +1,30 @@
+<div class="ex">
+  @for (t of taches; track t.titre) {
+    <article class="gui-task-card {{ t.couleur }}">
+      <div class="gui-task-card-header">
+        <h3 class="gui-task-card-title">{{ t.titre }}</h3>
+        <span class="gui-tag gui-sm {{ t.couleur || 'gui-blue' }}">{{ t.zone }}</span>
+        <button matIconButton class="gui-neutral gui-sm" [matMenuTriggerFor]="menu" [attr.aria-label]="'Actions : ' + t.titre">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+      <dl class="gui-task-card-fields">
+        @for (c of t.champs; track c[0]) {
+          <div class="gui-task-card-field">
+            <dt>{{ c[0] }}</dt>
+            <dd>{{ c[1] }}</dd>
+          </div>
+        }
+      </dl>
+      <div class="gui-task-card-footer">
+        <span class="gui-status {{ t.statut[0] }} gui-sm">{{ t.statut[1] }}</span>
+        <button matButton class="gui-sm" [attr.aria-label]="'Ouvrir ' + t.titre">Ouvrir</button>
+      </div>
+    </article>
+  }
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Réaffecter</button>
+  <button mat-menu-item>Reporter</button>
+  <button mat-menu-item class="gui-destructive">Annuler la tâche</button>
+</mat-menu>

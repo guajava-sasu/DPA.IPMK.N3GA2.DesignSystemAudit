@@ -1,0 +1,20 @@
+<ul class="gui-cta-blocs" aria-label="Raccourcis">
+  @for (r of raccourcis; track r.libelle) {
+    <li>
+      <button type="button" class="gui-cta-bloc" [disabled]="r.inactif">
+        <span class="material-icons gui-cta-bloc-icon" aria-hidden="true">{{ r.icone }}</span>
+        {{ r.libelle }}
+      </button>
+    </li>
+  }
+</ul>
+<ul class="gui-cta-blocs" aria-label="Raccourcis (grands)">
+  @for (r of raccourcis.slice(0, 3); track r.libelle) {
+    <li>
+      <button type="button" class="gui-cta-bloc gui-lg">
+        <span class="material-icons gui-cta-bloc-icon" aria-hidden="true">{{ r.icone }}</span>
+        {{ r.libelle }}
+      </button>
+    </li>
+  }
+</ul>

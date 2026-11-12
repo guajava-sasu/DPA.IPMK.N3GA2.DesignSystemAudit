@@ -15,6 +15,8 @@ Design system AMF v2.0 (fichier Figma « AMF Design System [v2.0].fig ») appliq
     Empty State, Tooltip (Plain et Rich), Modale (MatDialog), Loader (Progress Bar et Progress Spinner).
   - `tokens/galma-structure.css` : structure et affichage (lot 5) : Avatar, Rating, Scrollbar, Card (Elevated,
     Outlined, survol) et Selectable Card, Header, Footer, Section, Expandable List, Divider Title.
+  - `tokens/galma-metier.css` : composants métier (lot 6) : CTA Bloc, Reorderable List (glisser-déposer du CDK),
+    Task Card, Login Panel, Agenda (vue mois), Chat Bubble.
   - `tokens/galma-composants.css` : Badge, Tag, Count, Status (sans équivalent Material), typographie, icônes.
   - `tokens/galma-theme.css` : point d'entrée ; mode sombre (proposition galma-ui), états process Galma2, `--mat-sys-*`.
   - `provideGalmaMaterial()` : animations et ripple coupés (postes RDS sans GPU), champs outlined, réglages AMF,

@@ -1,0 +1,96 @@
+<div class="gui-agenda">
+  <div class="gui-agenda-header">
+    <button matButton="outlined" class="gui-neutral gui-sm" (click)="allerA(aujourdhui)">
+      Aujourd’hui
+    </button>
+    <div class="gui-agenda-nav">
+      <button
+        matIconButton
+        class="gui-neutral gui-sm"
+        aria-label="Mois précédent"
+        (click)="decaler(-1)"
+      >
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button
+        matIconButton
+        class="gui-neutral gui-sm"
+        aria-label="Mois suivant"
+        (click)="decaler(1)"
+      >
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+    <h2 class="gui-agenda-title" id="ex-agenda-titre" aria-live="polite">{{ titre() }}</h2>
+    <mat-button-toggle-group class="gui-sm" value="mois" aria-label="Vue">
+      <mat-button-toggle value="mois">Mois</mat-button-toggle>
+      <mat-button-toggle value="semaine" disabled>Semaine</mat-button-toggle>
+      <mat-button-toggle value="jour" disabled>Jour</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <table class="gui-agenda-grid" aria-labelledby="ex-agenda-titre">
+    <thead>
+      <tr>
+        @for (j of joursSemaine; track j[0]) {
+          <th scope="col">
+            <abbr [title]="j[1]">{{ j[0] }}</abbr>
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (semaine of semaines(); track $index) {
+        <tr>
+          @for (d of semaine; track d.cle) {
+            <td
+              class="gui-agenda-day"
+              [class.gui-outside]="d.dehors"
+              [class.gui-today]="d.cle === cleAujourdhui"
+              [class.gui-selected]="d.cle === choisi()"
+            >
+              <button
+                type="button"
+                class="gui-agenda-date"
+                [disabled]="d.dehors"
+                [attr.aria-label]="d.libelle"
+                [attr.aria-pressed]="d.cle === choisi()"
+                [attr.aria-current]="d.cle === cleAujourdhui ? 'date' : null"
+                (click)="choisi.set(d.cle)"
+              >
+                {{ d.jour }}
+              </button>
+              @if (d.evenements.length) {
+                <ul class="gui-agenda-events">
+                  @for (
+                    e of d.evenements.length > 3 && d.cle !== ouvert()
+                      ? d.evenements.slice(0, 2)
+                      : d.evenements;
+                    track e.titre
+                  ) {
+                    <li
+                      class="gui-agenda-event {{ e.couleur }}"
+                      [class.gui-all-day]="!e.heure"
+                      [title]="(e.heure ? e.heure + ' ' : '') + e.titre"
+                    >
+                      @if (e.heure) {
+                        <span class="gui-agenda-event-time">{{ e.heure }}</span>
+                      }
+                      <span class="gui-agenda-event-title">{{ e.titre }}</span>
+                    </li>
+                  }
+                </ul>
+                @if (d.evenements.length > 3 && d.cle !== ouvert()) {
+                  <button type="button" class="gui-agenda-more" (click)="ouvert.set(d.cle)">
+                    {{ d.evenements.length - 2 }} de plus<span class="gui-sr-only">
+                      le {{ d.libelle }}</span
+                    >
+                  </button>
+                }
+              }
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
