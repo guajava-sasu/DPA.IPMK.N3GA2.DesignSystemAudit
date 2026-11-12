@@ -1,7 +1,7 @@
 // GÉNÉRÉ par scripts/audit-contrastes.mjs : ne pas modifier à la main.
 export interface MesureContraste { groupe: string; type: 'texte' | 'graphique'; fg: string; bg: string; sous: string; usage: string; avant: string; arriere: string; ratio: number; seuil: number; ok: boolean; apca: number; }
 export const CONTRASTES: { genere: string; clair: MesureContraste[]; sombre: MesureContraste[]; fondsClairsSombre: { jeton: string; couleur: string; luminance: number }[] } = {
- "genere": "2026-11-12T20:28:48.511Z",
+ "genere": "2026-11-12T21:10:43.280Z",
  "clair": [
   {
    "groupe": "Textes",
@@ -1654,6 +1654,90 @@ export const CONTRASTES: { genere: string; clair: MesureContraste[]; sombre: Mes
    "seuil": 4.5,
    "ok": true,
    "apca": -104
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "graphique",
+   "fg": "--gui-rating-filled",
+   "bg": "--amf-background-surface",
+   "sous": "--amf-background-surface",
+   "usage": "Étoile pleine du Rating",
+   "avant": "#b45309",
+   "arriere": "#ffffff",
+   "ratio": 5.02,
+   "seuil": 3,
+   "ok": true,
+   "apca": 74
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "graphique",
+   "fg": "--amf-foreground-secondary",
+   "bg": "--amf-background-surface-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Curseur de la Scrollbar sur sa piste",
+   "avant": "#656565",
+   "arriere": "#eef2f6",
+   "ratio": 5.18,
+   "seuil": 3,
+   "ok": true,
+   "apca": 71
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "texte",
+   "fg": "--amf-foreground-link",
+   "bg": "--amf-background-surface-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Lien du Footer",
+   "avant": "#b34c00",
+   "arriere": "#eef2f6",
+   "ratio": 4.73,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 68
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "texte",
+   "fg": "--amf-foreground-primary",
+   "bg": "--amf-action-neutral-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Selectable Card survolée",
+   "avant": "#414141",
+   "arriere": "#eef2f6",
+   "ratio": 9.07,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 86
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "texte",
+   "fg": "--amf-foreground-brand",
+   "bg": "--amf-background-surface",
+   "sous": "--amf-background-surface",
+   "usage": "Divider Title",
+   "avant": "#b34c00",
+   "arriere": "#ffffff",
+   "ratio": 5.32,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 76
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "texte",
+   "fg": "--amf-accent-purple-on-strong",
+   "bg": "--amf-accent-purple-strong",
+   "sous": "--amf-background-surface",
+   "usage": "Avatar Purple",
+   "avant": "#ffffff",
+   "arriere": "#460a78",
+   "ratio": 13.33,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -102
   }
  ],
  "sombre": [
@@ -3308,6 +3392,90 @@ export const CONTRASTES: { genere: string; clair: MesureContraste[]; sombre: Mes
    "seuil": 4.5,
    "ok": true,
    "apca": 97
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "graphique",
+   "fg": "--gui-rating-filled",
+   "bg": "--amf-background-surface",
+   "sous": "--amf-background-surface",
+   "usage": "Étoile pleine du Rating",
+   "avant": "#ffbe6e",
+   "arriere": "#1f1f1f",
+   "ratio": 10.08,
+   "seuil": 3,
+   "ok": true,
+   "apca": -73
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "graphique",
+   "fg": "--amf-foreground-secondary",
+   "bg": "--amf-background-surface-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Curseur de la Scrollbar sur sa piste",
+   "avant": "#a3a3a3",
+   "arriere": "#262626",
+   "ratio": 6,
+   "seuil": 3,
+   "ok": true,
+   "apca": -49
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "texte",
+   "fg": "--amf-foreground-link",
+   "bg": "--amf-background-surface-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Lien du Footer",
+   "avant": "#ff8563",
+   "arriere": "#262626",
+   "ratio": 6.33,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -52
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "texte",
+   "fg": "--amf-foreground-primary",
+   "bg": "--amf-action-neutral-subtle",
+   "sous": "--amf-background-surface",
+   "usage": "Selectable Card survolée",
+   "avant": "#f2f2f2",
+   "arriere": "#262626",
+   "ratio": 13.52,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -96
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "texte",
+   "fg": "--amf-foreground-brand",
+   "bg": "--amf-background-surface",
+   "sous": "--amf-background-surface",
+   "usage": "Divider Title",
+   "avant": "#ff8563",
+   "arriere": "#1f1f1f",
+   "ratio": 6.9,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": -53
+  },
+  {
+   "groupe": "Structure et affichage",
+   "type": "texte",
+   "fg": "--amf-accent-purple-on-strong",
+   "bg": "--amf-accent-purple-strong",
+   "sous": "--amf-background-surface",
+   "usage": "Avatar Purple",
+   "avant": "#151515",
+   "arriere": "#d1c2dd",
+   "ratio": 10.85,
+   "seuil": 4.5,
+   "ok": true,
+   "apca": 73
   }
  ],
  "fondsClairsSombre": []

@@ -123,6 +123,21 @@ const PANNEAUX = [
     ouvrir: 'ex-infobulle-riche button',
   },
   {
+    route: '/composants/section',
+    titre: 'Section dépliée',
+    ouvrir: 'ex-section-repliable .gui-section.gui-collapsed button[aria-expanded]',
+  },
+  {
+    route: '/composants/liste-depliable',
+    titre: 'Liste dépliable : contrôle replié',
+    ouvrir: 'ex-liste-depliable-inspection button[aria-expanded="true"]',
+  },
+  {
+    route: '/composants/carte',
+    titre: 'Menu de carte ouvert',
+    ouvrir: 'ex-carte-variantes [aria-haspopup="menu"]',
+  },
+  {
     route: '/composants/modale',
     titre: 'Modale de confirmation ouverte',
     ouvrir: 'ex-modale-confirmation button',

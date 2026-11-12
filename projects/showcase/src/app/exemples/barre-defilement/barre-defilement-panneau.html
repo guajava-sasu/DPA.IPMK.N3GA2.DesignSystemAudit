@@ -1,0 +1,9 @@
+<div class="ex">
+  <div class="panneau gui-scrollbar" tabindex="0" role="region" aria-label="Historique des bobines">
+    <ul>
+      @for (b of bobines; track b) {
+        <li>Bobine {{ b }} · DX51D+Z · sortie à 20 h {{ (b % 60).toString().padStart(2, '0') }}</li>
+      }
+    </ul>
+  </div>
+</div>

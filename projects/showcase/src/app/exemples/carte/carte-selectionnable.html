@@ -1,0 +1,46 @@
+<div class="ex">
+  <mat-radio-group
+    class="groupe"
+    [value]="choix()"
+    (change)="choix.set($event.value)"
+    aria-label="Campagne à lancer"
+  >
+    @for (o of options; track o.id) {
+      <div
+        class="gui-selectable-card gui-sm"
+        [attr.aria-disabled]="o.inactif || null"
+        (click)="!o.inactif && choix.set(o.id)"
+      >
+        <div class="gui-selectable-card-header">
+          <p class="gui-selectable-card-title" [id]="'ex-sc-' + o.id">{{ o.titre }}</p>
+          <mat-radio-button
+            [value]="o.id"
+            [disabled]="o.inactif"
+            [aria-labelledby]="'ex-sc-' + o.id"
+          />
+        </div>
+        <div class="gui-selectable-card-body">
+          <p class="gui-selectable-card-value">{{ o.valeur }}</p>
+          <p class="gui-selectable-card-description">{{ o.description }}</p>
+        </div>
+      </div>
+    }
+  </mat-radio-group>
+  <div class="groupe">
+    <div class="gui-selectable-card gui-sm" (click)="export.set(!export())">
+      <div class="gui-selectable-card-header">
+        <p class="gui-selectable-card-title" id="ex-sc-export">Export OG</p>
+        <mat-checkbox
+          [checked]="export()"
+          (change)="export.set($event.checked)"
+          (click)="$event.stopPropagation()"
+          aria-labelledby="ex-sc-export"
+        />
+      </div>
+      <div class="gui-selectable-card-body">
+        <p class="gui-selectable-card-value">12</p>
+        <p class="gui-selectable-card-description">Bobines prêtes à transmettre</p>
+      </div>
+    </div>
+  </div>
+</div>

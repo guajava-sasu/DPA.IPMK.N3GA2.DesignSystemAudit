@@ -1,0 +1,35 @@
+<div class="ex">
+  @for (c of cartes; track c.titre) {
+    <mat-card [appearance]="c.apparence" [class]="c.taille">
+      <mat-card-header>
+        <div class="mat-mdc-card-header-text">
+          <div class="gui-card-title-line">
+            <mat-card-title>{{ c.titre }}</mat-card-title>
+            <span class="gui-tag gui-blue gui-sm">Nouveau</span>
+          </div>
+          <mat-card-subtitle>Halle d’entrée · mise à jour à 20 h 45</mat-card-subtitle>
+        </div>
+        <button
+          matIconButton
+          class="gui-neutral gui-sm"
+          aria-label="Actions de la carte"
+          [matMenuTriggerFor]="menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content
+        >Acier DX51D, 0,65 × 1 250 mm, 18,4 t. Revêtement Z275, bobine soudée à 14 h
+        12.</mat-card-content
+      >
+      <mat-card-actions>
+        <button matButton class="gui-neutral gui-sm">Historique</button>
+        <button matButton="filled" class="gui-sm">Ouvrir</button>
+      </mat-card-actions>
+    </mat-card>
+  }
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Épingler</button>
+    <button mat-menu-item>Exporter</button>
+  </mat-menu>
+</div>

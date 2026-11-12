@@ -1,0 +1,13 @@
+.marque {
+  color: var(--amf-foreground-brand);
+  font: 700 20px / 28px var(--amf-text-body-1-family);
+  letter-spacing: 0.04em;
+}
+.ligne {
+  color: var(--amf-foreground-secondary);
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /
+    var(--amf-text-caption-line-height) var(--amf-text-caption-family);
+}
+.gui-header {
+  border: 1px solid var(--amf-border-default);
+}

@@ -13,7 +13,8 @@
  * Fichiers : amf-tokens.css (généré), galma-material.css (composants Material), galma-formulaires.css (famille
  * formulaire : Select, Slider, Chip, Date et Time Picker, Menu, Button Dropdown, File Upload), galma-navigation.css
  * (Table, Paginator, Pagination, Breadcrumb, Title, Stepper, Accordion, List, Side Menu), galma-messages.css (Alert,
- * Message Info, Disclaimer, Empty State, Tooltip, Modale, Loader), galma-composants.css (Badge, Tag,
+ * Message Info, Disclaimer, Empty State, Tooltip, Modale, Loader), galma-structure.css (Avatar, Rating, Scrollbar,
+ * Card, Selectable Card, Header, Footer, Section, Expandable List, Divider Title), galma-composants.css (Badge, Tag,
  * Count, Status, typographie, icônes). Polices servies sous /galma/fonts (assets de angular.json). Mode sombre : classe `dark` sur <html>.
  */
 @import './amf-tokens.css';
@@ -21,6 +22,7 @@
 @import './galma-formulaires.css';
 @import './galma-navigation.css';
 @import './galma-messages.css';
+@import './galma-structure.css';
 @import './galma-composants.css';
 
 /* ── Police Roboto (AMF), variable 100 → 900, embarquée : pas de CDN sur les postes RDS ─ */

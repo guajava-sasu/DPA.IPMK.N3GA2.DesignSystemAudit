@@ -1,0 +1,8 @@
+.ex {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.gui-footer {
+  border: 1px solid var(--amf-border-default);
+}

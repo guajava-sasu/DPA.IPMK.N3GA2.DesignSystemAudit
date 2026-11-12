@@ -1,0 +1,23 @@
+.panneau {
+  width: 360px;
+  height: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface);
+}
+.panneau:focus-visible {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: 2px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+li {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--amf-border-subtle);
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) /
+    var(--amf-text-body-2-line-height) var(--amf-text-body-2-family);
+}

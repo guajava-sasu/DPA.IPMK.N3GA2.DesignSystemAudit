@@ -1,0 +1,27 @@
+<div class="ex">
+  <div class="ligne">
+    @for (t of tailles; track t.classe) {
+      <span
+        class="gui-avatar {{ t.classe }}"
+        role="img"
+        [attr.aria-label]="'Alaa Guerfi (' + t.nom + ')'"
+        >AG</span
+      >
+    }
+  </div>
+  <div class="ligne">
+    @for (c of couleurs; track c) {
+      <span class="gui-avatar {{ c }}" role="img" aria-label="Marc Dupont">MD</span>
+    }
+  </div>
+  <div class="ligne">
+    @for (t of tailles; track t.classe) {
+      <span class="gui-avatar gui-secondary {{ t.classe }}" role="img" aria-label="Opérateur"
+        ><span class="material-icons" aria-hidden="true">person</span></span
+      >
+    }
+    <span class="gui-avatar gui-image" role="img" aria-label="Photo absente"
+      ><span class="material-icons" aria-hidden="true">person</span></span
+    >
+  </div>
+</div>

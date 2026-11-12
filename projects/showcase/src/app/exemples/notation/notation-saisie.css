@@ -1,0 +1,10 @@
+.ex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.libelle {
+  margin-right: 8px;
+  color: var(--amf-foreground-primary);
+}

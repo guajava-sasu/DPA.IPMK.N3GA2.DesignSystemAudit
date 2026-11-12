@@ -1,0 +1,37 @@
+<div class="ex">
+  @for (s of sections; track s.id) {
+    <section
+      class="gui-section"
+      [class.gui-collapsed]="!ouvertes().includes(s.id)"
+      [attr.aria-labelledby]="'ex-sec-' + s.id"
+    >
+      <div class="gui-section-header">
+        <span class="gui-section-badge" aria-hidden="true"
+          ><span class="material-icons">{{ s.icone }}</span></span
+        >
+        <div class="gui-section-texts">
+          <h3 class="gui-section-title" [id]="'ex-sec-' + s.id">{{ s.titre }}</h3>
+          <p class="gui-section-description">{{ s.description }}</p>
+        </div>
+        <div class="gui-section-actions">
+          <button matButton="outlined" class="gui-neutral gui-sm">Exporter</button>
+          <button
+            matButton
+            class="gui-neutral gui-sm"
+            [attr.aria-expanded]="ouvertes().includes(s.id)"
+            [attr.aria-controls]="'ex-sec-c-' + s.id"
+            (click)="basculer(s.id)"
+          >
+            {{ ouvertes().includes(s.id) ? 'Replier' : 'Déplier' }}
+            <mat-icon iconPositionEnd>{{
+              ouvertes().includes(s.id) ? 'expand_less' : 'expand_more'
+            }}</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="gui-section-content" [id]="'ex-sec-c-' + s.id">
+        Contenu de la section : tableau, formulaire ou synthèse de la campagne en cours.
+      </div>
+    </section>
+  }
+</div>

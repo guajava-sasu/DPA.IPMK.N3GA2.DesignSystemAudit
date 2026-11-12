@@ -1,4 +1,4 @@
-# Mode sombre galma-ui : proposition et audit (2026-11-12, mis à jour avec les lots 2 à 4)
+# Mode sombre galma-ui : proposition et audit (2026-11-12, mis à jour avec les lots 2 à 5)
 
 AMF v2.0 n'a pas de mode sombre. Son journal le prévoit en modes de variables sur AMF Semantic (« Original Dark »,
 12/09/2026), avec des calques d'état en Alpha/White, sans l'avoir dessiné. galma-ui en propose un : surcharge des seuls
@@ -12,13 +12,14 @@ jetons sémantiques AMF sous `:root.dark` (`projects/galma-ui/tokens/galma-theme
 - Fonds atténués (Subtle, Tint, Feedback Background, Accent Subtle) translucides ; textes au niveau 100-200 des palettes.
 - Calques d'état Alpha/White ; focus neutre clair #F2F2F2.
 - Voile des modales noir à 60 % (le voile AMF, #1E2123 à 37 %, ne se voit pas sur #151515).
+- Étoiles pleines du Rating en Gold/300 (Gold/600 en clair).
 
 ## Outils
 
-| Outil                                                   | Licence              | Ce qu'il mesure                                                                                                                                                                                                                                                                                               | Résultat du 2026-11-12                            |
-| ------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| `scripts/audit-contrastes.mjs` (dépôt, sans dépendance) | interne              | 118 paires d'usage des jetons (dont 7 de la famille formulaire, 10 de la navigation et 26 des messages), ratio WCAG 2.1 (texte 4,5:1, graphique 3:1, seuils AMF), APCA indicatif ; fonds atténués trop clairs en sombre                                                                                       | clair 118/118, sombre 118/118, 0 fond trop clair  |
-| axe-core 4.14.0 + Playwright (`scripts/audit-axe.mjs`)  | MPL 2.0 / Apache 2.0 | 42 pages de la vitrine et 13 états ouverts (Select, calendrier, liste d'heures, deux menus, liste du paginateur, niveaux repliés du fil d'Ariane, menu latéral replié, ligne de tableau repliée, pile d'alertes, tooltip, tooltip riche, modale) × clair et sombre, règles wcag2a, wcag2aa, wcag21a, wcag21aa | 110 analyses, 0 violation, 1 exception documentée |
+| Outil                                                   | Licence              | Ce qu'il mesure                                                                                                                                                                                                                                                                                                                                                             | Résultat du 2026-11-12                            |
+| ------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `scripts/audit-contrastes.mjs` (dépôt, sans dépendance) | interne              | 124 paires d'usage des jetons (dont 7 de la famille formulaire, 10 de la navigation, 26 des messages et 6 de la structure), ratio WCAG 2.1 (texte 4,5:1, graphique 3:1, seuils AMF), APCA indicatif ; fonds atténués trop clairs en sombre                                                                                                                                  | clair 124/124, sombre 124/124, 0 fond trop clair  |
+| axe-core 4.14.0 + Playwright (`scripts/audit-axe.mjs`)  | MPL 2.0 / Apache 2.0 | 49 pages de la vitrine et 16 états ouverts (Select, calendrier, liste d'heures, deux menus, liste du paginateur, niveaux repliés du fil d'Ariane, menu latéral replié, ligne de tableau repliée, pile d'alertes, tooltip, tooltip riche, modale, section repliée, contrôle d'inspection replié, menu de carte) × clair et sombre, règles wcag2a, wcag2aa, wcag21a, wcag21aa | 130 analyses, 0 violation, 1 exception documentée |
 
 Corrections faites pendant l'audit : Tags trop clairs en sombre (accents non surchargés, contraste bon donc invisible
 au calcul WCAG : contrôle « fond atténué trop clair » ajouté) ; pastilles Count sans nom accessible (`role="img"` et texte
@@ -39,6 +40,12 @@ sombre, où Background/Inverse devient clair (pleins du mode clair, ≥ 4,5:1) ;
 principes). Points de conception : icônes décoratives en `aria-hidden`, pile d'alertes en `aria-live="polite"` avec
 `role="alert"` sur les erreurs, état de chargement en `role="status"`, focus initial de la modale destructive sur
 Annuler, tooltip riche ouvert au clic (bouton `aria-expanded`, fermeture par Échap).
+
+Lot 5 (structure et affichage) : une violation corrigée, le contraste de la Selectable Card désactivée, marquée
+`aria-disabled` comme les autres états inactifs. Points de conception : étoiles du Rating générées par le CSS avec un
+texte alternatif vide, note en lecture seule nommée par `role="img"` et `aria-label`, saisie par boutons radio natifs
+dans un `radiogroup` ; bouton Replier / Déplier de la Section et des contrôles d'inspection en `aria-expanded` ; Count de
+notification de l'en-tête nommé dans le libellé du bouton.
 
 Exception documentée (`label-content-name-mismatch`, critère 2.5.3) : le bouton de période du calendrier Material cache
 le texte affiché (« NOV. 2026 ») aux aides techniques et se nomme « Choisir le mois et l'année », la période étant donnée

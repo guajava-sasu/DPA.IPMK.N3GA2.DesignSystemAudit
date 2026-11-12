@@ -20,7 +20,9 @@ const css =
   '\n' +
   readFileSync(join(jetons, 'galma-theme.css'), 'utf8') +
   '\n' +
-  readFileSync(join(jetons, 'galma-messages.css'), 'utf8');
+  readFileSync(join(jetons, 'galma-messages.css'), 'utf8') +
+  '\n' +
+  readFileSync(join(jetons, 'galma-structure.css'), 'utf8');
 
 function blocs(selecteur) {
   const vars = {};
@@ -293,6 +295,20 @@ for (const t of ['info', 'success', 'warning', 'error', 'neutral']) {
   G(M, `--gui-feedback-${t}-inverse`, '--amf-background-inverse', `Icône d’Alert Dark ${t}`);
 }
 T(M, '--amf-foreground-inverse', '--amf-background-inverse', 'Alert Dark, Tooltip Plain');
+
+// Structure et affichage (lot 5) : Rating, Scrollbar, Footer, Selectable Card, Divider Title, Avatar
+const S = 'Structure et affichage';
+G(S, '--gui-rating-filled', '--amf-background-surface', 'Étoile pleine du Rating');
+G(
+  S,
+  '--amf-foreground-secondary',
+  '--amf-background-surface-subtle',
+  'Curseur de la Scrollbar sur sa piste',
+);
+T(S, '--amf-foreground-link', '--amf-background-surface-subtle', 'Lien du Footer');
+T(S, '--amf-foreground-primary', '--amf-action-neutral-subtle', 'Selectable Card survolée');
+T(S, '--amf-foreground-brand', '--amf-background-surface', 'Divider Title');
+T(S, '--amf-accent-purple-on-strong', '--amf-accent-purple-strong', 'Avatar Purple');
 
 function mesurer(vars) {
   return P.map((p) => {

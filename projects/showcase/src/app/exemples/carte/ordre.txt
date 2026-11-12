@@ -1,1 +1,3 @@
 carte-base
+carte-variantes
+carte-selectionnable

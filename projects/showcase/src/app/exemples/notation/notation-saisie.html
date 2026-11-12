@@ -1,0 +1,19 @@
+<div class="ex">
+  <span class="gui-rating gui-interactive" role="radiogroup" aria-labelledby="ex-note-libelle">
+    <span id="ex-note-libelle" class="libelle">Qualité de surface</span>
+    @for (i of etoiles; track i) {
+      <label class="gui-rating-option">
+        <input
+          type="radio"
+          name="ex-note"
+          [value]="i"
+          [checked]="note() === i"
+          (change)="note.set(i)"
+          [attr.aria-label]="i + (i > 1 ? ' étoiles' : ' étoile')"
+        />
+        <span class="gui-rating-star" [class.gui-filled]="i <= note()" aria-hidden="true"></span>
+      </label>
+    }
+    <span class="gui-rating-value">{{ note() }} / 5</span>
+  </span>
+</div>

@@ -1,12 +1,12 @@
-# Conformité de galma-ui 0.4.0 au journal du Figma AMF v2.0 (2026-11-12)
+# Conformité de galma-ui 0.5.0 au journal du Figma AMF v2.0 (2026-11-12)
 
 Source : page Changelog du .fig (entrées du 12/09 au 26/10/2026), extraite dans
 `04-analyse/figma-amf/changelog.txt`. Détail ligne à ligne : page « Conformité au journal » de la vitrine
 (`projects/showcase/src/app/pages/conformite-donnees.ts`).
 
-99 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus, lot 4 messages et
-overlays) : **80 conformes**, **14 adaptées** (même rendu, obtenu autrement à cause de Material), **3 écarts**,
-**2 hors lot**.
+111 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus, lot 4 messages et
+overlays, lot 5 structure et affichage) : **89 conformes**, **18 adaptées** (même rendu, obtenu autrement à cause de
+Material), **2 écarts**, **2 hors lot**.
 
 Adaptées :
 
@@ -29,10 +29,14 @@ Adaptées :
   variables reprises et, en mode sombre, pleins du mode clair.
 - Message Info et Disclaimer : largeurs laissées en dur dans le Figma (480 et 800), largeur du conteneur dans galma-ui.
 - Tooltip : flèche ajoutée par le CSS (Material n'en a pas) ; Rich en toggletip ouvert au clic (overlay CDK).
+- Rating : Material n'a pas de note, CSS pur et boutons radio natifs masqués ; étoile pleine en Gold/600, primitive sans
+  jeton sémantique (variable `--gui-rating-filled`), Gold/300 en mode sombre (proposition galma-ui).
+- Selectable Card : CSS pur autour d'un `mat-radio-button` ou d'un `mat-checkbox`, clic sur la carte relayé par
+  l'application.
+- Section : pastille d'en-tête au même dégradé hors jetons que celle de Table.
 
 Écarts :
 
-- Card, état Hover non décrit dans le journal, non implémenté.
 - Calendar : largeur 312 px appliquée, mais Material garde 4 colonnes (mois 4 × 3, années 4 × 6) là où le Figma passe
   à 3 colonnes (3 × 4, 3 × 8, journal du 22/09).
 - Loader : modes indéterminés du Progress Spinner et de la Progress Bar figés, pas d'animation infinie sur les postes

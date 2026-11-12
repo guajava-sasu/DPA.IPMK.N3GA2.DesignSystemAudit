@@ -1,0 +1,50 @@
+<ul class="gui-expandable-list">
+  @for (c of controles; track c.id) {
+    <li
+      class="gui-expandable-item"
+      [class.gui-success]="resultats()[c.id] === 'ok'"
+      [class.gui-error]="resultats()[c.id] === 'ko'"
+    >
+      <div class="gui-expandable-item-header">
+        <div class="gui-expandable-item-texts">
+          <p class="gui-expandable-item-title" [id]="'ex-el-' + c.id">{{ c.titre }}</p>
+          <p class="gui-expandable-item-subtitle">{{ c.lieu }}</p>
+        </div>
+        <button matButton="outlined" class="gui-neutral gui-sm gui-pill">
+          <mat-icon>photo_camera</mat-icon>Photos ({{ c.photos }})
+        </button>
+        <mat-button-toggle-group
+          class="gui-neutral"
+          [value]="resultats()[c.id]"
+          (change)="noter(c.id, $event.value)"
+          [attr.aria-labelledby]="'ex-el-' + c.id"
+          hideSingleSelectionIndicator
+        >
+          <mat-button-toggle value="ok">Conforme</mat-button-toggle>
+          <mat-button-toggle value="ko">Non conforme</mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-slide-toggle [checked]="true" [aria-label]="'Applicable : ' + c.titre" />
+        <button
+          matIconButton
+          class="gui-neutral"
+          [attr.aria-expanded]="ouvert() === c.id"
+          [attr.aria-controls]="'ex-el-c-' + c.id"
+          [attr.aria-label]="(ouvert() === c.id ? 'Replier ' : 'Déplier ') + c.titre"
+          (click)="ouvert.set(ouvert() === c.id ? '' : c.id)"
+        >
+          <mat-icon>{{ ouvert() === c.id ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </button>
+      </div>
+      @if (ouvert() === c.id) {
+        <div class="gui-expandable-item-content" [id]="'ex-el-c-' + c.id">
+          <div class="gui-field gui-sm">
+            <label class="gui-field-label" [for]="'ex-el-obs-' + c.id">Observation</label>
+            <mat-form-field>
+              <input matInput [id]="'ex-el-obs-' + c.id" placeholder="Saisir une observation" />
+            </mat-form-field>
+          </div>
+        </div>
+      }
+    </li>
+  }
+</ul>

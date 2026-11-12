@@ -5,9 +5,11 @@ import { AccordeonDetails } from './accordeon/accordeon-details';
 import { AlerteTypes } from './alerte/alerte-types';
 import { AlerteInverse } from './alerte/alerte-inverse';
 import { AlertePile } from './alerte/alerte-pile';
+import { AvatarTypes } from './avatar/avatar-types';
 import { AvertissementTypes } from './avertissement/avertissement-types';
 import { BadgeBase } from './badge/badge-base';
 import { BadgeTailles } from './badge/badge-tailles';
+import { BarreDefilementPanneau } from './barre-defilement/barre-defilement-panneau';
 import { BoutonStyles } from './bouton/bouton-styles';
 import { BoutonCouleurs } from './bouton/bouton-couleurs';
 import { BoutonTailles } from './bouton/bouton-tailles';
@@ -19,6 +21,8 @@ import { BoutonIconeTailles } from './bouton-icone/bouton-icone-tailles';
 import { BoutonMenuSimple } from './bouton-menu/bouton-menu-simple';
 import { BoutonMenuScinde } from './bouton-menu/bouton-menu-scinde';
 import { CarteBase } from './carte/carte-base';
+import { CarteVariantes } from './carte/carte-variantes';
+import { CarteSelectionnable } from './carte/carte-selectionnable';
 import { CaseBase } from './case/case-base';
 import { CaseCouleurs } from './case/case-couleurs';
 import { CaseGroupe } from './case/case-groupe';
@@ -37,6 +41,8 @@ import { CurseurSimple } from './curseur/curseur-simple';
 import { CurseurPlage } from './curseur/curseur-plage';
 import { DateSimple } from './date/date-simple';
 import { DatePlage } from './date/date-plage';
+import { EnTeteDesktop } from './en-tete/en-tete-desktop';
+import { EnTeteTablette } from './en-tete/en-tete-tablette';
 import { EtapesHorizontal } from './etapes/etapes-horizontal';
 import { EtapesVertical } from './etapes/etapes-vertical';
 import { EtatVideTypes } from './etat-vide/etat-vide-types';
@@ -51,6 +57,7 @@ import { InterrupteurBase } from './interrupteur/interrupteur-base';
 import { ListeSimple } from './liste/liste-simple';
 import { ListeNavigation } from './liste/liste-navigation';
 import { ListeElevee } from './liste/liste-elevee';
+import { ListeDepliableInspection } from './liste-depliable/liste-depliable-inspection';
 import { MenuActions } from './menu/menu-actions';
 import { MenuSelection } from './menu/menu-selection';
 import { MenuLateralDeplie } from './menu-lateral/menu-lateral-deplie';
@@ -60,15 +67,20 @@ import { MessageSoft } from './message/message-soft';
 import { MessageOutlined } from './message/message-outlined';
 import { ModaleStandard } from './modale/modale-standard';
 import { ModaleConfirmation } from './modale/modale-confirmation';
+import { NotationLecture } from './notation/notation-lecture';
+import { NotationSaisie } from './notation/notation-saisie';
 import { OngletsBase } from './onglets/onglets-base';
 import { PaginationSimple } from './pagination/pagination-simple';
 import { PaginationVariantes } from './pagination/pagination-variantes';
+import { PiedDePageConformite } from './pied-de-page/pied-de-page-conformite';
 import { RadioBase } from './radio/radio-base';
 import { RadioGroupe } from './radio/radio-groupe';
+import { SectionRepliable } from './section/section-repliable';
 import { SelectSimple } from './select/select-simple';
 import { SelectMultiple } from './select/select-multiple';
 import { SelectEtats } from './select/select-etats';
 import { SeparateurBase } from './separateur/separateur-base';
+import { SeparateurTitre } from './separateur/separateur-titre';
 import { StatutBase } from './statut/statut-base';
 import { TableauComplet } from './tableau/tableau-complet';
 import { TableauCompact } from './tableau/tableau-compact';
@@ -142,6 +154,16 @@ export const EXEMPLES: Exemple[] = [
     css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
   },
   {
+    page: "avatar",
+    id: "avatar-types",
+    titre: "Initiales, icône et image",
+    description: "Tailles XS 24, S 32, M 40 (défaut), L 56 ; couleurs Primary, Secondary, Neutral, Green, Navy, Purple. L'avatar porte un nom accessible (role=\"img\" et aria-label) quand il est seul ; à côté du nom affiché, il est décoratif (aria-hidden).",
+    composant: AvatarTypes,
+    ts: "import { Component } from '@angular/core';\n\n/**\n * Initiales, icône et image\n * Tailles XS 24, S 32, M 40 (défaut), L 56 ; couleurs Primary, Secondary, Neutral, Green, Navy,\n * Purple. L'avatar porte un nom accessible (role=\"img\" et aria-label) quand il est seul ; à côté du\n * nom affiché, il est décoratif (aria-hidden).\n */\n@Component({\n  selector: 'ex-avatar-types',\n  imports: [],\n  templateUrl: './avatar-types.html',\n  styleUrl: './avatar-types.css',\n})\nexport class AvatarTypes {\n  protected readonly tailles = [\n    { nom: 'XS', classe: 'gui-xs' },\n    { nom: 'S', classe: 'gui-sm' },\n    { nom: 'M', classe: '' },\n    { nom: 'L', classe: 'gui-lg' },\n  ];\n  protected readonly couleurs = [\n    '',\n    'gui-secondary',\n    'gui-neutral',\n    'gui-green',\n    'gui-navy',\n    'gui-purple',\n  ];\n}\n",
+    html: "<div class=\"ex\">\n  <div class=\"ligne\">\n    @for (t of tailles; track t.classe) {\n      <span\n        class=\"gui-avatar {{ t.classe }}\"\n        role=\"img\"\n        [attr.aria-label]=\"'Alaa Guerfi (' + t.nom + ')'\"\n        >AG</span\n      >\n    }\n  </div>\n  <div class=\"ligne\">\n    @for (c of couleurs; track c) {\n      <span class=\"gui-avatar {{ c }}\" role=\"img\" aria-label=\"Marc Dupont\">MD</span>\n    }\n  </div>\n  <div class=\"ligne\">\n    @for (t of tailles; track t.classe) {\n      <span class=\"gui-avatar gui-secondary {{ t.classe }}\" role=\"img\" aria-label=\"Opérateur\"\n        ><span class=\"material-icons\" aria-hidden=\"true\">person</span></span\n      >\n    }\n    <span class=\"gui-avatar gui-image\" role=\"img\" aria-label=\"Photo absente\"\n      ><span class=\"material-icons\" aria-hidden=\"true\">person</span></span\n    >\n  </div>\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\n.ligne {\n  display: flex;\n  align-items: center;\n  gap: 16px;\n}\n",
+  },
+  {
     page: "avertissement",
     id: "avertissement-types",
     titre: "Disclaimer",
@@ -170,6 +192,16 @@ export const EXEMPLES: Exemple[] = [
     ts: "import { Component } from '@angular/core';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Tailles\n * Small 20 px (Label 11 Medium), Medium 24 px (Caption Medium), Large 32 px (Form Label). Désactivé :\n * gui-disabled, avec aria-disabled=\"true\" (état inactif, exempté du contraste comme dans l'audit AMF).\n */\n@Component({\n  selector: 'ex-badge-tailles',\n  imports: [MatIconModule],\n  templateUrl: './badge-tailles.html',\n  styleUrl: './badge-tailles.css',\n})\nexport class BadgeTailles {}\n",
     html: "<div class=\"ex\">\n  <span class=\"gui-badge gui-success gui-sm\"\n    ><mat-icon aria-hidden=\"true\">check_circle</mat-icon>Small</span\n  >\n  <span class=\"gui-badge gui-success\"\n    ><mat-icon aria-hidden=\"true\">check_circle</mat-icon>Medium</span\n  >\n  <span class=\"gui-badge gui-success gui-lg\"\n    ><mat-icon aria-hidden=\"true\">check_circle</mat-icon>Large</span\n  >\n  <span class=\"gui-badge gui-disabled\" aria-disabled=\"true\">Désactivé</span>\n</div>\n",
     css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
+  },
+  {
+    page: "barre-defilement",
+    id: "barre-defilement-panneau",
+    titre: "Panneau défilant",
+    description: "Classe gui-scrollbar sur le conteneur défilant : gouttière de 12, piste 8 en Surface Subtle, curseur Foreground/Secondary (5,0:1 sur la piste), Radius/M. Comme dans l'exemple de conception du Figma, la liste n'a pas de bordure propre dans le panneau. Le panneau défilant est atteignable au clavier (tabindex=\"0\").",
+    composant: BarreDefilementPanneau,
+    ts: "import { Component } from '@angular/core';\n\n/**\n * Panneau défilant\n * Classe gui-scrollbar sur le conteneur défilant : gouttière de 12, piste 8 en Surface Subtle, curseur\n * Foreground/Secondary (5,0:1 sur la piste), Radius/M. Comme dans l'exemple de conception du Figma, la\n * liste n'a pas de bordure propre dans le panneau. Le panneau défilant est atteignable au clavier\n * (tabindex=\"0\").\n */\n@Component({\n  selector: 'ex-barre-defilement-panneau',\n  imports: [],\n  templateUrl: './barre-defilement-panneau.html',\n  styleUrl: './barre-defilement-panneau.css',\n})\nexport class BarreDefilementPanneau {\n  protected readonly bobines = Array.from({ length: 24 }, (_, i) => 2611201 + i);\n}\n",
+    html: "<div class=\"ex\">\n  <div class=\"panneau gui-scrollbar\" tabindex=\"0\" role=\"region\" aria-label=\"Historique des bobines\">\n    <ul>\n      @for (b of bobines; track b) {\n        <li>Bobine {{ b }} · DX51D+Z · sortie à 20 h {{ (b % 60).toString().padStart(2, '0') }}</li>\n      }\n    </ul>\n  </div>\n</div>\n",
+    css: ".panneau {\n  width: 360px;\n  height: 240px;\n  overflow-y: auto;\n  border: 1px solid var(--amf-border-strong);\n  border-radius: var(--amf-radius-m);\n  background: var(--amf-background-surface);\n}\n.panneau:focus-visible {\n  outline: 2px solid var(--amf-border-focus);\n  outline-offset: 2px;\n}\nul {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nli {\n  padding: 10px 16px;\n  border-bottom: 1px solid var(--amf-border-subtle);\n  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) /\n    var(--amf-text-body-2-line-height) var(--amf-text-body-2-family);\n}\n",
   },
   {
     page: "bouton",
@@ -275,11 +307,31 @@ export const EXEMPLES: Exemple[] = [
     page: "carte",
     id: "carte-base",
     titre: "Carte",
-    description: "Radius/L (10 px), bord Border/Strong 1 px (l'élévation AMF se fait par la bordure, sans ombre), marges et espacement 16 px.",
+    description: "Radius/L (10 px), bord Border/Strong 1 px en apparence Outlined (sans ombre au repos), marges et espacement 16 px.",
     composant: CarteBase,
-    ts: "import { Component } from '@angular/core';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatButtonModule } from '@angular/material/button';\n\n/**\n * Carte\n * Radius/L (10 px), bord Border/Strong 1 px (l'élévation AMF se fait par la bordure, sans ombre),\n * marges et espacement 16 px.\n */\n@Component({\n  selector: 'ex-carte-base',\n  imports: [MatCardModule, MatButtonModule],\n  templateUrl: './carte-base.html',\n  styleUrl: './carte-base.css',\n})\nexport class CarteBase {}\n",
+    ts: "import { Component } from '@angular/core';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatButtonModule } from '@angular/material/button';\n\n/**\n * Carte\n * Radius/L (10 px), bord Border/Strong 1 px en apparence Outlined (sans ombre au repos),\n * marges et espacement 16 px.\n */\n@Component({\n  selector: 'ex-carte-base',\n  imports: [MatCardModule, MatButtonModule],\n  templateUrl: './carte-base.html',\n  styleUrl: './carte-base.css',\n})\nexport class CarteBase {}\n",
     html: "<div class=\"ex\">\n  <mat-card appearance=\"outlined\">\n    <mat-card-header>\n      <mat-card-title>Bobine 2611200143</mat-card-title>\n      <mat-card-subtitle>Entrée · soudée à 14 h 12</mat-card-subtitle>\n    </mat-card-header>\n    <mat-card-content>Acier DX51D, 0,65 × 1 250 mm, 18,4 t. Revêtement Z275.</mat-card-content>\n    <mat-card-actions>\n      <button matButton=\"outlined\" class=\"gui-sm gui-neutral\">Détails</button>\n      <button matButton=\"filled\" class=\"gui-sm\">Ouvrir</button>\n    </mat-card-actions>\n  </mat-card>\n</div>\n",
     css: ".ex {\n  max-width: 400px;\n}\n",
+  },
+  {
+    page: "carte",
+    id: "carte-variantes",
+    titre: "Elevated et Outlined, en-tête complet",
+    description: "Elevated (mat-card par défaut) : Border/Strong et ombre Lv3, Lv2 au survol ; Outlined (appearance=\"outlined\") : sans ombre, Lv3 au survol. En-tête : titre et Slot Tag (gui-card-title- line), sous-titre, bouton de menu 32 à droite. Largeurs S 280 (gui-sm) et M 400 (gui-md).",
+    composant: CarteVariantes,
+    ts: "import { Component } from '@angular/core';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatMenuModule } from '@angular/material/menu';\n\n/**\n * Elevated et Outlined, en-tête complet\n * Elevated (mat-card par défaut) : Border/Strong et ombre Lv3, Lv2 au survol ; Outlined\n * (appearance=\"outlined\") : sans ombre, Lv3 au survol. En-tête : titre et Slot Tag (gui-card-title-\n * line), sous-titre, bouton de menu 32 à droite. Largeurs S 280 (gui-sm) et M 400 (gui-md).\n */\n@Component({\n  selector: 'ex-carte-variantes',\n  imports: [MatCardModule, MatButtonModule, MatIconModule, MatMenuModule],\n  templateUrl: './carte-variantes.html',\n  styleUrl: './carte-variantes.css',\n})\nexport class CarteVariantes {\n  protected readonly cartes: { titre: string; apparence: 'raised' | 'outlined'; taille: string }[] =\n    [\n      { titre: 'Elevated, taille S', apparence: 'raised', taille: 'gui-sm' },\n      { titre: 'Outlined, taille M', apparence: 'outlined', taille: 'gui-md' },\n    ];\n}\n",
+    html: "<div class=\"ex\">\n  @for (c of cartes; track c.titre) {\n    <mat-card [appearance]=\"c.apparence\" [class]=\"c.taille\">\n      <mat-card-header>\n        <div class=\"mat-mdc-card-header-text\">\n          <div class=\"gui-card-title-line\">\n            <mat-card-title>{{ c.titre }}</mat-card-title>\n            <span class=\"gui-tag gui-blue gui-sm\">Nouveau</span>\n          </div>\n          <mat-card-subtitle>Halle d’entrée · mise à jour à 20 h 45</mat-card-subtitle>\n        </div>\n        <button\n          matIconButton\n          class=\"gui-neutral gui-sm\"\n          aria-label=\"Actions de la carte\"\n          [matMenuTriggerFor]=\"menu\"\n        >\n          <mat-icon>more_vert</mat-icon>\n        </button>\n      </mat-card-header>\n      <mat-card-content\n        >Acier DX51D, 0,65 × 1 250 mm, 18,4 t. Revêtement Z275, bobine soudée à 14 h\n        12.</mat-card-content\n      >\n      <mat-card-actions>\n        <button matButton class=\"gui-neutral gui-sm\">Historique</button>\n        <button matButton=\"filled\" class=\"gui-sm\">Ouvrir</button>\n      </mat-card-actions>\n    </mat-card>\n  }\n  <mat-menu #menu=\"matMenu\">\n    <button mat-menu-item>Épingler</button>\n    <button mat-menu-item>Exporter</button>\n  </mat-menu>\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: flex-start;\n  gap: 24px;\n}\n",
+  },
+  {
+    page: "carte",
+    id: "carte-selectionnable",
+    titre: "Selectable Card",
+    description: "Carte de choix : contrôle Radio (mat-radio-button) ou Checkbox (mat-checkbox) en en-tête, valeur en Heading H3. Survol Action/Neutral/Subtle, carte choisie bordée 2 px Action/Primary/Default, focus clavier bordé 2 px Border/Focus, carte désactivée en Background/Disabled (aria-disabled sur la carte, états inactifs exemptés du contraste) ; les états sont lus sur le contrôle (:has). Le clic sur la carte est relayé au contrôle par l'application.",
+    composant: CarteSelectionnable,
+    ts: "import { Component, signal } from '@angular/core';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { MatRadioModule } from '@angular/material/radio';\n\n/**\n * Selectable Card\n * Carte de choix : contrôle Radio (mat-radio-button) ou Checkbox (mat-checkbox) en en-tête, valeur en\n * Heading H3. Survol Action/Neutral/Subtle, carte choisie bordée 2 px Action/Primary/Default, focus\n * clavier bordé 2 px Border/Focus, carte désactivée en Background/Disabled (aria-disabled sur la\n * carte, états inactifs exemptés du contraste) ; les états sont lus sur le contrôle (:has). Le clic\n * sur la carte est relayé au contrôle par l'application.\n */\n@Component({\n  selector: 'ex-carte-selectionnable',\n  imports: [MatCheckboxModule, MatRadioModule],\n  templateUrl: './carte-selectionnable.html',\n  styleUrl: './carte-selectionnable.css',\n})\nexport class CarteSelectionnable {\n  protected readonly options = [\n    {\n      id: 'dx51',\n      titre: 'Campagne DX51D+Z',\n      valeur: '1 234 t',\n      description: '62 bobines mères en halle',\n      inactif: false,\n    },\n    {\n      id: 's350',\n      titre: 'Campagne S350GD+Z',\n      valeur: '418 t',\n      description: '21 bobines mères en halle',\n      inactif: false,\n    },\n    {\n      id: 'dx54',\n      titre: 'Campagne DX54D+Z',\n      valeur: '0 t',\n      description: 'Aucune bobine disponible',\n      inactif: true,\n    },\n  ];\n  protected readonly choix = signal('dx51');\n  protected readonly export = signal(true);\n}\n",
+    html: "<div class=\"ex\">\n  <mat-radio-group\n    class=\"groupe\"\n    [value]=\"choix()\"\n    (change)=\"choix.set($event.value)\"\n    aria-label=\"Campagne à lancer\"\n  >\n    @for (o of options; track o.id) {\n      <div\n        class=\"gui-selectable-card gui-sm\"\n        [attr.aria-disabled]=\"o.inactif || null\"\n        (click)=\"!o.inactif && choix.set(o.id)\"\n      >\n        <div class=\"gui-selectable-card-header\">\n          <p class=\"gui-selectable-card-title\" [id]=\"'ex-sc-' + o.id\">{{ o.titre }}</p>\n          <mat-radio-button\n            [value]=\"o.id\"\n            [disabled]=\"o.inactif\"\n            [aria-labelledby]=\"'ex-sc-' + o.id\"\n          />\n        </div>\n        <div class=\"gui-selectable-card-body\">\n          <p class=\"gui-selectable-card-value\">{{ o.valeur }}</p>\n          <p class=\"gui-selectable-card-description\">{{ o.description }}</p>\n        </div>\n      </div>\n    }\n  </mat-radio-group>\n  <div class=\"groupe\">\n    <div class=\"gui-selectable-card gui-sm\" (click)=\"export.set(!export())\">\n      <div class=\"gui-selectable-card-header\">\n        <p class=\"gui-selectable-card-title\" id=\"ex-sc-export\">Export OG</p>\n        <mat-checkbox\n          [checked]=\"export()\"\n          (change)=\"export.set($event.checked)\"\n          (click)=\"$event.stopPropagation()\"\n          aria-labelledby=\"ex-sc-export\"\n        />\n      </div>\n      <div class=\"gui-selectable-card-body\">\n        <p class=\"gui-selectable-card-value\">12</p>\n        <p class=\"gui-selectable-card-description\">Bobines prêtes à transmettre</p>\n      </div>\n    </div>\n  </div>\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\n.groupe {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 16px;\n}\n",
   },
   {
     page: "case",
@@ -462,6 +514,26 @@ export const EXEMPLES: Exemple[] = [
     css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
   },
   {
+    page: "en-tete",
+    id: "en-tete-desktop",
+    titre: "Desktop (64 px)",
+    description: "Bandeau d'application : marque à gauche (le logotype ArcelorMittal est remplacé ici par un texte), actions à droite : CTA Filled, statut de la ligne, étiquette, notifications avec Count, compte (Avatar S, nom, rôle, menu). Le <header> est le repère banner de la page.",
+    composant: EnTeteDesktop,
+    ts: "import { Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Desktop (64 px)\n * Bandeau d'application : marque à gauche (le logotype ArcelorMittal est remplacé ici par un texte),\n * actions à droite : CTA Filled, statut de la ligne, étiquette, notifications avec Count, compte\n * (Avatar S, nom, rôle, menu). Le <header> est le repère banner de la page.\n */\n@Component({\n  selector: 'ex-en-tete-desktop',\n  imports: [MatButtonModule, MatIconModule],\n  templateUrl: './en-tete-desktop.html',\n  styleUrl: './en-tete-desktop.css',\n})\nexport class EnTeteDesktop {}\n",
+    html: "<header class=\"gui-header\">\n  <div class=\"gui-header-brand\">\n    <span class=\"marque\">GALMA2</span><span class=\"ligne\">Ligne de galvanisation</span>\n  </div>\n  <div class=\"gui-header-actions\">\n    <button matButton=\"filled\">Nouvelle bobine</button>\n    <span class=\"gui-status gui-success\">En marche</span>\n    <span class=\"gui-tag gui-grey gui-sm\">Poste B</span>\n    <div class=\"gui-header-notifications\">\n      <button matIconButton class=\"gui-neutral\" aria-label=\"Notifications, 3 nouvelles\">\n        <mat-icon>notifications</mat-icon>\n      </button>\n      <span class=\"gui-count gui-sm\" aria-hidden=\"true\">3</span>\n    </div>\n    <div class=\"gui-header-account\">\n      <span class=\"gui-avatar gui-sm\" aria-hidden=\"true\">AG</span>\n      <div class=\"gui-header-account-texts\">\n        <span class=\"gui-header-account-name\">Alaa G.</span>\n        <span class=\"gui-header-account-role\">Chef de poste</span>\n      </div>\n      <button matIconButton class=\"gui-neutral gui-sm\" aria-label=\"Compte d’Alaa G.\">\n        <mat-icon>expand_more</mat-icon>\n      </button>\n    </div>\n  </div>\n</header>\n",
+    css: ".marque {\n  color: var(--amf-foreground-brand);\n  font: 700 20px / 28px var(--amf-text-body-1-family);\n  letter-spacing: 0.04em;\n}\n.ligne {\n  color: var(--amf-foreground-secondary);\n  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /\n    var(--amf-text-caption-line-height) var(--amf-text-caption-family);\n}\n.gui-header {\n  border: 1px solid var(--amf-border-default);\n}\n",
+  },
+  {
+    page: "en-tete",
+    id: "en-tete-tablette",
+    titre: "Tablet (gui-tablet, 56 px)",
+    description: "Hauteur 56, CTA en taille Small, nom et rôle masqués : seul l'avatar et le menu du compte restent.",
+    composant: EnTeteTablette,
+    ts: "import { Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Tablet (gui-tablet, 56 px)\n * Hauteur 56, CTA en taille Small, nom et rôle masqués : seul l'avatar et le menu du compte restent.\n */\n@Component({\n  selector: 'ex-en-tete-tablette',\n  imports: [MatButtonModule, MatIconModule],\n  templateUrl: './en-tete-tablette.html',\n  styleUrl: './en-tete-tablette.css',\n})\nexport class EnTeteTablette {}\n",
+    html: "<header class=\"gui-header gui-tablet\">\n  <div class=\"gui-header-brand\">\n    <span class=\"marque\">GALMA2</span><span class=\"ligne\">Ligne de galvanisation</span>\n  </div>\n  <div class=\"gui-header-actions\">\n    <button matButton=\"filled\" class=\"gui-sm\">Nouvelle bobine</button>\n    <span class=\"gui-status gui-success\">En marche</span>\n    <span class=\"gui-tag gui-grey gui-sm\">Poste B</span>\n    <div class=\"gui-header-notifications\">\n      <button matIconButton class=\"gui-neutral\" aria-label=\"Notifications, 3 nouvelles\">\n        <mat-icon>notifications</mat-icon>\n      </button>\n      <span class=\"gui-count gui-sm\" aria-hidden=\"true\">3</span>\n    </div>\n    <div class=\"gui-header-account\">\n      <span class=\"gui-avatar gui-sm\" aria-hidden=\"true\">AG</span>\n      <div class=\"gui-header-account-texts\">\n        <span class=\"gui-header-account-name\">Alaa G.</span>\n        <span class=\"gui-header-account-role\">Chef de poste</span>\n      </div>\n      <button matIconButton class=\"gui-neutral gui-sm\" aria-label=\"Compte d’Alaa G.\">\n        <mat-icon>expand_more</mat-icon>\n      </button>\n    </div>\n  </div>\n</header>\n",
+    css: ".marque {\n  color: var(--amf-foreground-brand);\n  font: 700 20px / 28px var(--amf-text-body-1-family);\n  letter-spacing: 0.04em;\n}\n.ligne {\n  color: var(--amf-foreground-secondary);\n  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) /\n    var(--amf-text-caption-line-height) var(--amf-text-caption-family);\n}\n.gui-header {\n  border: 1px solid var(--amf-border-default);\n}\n",
+  },
+  {
     page: "etapes",
     id: "etapes-horizontal",
     titre: "Stepper horizontal",
@@ -602,6 +674,16 @@ export const EXEMPLES: Exemple[] = [
     css: "mat-action-list {\n  max-width: 280px;\n}\n",
   },
   {
+    page: "liste-depliable",
+    id: "liste-depliable-inspection",
+    titre: "Liste d'inspection",
+    description: "Chaque contrôle porte son résultat dans un Toggle Button Neutral (Conforme / Non conforme) : la sémantique est donnée par le libellé et par le bandeau d'accent Feedback (journal du 25/09), pas par la couleur d'action. Photos en bouton pilule, applicabilité en Toggle Switch, dépliage par un bouton 40 (aria-expanded) ; le premier contrôle est déplié.",
+    composant: ListeDepliableInspection,
+    ts: "import { Component, signal } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatButtonToggleModule } from '@angular/material/button-toggle';\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\n\n/**\n * Liste d'inspection\n * Chaque contrôle porte son résultat dans un Toggle Button Neutral (Conforme / Non conforme) : la\n * sémantique est donnée par le libellé et par le bandeau d'accent Feedback (journal du 25/09), pas par\n * la couleur d'action. Photos en bouton pilule, applicabilité en Toggle Switch, dépliage par un bouton\n * 40 (aria-expanded) ; le premier contrôle est déplié.\n */\n@Component({\n  selector: 'ex-liste-depliable-inspection',\n  imports: [\n    MatButtonModule,\n    MatIconModule,\n    MatButtonToggleModule,\n    MatSlideToggleModule,\n    MatFormFieldModule,\n    MatInputModule,\n  ],\n  templateUrl: './liste-depliable-inspection.html',\n  styleUrl: './liste-depliable-inspection.css',\n})\nexport class ListeDepliableInspection {\n  protected readonly controles = [\n    { id: 'c1', titre: 'Système de verrouillage', lieu: 'Contrôle 4 · Zone A', photos: 2 },\n    { id: 'c2', titre: 'Garde-corps du pont roulant', lieu: 'Contrôle 5 · Zone A', photos: 0 },\n    { id: 'c3', titre: 'Arrêt d’urgence de la cisaille', lieu: 'Contrôle 6 · Zone B', photos: 1 },\n  ];\n  protected readonly resultats = signal<Record<string, string>>({ c1: 'ok', c2: 'ko' });\n  protected readonly ouvert = signal('c1');\n\n  protected noter(id: string, valeur: string): void {\n    this.resultats.update((r) => ({ ...r, [id]: valeur }));\n  }\n}\n",
+    html: "<ul class=\"gui-expandable-list\">\n  @for (c of controles; track c.id) {\n    <li\n      class=\"gui-expandable-item\"\n      [class.gui-success]=\"resultats()[c.id] === 'ok'\"\n      [class.gui-error]=\"resultats()[c.id] === 'ko'\"\n    >\n      <div class=\"gui-expandable-item-header\">\n        <div class=\"gui-expandable-item-texts\">\n          <p class=\"gui-expandable-item-title\" [id]=\"'ex-el-' + c.id\">{{ c.titre }}</p>\n          <p class=\"gui-expandable-item-subtitle\">{{ c.lieu }}</p>\n        </div>\n        <button matButton=\"outlined\" class=\"gui-neutral gui-sm gui-pill\">\n          <mat-icon>photo_camera</mat-icon>Photos ({{ c.photos }})\n        </button>\n        <mat-button-toggle-group\n          class=\"gui-neutral\"\n          [value]=\"resultats()[c.id]\"\n          (change)=\"noter(c.id, $event.value)\"\n          [attr.aria-labelledby]=\"'ex-el-' + c.id\"\n          hideSingleSelectionIndicator\n        >\n          <mat-button-toggle value=\"ok\">Conforme</mat-button-toggle>\n          <mat-button-toggle value=\"ko\">Non conforme</mat-button-toggle>\n        </mat-button-toggle-group>\n        <mat-slide-toggle [checked]=\"true\" [aria-label]=\"'Applicable : ' + c.titre\" />\n        <button\n          matIconButton\n          class=\"gui-neutral\"\n          [attr.aria-expanded]=\"ouvert() === c.id\"\n          [attr.aria-controls]=\"'ex-el-c-' + c.id\"\n          [attr.aria-label]=\"(ouvert() === c.id ? 'Replier ' : 'Déplier ') + c.titre\"\n          (click)=\"ouvert.set(ouvert() === c.id ? '' : c.id)\"\n        >\n          <mat-icon>{{ ouvert() === c.id ? 'expand_less' : 'expand_more' }}</mat-icon>\n        </button>\n      </div>\n      @if (ouvert() === c.id) {\n        <div class=\"gui-expandable-item-content\" [id]=\"'ex-el-c-' + c.id\">\n          <div class=\"gui-field gui-sm\">\n            <label class=\"gui-field-label\" [for]=\"'ex-el-obs-' + c.id\">Observation</label>\n            <mat-form-field>\n              <input matInput [id]=\"'ex-el-obs-' + c.id\" placeholder=\"Saisir une observation\" />\n            </mat-form-field>\n          </div>\n        </div>\n      }\n    </li>\n  }\n</ul>\n",
+    css: ":host {\n  display: block;\n  max-width: 880px;\n}\n.gui-field {\n  max-width: 360px;\n}\n",
+  },
+  {
     page: "menu",
     id: "menu-actions",
     titre: "Menu d'actions",
@@ -692,6 +774,26 @@ export const EXEMPLES: Exemple[] = [
     css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n",
   },
   {
+    page: "notation",
+    id: "notation-lecture",
+    titre: "Lecture seule",
+    description: "Étoiles générées par le CSS (gui-filled, gui-half, vide) : l'ensemble porte un nom accessible (role=\"img\"), la valeur texte reste visible. Tailles Small 16 (gui-sm, valeur en Caption), Medium 24, Large 32 (gui-lg).",
+    composant: NotationLecture,
+    ts: "import { Component } from '@angular/core';\n\n/**\n * Lecture seule\n * Étoiles générées par le CSS (gui-filled, gui-half, vide) : l'ensemble porte un nom accessible\n * (role=\"img\"), la valeur texte reste visible. Tailles Small 16 (gui-sm, valeur en Caption), Medium\n * 24, Large 32 (gui-lg).\n */\n@Component({\n  selector: 'ex-notation-lecture',\n  imports: [],\n  templateUrl: './notation-lecture.html',\n  styleUrl: './notation-lecture.css',\n})\nexport class NotationLecture {\n  protected readonly tailles = ['gui-sm', '', 'gui-lg'];\n}\n",
+    html: "<div class=\"ex\">\n  @for (t of tailles; track t) {\n    <span class=\"gui-rating {{ t }}\" role=\"img\" aria-label=\"3,5 sur 5\">\n      <span class=\"gui-rating-star gui-filled\" aria-hidden=\"true\"></span>\n      <span class=\"gui-rating-star gui-filled\" aria-hidden=\"true\"></span>\n      <span class=\"gui-rating-star gui-filled\" aria-hidden=\"true\"></span>\n      <span class=\"gui-rating-star gui-half\" aria-hidden=\"true\"></span>\n      <span class=\"gui-rating-star\" aria-hidden=\"true\"></span>\n      <span class=\"gui-rating-value\" aria-hidden=\"true\">3,5 / 5</span>\n    </span>\n  }\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\n",
+  },
+  {
+    page: "notation",
+    id: "notation-saisie",
+    titre: "Saisie (Interactive)",
+    description: "Un bouton radio natif masqué par étoile dans un role=\"radiogroup\" : flèches du clavier pour changer la note, anneau de focus autour de l'étoile, écart 8. La valeur choisie s'affiche à droite.",
+    composant: NotationSaisie,
+    ts: "import { Component, signal } from '@angular/core';\n\n/**\n * Saisie (Interactive)\n * Un bouton radio natif masqué par étoile dans un role=\"radiogroup\" : flèches du clavier pour changer\n * la note, anneau de focus autour de l'étoile, écart 8. La valeur choisie s'affiche à droite.\n */\n@Component({\n  selector: 'ex-notation-saisie',\n  imports: [],\n  templateUrl: './notation-saisie.html',\n  styleUrl: './notation-saisie.css',\n})\nexport class NotationSaisie {\n  protected readonly etoiles = [1, 2, 3, 4, 5];\n  protected readonly note = signal(4);\n}\n",
+    html: "<div class=\"ex\">\n  <span class=\"gui-rating gui-interactive\" role=\"radiogroup\" aria-labelledby=\"ex-note-libelle\">\n    <span id=\"ex-note-libelle\" class=\"libelle\">Qualité de surface</span>\n    @for (i of etoiles; track i) {\n      <label class=\"gui-rating-option\">\n        <input\n          type=\"radio\"\n          name=\"ex-note\"\n          [value]=\"i\"\n          [checked]=\"note() === i\"\n          (change)=\"note.set(i)\"\n          [attr.aria-label]=\"i + (i > 1 ? ' étoiles' : ' étoile')\"\n        />\n        <span class=\"gui-rating-star\" [class.gui-filled]=\"i <= note()\" aria-hidden=\"true\"></span>\n      </label>\n    }\n    <span class=\"gui-rating-value\">{{ note() }} / 5</span>\n  </span>\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 16px;\n}\n.libelle {\n  margin-right: 8px;\n  color: var(--amf-foreground-primary);\n}\n",
+  },
+  {
     page: "onglets",
     id: "onglets-base",
     titre: "Onglets",
@@ -722,6 +824,16 @@ export const EXEMPLES: Exemple[] = [
     css: ".ex {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 24px;\n}\n",
   },
   {
+    page: "pied-de-page",
+    id: "pied-de-page-conformite",
+    titre: "Footer et mention de conformité",
+    description: "40 px, Surface Subtle, mention à gauche, liens à droite en Foreground/Link. Le premier lien donne l'état de conformité RGAA (non conforme, partiellement conforme, totalement conforme), obligatoire. Les liens ouvrent dans le même onglet (pas de _blank sur les postes RDS).",
+    composant: PiedDePageConformite,
+    ts: "import { Component } from '@angular/core';\n\n/**\n * Footer et mention de conformité\n * 40 px, Surface Subtle, mention à gauche, liens à droite en Foreground/Link. Le premier lien donne\n * l'état de conformité RGAA (non conforme, partiellement conforme, totalement conforme), obligatoire.\n * Les liens ouvrent dans le même onglet (pas de _blank sur les postes RDS).\n */\n@Component({\n  selector: 'ex-pied-de-page-conformite',\n  imports: [],\n  templateUrl: './pied-de-page-conformite.html',\n  styleUrl: './pied-de-page-conformite.css',\n})\nexport class PiedDePageConformite {\n  protected readonly conformites = [\n    'non conforme',\n    'partiellement conforme',\n    'totalement conforme',\n  ];\n}\n",
+    html: "<div class=\"ex\">\n  @for (c of conformites; track c) {\n    <footer class=\"gui-footer\">\n      <p>© 2026 Galma2 · ArcelorMittal</p>\n      <ul class=\"gui-footer-links\">\n        <li>\n          <a href=\"#/conformite\">Accessibilité : {{ c }}</a>\n        </li>\n        <li><a href=\"#/conformite\">Mentions légales</a></li>\n        <li><a href=\"#/conformite\">Données personnelles</a></li>\n      </ul>\n    </footer>\n  }\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n.gui-footer {\n  border: 1px solid var(--amf-border-default);\n}\n",
+  },
+  {
     page: "radio",
     id: "radio-base",
     titre: "Groupe",
@@ -740,6 +852,16 @@ export const EXEMPLES: Exemple[] = [
     ts: "import { Component } from '@angular/core';\nimport { MatRadioModule } from '@angular/material/radio';\n\n/**\n * Radio Group\n * Groupe de radios (journal du 29/09) : même structure que le Checkbox Group ; le mat-radio-group\n * porte la classe gui-group-items et le nom accessible de la légende (aria-labelledby).\n */\n@Component({\n  selector: 'ex-radio-groupe',\n  imports: [MatRadioModule],\n  templateUrl: './radio-groupe.html',\n  styleUrl: './radio-groupe.css',\n})\nexport class RadioGroupe {}\n",
     html: "<div class=\"ex\">\n  <fieldset class=\"gui-group\">\n    <legend id=\"ex-poste\">Poste</legend>\n    <mat-radio-group class=\"gui-group-items\" aria-labelledby=\"ex-poste\" value=\"matin\">\n      <mat-radio-button value=\"matin\">Matin</mat-radio-button>\n      <mat-radio-button value=\"apres-midi\">Après-midi</mat-radio-button>\n      <mat-radio-button value=\"nuit\">Nuit</mat-radio-button>\n    </mat-radio-group>\n  </fieldset>\n  <fieldset class=\"gui-group gui-horizontal gui-error\">\n    <legend id=\"ex-sens\">Sens de bobinage</legend>\n    <mat-radio-group\n      class=\"gui-group-items\"\n      aria-labelledby=\"ex-sens\"\n      aria-describedby=\"ex-sens-erreur\"\n    >\n      <mat-radio-button value=\"dessus\">Dessus</mat-radio-button>\n      <mat-radio-button value=\"dessous\">Dessous</mat-radio-button>\n    </mat-radio-group>\n    <p class=\"gui-group-error\" id=\"ex-sens-erreur\">Choisissez un sens</p>\n  </fieldset>\n</div>\n",
     css: ".ex {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 24px;\n  align-items: start;\n}\n",
+  },
+  {
+    page: "section",
+    id: "section-repliable",
+    titre: "Section dépliée et repliée",
+    description: "Carte de page : pastille en dégradé (décorative, aria-hidden), titre Subtitle Medium, description, actions et bouton Replier / Déplier (Text Neutral Small, aria-expanded et aria-controls). Repliée, la section ne garde que son en-tête.",
+    composant: SectionRepliable,
+    ts: "import { Component, signal } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\n\n/**\n * Section dépliée et repliée\n * Carte de page : pastille en dégradé (décorative, aria-hidden), titre Subtitle Medium, description,\n * actions et bouton Replier / Déplier (Text Neutral Small, aria-expanded et aria-controls). Repliée,\n * la section ne garde que son en-tête.\n */\n@Component({\n  selector: 'ex-section-repliable',\n  imports: [MatButtonModule, MatIconModule],\n  templateUrl: './section-repliable.html',\n  styleUrl: './section-repliable.css',\n})\nexport class SectionRepliable {\n  protected readonly sections = [\n    {\n      id: 'a',\n      icone: 'factory',\n      titre: 'Campagne en cours',\n      description: 'DX51D+Z, 62 bobines mères',\n    },\n    {\n      id: 'b',\n      icone: 'inventory_2',\n      titre: 'Stock de la halle',\n      description: 'Mis à jour à 20 h 45',\n    },\n  ];\n  protected readonly ouvertes = signal(['a']);\n\n  protected basculer(id: string): void {\n    this.ouvertes.update((o) => (o.includes(id) ? o.filter((x) => x !== id) : [...o, id]));\n  }\n}\n",
+    html: "<div class=\"ex\">\n  @for (s of sections; track s.id) {\n    <section\n      class=\"gui-section\"\n      [class.gui-collapsed]=\"!ouvertes().includes(s.id)\"\n      [attr.aria-labelledby]=\"'ex-sec-' + s.id\"\n    >\n      <div class=\"gui-section-header\">\n        <span class=\"gui-section-badge\" aria-hidden=\"true\"\n          ><span class=\"material-icons\">{{ s.icone }}</span></span\n        >\n        <div class=\"gui-section-texts\">\n          <h3 class=\"gui-section-title\" [id]=\"'ex-sec-' + s.id\">{{ s.titre }}</h3>\n          <p class=\"gui-section-description\">{{ s.description }}</p>\n        </div>\n        <div class=\"gui-section-actions\">\n          <button matButton=\"outlined\" class=\"gui-neutral gui-sm\">Exporter</button>\n          <button\n            matButton\n            class=\"gui-neutral gui-sm\"\n            [attr.aria-expanded]=\"ouvertes().includes(s.id)\"\n            [attr.aria-controls]=\"'ex-sec-c-' + s.id\"\n            (click)=\"basculer(s.id)\"\n          >\n            {{ ouvertes().includes(s.id) ? 'Replier' : 'Déplier' }}\n            <mat-icon iconPositionEnd>{{\n              ouvertes().includes(s.id) ? 'expand_less' : 'expand_more'\n            }}</mat-icon>\n          </button>\n        </div>\n      </div>\n      <div class=\"gui-section-content\" [id]=\"'ex-sec-c-' + s.id\">\n        Contenu de la section : tableau, formulaire ou synthèse de la campagne en cours.\n      </div>\n    </section>\n  }\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n",
   },
   {
     page: "select",
@@ -780,6 +902,16 @@ export const EXEMPLES: Exemple[] = [
     ts: "import { Component } from '@angular/core';\nimport { MatDividerModule } from '@angular/material/divider';\n\n/**\n * Séparateurs\n * Ligne 1 px Border/Default ; gui-subtle pour Border/Subtle ; gui-inset pour le retrait de 16 px ;\n * vertical entre deux éléments d'une barre.\n */\n@Component({\n  selector: 'ex-separateur-base',\n  imports: [MatDividerModule],\n  templateUrl: './separateur-base.html',\n  styleUrl: './separateur-base.css',\n})\nexport class SeparateurBase {}\n",
     html: "<div class=\"ex\">\n  <span>Avant</span>\n  <mat-divider />\n  <span>Après</span>\n  <mat-divider class=\"gui-subtle\" />\n  <span>Avec retrait (gui-inset)</span>\n  <mat-divider class=\"gui-inset\" />\n  <div class=\"barre\">\n    <span>Entrée</span>\n    <mat-divider vertical />\n    <span>Centre</span>\n    <mat-divider vertical />\n    <span>Sortie</span>\n  </div>\n</div>\n",
     css: ".ex {\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  gap: 8px;\n}\n\n.barre {\n  display: flex;\n  align-items: center;\n  gap: 16px;\n  height: 24px;\n}\n",
+  },
+  {
+    page: "separateur",
+    id: "separateur-titre",
+    titre: "Divider Title",
+    description: "Intertitre de formulaire ou de panneau : Form Label Caps en Foreground/Brand suivi d'un filet (Border/Default, gui-subtle pour Border/Subtle), retrait de 16 avec gui-inset. C'est un vrai titre (h3, h4…) au niveau voulu par la page.",
+    composant: SeparateurTitre,
+    ts: "import { Component } from '@angular/core';\n\n/**\n * Divider Title\n * Intertitre de formulaire ou de panneau : Form Label Caps en Foreground/Brand suivi d'un filet\n * (Border/Default, gui-subtle pour Border/Subtle), retrait de 16 avec gui-inset. C'est un vrai titre\n * (h3, h4…) au niveau voulu par la page.\n */\n@Component({\n  selector: 'ex-separateur-titre',\n  imports: [],\n  templateUrl: './separateur-titre.html',\n  styleUrl: './separateur-titre.css',\n})\nexport class SeparateurTitre {}\n",
+    html: "<div class=\"ex\">\n  <h3 class=\"gui-divider-title\">Contexte</h3>\n  <h3 class=\"gui-divider-title gui-subtle\">Mesures</h3>\n  <h3 class=\"gui-divider-title gui-inset\">Commentaire</h3>\n</div>\n",
+    css: ".ex {\n  display: flex;\n  flex-direction: column;\n  gap: 24px;\n  max-width: 480px;\n}\n",
   },
   {
     page: "statut",

@@ -1,0 +1,627 @@
+/*
+ * Structure et affichage (lot 5) habillés AMF v2.0 : Avatar, Rating, Scrollbar, Card complète et Selectable Card,
+ * Header, Footer, Section, Expandable List, Divider Title. Chaque bloc cite la page 🆕 du Figma dont il reprend
+ * les mesures. Ombres : les niveaux AMF vont du plus marqué (Lv1, 16 / 32) au plus léger (Lv4, 2 / 4).
+ */
+
+/* ── Avatar (page 🆕 Avatar) : rond Radius/Full ; XS 24 / S 32 / M 40 (défaut) / L 56 ; Initials (Label 10 Medium,
+   Caption Medium, Form Label, H6 Medium), Icon (14 / 18 / 22 / 30) ou Image (fond Surface Subtle, icône de repli
+   Foreground/Secondary) ; couleurs Primary (défaut), Secondary, Neutral, Green, Navy, Purple. ── */
+.gui-avatar {
+  --gui-av-size: 40px;
+  --gui-av-icon: 22px;
+  --gui-av-bg: var(--amf-action-primary-default);
+  --gui-av-fg: var(--amf-foreground-on-primary);
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--gui-av-size);
+  height: var(--gui-av-size);
+  overflow: hidden;
+  border-radius: var(--amf-radius-full);
+  background: var(--gui-av-bg);
+  color: var(--gui-av-fg);
+  font-family: var(--amf-text-form-label-family), sans-serif;
+  font-size: var(--amf-text-form-label-size);
+  font-weight: var(--amf-text-form-label-weight);
+  line-height: var(--amf-text-form-label-line-height);
+  letter-spacing: var(--amf-text-form-label-letter-spacing);
+  text-transform: uppercase;
+  user-select: none;
+}
+.gui-avatar.gui-xs {
+  --gui-av-size: 24px;
+  --gui-av-icon: 14px;
+  font-family: var(--amf-text-label-10-medium-family), sans-serif;
+  font-size: var(--amf-text-label-10-medium-size);
+  font-weight: var(--amf-text-label-10-medium-weight);
+  line-height: var(--amf-text-label-10-medium-line-height);
+  letter-spacing: var(--amf-text-label-10-medium-letter-spacing);
+}
+.gui-avatar.gui-sm {
+  --gui-av-size: 32px;
+  --gui-av-icon: 18px;
+  font-family: var(--amf-text-caption-medium-family), sans-serif;
+  font-size: var(--amf-text-caption-medium-size);
+  font-weight: var(--amf-text-caption-medium-weight);
+  line-height: var(--amf-text-caption-medium-line-height);
+  letter-spacing: var(--amf-text-caption-medium-letter-spacing);
+}
+.gui-avatar.gui-lg {
+  --gui-av-size: 56px;
+  --gui-av-icon: 30px;
+  font-family: var(--amf-text-heading-h6-medium-family), sans-serif;
+  font-size: var(--amf-text-heading-h6-medium-size);
+  font-weight: var(--amf-text-heading-h6-medium-weight);
+  line-height: var(--amf-text-heading-h6-medium-line-height);
+  letter-spacing: var(--amf-text-heading-h6-medium-letter-spacing);
+}
+.gui-avatar.gui-secondary {
+  --gui-av-bg: var(--amf-action-secondary-default);
+  --gui-av-fg: var(--amf-foreground-on-primary);
+}
+.gui-avatar.gui-neutral {
+  --gui-av-bg: var(--amf-feedback-neutral-solid);
+  --gui-av-fg: var(--amf-feedback-neutral-on-solid);
+}
+.gui-avatar.gui-green {
+  --gui-av-bg: var(--amf-accent-green-strong);
+  --gui-av-fg: var(--amf-accent-green-on-strong);
+}
+.gui-avatar.gui-navy {
+  --gui-av-bg: var(--amf-accent-navy-strong);
+  --gui-av-fg: var(--amf-accent-navy-on-strong);
+}
+.gui-avatar.gui-purple {
+  --gui-av-bg: var(--amf-accent-purple-strong);
+  --gui-av-fg: var(--amf-accent-purple-on-strong);
+}
+.gui-avatar > :is(.material-icons, .mat-icon) {
+  width: var(--gui-av-icon);
+  height: var(--gui-av-icon);
+  font-size: var(--gui-av-icon);
+  line-height: var(--gui-av-icon);
+  text-transform: none;
+}
+.gui-avatar.gui-image {
+  --gui-av-bg: var(--amf-background-surface-subtle);
+  --gui-av-fg: var(--amf-foreground-secondary);
+}
+.gui-avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Rating (page 🆕 Rating) : étoiles 16 / 24 (défaut) / 32, vide en Foreground/Secondary (star_border), pleine
+   en Gold/600 (star), demie = contour + moitié pleine ; écart 2 en lecture seule, 8 en saisie ; valeur Caption
+   (gui-sm) ou Body 2 en Foreground/Secondary. Étoiles décoratives générées par le CSS (aria-hidden). ── */
+:root {
+  --gui-rating-filled: var(--amf-color-gold-600);
+}
+:root.dark {
+  --gui-rating-filled: var(--amf-color-gold-300);
+}
+.gui-rating {
+  --gui-star: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--amf-foreground-secondary);
+  font-family: var(--amf-text-body-2-family), sans-serif;
+  font-size: var(--amf-text-body-2-size);
+  font-weight: var(--amf-text-body-2-weight);
+  line-height: var(--amf-text-body-2-line-height);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+}
+.gui-rating.gui-sm {
+  --gui-star: 16px;
+  font-family: var(--amf-text-caption-family), sans-serif;
+  font-size: var(--amf-text-caption-size);
+  font-weight: var(--amf-text-caption-weight);
+  line-height: var(--amf-text-caption-line-height);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+}
+.gui-rating.gui-lg {
+  --gui-star: 32px;
+}
+.gui-rating-star {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--gui-star);
+  height: var(--gui-star);
+}
+.gui-rating-star::before,
+.gui-rating-star.gui-half::after {
+  position: absolute;
+  inset: 0;
+  font: normal 400 var(--gui-star) / 1 'Material Icons';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.gui-rating-star::before {
+  content: 'star_border' / '';
+  color: var(--amf-foreground-secondary);
+}
+.gui-rating-star.gui-filled::before {
+  content: 'star' / '';
+  color: var(--gui-rating-filled);
+}
+.gui-rating-star.gui-half::after {
+  content: 'star' / '';
+  color: var(--gui-rating-filled);
+  clip-path: inset(0 50% 0 0);
+}
+.gui-rating-value {
+  margin-left: 6px;
+}
+/* Saisie : un bouton radio natif masqué par étoile, dans un role="radiogroup" ; écart 8 */
+.gui-rating.gui-interactive {
+  gap: 8px;
+}
+.gui-rating-option {
+  position: relative;
+  display: inline-flex;
+  border-radius: var(--amf-radius-xs);
+  cursor: pointer;
+}
+.gui-rating-option > input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.gui-rating-option:has(> input:focus-visible) {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: 2px;
+}
+.gui-rating-option:has(> input:disabled) {
+  cursor: default;
+  opacity: 0.38;
+}
+.gui-rating.gui-interactive .gui-rating-value {
+  margin-left: 0;
+}
+
+/* ── Scrollbar (page 🆕 Scrollbar) : gouttière de 12, piste 8 Surface Subtle, curseur Foreground/Secondary (5,0:1
+   sur la piste), Radius/M. Classe gui-scrollbar sur le conteneur défilant (ou sur html pour toute l'application). ── */
+.gui-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.gui-scrollbar::-webkit-scrollbar-track,
+.gui-scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: var(--amf-radius-m);
+  background-clip: padding-box;
+}
+.gui-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--amf-background-surface-subtle);
+}
+.gui-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--amf-foreground-secondary);
+  min-height: 20px;
+}
+.gui-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+@supports not selector(::-webkit-scrollbar) {
+  .gui-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--amf-foreground-secondary) var(--amf-background-surface-subtle);
+  }
+}
+
+/* ── Card (page 🆕 Card), complément du lot 1 : Elevated (mat-card par défaut) bordée Border/Strong avec ombre Lv3,
+   Lv2 au survol ; Outlined sans ombre, Lv3 au survol. En-tête : titre et Slot Tag (gui-card-title-line, écart 8),
+   sous-titre, bouton de menu 32 à droite (écart 12). Largeurs S 280 / M 400 : gui-sm / gui-md. ── */
+.mat-mdc-card {
+  --mat-card-elevated-container-elevation: var(--amf-shadow-lv3);
+}
+.mat-mdc-card:not(.mat-mdc-card-outlined) {
+  border: 1px solid var(--amf-border-strong);
+}
+.mat-mdc-card:hover {
+  --mat-card-elevated-container-elevation: var(--amf-shadow-lv2);
+}
+.mat-mdc-card.mat-mdc-card-outlined:hover {
+  --mat-card-outlined-container-elevation: var(--amf-shadow-lv3);
+}
+.mat-mdc-card.gui-sm {
+  width: 280px;
+  max-width: 100%;
+}
+.mat-mdc-card.gui-md {
+  width: 400px;
+  max-width: 100%;
+}
+.mat-mdc-card .mat-mdc-card-header {
+  gap: 12px;
+  align-items: flex-start;
+}
+.mat-mdc-card .mat-mdc-card-header-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.mat-mdc-card .mat-mdc-card-header > .mat-mdc-button-base {
+  flex: none;
+  margin: -4px 0 0 auto;
+}
+.mat-mdc-card .mat-mdc-card-header-text.mat-mdc-card-header-text {
+  padding: 0;
+}
+/* Material ajoute son propre bloc de textes, vide quand l'en-tête est composé à la main (titre et tag) */
+.mat-mdc-card .mat-mdc-card-header-text:empty {
+  display: none;
+}
+.gui-card-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Selectable Card (page Card) : carte de choix, contrôle Radio ou Checkbox en en-tête (mat-radio-button,
+   mat-checkbox) ; titre Body 1 Medium, valeur Heading H3, description Body 2 secondaire ; survol
+   Action/Neutral/Subtle ; choisie : bordure 2 px Action/Primary/Default ; focus clavier : bordure 2 px
+   Border/Focus ; désactivée : Background/Disabled, textes Foreground/Disabled. États lus sur le contrôle (:has). */
+.gui-selectable-card {
+  --gui-sc-border: 1px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: calc(16px - var(--gui-sc-border));
+  border: var(--gui-sc-border) solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-l);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+  cursor: pointer;
+}
+.gui-selectable-card.gui-sm {
+  width: 280px;
+  max-width: 100%;
+}
+.gui-selectable-card:hover {
+  background: var(--amf-action-neutral-subtle);
+}
+.gui-selectable-card:has(input:focus-visible) {
+  --gui-sc-border: 2px;
+  border-color: var(--amf-border-focus);
+}
+.gui-selectable-card:has(input:checked) {
+  --gui-sc-border: 2px;
+  border-color: var(--amf-action-primary-default);
+}
+.gui-selectable-card:has(input:disabled) {
+  background: var(--amf-background-disabled);
+  border-color: var(--amf-border-strong);
+  color: var(--amf-foreground-disabled);
+  cursor: default;
+}
+.gui-selectable-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.gui-selectable-card-title {
+  flex: 1 1 auto;
+  margin: 0;
+  font-family: var(--amf-text-body-1-medium-family), sans-serif;
+  font-size: var(--amf-text-body-1-medium-size);
+  font-weight: var(--amf-text-body-1-medium-weight);
+  line-height: var(--amf-text-body-1-medium-line-height);
+  letter-spacing: var(--amf-text-body-1-medium-letter-spacing);
+}
+.gui-selectable-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.gui-selectable-card-value {
+  margin: 0;
+  font-family: var(--amf-text-heading-h3-family), sans-serif;
+  font-size: var(--amf-text-heading-h3-size);
+  font-weight: var(--amf-text-heading-h3-weight);
+  line-height: var(--amf-text-heading-h3-line-height);
+  letter-spacing: var(--amf-text-heading-h3-letter-spacing);
+}
+.gui-selectable-card-description {
+  margin: 0;
+  color: var(--amf-foreground-secondary);
+  font-family: var(--amf-text-body-2-family), sans-serif;
+  font-size: var(--amf-text-body-2-size);
+  font-weight: var(--amf-text-body-2-weight);
+  line-height: var(--amf-text-body-2-line-height);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+}
+.gui-selectable-card:has(input:disabled) .gui-selectable-card-description {
+  color: var(--amf-foreground-disabled);
+}
+
+/* ── Header (page 🆕 Header) : bandeau d'application, Desktop 64 / Tablet 56 (gui-tablet), marges 24, écart 24,
+   Surface, filet Border/Default ; marque à gauche, actions à droite (écart 16) : CTA, statut, étiquette,
+   notifications (Count en haut à droite du bouton), compte (Avatar S, nom Form Label, rôle Caption, menu). ── */
+.gui-header {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 64px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--amf-border-default);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+}
+.gui-header.gui-tablet {
+  height: 56px;
+}
+.gui-header-brand {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.gui-header-actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+.gui-header-notifications {
+  position: relative;
+  display: inline-flex;
+}
+.gui-header-notifications > .gui-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+.gui-header-account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.gui-header-account-texts {
+  display: flex;
+  flex-direction: column;
+}
+.gui-header-account-name {
+  font-family: var(--amf-text-form-label-family), sans-serif;
+  font-size: var(--amf-text-form-label-size);
+  font-weight: var(--amf-text-form-label-weight);
+  line-height: var(--amf-text-form-label-line-height);
+}
+.gui-header-account-role {
+  color: var(--amf-foreground-secondary);
+  font-family: var(--amf-text-caption-family), sans-serif;
+  font-size: var(--amf-text-caption-size);
+  line-height: var(--amf-text-caption-line-height);
+}
+.gui-header.gui-tablet .gui-header-account-texts {
+  display: none;
+}
+
+/* ── Footer (page 🆕 Footer) : 40 de haut, marges 24, Surface Subtle, filet Border/Default ; mention à gauche
+   (Caption secondaire), liens à droite (Caption Foreground/Link, marges 4 / 2, Radius/S, écart 16) dont la
+   mention de conformité RGAA (non / partiellement / totalement conforme). ── */
+.gui-footer {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  min-height: 40px;
+  padding: 0 24px;
+  border-top: 1px solid var(--amf-border-default);
+  background: var(--amf-background-surface-subtle);
+  color: var(--amf-foreground-secondary);
+  font-family: var(--amf-text-caption-family), sans-serif;
+  font-size: var(--amf-text-caption-size);
+  font-weight: var(--amf-text-caption-weight);
+  line-height: var(--amf-text-caption-line-height);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+}
+.gui-footer p {
+  margin: 0;
+}
+.gui-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gui-footer-links a {
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: var(--amf-radius-s);
+  color: var(--amf-foreground-link);
+  text-decoration: none;
+}
+.gui-footer-links a:hover {
+  text-decoration: underline;
+}
+.gui-footer-links a:focus-visible {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: 0;
+}
+
+/* ── Section (page 🆕 Section) : carte de page, Radius/L, Border/Strong, Surface ; en-tête de 56 : pastille en
+   dégradé (galma-navigation.css), titre Subtitle Medium et description Body 2 (marges 16 / 8, écart 2), actions
+   et bouton Replier / Déplier (Text Neutral Small) à droite ; filet Border/Default sous l'en-tête déplié ;
+   contenu marges 24. Repliée (gui-collapsed) : en-tête seul. ── */
+.gui-section {
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-l);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+}
+.gui-section-header {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding-right: 16px;
+  border-bottom: 1px solid var(--amf-border-default);
+}
+.gui-section-header:not(:has(> .gui-section-badge)) {
+  padding-left: 8px;
+}
+.gui-section.gui-collapsed .gui-section-header {
+  border-bottom: 0;
+}
+.gui-section.gui-collapsed .gui-section-content {
+  display: none;
+}
+.gui-section-texts {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 16px;
+}
+.gui-section-title {
+  margin: 0;
+  font-family: var(--amf-text-subtitle-medium-family), sans-serif;
+  font-size: var(--amf-text-subtitle-medium-size);
+  font-weight: var(--amf-text-subtitle-medium-weight);
+  line-height: var(--amf-text-subtitle-medium-line-height);
+  letter-spacing: var(--amf-text-subtitle-medium-letter-spacing);
+}
+.gui-section-description {
+  margin: 0;
+  color: var(--amf-foreground-secondary);
+  font-family: var(--amf-text-body-2-family), sans-serif;
+  font-size: var(--amf-text-body-2-size);
+  line-height: var(--amf-text-body-2-line-height);
+}
+.gui-section-actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+}
+.gui-section-content {
+  padding: 24px;
+}
+
+/* ── Expandable List (page 🆕 Expandable List) : liste de contrôles (écran d'inspection), écart 8 ; item Radius/M,
+   Border/Strong, Surface ; bandeau d'accent de 4 px à gauche en Feedback Solid selon le résultat (gui-success
+   conforme, gui-error non conforme, absent sans résultat) ; en-tête 64 (marges 20 / 8, écart 16) : titre Form
+   Label, sous-titre Caption, puis photos, résultat (Toggle Button Neutral), applicabilité (Toggle Switch) et
+   bouton de dépliage 40 ; contenu déplié sous un filet Border/Subtle. ── */
+.gui-expandable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gui-expandable-item {
+  --gui-ei-accent: transparent;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-left: 4px;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-primary);
+}
+.gui-expandable-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--gui-ei-accent);
+}
+.gui-expandable-item.gui-success {
+  --gui-ei-accent: var(--amf-feedback-success-solid);
+}
+.gui-expandable-item.gui-error {
+  --gui-ei-accent: var(--amf-feedback-error-solid);
+}
+.gui-expandable-item-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+  box-sizing: border-box;
+  padding: 8px 20px;
+}
+.gui-expandable-item-texts {
+  flex: 1 1 200px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gui-expandable-item-title {
+  margin: 0;
+  font-family: var(--amf-text-form-label-family), sans-serif;
+  font-size: var(--amf-text-form-label-size);
+  font-weight: var(--amf-text-form-label-weight);
+  line-height: var(--amf-text-form-label-line-height);
+}
+.gui-expandable-item-subtitle {
+  margin: 0;
+  color: var(--amf-foreground-secondary);
+  font-family: var(--amf-text-caption-family), sans-serif;
+  font-size: var(--amf-text-caption-size);
+  line-height: var(--amf-text-caption-line-height);
+}
+.gui-expandable-item-content {
+  padding: 8px 20px 20px;
+  border-top: 1px solid var(--amf-border-subtle);
+}
+/* Bouton en pilule (Photos) : Outlined Neutral Small, Radius/Full */
+.mat-mdc-button-base.gui-pill.gui-pill {
+  border-radius: var(--amf-radius-full);
+}
+
+/* ── Divider Title (page 🆕 Divider, journal du 05/10) : intertitre Form Label Caps en Foreground/Brand suivi d'un
+   filet Border/Default (gui-subtle : Border/Subtle), écart 16 ; gui-inset : retrait 16. ── */
+.gui-divider-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  color: var(--amf-foreground-brand);
+  font-family: var(--amf-text-form-label-caps-family), sans-serif;
+  font-size: var(--amf-text-form-label-caps-size);
+  font-weight: var(--amf-text-form-label-caps-weight);
+  line-height: var(--amf-text-form-label-caps-line-height);
+  letter-spacing: var(--amf-text-form-label-caps-letter-spacing);
+  text-transform: var(--amf-text-form-label-caps-transform);
+}
+.gui-divider-title::after {
+  content: '';
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--amf-border-default);
+}
+.gui-divider-title.gui-subtle::after {
+  background: var(--amf-border-subtle);
+}
+.gui-divider-title.gui-inset {
+  padding-inline: 16px;
+}

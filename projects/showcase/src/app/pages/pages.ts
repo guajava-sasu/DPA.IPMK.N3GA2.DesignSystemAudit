@@ -5,6 +5,7 @@ export const FAMILLES = [
   'Formulaires',
   'Navigation et contenus',
   'Messages et overlays',
+  'Structure et affichage',
   'Retours',
 ] as const;
 export type Famille = (typeof FAMILLES)[number];
@@ -105,9 +106,10 @@ export const PAGES: PageComposant[] = [
     id: 'carte',
     titre: 'Card',
     famille: 'Navigation et contenus',
-    figma: '🆕 Card (Elevated / Outlined, élévation par Border/Strong)',
+    figma:
+      '🆕 Card (Elevated / Outlined × Default / Hover × S / M) et Selectable Card (Radio / Checkbox, 16 variantes)',
     resume:
-      'Carte Material (appearance="outlined") : Radius/L, bord Border/Strong, marges et espacement 16 px, titre Body 1 Medium.',
+      'Carte Material : Radius/L, bord Border/Strong, marges et espacement 16 px, titre Body 1 Medium ; Elevated en ombre Lv3 (Lv2 au survol), Outlined sans ombre (Lv3 au survol) ; en-tête avec Slot Tag et menu. Selectable Card en CSS pur (gui-selectable-card) autour d’un mat-radio-button ou d’un mat-checkbox.',
     material: "import { MatCardModule } from '@angular/material/card';",
   },
   {
@@ -144,8 +146,9 @@ export const PAGES: PageComposant[] = [
     id: 'separateur',
     titre: 'Divider',
     famille: 'Navigation et contenus',
-    figma: '🆕 Divider (Horizontal / Vertical × Default / Subtle)',
-    resume: 'Séparateur Material (mat-divider), 1 px Border/Default.',
+    figma: '🆕 Divider (Line / Title × Horizontal / Vertical × Default / Subtle)',
+    resume:
+      'Séparateur Material (mat-divider), 1 px Border/Default ; intertitre gui-divider-title (Form Label Caps en Foreground/Brand et filet).',
     material: "import { MatDividerModule } from '@angular/material/divider';",
   },
   {
@@ -414,5 +417,79 @@ export const PAGES: PageComposant[] = [
       'Postes RDS : pas d’animation infinie. Les modes indéterminés sont figés par provideGalmaMaterial() (animations désactivées) ; préférer le mode déterminé ou un libellé « Chargement… ».',
       'Material ne dessine pas la piste du spinner : anneau ajouté par le CSS, aux tailles gui-sm / défaut / gui-lg.',
     ],
+  },
+  {
+    id: 'avatar',
+    titre: 'Avatar',
+    famille: 'Structure et affichage',
+    figma: '🆕 Avatar (Initials / Icon × 6 couleurs × XS / S / M / L, Image)',
+    resume:
+      'Avatar rond en CSS pur (gui-avatar) : 24 / 32 / 40 / 56, initiales, icône ou image, couleurs Primary, Secondary, Neutral et Accent (Green, Navy, Purple).',
+  },
+  {
+    id: 'notation',
+    titre: 'Rating',
+    famille: 'Structure et affichage',
+    figma: '🆕 Rating et Rating Star (Read-only / Interactive × S / M / L)',
+    resume:
+      'Note en étoiles (gui-rating) : étoiles vide, demie et pleine (Gold/600) générées par le CSS, valeur texte ; saisie par boutons radio natifs masqués dans un radiogroup.',
+    ecarts: [
+      'Material n’a pas de composant de note : CSS pur et boutons radio natifs.',
+      'Étoile pleine en Gold/600, primitive sans jeton sémantique dans le Figma ; Gold/300 en mode sombre (proposition galma-ui).',
+    ],
+  },
+  {
+    id: 'barre-defilement',
+    titre: 'Scrollbar',
+    famille: 'Structure et affichage',
+    figma: '🆕 Scrollbar (Percent 10 à 90 %), journal du 25/09',
+    resume:
+      'Barre de défilement AMF par la classe gui-scrollbar : gouttière 12, piste 8 Surface Subtle, curseur Foreground/Secondary, Radius/M (pseudo-éléments ::-webkit-scrollbar, scrollbar-color ailleurs).',
+    ecarts: [
+      'La propriété Percent du Figma est la longueur du curseur : le navigateur la calcule lui-même.',
+    ],
+  },
+  {
+    id: 'en-tete',
+    titre: 'Header',
+    famille: 'Structure et affichage',
+    figma: '🆕 Header (Desktop 64 / Tablet 56)',
+    resume:
+      'Bandeau d’application en CSS pur (<header class="gui-header">) : marque, CTA, statut, étiquette, notifications avec Count, compte avec Avatar.',
+    material:
+      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
+    ecarts: ['Le logotype ArcelorMittal du Figma est remplacé par un texte dans la vitrine.'],
+  },
+  {
+    id: 'pied-de-page',
+    titre: 'Footer',
+    famille: 'Structure et affichage',
+    figma: '🆕 Footer (Conformité Non / Partiellement / Totalement conforme), journal du 25/09',
+    resume:
+      'Pied de page en CSS pur (<footer class="gui-footer">) : 40 px, Surface Subtle, mention et liens en Foreground/Link dont la mention de conformité RGAA.',
+  },
+  {
+    id: 'section',
+    titre: 'Section',
+    famille: 'Structure et affichage',
+    figma: '🆕 Section (Expanded / Collapsed), journal du 05/10',
+    resume:
+      'Carte de page repliable en CSS pur (gui-section) : pastille en dégradé, titre Subtitle Medium, description, actions et bouton Replier / Déplier, contenu marges 24.',
+    material:
+      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
+    ecarts: [
+      'Pastille en dégradé hors jetons, la même que celle de l’en-tête de Table (version simplifiée du style Gradient de l’ancien thème AMF).',
+    ],
+  },
+  {
+    id: 'liste-depliable',
+    titre: 'Expandable List',
+    famille: 'Structure et affichage',
+    figma:
+      '🆕 Expandable List et Expandable List Item (Collapsed / Expanded × résultat), journal du 25/09',
+    resume:
+      'Liste de contrôles d’inspection en CSS pur (gui-expandable-list) : bandeau d’accent Feedback selon le résultat, résultat en Toggle Button Neutral, photos, applicabilité, contenu déplié.',
+    material:
+      'import { MatButtonToggleModule } from ’@angular/material/button-toggle’;\nimport { MatSlideToggleModule } from ’@angular/material/slide-toggle’;',
   },
 ];

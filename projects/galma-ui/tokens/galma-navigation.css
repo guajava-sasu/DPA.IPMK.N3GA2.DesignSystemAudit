@@ -69,12 +69,14 @@ html {
   color: var(--amf-foreground-secondary);
 }
 /* Pastille décorative (Table hasIcon, journal du 05/10) : quart de cercle de 56 px collé au coin du tableau, icône
- * blanche 24 px. Dégradé HORS JETONS, relevé tel quel dans le Figma (Table et Section) : version simplifiée du style
+ * blanche 24 px ; reprise par l'en-tête de Section (galma-structure.css). Dégradé HORS JETONS, relevé tel quel dans le Figma (Table et Section) : version simplifiée du style
  * « Gradient » de l'ancien thème AMF (logotype, gabarits de pages). Décorative : aria-hidden="true" sur la pastille. */
-.gui-table {
+.gui-table,
+.gui-section {
   --gui-table-badge-gradient: linear-gradient(135deg, #5b2a86 0%, #d63a3a 39%, #f3923c 71%);
 }
-.gui-table-badge {
+.gui-table-badge,
+.gui-section-badge {
   flex: none;
   box-sizing: border-box;
   width: 56px;
@@ -85,7 +87,8 @@ html {
   background: var(--gui-table-badge-gradient);
   color: var(--amf-color-steel-0);
 }
-.gui-table-badge .material-icons { display: block; font-size: 24px; width: 24px; height: 24px; }
+.gui-table-badge .material-icons,
+.gui-section-badge .material-icons { display: block; font-size: 24px; width: 24px; height: 24px; }
 .gui-table-header:has(> .gui-table-badge) { padding: 0 16px 0 0; gap: 0; min-height: 56px; }
 .gui-table-header:has(> .gui-table-badge) .gui-table-header-texts { padding: 8px 16px; }
 .gui-table-header:has(> .gui-table-badge) .gui-table-actions { padding-block: 8px; }

@@ -1,5 +1,5 @@
 {
- "genere": "2026-11-12T20:32:12.392Z",
+ "genere": "2026-11-12T21:14:29.809Z",
  "outil": "axe-core 4.14.0",
  "regles": "wcag2a, wcag2aa, wcag21a, wcag21aa",
  "exceptions": [
@@ -115,7 +115,7 @@
    "mode": "clair",
    "violations": [],
    "exceptions": [],
-   "reussies": 22,
+   "reussies": 25,
    "incompletes": 1
   },
   {
@@ -371,6 +371,69 @@
    "incompletes": 1
   },
   {
+   "route": "/composants/avatar",
+   "titre": "Avatar",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/notation",
+   "titre": "Rating",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 27,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/barre-defilement",
+   "titre": "Scrollbar",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/en-tete",
+   "titre": "Header",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/pied-de-page",
+   "titre": "Footer",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/section",
+   "titre": "Section",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/liste-depliable",
+   "titre": "Expandable List",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 27,
+   "incompletes": 1
+  },
+  {
    "route": "/mode-sombre",
    "titre": "Mode sombre audité",
    "mode": "clair",
@@ -501,6 +564,33 @@
    "exceptions": [],
    "reussies": 26,
    "incompletes": 1
+  },
+  {
+   "route": "/composants/section (panneau)",
+   "titre": "Section dépliée",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/liste-depliable (panneau)",
+   "titre": "Liste dépliable : contrôle replié",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/carte (panneau)",
+   "titre": "Menu de carte ouvert",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 28,
+   "incompletes": 2
   },
   {
    "route": "/composants/modale (panneau)",
@@ -616,7 +706,7 @@
    "mode": "sombre",
    "violations": [],
    "exceptions": [],
-   "reussies": 22,
+   "reussies": 25,
    "incompletes": 1
   },
   {
@@ -872,6 +962,69 @@
    "incompletes": 1
   },
   {
+   "route": "/composants/avatar",
+   "titre": "Avatar",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/notation",
+   "titre": "Rating",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 27,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/barre-defilement",
+   "titre": "Scrollbar",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/en-tete",
+   "titre": "Header",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/pied-de-page",
+   "titre": "Footer",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/section",
+   "titre": "Section",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/liste-depliable",
+   "titre": "Expandable List",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 27,
+   "incompletes": 1
+  },
+  {
    "route": "/mode-sombre",
    "titre": "Mode sombre audité",
    "mode": "sombre",
@@ -1002,6 +1155,33 @@
    "exceptions": [],
    "reussies": 26,
    "incompletes": 1
+  },
+  {
+   "route": "/composants/section (panneau)",
+   "titre": "Section dépliée",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/liste-depliable (panneau)",
+   "titre": "Liste dépliable : contrôle replié",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/carte (panneau)",
+   "titre": "Menu de carte ouvert",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 28,
+   "incompletes": 2
   },
   {
    "route": "/composants/modale (panneau)",

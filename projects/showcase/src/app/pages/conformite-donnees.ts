@@ -1,6 +1,6 @@
 /*
- * Contrôle de galma-ui 0.4.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
- * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 4 (famille formulaire, navigation et contenus, messages et overlays). Statuts :
+ * Contrôle de galma-ui 0.5.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 5 (famille formulaire, navigation et contenus, messages et overlays, structure et affichage). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
  *   ecart     : différence connue, à corriger ou à faire valider
@@ -72,7 +72,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision: 'Élévation par Border/Strong (Steel/600) sur Card, Table, List, Dialog, Menu…',
     statut: 'conforme',
     galma:
-      'Card : bordure --amf-border-strong, sans ombre. Les autres conteneurs viendront avec leurs lots.',
+      'Card, Table, List, Accordion, Stepper, Modale : bordure --amf-border-strong ; l’ombre de la Card Elevated s’y ajoute, comme dans le .fig.',
   },
   {
     date: '25/09',
@@ -320,9 +320,9 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Lot 5 : Card',
     decision:
       'Card Elevated / Outlined × Default / Hover × Small / Medium, Slot Tag, menu, actions.',
-    statut: 'ecart',
+    statut: 'conforme',
     galma:
-      'Une seule apparence (bordure Border/Strong, comme les deux styles du .fig) ; l’état Hover n’est pas décrit dans le journal, non implémenté.',
+      'mat-card bordée Border/Strong dans les deux styles ; Elevated en ombre Lv3 (Lv2 au survol), Outlined sans ombre (Lv3 au survol), ombres reprises des styles d’effet du .fig ; gui-sm 280 / gui-md 400 ; en-tête avec Slot Tag et mat-menu.',
   },
   {
     date: '24/09',
@@ -821,5 +821,110 @@ export const CONFORMITE: LigneConformite[] = [
     decision: 'Dialog renommé Modale, Dialog Overlay → Modale Overlay.',
     statut: 'conforme',
     galma: 'Page Modale et classes gui-modale-*.',
+  },
+  // Structure et affichage (lot 5)
+  {
+    date: '18/09',
+    entree: 'Avatar',
+    decision:
+      'Avatar : 52 variantes (Initials / Icon × 6 couleurs × XS / S / M / L, Image × Neutral).',
+    statut: 'conforme',
+    galma:
+      'gui-avatar 24 / 32 / 40 / 56 (gui-xs, gui-sm, défaut, gui-lg) ; Primary par défaut, gui-secondary, gui-neutral, gui-green, gui-navy, gui-purple ; gui-image pour une photo.',
+  },
+  {
+    date: '18/09',
+    entree: 'Rating',
+    decision:
+      'Rating Star (Empty / Half / Filled × 3 tailles) et Rating (Read-only / Interactive × 3 tailles, cinq étoiles, valeur texte).',
+    statut: 'adapte',
+    galma:
+      'Material n’a pas de note : gui-rating en CSS pur, étoiles dessinées par la police d’icônes ; saisie par cinq boutons radio natifs masqués (radiogroup, flèches du clavier), valeur gui-rating-value.',
+  },
+  {
+    date: '22/09',
+    entree: 'Rating',
+    decision:
+      'Étoiles pleines en Amber/600 (Gold/600 après renommage), contours en Foreground/Secondary.',
+    statut: 'adapte',
+    galma:
+      'Gold/600 est une primitive sans jeton sémantique : variable --gui-rating-filled ; Gold/300 en mode sombre (proposition galma-ui, audit de contraste).',
+  },
+  {
+    date: '29/09',
+    entree: 'Selectable Card',
+    decision:
+      'Selectable Card : Radio / Checkbox × Selected × Default / Hover / Focused / Disabled ; Title, Value (H3), Description ; sélection par bordure 2 px Action/Primary/Default.',
+    statut: 'adapte',
+    galma:
+      'gui-selectable-card en CSS pur autour d’un mat-radio-button ou d’un mat-checkbox ; états par :has() sur le contrôle ; le clic sur toute la carte est relayé par l’application ((click) dans l’exemple).',
+  },
+  {
+    date: '25/09',
+    entree: 'Header',
+    decision:
+      'Header (GLOBAL v2) : marque, CTA, étiquette de site, notifications avec Count Brand, compte avec Avatar ; Desktop 64 / Tablet 56.',
+    statut: 'conforme',
+    galma:
+      '<header class="gui-header"> 64 px, gui-tablet 56 ; actions en slot sans retour à la ligne ; logotype remplacé par un texte dans la vitrine.',
+  },
+  {
+    date: '25/09',
+    entree: 'Footer',
+    decision:
+      'Footer (GLOBAL v2) : mention, liens et mention de conformité (Non / Partiellement / Totalement conforme).',
+    statut: 'conforme',
+    galma: '<footer class="gui-footer"> 40 px sur Surface Subtle, liens gui-footer-links.',
+  },
+  {
+    date: '25/09',
+    entree: 'Footer',
+    decision: 'Foreground/Link passe à Orange/600 : liens du Footer en cuivre.',
+    statut: 'conforme',
+    galma: 'Valeur venue des jetons générés.',
+  },
+  {
+    date: '25/09',
+    entree: 'Expandable List',
+    decision:
+      'Expandable List (Items 3 / 4 / 5, premier déplié) ; bandeau d’accent Feedback étiré sur toute la hauteur, masqué sans résultat ; Toggle Button de résultat en Neutral.',
+    statut: 'conforme',
+    galma:
+      'gui-expandable-list et gui-expandable-item : bandeau de 4 px par ::before (gui-success, gui-error), mat-button-toggle-group Neutral, contenu déplié séparé sans chevaucher le bandeau.',
+  },
+  {
+    date: '25/09',
+    entree: 'Scrollbar',
+    decision:
+      'Scrollbar : curseur Foreground/Secondary sur piste Surface Subtle, barre dans une gouttière de 12 px.',
+    statut: 'conforme',
+    galma:
+      'Classe gui-scrollbar (::-webkit-scrollbar, scrollbar-color pour les autres moteurs) ; longueur du curseur calculée par le navigateur.',
+  },
+  {
+    date: '05/10',
+    entree: 'Section',
+    decision:
+      'Section : carte de page à en-tête configurable (pastille, titre, description, Slot Actions, Replier / Déplier) et Slot Content, Expanded / Collapsed ; titre en Subtitle Medium après revue.',
+    statut: 'conforme',
+    galma:
+      'gui-section, gui-section-header, gui-section-title (niveau h2 / h3 au choix de la page), gui-collapsed ; bouton Replier / Déplier avec aria-expanded.',
+  },
+  {
+    date: '05/10',
+    entree: 'Section',
+    decision: 'Pastille d’en-tête en dégradé violet → rouge → orange, rayon intérieur 9 px.',
+    statut: 'adapte',
+    galma:
+      'gui-section-badge partage le dégradé hors jetons de gui-table-badge (même décision que la pastille de Table).',
+  },
+  {
+    date: '05/10',
+    entree: 'Divider',
+    decision:
+      'Divider Type Title : titre en capitales Foreground/Brand et filet, ramené à Form Label Caps sur retour de revue.',
+    statut: 'conforme',
+    galma:
+      'gui-divider-title en Form Label Caps (Medium 14/20, capitales, interlettrage 0,5), filet Border/Default ou gui-subtle, gui-inset.',
   },
 ];
