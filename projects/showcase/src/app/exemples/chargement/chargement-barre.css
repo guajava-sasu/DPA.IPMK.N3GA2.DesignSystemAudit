@@ -1,0 +1,14 @@
+.ex {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 400px;
+}
+label {
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) /
+    var(--amf-text-body-2-line-height) var(--amf-text-body-2-family);
+  color: var(--amf-foreground-secondary);
+}
+label:not(:first-child) {
+  margin-top: 8px;
+}

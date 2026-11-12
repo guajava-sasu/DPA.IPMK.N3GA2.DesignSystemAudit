@@ -1,0 +1,42 @@
+<div class="ex">
+  <section class="gui-empty-state">
+    <div class="gui-empty-state-illustration">
+      <span class="material-icons" aria-hidden="true">inbox</span>
+    </div>
+    <div class="gui-empty-state-texts">
+      <h3 class="gui-empty-state-title">Aucun résultat</h3>
+      <p class="gui-empty-state-message">
+        Aucune bobine ne correspond aux filtres. Élargissez la période ou retirez une nuance.
+      </p>
+    </div>
+    <button matButton="outlined" class="gui-neutral">Effacer les filtres</button>
+  </section>
+  <section class="gui-empty-state" role="status">
+    <div class="gui-empty-state-illustration">
+      <mat-progress-spinner
+        diameter="40"
+        strokeWidth="4"
+        mode="determinate"
+        [value]="35"
+        aria-label="Chargement"
+      />
+    </div>
+    <div class="gui-empty-state-texts">
+      <h3 class="gui-empty-state-title">Chargement…</h3>
+      <p class="gui-empty-state-message">Lecture de l’historique des bobines mères.</p>
+    </div>
+    <button matButton="outlined" class="gui-neutral">Annuler</button>
+  </section>
+  <section class="gui-empty-state">
+    <div class="gui-empty-state-illustration gui-error">
+      <span class="material-icons" aria-hidden="true">cloud_off</span>
+    </div>
+    <div class="gui-empty-state-texts">
+      <h3 class="gui-empty-state-title">Données indisponibles</h3>
+      <p class="gui-empty-state-message">
+        Le service BobinesMeres ne répond pas. Réessayez dans quelques instants.
+      </p>
+    </div>
+    <button matButton="outlined" class="gui-neutral">Réessayer</button>
+  </section>
+</div>

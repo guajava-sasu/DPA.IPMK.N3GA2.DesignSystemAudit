@@ -1,0 +1,30 @@
+<div class="ex">
+  <span>Taux de recouvrement</span>
+  <button
+    matIconButton
+    class="gui-neutral gui-sm"
+    aria-label="Aide sur le taux de recouvrement"
+    cdkOverlayOrigin
+    #origine="cdkOverlayOrigin"
+    [attr.aria-expanded]="ouvert()"
+    (click)="ouvert.set(!ouvert())"
+  >
+    <mat-icon>help_outline</mat-icon>
+  </button>
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="origine"
+    [cdkConnectedOverlayOpen]="ouvert()"
+    (overlayOutsideClick)="ouvert.set(false)"
+    (detach)="ouvert.set(false)"
+    (overlayKeydown)="clavier($event)"
+  >
+    <div class="gui-tooltip-rich" role="status">
+      <p class="gui-tooltip-rich-title">Taux de recouvrement</p>
+      <p>
+        Masse de zinc déposée par face, en g/m², mesurée par la jauge X en sortie de la tour de
+        refroidissement.
+      </p>
+    </div>
+  </ng-template>
+</div>

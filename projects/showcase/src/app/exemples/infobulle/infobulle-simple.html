@@ -1,0 +1,16 @@
+<div class="ex">
+  <button matIconButton class="gui-neutral" aria-label="Exporter" matTooltip="Exporter en CSV">
+    <mat-icon>download</mat-icon>
+  </button>
+  @for (p of positions; track p) {
+    <button
+      matButton="outlined"
+      class="gui-neutral"
+      matTooltip="Texte du tooltip"
+      [matTooltipPosition]="p"
+      matTooltipClass="gui-tooltip-arrow"
+    >
+      {{ p }}
+    </button>
+  }
+</div>

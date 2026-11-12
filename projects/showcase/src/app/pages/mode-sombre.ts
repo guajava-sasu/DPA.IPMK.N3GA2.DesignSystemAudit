@@ -92,8 +92,9 @@ interface ResultatAxe {
         <p class="gui-body-2 gui-secondary-text">
           {{ a.outil }}, règles {{ a.regles }}, exécuté le
           {{ a.genere.slice(0, 16).replace('T', ' à ') }} (UTC). Les panneaux flottants (Select,
-          calendrier, liste d’heures, menus, liste du paginateur, niveaux repliés du fil d’Ariane)
-          sont audités ouverts, le menu latéral replié et une ligne de tableau repliée.
+          calendrier, liste d’heures, menus, liste du paginateur, niveaux repliés du fil d’Ariane,
+          tooltips, modale) sont audités ouverts, de même que le menu latéral replié, une ligne de
+          tableau repliée et une pile d’alertes.
         </p>
         @for (e of a.exceptions ?? []; track e.cible) {
           <p class="gui-body-2">

@@ -1,0 +1,24 @@
+<div class="ex">
+  <button matButton="outlined" class="gui-neutral" (click)="ajouter('gui-success')">
+    Notifier un succès
+  </button>
+  <button matButton="outlined" class="gui-neutral" (click)="ajouter('gui-error')">
+    Notifier une erreur
+  </button>
+</div>
+<div class="gui-alert-stack" aria-live="polite">
+  @for (a of pile(); track a.id) {
+    <div class="gui-alert {{ a.classe }}" [attr.role]="a.classe === 'gui-error' ? 'alert' : null">
+      <span class="material-icons gui-alert-icon" aria-hidden="true">{{
+        a.classe === 'gui-error' ? 'error' : 'check_circle'
+      }}</span>
+      <div class="gui-alert-content">
+        <p class="gui-alert-title">{{ a.classe === 'gui-error' ? 'Erreur' : 'Succès' }}</p>
+        <p class="gui-alert-text">{{ a.texte }}</p>
+      </div>
+      <button matIconButton class="gui-neutral gui-sm" aria-label="Fermer" (click)="fermer(a.id)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  }
+</div>

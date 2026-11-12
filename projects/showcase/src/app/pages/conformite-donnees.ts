@@ -1,6 +1,6 @@
 /*
- * Contrôle de galma-ui 0.3.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
- * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 3 (famille formulaire, navigation et contenus). Statuts :
+ * Contrôle de galma-ui 0.4.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 4 (famille formulaire, navigation et contenus, messages et overlays). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
  *   ecart     : différence connue, à corriger ou à faire valider
@@ -696,5 +696,130 @@ export const CONFORMITE: LigneConformite[] = [
     statut: 'adapte',
     galma:
       'Bascule 32 px (gui-col-expand), lignes filles gui-nested-row / gui-nested calculées par le composant (Material n’a pas de lignes filles) ; champ 32 px dans la cellule.',
+  },
+  // Messages et overlays (lot 4)
+  {
+    date: '14/09',
+    entree: 'Message Info',
+    decision:
+      'L’Alert du 14/09 devient Message Info : message persistant, Filled / Soft / Outlined × 5 types × Small / Medium ; titre Alert Title (Bold 14/20), action Text et fermeture exposées.',
+    statut: 'conforme',
+    galma:
+      'gui-message (Filled par défaut), gui-soft, gui-outlined, gui-sm ; titre gui-message-title en Alert Title, actions gui-message-actions, bouton Fermer facultatif.',
+  },
+  {
+    date: '14/09',
+    entree: 'Alert',
+    decision:
+      'Nouvel Alert (toast) : Light / Dark × 5 types, 360 px, hasIcon, titre, message, action Text, fermeture ; Alert Stack de 1 à 3, écart 8, haut ou bas à droite à 24 px.',
+    statut: 'conforme',
+    galma:
+      'gui-alert (Light : Surface, Border/Strong, ombre Lv2) et gui-alert gui-inverse (Dark) ; pile gui-alert-stack fixe (gui-top pour le haut), trois alertes au plus, région aria-live.',
+  },
+  {
+    date: '14/09',
+    entree: 'Alert Dark',
+    decision:
+      'Background/Inverse en Steel/900 ; icônes de l’Alert Dark en Feedback/<Type>/Inverse (≥ 5,9:1).',
+    statut: 'adapte',
+    galma:
+      'Les variables Feedback/<Type>/Inverse sont supprimées du .fig mais toujours référencées : galma-ui reprend les teintes 300 (Blue, Green, Gold, Ruby, Steel) ; en mode sombre, où le fond inverse devient clair, les pleins du mode clair (audit de contraste).',
+  },
+  {
+    date: '14/09',
+    entree: 'Disclaimer',
+    decision:
+      'Nouvelle page Disclaimer : 5 types, icône en slot, Caption Italic en Feedback Foreground sur Feedback Background.',
+    statut: 'conforme',
+    galma: 'gui-disclaimer : Radius/S, marges 16 / 8, icône 18, Caption Italic.',
+  },
+  {
+    date: '14/09',
+    entree: 'Snackbar',
+    decision:
+      'Snackbar déprécié : la notification éphémère passe à Alert, dont le Style Dark correspond au snackbar Material.',
+    statut: 'conforme',
+    galma: 'MatSnackBar non habillé ; Alert Dark (gui-inverse) dans une gui-alert-stack.',
+  },
+  {
+    date: '15/09',
+    entree: 'Message Info, Disclaimer',
+    decision: 'Largeurs par composant retirées des jetons, valeurs laissées en dur (480 et 800).',
+    statut: 'adapte',
+    galma:
+      'Message Info et Disclaimer prennent la largeur de leur conteneur ; l’Alert garde 360 px (max 100 %).',
+  },
+  {
+    date: '18/09',
+    entree: 'Modale',
+    decision:
+      'Dialog : Standard × S / M / L, Confirmation et Destructive × S / M, fermeture et actions exposées ; Dialog Overlay sur Background/Overlay.',
+    statut: 'conforme',
+    galma:
+      'MatDialog : panelClass gui-modale-sm / md / lg (400 / 560 / 800), Radius/L, Border/Strong, ombre Lv1, en-tête gui-modale-header (icône, Fermer 40), actions séparées par Border/Subtle, voile Background/Overlay.',
+  },
+  {
+    date: '18/09',
+    entree: 'Tooltip',
+    decision: 'Tooltip : Plain / Rich × flèche None / Top / Bottom / Left / Right.',
+    statut: 'adapte',
+    galma:
+      'Plain : mat-tooltip aux couleurs AMF, flèche ajoutée par le CSS (matTooltipClass gui-tooltip-arrow, suit la position réelle). Rich : Material n’en a pas, toggletip ouvert au clic (cdkConnectedOverlay, gui-tooltip-rich).',
+  },
+  {
+    date: '18/09',
+    entree: 'Loader',
+    decision:
+      'Progress Spinner Indeterminate / Determinate × Primary / Secondary / Inverse × 24 / 40 / 64 ; Progress Bar Determinate / Indeterminate / Buffer.',
+    statut: 'ecart',
+    galma:
+      'Modes déterminés et Buffer conformes (piste du spinner ajoutée par le CSS, Material n’en dessine pas). Modes indéterminés figés : pas d’animation infinie sur les postes RDS (provideGalmaMaterial désactive les animations).',
+  },
+  {
+    date: '22/09',
+    entree: 'Progress Spinner',
+    decision: 'Variante Inverse transparente, posée sur une surface sombre.',
+    statut: 'conforme',
+    galma: 'gui-inverse : Foreground/Inverse, piste à 24 %, sans fond propre.',
+  },
+  {
+    date: '24/09',
+    entree: 'Alert, Message Info',
+    decision:
+      'Alert sans disparition automatique, Fermer toujours présent ; hasTitle vrai par défaut, titre = mot du type.',
+    statut: 'conforme',
+    galma:
+      'Aucune minuterie dans galma-ui ; exemples titrés Information, Succès, Attention, Erreur.',
+  },
+  {
+    date: '24/09',
+    entree: 'Alert, Message Info',
+    decision: 'Type Neutral titré « Remarque ».',
+    statut: 'conforme',
+    galma: 'Exemples Neutral titrés Remarque.',
+  },
+  {
+    date: '06/10',
+    entree: 'Message Info',
+    decision:
+      'Feedback/Info/Background en Blue/50 ; Soft avec barre d’accent de 4 px Feedback/<Type>/Solid à gauche.',
+    statut: 'conforme',
+    galma: 'Fond venu des jetons générés ; barre d’accent par une bordure gauche de 4 px.',
+  },
+  {
+    date: '06/10',
+    entree: 'Empty State',
+    decision:
+      'Table Empty State devient Empty State (Empty / Loading / Error) : illustration ronde, titre, message, action.',
+    statut: 'conforme',
+    galma:
+      'gui-empty-state : illustration 64 (icône 32 ou spinner 40, gui-error), titre Body 1 Medium, message Body 2, action Outlined Neutral ; état de chargement en role="status".',
+  },
+  {
+    date: '06/10',
+    entree: 'Modale',
+    decision: 'Dialog renommé Modale, Dialog Overlay → Modale Overlay.',
+    statut: 'conforme',
+    galma: 'Page Modale et classes gui-modale-*.',
   },
 ];

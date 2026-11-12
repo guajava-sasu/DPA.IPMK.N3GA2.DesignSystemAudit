@@ -1,0 +1,15 @@
+<div class="ex">
+  <button matButton="outlined" class="gui-neutral" (click)="ouvrir(modale, 'sm')">Small</button>
+  <button matButton="outlined" class="gui-neutral" (click)="ouvrir(modale, 'md')">Medium</button>
+  <button matButton="outlined" class="gui-neutral" (click)="ouvrir(modale, 'lg')">Large</button>
+</div>
+<ng-template #modale>
+  <h2 mat-dialog-title>Commentaire de poste</h2>
+  <mat-dialog-content>
+    Le commentaire est joint au rapport de fin de poste et transmis au chef de ligne suivant.
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button matButton class="gui-neutral" mat-dialog-close>Annuler</button>
+    <button matButton="filled" mat-dialog-close>Enregistrer</button>
+  </mat-dialog-actions>
+</ng-template>

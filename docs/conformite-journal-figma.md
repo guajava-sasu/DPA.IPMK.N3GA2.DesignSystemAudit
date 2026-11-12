@@ -1,11 +1,12 @@
-# Conformité de galma-ui 0.3.0 au journal du Figma AMF v2.0 (2026-11-12)
+# Conformité de galma-ui 0.4.0 au journal du Figma AMF v2.0 (2026-11-12)
 
 Source : page Changelog du .fig (entrées du 12/09 au 26/10/2026), extraite dans
 `04-analyse/figma-amf/changelog.txt`. Détail ligne à ligne : page « Conformité au journal » de la vitrine
 (`projects/showcase/src/app/pages/conformite-donnees.ts`).
 
-84 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus) : **69 conformes**,
-**11 adaptées** (même rendu, obtenu autrement à cause de Material), **2 écarts**, **2 hors lot**.
+99 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus, lot 4 messages et
+overlays) : **80 conformes**, **14 adaptées** (même rendu, obtenu autrement à cause de Material), **3 écarts**,
+**2 hors lot**.
 
 Adaptées :
 
@@ -24,12 +25,18 @@ Adaptées :
 - Table, pastille décorative de l'en-tête (hasIcon) : dégradé hors jetons recopié du Figma (#5B2A86 → #D63A3A →
   #F3923C), version simplifiée du style « Gradient » de l'ancien thème AMF (logotype, gabarits) ; repris à la demande de
   Gunther malgré ses réserves esthétiques, à signaler au comité AMF.
+- Alert Dark : icônes en Feedback/<Type>/Inverse, variables supprimées du .fig mais toujours référencées ; teintes 300
+  reprises du journal (14/09) et, en mode sombre, pleins du mode clair.
+- Message Info et Disclaimer : largeurs laissées en dur dans le Figma (480 et 800), largeur du conteneur dans galma-ui.
+- Tooltip : flèche ajoutée par le CSS (Material n'en a pas) ; Rich en toggletip ouvert au clic (overlay CDK).
 
 Écarts :
 
 - Card, état Hover non décrit dans le journal, non implémenté.
 - Calendar : largeur 312 px appliquée, mais Material garde 4 colonnes (mois 4 × 3, années 4 × 6) là où le Figma passe
   à 3 colonnes (3 × 4, 3 × 8, journal du 22/09).
+- Loader : modes indéterminés du Progress Spinner et de la Progress Bar figés, pas d'animation infinie sur les postes
+  RDS (choix Galma2, `provideGalmaMaterial()` désactive les animations) ; préférer le mode déterminé ou un libellé.
 
 Hors lot : apparence Fill du Form Field ; icône et Count dans les onglets, onglets verticaux.
 

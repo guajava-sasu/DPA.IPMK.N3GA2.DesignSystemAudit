@@ -1,5 +1,5 @@
 {
- "genere": "2026-11-12T20:02:19.847Z",
+ "genere": "2026-11-12T20:32:12.392Z",
  "outil": "axe-core 4.14.0",
  "regles": "wcag2a, wcag2aa, wcag21a, wcag21aa",
  "exceptions": [
@@ -308,6 +308,69 @@
    "incompletes": 1
   },
   {
+   "route": "/composants/alerte",
+   "titre": "Alert",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/message",
+   "titre": "Message Info",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/avertissement",
+   "titre": "Disclaimer",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/etat-vide",
+   "titre": "Empty State",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/infobulle",
+   "titre": "Tooltip",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/modale",
+   "titre": "Modale",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/chargement",
+   "titre": "Loader",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
    "route": "/mode-sombre",
    "titre": "Mode sombre audité",
    "mode": "clair",
@@ -411,6 +474,42 @@
    "exceptions": [],
    "reussies": 33,
    "incompletes": 1
+  },
+  {
+   "route": "/composants/alerte (panneau)",
+   "titre": "Pile d’alertes affichée",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/infobulle (panneau)",
+   "titre": "Tooltip affiché",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/infobulle (panneau)",
+   "titre": "Tooltip riche ouvert",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/modale (panneau)",
+   "titre": "Modale de confirmation ouverte",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 21,
+   "incompletes": 2
   },
   {
    "route": "/",
@@ -710,6 +809,69 @@
    "incompletes": 1
   },
   {
+   "route": "/composants/alerte",
+   "titre": "Alert",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/message",
+   "titre": "Message Info",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/avertissement",
+   "titre": "Disclaimer",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/etat-vide",
+   "titre": "Empty State",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/infobulle",
+   "titre": "Tooltip",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/modale",
+   "titre": "Modale",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/chargement",
+   "titre": "Loader",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
    "route": "/mode-sombre",
    "titre": "Mode sombre audité",
    "mode": "sombre",
@@ -813,6 +975,42 @@
    "exceptions": [],
    "reussies": 33,
    "incompletes": 1
+  },
+  {
+   "route": "/composants/alerte (panneau)",
+   "titre": "Pile d’alertes affichée",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/infobulle (panneau)",
+   "titre": "Tooltip affiché",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/infobulle (panneau)",
+   "titre": "Tooltip riche ouvert",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 26,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/modale (panneau)",
+   "titre": "Modale de confirmation ouverte",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 21,
+   "incompletes": 2
   }
  ]
 }

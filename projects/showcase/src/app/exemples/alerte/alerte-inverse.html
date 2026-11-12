@@ -1,0 +1,25 @@
+<div class="ex">
+  <div class="gui-alert gui-inverse gui-success">
+    <span class="material-icons gui-alert-icon" aria-hidden="true">check_circle</span>
+    <div class="gui-alert-content">
+      <p class="gui-alert-title">Succès</p>
+      <p class="gui-alert-text">Défaut 412 supprimé.</p>
+    </div>
+    <button matButton class="gui-inverse gui-sm">Annuler</button>
+    <button matIconButton class="gui-inverse gui-sm" aria-label="Fermer">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  @for (t of types; track t.classe) {
+    <div class="gui-alert gui-inverse {{ t.classe }}">
+      <span class="material-icons gui-alert-icon" aria-hidden="true">{{ t.icone }}</span>
+      <div class="gui-alert-content">
+        <p class="gui-alert-title">{{ t.titre }}</p>
+        <p class="gui-alert-text">{{ t.texte }}</p>
+      </div>
+      <button matIconButton class="gui-inverse gui-sm" aria-label="Fermer">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  }
+</div>

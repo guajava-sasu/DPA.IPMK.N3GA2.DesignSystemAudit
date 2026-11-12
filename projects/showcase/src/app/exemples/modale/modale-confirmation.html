@@ -1,0 +1,38 @@
+<div class="ex">
+  <button matButton="outlined" class="gui-neutral" (click)="ouvrir(confirmation, 'sm')">
+    Confirmation
+  </button>
+  <button matButton="outlined" class="gui-destructive" (click)="ouvrir(destructive, 'sm')">
+    Destructive
+  </button>
+</div>
+<ng-template #confirmation>
+  <div class="gui-modale-header">
+    <span class="material-icons gui-modale-icon" aria-hidden="true">info</span>
+    <h2 mat-dialog-title>Confirmer l’envoi ?</h2>
+    <button matIconButton class="gui-neutral" aria-label="Fermer" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content
+    >La requête sera transmise à OG et ne pourra plus être modifiée.</mat-dialog-content
+  >
+  <mat-dialog-actions>
+    <button matButton class="gui-neutral" mat-dialog-close>Annuler</button>
+    <button matButton="filled" mat-dialog-close>Envoyer</button>
+  </mat-dialog-actions>
+</ng-template>
+<ng-template #destructive>
+  <div class="gui-modale-header">
+    <span class="material-icons gui-modale-icon gui-error" aria-hidden="true">warning</span>
+    <h2 mat-dialog-title>Supprimer la requête ?</h2>
+  </div>
+  <mat-dialog-content
+    >Cette action est irréversible : le défaut 412 et ses mesures seront
+    supprimés.</mat-dialog-content
+  >
+  <mat-dialog-actions>
+    <button matButton class="gui-neutral" mat-dialog-close cdkFocusInitial>Annuler</button>
+    <button matButton="filled" class="gui-destructive" mat-dialog-close>Supprimer</button>
+  </mat-dialog-actions>
+</ng-template>

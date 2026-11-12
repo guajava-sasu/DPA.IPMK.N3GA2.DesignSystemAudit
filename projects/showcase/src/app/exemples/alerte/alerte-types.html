@@ -1,0 +1,24 @@
+<div class="ex">
+  @for (t of visibles(); track t.classe) {
+    <div class="gui-alert {{ t.classe }}">
+      <span class="material-icons gui-alert-icon" aria-hidden="true">{{ t.icone }}</span>
+      <div class="gui-alert-content">
+        <p class="gui-alert-title">{{ t.titre }}</p>
+        <p class="gui-alert-text">{{ t.texte }}</p>
+      </div>
+      <button
+        matIconButton
+        class="gui-neutral gui-sm"
+        aria-label="Fermer"
+        (click)="fermer(t.classe)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  }
+  @if (visibles().length < types.length) {
+    <button matButton="outlined" class="gui-neutral gui-sm" (click)="fermees.set([])">
+      Réafficher
+    </button>
+  }
+</div>

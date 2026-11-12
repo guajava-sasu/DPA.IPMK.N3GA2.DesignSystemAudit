@@ -1,0 +1,12 @@
+.ex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.sombre {
+  display: flex;
+  padding: 12px;
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-inverse);
+}

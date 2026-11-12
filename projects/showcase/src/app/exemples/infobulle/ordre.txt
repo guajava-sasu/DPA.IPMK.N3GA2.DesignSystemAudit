@@ -1,0 +1,2 @@
+infobulle-simple
+infobulle-riche

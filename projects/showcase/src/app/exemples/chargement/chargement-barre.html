@@ -1,0 +1,13 @@
+<div class="ex">
+  <label id="ex-pb-1">Chargement de la campagne (40 %)</label>
+  <mat-progress-bar mode="determinate" [value]="40" aria-labelledby="ex-pb-1" />
+  <label id="ex-pb-2">Synchronisation OG (65 %)</label>
+  <mat-progress-bar
+    class="gui-secondary"
+    mode="determinate"
+    [value]="65"
+    aria-labelledby="ex-pb-2"
+  />
+  <label id="ex-pb-3">Lecture et tampon (30 % sur 70 %)</label>
+  <mat-progress-bar mode="buffer" [value]="30" [bufferValue]="70" aria-labelledby="ex-pb-3" />
+</div>

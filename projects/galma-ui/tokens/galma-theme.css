@@ -12,13 +12,15 @@
  *   @import '<chemin>/galma-ui/tokens/galma-theme.css';
  * Fichiers : amf-tokens.css (généré), galma-material.css (composants Material), galma-formulaires.css (famille
  * formulaire : Select, Slider, Chip, Date et Time Picker, Menu, Button Dropdown, File Upload), galma-navigation.css
- * (Table, Paginator, Pagination, Breadcrumb, Title, Stepper, Accordion, List, Side Menu), galma-composants.css (Badge, Tag,
+ * (Table, Paginator, Pagination, Breadcrumb, Title, Stepper, Accordion, List, Side Menu), galma-messages.css (Alert,
+ * Message Info, Disclaimer, Empty State, Tooltip, Modale, Loader), galma-composants.css (Badge, Tag,
  * Count, Status, typographie, icônes). Polices servies sous /galma/fonts (assets de angular.json). Mode sombre : classe `dark` sur <html>.
  */
 @import './amf-tokens.css';
 @import './galma-material.css';
 @import './galma-formulaires.css';
 @import './galma-navigation.css';
+@import './galma-messages.css';
 @import './galma-composants.css';
 
 /* ── Police Roboto (AMF), variable 100 → 900, embarquée : pas de CDN sur les postes RDS ─ */
@@ -131,6 +133,8 @@
   --amf-background-surface-subtle: #262626;
   --amf-background-disabled: #2a2a2a;
   --amf-background-inverse: #f2f2f2;
+  /* Voile des modales : le voile AMF (#1e2123 à 37 %) ne se voit pas sur un fond #151515 */
+  --amf-background-overlay: rgb(0 0 0 / 0.6);
   --amf-foreground-primary: #f2f2f2;
   --amf-foreground-secondary: #a3a3a3;
   --amf-foreground-placeholder: #8a8a8a;

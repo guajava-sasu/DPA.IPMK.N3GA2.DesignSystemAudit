@@ -106,6 +106,27 @@ const PANNEAUX = [
     titre: 'Tableau : ligne repliée',
     ouvrir: 'ex-tableau-depliable button[aria-expanded="true"]',
   },
+  {
+    route: '/composants/alerte',
+    titre: 'Pile d’alertes affichée',
+    ouvrir: 'ex-alerte-pile button',
+  },
+  {
+    route: '/composants/infobulle',
+    titre: 'Tooltip affiché',
+    ouvrir: 'ex-infobulle-simple button',
+    survol: true,
+  },
+  {
+    route: '/composants/infobulle',
+    titre: 'Tooltip riche ouvert',
+    ouvrir: 'ex-infobulle-riche button',
+  },
+  {
+    route: '/composants/modale',
+    titre: 'Modale de confirmation ouverte',
+    ouvrir: 'ex-modale-confirmation button',
+  },
 ];
 
 const version = JSON.parse(
@@ -133,7 +154,9 @@ for (const mode of ['clair', 'sombre']) {
     await page.goto(`${base}?mode=${mode === 'sombre' ? 'dark' : 'light'}#${r.route}`, {
       waitUntil: 'networkidle',
     });
-    await page.locator(r.ouvrir).first().click();
+    const cible = page.locator(r.ouvrir).first();
+    if (r.survol) await cible.hover();
+    else await cible.click();
     await page.waitForTimeout(400);
     const res = await new AxeBuilder({ page }).withTags(REGLES).analyze();
     const r2 = { route: r.route + ' (panneau)', titre: r.titre, mode, ...resume(res) };

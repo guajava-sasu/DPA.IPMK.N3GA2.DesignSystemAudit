@@ -18,7 +18,9 @@ const jetons = join(racine, 'projects/galma-ui/tokens');
 const css =
   readFileSync(join(jetons, 'amf-tokens.css'), 'utf8') +
   '\n' +
-  readFileSync(join(jetons, 'galma-theme.css'), 'utf8');
+  readFileSync(join(jetons, 'galma-theme.css'), 'utf8') +
+  '\n' +
+  readFileSync(join(jetons, 'galma-messages.css'), 'utf8');
 
 function blocs(selecteur) {
   const vars = {};
@@ -265,6 +267,32 @@ T(N, '--amf-foreground-inverse', '--amf-feedback-neutral-solid', 'Numéro d’é
 T(N, '--amf-feedback-error-foreground', '--amf-background-surface', 'Libellé d’étape en erreur');
 T(N, '--amf-action-secondary-on-tint', '--amf-action-secondary-tint', 'Élément de liste courant');
 G(N, '--amf-feedback-error-on-solid', '--amf-feedback-error-solid', 'Icône d’étape en erreur');
+
+// Messages et overlays (lot 4) : Alert, Message Info, Disclaimer, Tooltip, Modale
+const M = 'Messages et overlays';
+for (const t of ['info', 'success', 'warning', 'error', 'neutral']) {
+  T(M, `--amf-feedback-${t}-on-solid`, `--amf-feedback-${t}-solid`, `Message Info Filled ${t}`);
+  T(
+    M,
+    `--amf-feedback-${t}-foreground`,
+    '--amf-background-surface',
+    `Titre et icône Outlined, icône d’Alert ${t}`,
+  );
+  T(
+    M,
+    `--amf-feedback-${t}-foreground`,
+    `--amf-feedback-${t}-background`,
+    `Titre Soft, Disclaimer ${t}`,
+  );
+  T(
+    M,
+    '--amf-foreground-primary',
+    `--amf-feedback-${t}-background`,
+    `Texte du Message Info Soft ${t}`,
+  );
+  G(M, `--gui-feedback-${t}-inverse`, '--amf-background-inverse', `Icône d’Alert Dark ${t}`);
+}
+T(M, '--amf-foreground-inverse', '--amf-background-inverse', 'Alert Dark, Tooltip Plain');
 
 function mesurer(vars) {
   return P.map((p) => {

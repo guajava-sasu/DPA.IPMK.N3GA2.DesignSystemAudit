@@ -1,6 +1,12 @@
 /** Pages composants de la vitrine : page 🆕 du Figma AMF suivie, réglage Material, écarts connus. */
 /** Familles du menu, dans l'ordre d'affichage. */
-export const FAMILLES = ['Actions', 'Formulaires', 'Navigation et contenus', 'Retours'] as const;
+export const FAMILLES = [
+  'Actions',
+  'Formulaires',
+  'Navigation et contenus',
+  'Messages et overlays',
+  'Retours',
+] as const;
 export type Famille = (typeof FAMILLES)[number];
 
 export interface PageComposant {
@@ -322,5 +328,91 @@ export const PAGES: PageComposant[] = [
       'Menu latéral en CSS pur (<nav class="gui-side-menu">) : 240 px (64 replié), items de 48 / 40 / 32 px Radius/M, item actif en pilule Primary, Count Grey, icône de fin, lien retour et bouton de repli. Material (mat-sidenav) ne fournit que le tiroir, pas le contenu du menu.',
     material:
       "import { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';",
+  },
+  {
+    id: 'alerte',
+    titre: 'Alert',
+    famille: 'Messages et overlays',
+    figma: '🆕 Alert et Alert Stack (Light / Dark × 5 types), journal des 14/09 et 24/09',
+    resume:
+      'Notification éphémère en CSS pur (gui-alert) : 360 px, Radius/M, icône 20, titre Alert Title, message Body 2, action facultative et bouton Fermer. Style Light (Surface, Border/Strong, ombre Lv2) ou Dark (gui-inverse, Background/Inverse). Pile gui-alert-stack fixe à 24 px du bord, trois alertes au plus.',
+    material:
+      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
+    ecarts: [
+      'Snackbar Material non repris : le Figma l’a déprécié le 14/09 au profit d’Alert, sans disparition automatique (24/09).',
+      'Icônes de l’Alert Dark : variables Feedback/<Type>/Inverse supprimées du .fig mais toujours référencées ; galma-ui reprend les teintes 300 du journal (14/09) et, en mode sombre, les pleins du mode clair.',
+    ],
+  },
+  {
+    id: 'message',
+    titre: 'Message Info',
+    famille: 'Messages et overlays',
+    figma:
+      '🆕 Message Info (Filled / Soft / Outlined × 5 types × S / M), journal des 14/09, 24/09 et 06/10',
+    resume:
+      'Message persistant dans la page (gui-message) : Filled par défaut, gui-soft (fond atténué et barre d’accent de 4 px), gui-outlined ; taille M (marges 16, icône 24) ou gui-sm (marges 12, icône 20) ; actions facultatives sous le texte.',
+    material:
+      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatIconModule } from ’@angular/material/icon’;',
+    ecarts: [
+      'Largeur fixée à 480 dans le Figma : le message occupe ici la largeur de son conteneur.',
+    ],
+  },
+  {
+    id: 'avertissement',
+    titre: 'Disclaimer',
+    famille: 'Messages et overlays',
+    figma: '🆕 Disclaimer (5 types)',
+    resume:
+      'Mention discrète (gui-disclaimer) : Caption Italic en Feedback Foreground sur Feedback Background, Radius/S, marges 16 / 8, icône 18.',
+    ecarts: ['Largeur fixée à 800 dans le Figma : la mention occupe la largeur de son conteneur.'],
+  },
+  {
+    id: 'etat-vide',
+    titre: 'Empty State',
+    famille: 'Messages et overlays',
+    figma: '🆕 Empty State (Empty / Loading / Error), journal des 05/10 et 06/10',
+    resume:
+      'État vide en CSS pur (gui-empty-state) : illustration ronde de 64 (icône 32 ou spinner 40), titre Body 1 Medium, message Body 2 secondaire, action Outlined Neutral.',
+    material:
+      'import { MatButtonModule } from ’@angular/material/button’;\nimport { MatProgressSpinnerModule } from ’@angular/material/progress-spinner’;',
+  },
+  {
+    id: 'infobulle',
+    titre: 'Tooltip',
+    famille: 'Messages et overlays',
+    figma:
+      '🆕 Tooltip (Plain / Rich × flèche None / Top / Bottom / Left / Right), journal du 18/09',
+    resume:
+      'Plain : mat-tooltip (Background/Inverse, Radius/S, Caption), flèche facultative par matTooltipClass="gui-tooltip-arrow". Rich : toggletip ouvert au clic par cdkConnectedOverlay (gui-tooltip-rich, Surface, Border/Strong, Radius/M).',
+    material:
+      'import { MatTooltipModule } from ’@angular/material/tooltip’;\nimport { OverlayModule } from ’@angular/cdk/overlay’;',
+    ecarts: [
+      'Material n’a ni flèche ni tooltip riche : flèche ajoutée par le CSS, tooltip riche en overlay CDK ouvert au clic (une bulle au survol ne peut pas contenir de texte long accessible).',
+    ],
+  },
+  {
+    id: 'modale',
+    titre: 'Modale',
+    famille: 'Messages et overlays',
+    figma:
+      '🆕 Modale (ex Dialog, renommée le 06/10 ; Standard / Confirmation / Destructive × S / M / L) et Modale Overlay',
+    resume:
+      'MatDialog aux mesures AMF : Surface, Border/Strong, Radius/L, ombre Lv1 ; largeurs 400 / 560 / 800 par panelClass ; titre Heading H6, contenu Body 2 secondaire, actions séparées par Border/Subtle ; en-tête gui-modale-header avec icône et bouton Fermer ; voile Background/Overlay.',
+    material: 'import { MatDialogModule } from ’@angular/material/dialog’;',
+  },
+  {
+    id: 'chargement',
+    titre: 'Loader',
+    famille: 'Messages et overlays',
+    figma:
+      '🆕 Progress Bar et 🆕 Progress Spinner (Primary / Secondary / Inverse, 24 / 40 / 64), journal des 18/09 et 22/09',
+    resume:
+      'mat-progress-bar (4 px, Radius/XS, Buffer) et mat-progress-spinner (traits 3 / 4 / 5, anneau de piste Border/Subtle ajouté par le CSS, gui-secondary, gui-inverse).',
+    material:
+      'import { MatProgressBarModule } from ’@angular/material/progress-bar’;\nimport { MatProgressSpinnerModule } from ’@angular/material/progress-spinner’;',
+    ecarts: [
+      'Postes RDS : pas d’animation infinie. Les modes indéterminés sont figés par provideGalmaMaterial() (animations désactivées) ; préférer le mode déterminé ou un libellé « Chargement… ».',
+      'Material ne dessine pas la piste du spinner : anneau ajouté par le CSS, aux tailles gui-sm / défaut / gui-lg.',
+    ],
   },
 ];

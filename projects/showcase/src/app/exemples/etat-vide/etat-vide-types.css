@@ -1,0 +1,9 @@
+.ex {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.gui-empty-state {
+  border: 1px solid var(--amf-border-default);
+  border-radius: var(--amf-radius-m);
+}

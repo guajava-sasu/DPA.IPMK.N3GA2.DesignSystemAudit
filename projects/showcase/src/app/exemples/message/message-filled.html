@@ -1,0 +1,19 @@
+<div class="ex">
+  @for (t of types; track t.classe) {
+    <div class="gui-message {{ t.classe }}">
+      <span class="material-icons gui-message-icon" aria-hidden="true">{{ t.icone }}</span>
+      <div class="gui-message-content">
+        <p class="gui-message-title">{{ t.titre }}</p>
+        <p class="gui-message-text">{{ t.texte }}</p>
+        @if (t.classe === 'gui-warning') {
+          <div class="gui-message-actions">
+            <button matButton class="gui-inverse gui-sm">Voir la courbe</button>
+          </div>
+        }
+      </div>
+      <button matIconButton class="gui-inverse gui-sm" aria-label="Fermer">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  }
+</div>

@@ -1,0 +1,8 @@
+<div class="ex">
+  @for (d of mentions; track d.classe) {
+    <div class="gui-disclaimer {{ d.classe }}">
+      <span class="material-icons" aria-hidden="true">{{ d.icone }}</span>
+      <p>{{ d.texte }}</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,559 @@
+/*
+ * Messages et overlays (lot 4) habillés AMF v2.0 : Alert et Alert Stack, Message Info, Disclaimer, Empty State,
+ * Tooltip (mat-tooltip et toggletip riche), Modale (MatDialog) et voile, Loader (mat-progress-bar,
+ * mat-progress-spinner). Chaque bloc cite la page 🆕 du Figma dont il reprend les mesures.
+ *
+ * Type de retour (classes sur le conteneur) : gui-info (défaut), gui-success, gui-warning, gui-error, gui-neutral.
+ * Postes RDS : aucune animation infinie. Les indicateurs indéterminés sont figés par provideGalmaMaterial()
+ * (animations désactivées) : préférer le mode déterminé ou un libellé « Chargement… ».
+ */
+
+/* ── Couleurs de retour courantes, partagées par Alert, Message Info, Disclaimer, Empty State et Modale ─────── */
+:root {
+  /* Feedback/<Type>/Inverse : icônes de l'Alert Dark sur Background/Inverse (journal du 14/09, ≥ 5,9:1). Ces
+     variables sont supprimées du .fig mais toujours référencées par l'Alert : valeurs relevées dans le journal,
+     reliées aux palettes AMF générées. */
+  --gui-feedback-info-inverse: var(--amf-color-blue-300);
+  --gui-feedback-success-inverse: var(--amf-color-green-300);
+  --gui-feedback-warning-inverse: var(--amf-color-gold-300);
+  --gui-feedback-error-inverse: var(--amf-color-ruby-300);
+  --gui-feedback-neutral-inverse: var(--amf-color-steel-300);
+}
+:root.dark {
+  /* En sombre, Background/Inverse devient clair (#f2f2f2) : icônes reprises des pleins du mode clair */
+  --gui-feedback-info-inverse: var(--amf-color-navy-500);
+  --gui-feedback-success-inverse: var(--amf-color-green-600);
+  --gui-feedback-warning-inverse: var(--amf-color-gold-600);
+  --gui-feedback-error-inverse: var(--amf-color-ruby-600);
+  --gui-feedback-neutral-inverse: var(--amf-color-steel-700);
+}
+.gui-alert,
+.gui-message,
+.gui-disclaimer,
+.gui-modale-icon,
+.gui-empty-state-illustration {
+  --gui-fb-solid: var(--amf-feedback-info-solid);
+  --gui-fb-on-solid: var(--amf-feedback-info-on-solid);
+  --gui-fb-bg: var(--amf-feedback-info-background);
+  --gui-fb-fg: var(--amf-feedback-info-foreground);
+  --gui-fb-inverse: var(--gui-feedback-info-inverse);
+}
+:is(
+  .gui-alert,
+  .gui-message,
+  .gui-disclaimer,
+  .gui-modale-icon,
+  .gui-empty-state-illustration
+).gui-success {
+  --gui-fb-solid: var(--amf-feedback-success-solid);
+  --gui-fb-on-solid: var(--amf-feedback-success-on-solid);
+  --gui-fb-bg: var(--amf-feedback-success-background);
+  --gui-fb-fg: var(--amf-feedback-success-foreground);
+  --gui-fb-inverse: var(--gui-feedback-success-inverse);
+}
+:is(
+  .gui-alert,
+  .gui-message,
+  .gui-disclaimer,
+  .gui-modale-icon,
+  .gui-empty-state-illustration
+).gui-warning {
+  --gui-fb-solid: var(--amf-feedback-warning-solid);
+  --gui-fb-on-solid: var(--amf-feedback-warning-on-solid);
+  --gui-fb-bg: var(--amf-feedback-warning-background);
+  --gui-fb-fg: var(--amf-feedback-warning-foreground);
+  --gui-fb-inverse: var(--gui-feedback-warning-inverse);
+}
+:is(
+  .gui-alert,
+  .gui-message,
+  .gui-disclaimer,
+  .gui-modale-icon,
+  .gui-empty-state-illustration
+).gui-error {
+  --gui-fb-solid: var(--amf-feedback-error-solid);
+  --gui-fb-on-solid: var(--amf-feedback-error-on-solid);
+  --gui-fb-bg: var(--amf-feedback-error-background);
+  --gui-fb-fg: var(--amf-feedback-error-foreground);
+  --gui-fb-inverse: var(--gui-feedback-error-inverse);
+}
+:is(
+  .gui-alert,
+  .gui-message,
+  .gui-disclaimer,
+  .gui-modale-icon,
+  .gui-empty-state-illustration
+).gui-neutral {
+  --gui-fb-solid: var(--amf-feedback-neutral-solid);
+  --gui-fb-on-solid: var(--amf-feedback-neutral-on-solid);
+  --gui-fb-bg: var(--amf-feedback-neutral-background);
+  --gui-fb-fg: var(--amf-feedback-neutral-foreground);
+  --gui-fb-inverse: var(--gui-feedback-neutral-inverse);
+}
+
+/* Variante de bouton gui-inverse (Text/Inverse du Figma) : prend la couleur du texte qui l'entoure, pour l'Alert
+   Dark et le Message Info Filled. Survol et appui en voile de cette couleur à 12 / 20 %. */
+.mat-mdc-button-base.gui-inverse {
+  --gui-c: currentColor;
+  --gui-c-hover: currentColor;
+  --gui-c-pressed: currentColor;
+  --gui-c-subtle: color-mix(in srgb, currentColor 12%, transparent);
+  --gui-c-subtle-hover: color-mix(in srgb, currentColor 20%, transparent);
+  --gui-c-fg: currentColor;
+}
+
+/* Texte commun : titre Alert Title (Bold 14/20), message Body 2 */
+:is(.gui-alert, .gui-message) :is(.gui-alert-title, .gui-message-title) {
+  margin: 0;
+  font-family: var(--amf-text-alert-title-family), sans-serif;
+  font-size: var(--amf-text-alert-title-size);
+  font-weight: var(--amf-text-alert-title-weight);
+  line-height: var(--amf-text-alert-title-line-height);
+  letter-spacing: var(--amf-text-alert-title-letter-spacing);
+}
+:is(.gui-alert, .gui-message) :is(.gui-alert-text, .gui-message-text) {
+  margin: 0;
+  font-family: var(--amf-text-body-2-family), sans-serif;
+  font-size: var(--amf-text-body-2-size);
+  font-weight: var(--amf-text-body-2-weight);
+  line-height: var(--amf-text-body-2-line-height);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+}
+
+/* ── Alert (page 🆕 Alert) : notification éphémère, 360 px, Radius/M, marges 12 / 12 / 12 / 16, écart 12, centrée ;
+   Light : Surface, Border/Strong, ombre Lv2, icône Feedback/<Type>/Foreground ; gui-inverse (Style Dark) :
+   Background/Inverse, texte Foreground/Inverse, icône Feedback/<Type>/Inverse. Pas de disparition automatique,
+   bouton Fermer toujours présent (journal du 24/09). ── */
+.gui-alert {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 360px;
+  max-width: 100%;
+  padding: 11px 11px 11px 15px;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface);
+  box-shadow: var(--amf-shadow-lv2);
+  color: var(--amf-foreground-primary);
+}
+.gui-alert-icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 20px;
+  color: var(--gui-fb-fg);
+}
+.gui-alert-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gui-alert > .mat-mdc-button-base {
+  flex: none;
+}
+.gui-alert.gui-inverse {
+  border-color: var(--amf-background-inverse);
+  background: var(--amf-background-inverse);
+  color: var(--amf-foreground-inverse);
+}
+.gui-alert.gui-inverse .gui-alert-icon {
+  color: var(--gui-fb-inverse);
+}
+
+/* Alert Stack : écart 8, en haut ou en bas à droite à 24 px, 3 alertes au plus (règle de la documentation) */
+.gui-alert-stack {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: calc(100vw - 48px);
+}
+.gui-alert-stack.gui-top {
+  top: 24px;
+  bottom: auto;
+}
+.gui-alert-stack:empty {
+  display: none;
+}
+
+/* ── Message Info (page 🆕 Message Info) : message persistant dans la page, Radius/M, icône en haut ;
+   Filled (défaut) : Feedback Solid, texte On Solid ; gui-soft : Feedback Background, bord Solid avec barre
+   d'accent de 4 px à gauche, titre Feedback Foreground ; gui-outlined : Surface, bord Solid.
+   Taille M (défaut) : marges 16, écart 12, icône 24 ; gui-sm : marges 12, écart 8, icône 20. ── */
+.gui-message {
+  --gui-msg-pad: 16px;
+  --gui-msg-pad-left: 16px;
+  --gui-msg-gap: 12px;
+  --gui-msg-icon: 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gui-msg-gap);
+  padding: calc(var(--gui-msg-pad) - 1px) calc(var(--gui-msg-pad) - 1px)
+    calc(var(--gui-msg-pad) - 1px) calc(var(--gui-msg-pad-left) - 1px);
+  border: 1px solid var(--gui-fb-solid);
+  border-radius: var(--amf-radius-m);
+  background: var(--gui-fb-solid);
+  color: var(--gui-fb-on-solid);
+}
+.gui-message.gui-sm {
+  --gui-msg-pad: 12px;
+  --gui-msg-pad-left: 12px;
+  --gui-msg-gap: 8px;
+  --gui-msg-icon: 20px;
+}
+.gui-message-icon {
+  flex: none;
+  width: var(--gui-msg-icon);
+  height: var(--gui-msg-icon);
+  font-size: var(--gui-msg-icon);
+  line-height: var(--gui-msg-icon);
+}
+.gui-message-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.gui-message-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 4px;
+}
+.gui-message > .mat-mdc-button-base {
+  flex: none;
+}
+.gui-message:is(.gui-soft, .gui-outlined) {
+  color: var(--amf-foreground-primary);
+}
+.gui-message:is(.gui-soft, .gui-outlined) :is(.gui-message-icon, .gui-message-title) {
+  color: var(--gui-fb-fg);
+}
+.gui-message.gui-soft {
+  --gui-msg-pad-left: 20px;
+  border-left-width: 4px;
+  background: var(--gui-fb-bg);
+  padding-left: calc(var(--gui-msg-pad-left) - 4px);
+}
+.gui-message.gui-soft.gui-sm {
+  --gui-msg-pad-left: 16px;
+}
+.gui-message.gui-outlined {
+  background: var(--amf-background-surface);
+}
+
+/* ── Disclaimer (page 🆕 Disclaimer) : mention discrète (version pilote, données indicatives), Radius/S,
+   marges 16 / 8, écart 12, icône 18, Caption Italic en Feedback Foreground sur Feedback Background ── */
+.gui-disclaimer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 16px;
+  border-radius: var(--amf-radius-s);
+  background: var(--gui-fb-bg);
+  color: var(--gui-fb-fg);
+  font-family: var(--amf-text-caption-italic-family), sans-serif;
+  font-size: var(--amf-text-caption-italic-size);
+  font-weight: var(--amf-text-caption-italic-weight);
+  font-style: italic;
+  line-height: var(--amf-text-caption-italic-line-height);
+  letter-spacing: var(--amf-text-caption-italic-letter-spacing);
+}
+.gui-disclaimer > .material-icons,
+.gui-disclaimer > .mat-icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  line-height: 18px;
+  font-style: normal;
+}
+.gui-disclaimer p {
+  margin: 0;
+}
+
+/* ── Empty State (page 🆕 Empty State) : marges 48 / 24, centré, écart 16 ; illustration ronde de 64 en Surface
+   Subtle (gui-error : Feedback/Error/Background) avec icône 32 ou spinner 40 ; titre Body 1 Medium, message
+   Body 2 secondaire (480 au plus), action Outlined Neutral ── */
+.gui-empty-state {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px 24px;
+  background: var(--amf-background-surface);
+  text-align: center;
+}
+.gui-empty-state-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--amf-radius-full);
+  background: var(--amf-background-surface-subtle);
+  color: var(--amf-foreground-secondary);
+}
+.gui-empty-state-illustration.gui-error {
+  background: var(--gui-fb-bg);
+  color: var(--gui-fb-fg);
+}
+.gui-empty-state-illustration > :is(.material-icons, .mat-icon) {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  line-height: 32px;
+}
+.gui-empty-state-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 480px;
+}
+.gui-empty-state-title {
+  margin: 0;
+  color: var(--amf-foreground-primary);
+  font-family: var(--amf-text-body-1-medium-family), sans-serif;
+  font-size: var(--amf-text-body-1-medium-size);
+  font-weight: var(--amf-text-body-1-medium-weight);
+  line-height: var(--amf-text-body-1-medium-line-height);
+  letter-spacing: var(--amf-text-body-1-medium-letter-spacing);
+}
+.gui-empty-state-message {
+  margin: 0;
+  color: var(--amf-foreground-secondary);
+  font-family: var(--amf-text-body-2-family), sans-serif;
+  font-size: var(--amf-text-body-2-size);
+  font-weight: var(--amf-text-body-2-weight);
+  line-height: var(--amf-text-body-2-line-height);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+}
+
+/* ── Tooltip (page 🆕 Tooltip) ────────────────────────────────────────────────────────────────────────────
+   Plain : mat-tooltip, Background/Inverse, Radius/S, marges 8, Caption en Foreground/Inverse, 36 de haut.
+   Flèche facultative de 12 × 6 : matTooltipClass="gui-tooltip-arrow" (Material n'en a pas). */
+.mat-mdc-tooltip {
+  --mat-tooltip-container-color: var(--amf-background-inverse);
+  --mat-tooltip-container-shape: var(--amf-radius-s);
+  --mat-tooltip-supporting-text-color: var(--amf-foreground-inverse);
+  --mat-tooltip-supporting-text-font: var(--amf-text-caption-family), sans-serif;
+  --mat-tooltip-supporting-text-size: var(--amf-text-caption-size);
+  --mat-tooltip-supporting-text-weight: var(--amf-text-caption-weight);
+  --mat-tooltip-supporting-text-line-height: var(--amf-text-caption-line-height);
+  --mat-tooltip-supporting-text-tracking: var(--amf-text-caption-letter-spacing);
+}
+.mat-mdc-tooltip .mat-mdc-tooltip-surface.mat-mdc-tooltip-surface {
+  padding: 8px;
+  min-height: 36px;
+  max-width: 280px;
+}
+.gui-tooltip-arrow::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+}
+.mat-mdc-tooltip-panel-above .gui-tooltip-arrow::after {
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-bottom-width: 0;
+  border-top-color: var(--amf-background-inverse);
+}
+.mat-mdc-tooltip-panel-below .gui-tooltip-arrow::after {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-top-width: 0;
+  border-bottom-color: var(--amf-background-inverse);
+}
+.mat-mdc-tooltip-panel-left .gui-tooltip-arrow::after {
+  left: 100%;
+  top: 50%;
+  margin-top: -6px;
+  border-right-width: 0;
+  border-left-color: var(--amf-background-inverse);
+}
+.mat-mdc-tooltip-panel-right .gui-tooltip-arrow::after {
+  right: 100%;
+  top: 50%;
+  margin-top: -6px;
+  border-left-width: 0;
+  border-right-color: var(--amf-background-inverse);
+}
+
+/* Rich : pas d'équivalent Material ; bulle ouverte au clic (toggletip, cdkConnectedOverlay). Surface,
+   Border/Strong, Radius/M, marges 12 / 8, écart 4, titre Form Label, texte Body 2 secondaire, 282 de large. */
+.gui-tooltip-rich {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 282px;
+  max-width: calc(100vw - 32px);
+  margin: 8px 0;
+  padding: 7px 11px;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface);
+  color: var(--amf-foreground-secondary);
+  font-family: var(--amf-text-body-2-family), sans-serif;
+  font-size: var(--amf-text-body-2-size);
+  font-weight: var(--amf-text-body-2-weight);
+  line-height: var(--amf-text-body-2-line-height);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+}
+.gui-tooltip-rich-title {
+  margin: 0;
+  color: var(--amf-foreground-primary);
+  font-family: var(--amf-text-form-label-family), sans-serif;
+  font-size: var(--amf-text-form-label-size);
+  font-weight: var(--amf-text-form-label-weight);
+  line-height: var(--amf-text-form-label-line-height);
+  letter-spacing: var(--amf-text-form-label-letter-spacing);
+}
+.gui-tooltip-rich p {
+  margin: 0;
+}
+
+/* ── Modale (page 🆕 Modale, ex Dialog) : MatDialog. Surface, Border/Strong, Radius/L, ombre Lv1 ; largeurs
+   S 400 / M 560 / L 800 par panelClass gui-modale-sm / gui-modale-md / gui-modale-lg ; titre Heading H6 (marges
+   16 / 24 / 8), contenu Body 2 secondaire (marges 8 / 24 / 24), actions séparées par Border/Subtle
+   (marges 8 / 24 / 16, alignées à droite). Voile Background/Overlay. ── */
+.mat-mdc-dialog-container {
+  --mat-dialog-container-color: var(--amf-background-surface);
+  --mat-dialog-container-shape: var(--amf-radius-l);
+  --mat-dialog-container-elevation-shadow: var(--amf-shadow-lv1);
+  --mat-dialog-container-max-width: calc(100vw - 32px);
+  --mat-dialog-container-small-max-width: calc(100vw - 32px);
+  --mat-dialog-container-min-width: 0;
+  --mat-dialog-subhead-color: var(--amf-foreground-primary);
+  --mat-dialog-subhead-font: var(--amf-text-heading-h6-family), sans-serif;
+  --mat-dialog-subhead-size: var(--amf-text-heading-h6-size);
+  --mat-dialog-subhead-weight: var(--amf-text-heading-h6-weight);
+  --mat-dialog-subhead-line-height: var(--amf-text-heading-h6-line-height);
+  --mat-dialog-subhead-tracking: var(--amf-text-heading-h6-letter-spacing);
+  --mat-dialog-supporting-text-color: var(--amf-foreground-secondary);
+  --mat-dialog-supporting-text-font: var(--amf-text-body-2-family), sans-serif;
+  --mat-dialog-supporting-text-size: var(--amf-text-body-2-size);
+  --mat-dialog-supporting-text-weight: var(--amf-text-body-2-weight);
+  --mat-dialog-supporting-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-dialog-supporting-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-dialog-headline-padding: 16px 24px 8px;
+  --mat-dialog-content-padding: 8px 24px 24px;
+  --mat-dialog-with-actions-content-padding: 8px 24px 24px;
+  --mat-dialog-actions-padding: 8px 24px 16px;
+  --mat-dialog-actions-alignment: flex-end;
+}
+.mat-mdc-dialog-container .mat-mdc-dialog-surface {
+  border: 1px solid var(--amf-border-strong);
+}
+.cdk-overlay-pane.gui-modale-sm {
+  width: 400px;
+}
+.cdk-overlay-pane.gui-modale-md {
+  width: 560px;
+}
+.cdk-overlay-pane.gui-modale-lg {
+  width: 800px;
+}
+.mat-mdc-dialog-title.mat-mdc-dialog-title::before {
+  display: none;
+}
+.mat-mdc-dialog-content.mat-mdc-dialog-content {
+  padding-top: 8px;
+}
+.mat-mdc-dialog-actions.mat-mdc-dialog-actions {
+  min-height: 0;
+  border-top: 1px solid var(--amf-border-subtle);
+}
+/* En-tête avec icône (Confirmation : info en Feedback/Info/Foreground ; Destructive : warning en
+   Feedback/Error/Foreground) et bouton Fermer de 40 : marges 16 / 16 / 8 / 24, écart 16 */
+.gui-modale-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 16px 8px 24px;
+}
+.gui-modale-header .mat-mdc-dialog-title.mat-mdc-dialog-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+.gui-modale-header > .mat-mdc-button-base {
+  flex: none;
+}
+.gui-modale-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 24px;
+  color: var(--gui-fb-fg);
+}
+.cdk-overlay-backdrop.cdk-overlay-dark-backdrop {
+  background: var(--amf-background-overlay);
+}
+
+/* ── Loader (page 🆕 Loader) : Progress Bar dans galma-formulaires.css (4 px, piste Border/Subtle) ; Buffer :
+   piste Border/Default, tampon Border/Subtle. Progress Spinner 40 / trait 4 par défaut, gui-sm 24 / 3, gui-lg
+   64 / 5 (à reporter dans diameter et strokeWidth) ; anneau de piste Border/Subtle ajouté par le CSS (Material
+   n'en dessine pas) ; gui-secondary ; gui-inverse sur fond sombre (Foreground/Inverse, piste à 24 %). ── */
+.mat-mdc-progress-bar[mode='buffer'] {
+  --mat-progress-bar-track-color: var(--amf-border-default);
+}
+.mat-mdc-progress-bar[mode='buffer'] .mdc-linear-progress__buffer-bar {
+  background: var(--amf-border-subtle);
+}
+/* Material dessine la piste au-delà du tampon en pointillés animés : piste pleine et sans animation (postes RDS) */
+.mat-mdc-progress-bar[mode='buffer'] .mdc-linear-progress__buffer-dots {
+  animation: none;
+  -webkit-mask: none;
+  mask: none;
+  background: var(--amf-border-default);
+}
+.mat-mdc-progress-spinner {
+  --gui-spinner-c: var(--amf-action-primary-default);
+  --gui-spinner-track: var(--amf-border-subtle);
+  --gui-spinner-stroke: 4px;
+  --gui-spinner-inset: 0px;
+  --mat-progress-spinner-active-indicator-color: var(--gui-spinner-c);
+  position: relative;
+}
+.mat-mdc-progress-spinner::before {
+  content: '';
+  position: absolute;
+  inset: var(--gui-spinner-inset);
+  border: var(--gui-spinner-stroke) solid var(--gui-spinner-track);
+  border-radius: 50%;
+}
+.mat-mdc-progress-spinner.gui-sm {
+  --gui-spinner-stroke: 3px;
+  --gui-spinner-inset: -0.3px;
+}
+.mat-mdc-progress-spinner.gui-lg {
+  --gui-spinner-stroke: 5px;
+  --gui-spinner-inset: 0.7px;
+}
+.mat-mdc-progress-spinner.gui-secondary {
+  --gui-spinner-c: var(--amf-action-secondary-default);
+}
+.mat-mdc-progress-spinner.gui-inverse {
+  --gui-spinner-c: var(--amf-foreground-inverse);
+  --gui-spinner-track: color-mix(in srgb, var(--amf-foreground-inverse) 24%, transparent);
+}

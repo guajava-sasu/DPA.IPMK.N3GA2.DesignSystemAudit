@@ -1,0 +1,14 @@
+<div class="ex">
+  @for (t of types; track t.classe; let i = $index) {
+    <div class="gui-message gui-soft {{ t.classe }}" [class.gui-sm]="i > 2">
+      <span class="material-icons gui-message-icon" aria-hidden="true">{{ t.icone }}</span>
+      <div class="gui-message-content">
+        <p class="gui-message-title">{{ t.titre }}</p>
+        <p class="gui-message-text">{{ t.texte }}</p>
+      </div>
+      <button matIconButton class="gui-neutral gui-sm" aria-label="Fermer">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  }
+</div>

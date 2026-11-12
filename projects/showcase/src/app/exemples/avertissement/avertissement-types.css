@@ -1,0 +1,6 @@
+.ex {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 800px;
+}
