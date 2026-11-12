@@ -1,6 +1,6 @@
 /*
- * Contrôle de galma-ui 0.2.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
- * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 et 2 (famille formulaire). Statuts :
+ * Contrôle de galma-ui 0.3.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 3 (famille formulaire, navigation et contenus). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
  *   ecart     : différence connue, à corriger ou à faire valider
@@ -532,5 +532,168 @@ export const CONFORMITE: LigneConformite[] = [
     statut: 'conforme',
     galma:
       'gui-file-item gui-error et gui-file-item-error ; barre de progression mat-progress-bar 4 px.',
+  },
+  // Navigation et contenus (lot 3)
+  {
+    date: '16/09',
+    entree: 'Table',
+    decision:
+      'Nouvelle page Table : Header Cell, Cell (Text, Numeric, Checkbox, Badge, Actions), lignes Default / Hover / Selected, densités Default / Compact.',
+    statut: 'conforme',
+    galma:
+      'mat-table dans gui-table : en-têtes 48 px Form Label sur Surface Subtle, cellules 48 px Body 2, survol Neutral Subtle, sélection Secondary Tint (gui-selected), Compact 40 px (gui-compact).',
+  },
+  {
+    date: '16/09',
+    entree: 'Paginator',
+    decision:
+      'Table Paginator devient Paginator (mat-paginator), paginateur par défaut des tableaux et listes.',
+    statut: 'conforme',
+    galma:
+      'mat-paginator 48 px, liste 80 × 32, boutons 32 ; libellés français par GalmaPaginatorIntl (« Lignes par page », « 1 à 10 sur 42 ») fourni par provideGalmaMaterial().',
+  },
+  {
+    date: '16/09',
+    entree: 'Pagination (custom)',
+    decision:
+      'Pagination numérotée « hors Angular Material, à coder à la main » : Primary / Secondary, Small / Medium, Ellipsis.',
+    statut: 'conforme',
+    galma:
+      '<nav class="gui-pagination"> et boutons gui-pagination-item 40 / 32 px, page courante aria-current="page" pleine en Primary ou Secondary.',
+  },
+  {
+    date: '16/09',
+    entree: 'Accordion',
+    decision:
+      'Expansion Panel (Collapsed / Expanded, 4 interactions, Default / Compact ; titre, description, icône) et Accordion ; chevrons expand_more / expand_less.',
+    statut: 'adapte',
+    galma:
+      'mat-expansion-panel et mat-accordion.gui-accordion aux mesures AMF ; Material fait tourner un seul chevron au lieu de permuter expand_more / expand_less (même rendu).',
+  },
+  {
+    date: '16/09',
+    entree: 'Breadcrumb',
+    decision:
+      'Items Link / Current, chevron_right en séparateur, liens en Foreground/Link ; Item Ellipsis et variante Collapsed au-delà de 4 niveaux.',
+    statut: 'conforme',
+    galma:
+      '<nav class="gui-breadcrumb"><ol>, séparateur généré par le CSS, bouton gui-breadcrumb-ellipsis qui ouvre un mat-menu.',
+  },
+  {
+    date: '16/09',
+    entree: 'Title',
+    decision:
+      'En-tête de page Desktop H4 / Tablet H5 (Mobile retiré en revue) : Breadcrumb, retour, Slot Tag, sous-titre, actions Outlined Neutral + Filled Primary.',
+    statut: 'conforme',
+    galma:
+      '<header class="gui-title"> ; gui-tablet passe le titre en H5. Le niveau du titre (h1, h2) reste celui de la page.',
+  },
+  {
+    date: '16/09',
+    entree: 'Stepper',
+    decision:
+      'Step (Active, Completed, Upcoming, Error, Disabled ; Optional) et Stepper horizontal / vertical avec Continuer / Précédent.',
+    statut: 'adapte',
+    galma:
+      'mat-stepper aux couleurs AMF ; coche des étapes terminées par matStepperIcon (Material affiche un crayon) ; pas d’étape désactivée dans Material (style prêt pour aria-disabled).',
+  },
+  {
+    date: '18/09',
+    entree: 'List',
+    decision:
+      'List Item (une ou deux lignes, Default / Hover / Selected / Disabled, Default / Compact, Slot Icon et Slot Trailing) ; sous-en-tête et séparateurs.',
+    statut: 'conforme',
+    galma:
+      'mat-list, mat-nav-list (activated = Secondary Tint), mat-action-list ; 48 / 40 / 64 px, sous-en-tête Form Label Caps, mat-divider Border/Subtle.',
+  },
+  {
+    date: '24/09',
+    entree: 'Table',
+    decision:
+      'Structure en colonnes : séparateurs intégrés aux cellules, Header Cell avec fond et variante Checkbox.',
+    statut: 'conforme',
+    galma:
+      'Séparateurs Border/Default sous l’en-tête et Border/Subtle entre lignes ; colonne de cases de 56 (gui-col-checkbox).',
+  },
+  {
+    date: '24/09',
+    entree: 'Table',
+    decision:
+      'Sort=Sortable : unfold_more en Foreground/Disabled sur les colonnes triables non triées.',
+    statut: 'adapte',
+    galma:
+      'Material n’affiche sa flèche qu’au survol : galma-ui ajoute unfold_more par le CSS tant que la colonne n’est pas triée ; flèche avant le libellé des colonnes numériques (arrowPosition="before").',
+  },
+  {
+    date: '24/09',
+    entree: 'Table, List, Accordion, Stepper',
+    decision: 'Conteneurs délimités par Border/Strong.',
+    statut: 'conforme',
+    galma:
+      'gui-table, gui-accordion, mat-stepper, mat-expansion-panel et listes gui-outlined bordés Border/Strong.',
+  },
+  {
+    date: '25/09',
+    entree: 'Side Menu',
+    decision:
+      'Item actif en pilule pleine Action/Primary/Default, icône et libellé On Primary en Medium ; Count Grey ; Radius/M, retrait 8 ; survol Neutral Subtle ; repliés 48 px centrés, Count en haut à droite.',
+    statut: 'conforme',
+    galma:
+      '<nav class="gui-side-menu"> : gui-side-menu-item avec aria-current="page", gui-collapsed pour la version de 64 px (libellés gardés pour les aides techniques).',
+  },
+  {
+    date: '25/09',
+    entree: 'Table, List',
+    decision:
+      'Action/Secondary/Tint passe à Blue/50 (ligne sélectionnée, élément de liste courant).',
+    statut: 'conforme',
+    galma:
+      'Valeur venue des jetons générés ; en sombre, Secondary Tint à 16 % (audit de contraste).',
+  },
+  {
+    date: '28/09',
+    entree: 'Side Menu Item',
+    decision: 'Tailles S / M / L (32 / 40 / 48 px, icônes 20 / 20 / 24, Caption en S) ; hasIcon.',
+    statut: 'conforme',
+    galma: 'gui-side-menu par défaut (L), gui-md, gui-sm ; icône facultative.',
+  },
+  {
+    date: '28/09',
+    entree: 'Side Menu',
+    decision:
+      'Lien de retour facultatif « Accueil » (arrow_back, Foreground/Link) ; Icon Right chevron_right après le Count.',
+    statut: 'conforme',
+    galma: 'gui-side-menu-back (flèche seule en 40 px une fois replié) et gui-side-menu-trailing.',
+  },
+  {
+    date: '29/09',
+    entree: 'List',
+    decision: 'hasElevation : Background/Surface, Radius/M, ombre Lv2.',
+    statut: 'conforme',
+    galma: 'Classe gui-elevated.',
+  },
+  {
+    date: '05/10',
+    entree: 'Table',
+    decision:
+      'En-tête facultatif : titre (Subtitle Medium après revue), description Body 2, Slot Actions (Button Outlined Neutral Small), séparé par Border/Default ; hasPaginator.',
+    statut: 'conforme',
+    galma:
+      'gui-table-header, gui-table-title (niveau h2 / h3 au choix de la page), gui-table-description, gui-table-actions ; paginateur facultatif.',
+  },
+  {
+    date: '05/10',
+    entree: 'Table',
+    decision: 'Pastille décorative en quart de cercle (hasIcon) pour les tableaux de tête de page.',
+    statut: 'hors-lot',
+    galma: 'Non reprise : dégradé hors jetons, à faire valider avant de l’ajouter.',
+  },
+  {
+    date: '05/10',
+    entree: 'Table Cell',
+    decision: 'Types Expand, Nested, None et Input (Input Base Small).',
+    statut: 'adapte',
+    galma:
+      'Bascule 32 px (gui-col-expand), lignes filles gui-nested-row / gui-nested calculées par le composant (Material n’a pas de lignes filles) ; champ 32 px dans la cellule.',
   },
 ];

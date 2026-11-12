@@ -15,7 +15,9 @@ import {
 import { MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS } from '@angular/material/slide-toggle';
 import { MAT_TABS_CONFIG, MatTabsConfig } from '@angular/material/tabs';
 import { MatDatepickerIntl } from '@angular/material/datepicker';
-import { GalmaDatepickerIntl } from './galma-intl';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatStepperIntl } from '@angular/material/stepper';
+import { GalmaDatepickerIntl, GalmaPaginatorIntl, GalmaStepperIntl } from './galma-intl';
 
 /**
  * Réglages Angular Material du design system AMF pour Galma2.
@@ -27,6 +29,7 @@ import { GalmaDatepickerIntl } from './galma-intl';
  * - Onglets : indicateur à la largeur de l'onglet, alignés à gauche, sans étirement.
  * - Date Picker : libellés accessibles en français (GalmaDatepickerIntl). L'adaptateur de dates et la locale
  *   (MAT_DATE_LOCALE) restent au choix de l'application.
+ * - Paginator et Stepper : libellés en français (GalmaPaginatorIntl, GalmaStepperIntl).
  */
 export function provideGalmaMaterial(): EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -60,5 +63,7 @@ export function provideGalmaMaterial(): EnvironmentProviders {
       } satisfies MatTabsConfig,
     },
     { provide: MatDatepickerIntl, useClass: GalmaDatepickerIntl },
+    { provide: MatPaginatorIntl, useClass: GalmaPaginatorIntl },
+    { provide: MatStepperIntl, useClass: GalmaStepperIntl },
   ]);
 }

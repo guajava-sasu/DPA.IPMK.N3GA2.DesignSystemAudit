@@ -9,10 +9,13 @@ Design system AMF v2.0 (fichier Figma « AMF Design System [v2.0].fig ») appliq
   - `tokens/galma-material.css` : composants Material habillés AMF (jetons `--mat-*` reliés aux jetons `--amf-*`).
   - `tokens/galma-formulaires.css` : famille formulaire (lot 2) : Textarea, Select, groupes de cases et de radios,
     Slider, Chip, Date Picker, Time Picker, Menu, Button Dropdown, File Upload et File Item.
+  - `tokens/galma-navigation.css` : navigation et contenus (lot 3) : Table et Paginator, Pagination, Breadcrumb,
+    Title, Stepper, Expansion Panel et Accordion, List, Side Menu.
   - `tokens/galma-composants.css` : Badge, Tag, Count, Status (sans équivalent Material), typographie, icônes.
   - `tokens/galma-theme.css` : point d'entrée ; mode sombre (proposition galma-ui), états process Galma2, `--mat-sys-*`.
   - `provideGalmaMaterial()` : animations et ripple coupés (postes RDS sans GPU), champs outlined, réglages AMF,
-    libellés du Date Picker en français (`GalmaDatepickerIntl`).
+    libellés du Date Picker, du Paginator et du Stepper en français (`GalmaDatepickerIntl`, `GalmaPaginatorIntl`,
+    `GalmaStepperIntl`).
   - `assets/` : Roboto (OFL) et Material Icons (Apache 2.0) embarquées, logos.
 - `projects/showcase` : la vitrine. Une page par composant AMF, code HTML / TypeScript / CSS à copier, couleurs,
   typographie, mode sombre audité, conformité au journal du Figma.
@@ -46,7 +49,7 @@ sombre de la vitrine (`projects/showcase/public/audit/axe.json`).
 ```
 
 ```ts
-providers: [provideGalmaMaterial()]
+providers: [provideGalmaMaterial()];
 ```
 
 Date Picker et Time Picker : fournir un adaptateur de dates et la locale (`provideNativeDateAdapter()`,

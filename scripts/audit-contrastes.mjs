@@ -243,6 +243,29 @@ T(
   'Item de menu destructif',
 );
 
+// Navigation et contenus (lot 3) : Table, Pagination, Breadcrumb, Stepper, List, Side Menu
+const N = 'Navigation et contenus';
+T(
+  N,
+  '--amf-foreground-secondary',
+  '--amf-background-surface-subtle',
+  'En-tête de colonne, ligne fille (Nested)',
+);
+T(N, '--amf-foreground-primary', '--amf-action-secondary-tint', 'Ligne de tableau sélectionnée');
+T(
+  N,
+  '--amf-foreground-on-primary',
+  '--amf-action-primary-default',
+  'Page courante, item de menu latéral actif',
+);
+T(N, '--amf-foreground-on-primary', '--amf-action-secondary-default', 'Page courante (Secondary)');
+T(N, '--amf-foreground-link', '--amf-background-surface', 'Lien du fil d’Ariane, lien retour');
+T(N, '--amf-foreground-inverse', '--amf-action-primary-default', 'Numéro d’étape active');
+T(N, '--amf-foreground-inverse', '--amf-feedback-neutral-solid', 'Numéro d’étape à venir');
+T(N, '--amf-feedback-error-foreground', '--amf-background-surface', 'Libellé d’étape en erreur');
+T(N, '--amf-action-secondary-on-tint', '--amf-action-secondary-tint', 'Élément de liste courant');
+G(N, '--amf-feedback-error-on-solid', '--amf-feedback-error-solid', 'Icône d’étape en erreur');
+
 function mesurer(vars) {
   return P.map((p) => {
     const sous = rgba(resoudre(vars, p.sous));

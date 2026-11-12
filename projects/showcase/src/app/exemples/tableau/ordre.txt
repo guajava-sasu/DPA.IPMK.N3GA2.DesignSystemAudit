@@ -1,0 +1,4 @@
+tableau-complet
+tableau-compact
+tableau-depliable
+tableau-saisie

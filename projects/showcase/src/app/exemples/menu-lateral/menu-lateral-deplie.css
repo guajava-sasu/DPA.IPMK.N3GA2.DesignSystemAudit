@@ -1,0 +1,5 @@
+.gui-side-menu {
+  height: 460px;
+  border: 1px solid var(--amf-border-default);
+  border-radius: var(--amf-radius-m);
+}

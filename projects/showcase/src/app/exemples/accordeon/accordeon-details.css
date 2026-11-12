@@ -1,0 +1,9 @@
+.ex {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 640px;
+}
+p {
+  margin: 0;
+}

@@ -1,0 +1,25 @@
+<header class="gui-title">
+  <nav class="gui-breadcrumb" aria-label="Fil d'Ariane">
+    <ol>
+      <li><a href="#" (click)="$event.preventDefault()">Accueil</a></li>
+      <li><a href="#" (click)="$event.preventDefault()">Bobines</a></li>
+      <li><span aria-current="page">B24-0414</span></li>
+    </ol>
+  </nav>
+  <div class="gui-title-row">
+    <button matIconButton class="gui-neutral gui-lg" aria-label="Retour aux bobines">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="gui-title-texts">
+      <div class="gui-title-heading">
+        <h2>Bobine B24-0414</h2>
+        <span class="gui-tag gui-blue">En cours</span>
+      </div>
+      <p class="gui-title-subtitle">S350GD+Z · 2,00 mm · coulée C-7782</p>
+    </div>
+    <div class="gui-title-actions">
+      <button matButton="outlined" class="gui-neutral">Exporter</button>
+      <button matButton="filled">Modifier</button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,8 @@
+p.contenu {
+  margin: 0;
+  padding: 16px 24px;
+  border: 1px solid var(--amf-border-default);
+  border-radius: var(--amf-radius-m);
+  background: var(--amf-background-surface-subtle);
+  color: var(--amf-foreground-secondary);
+}

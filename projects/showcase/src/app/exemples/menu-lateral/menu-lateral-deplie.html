@@ -1,0 +1,51 @@
+<nav class="gui-side-menu" [class.gui-collapsed]="replie()" aria-label="Navigation principale">
+  <div class="gui-side-menu-top">
+    <a class="gui-side-menu-back" href="#" (click)="$event.preventDefault()">
+      <span class="material-icons" aria-hidden="true">arrow_back</span>
+      <span class="gui-side-menu-back-label">Accueil</span>
+    </a>
+    <button
+      matIconButton
+      class="gui-neutral"
+      [attr.aria-expanded]="!replie()"
+      [attr.aria-label]="replie() ? 'Déplier le menu' : 'Replier le menu'"
+      (click)="replie.set(!replie())"
+    >
+      <mat-icon>{{ replie() ? 'menu' : 'menu_open' }}</mat-icon>
+    </button>
+  </div>
+  <ul class="gui-side-menu-items">
+    @for (r of rubriques; track r.libelle) {
+      <li>
+        <a
+          class="gui-side-menu-item"
+          href="#"
+          (click)="$event.preventDefault(); r.inactive || active.set(r.libelle)"
+          [attr.aria-current]="active() === r.libelle ? 'page' : null"
+          [attr.aria-disabled]="r.inactive || null"
+        >
+          <span class="material-icons" aria-hidden="true">{{ r.icone }}</span>
+          <span class="gui-side-menu-label">{{ r.libelle }}</span>
+          @if (r.compte) {
+            <span class="gui-count gui-grey gui-sm" [attr.aria-label]="r.compte + ' en attente'">{{
+              r.compte
+            }}</span>
+          }
+          @if (r.sousMenu) {
+            <span class="material-icons gui-side-menu-trailing" aria-hidden="true"
+              >chevron_right</span
+            >
+          }
+        </a>
+      </li>
+    }
+  </ul>
+  <ul class="gui-side-menu-items gui-end">
+    <li>
+      <a class="gui-side-menu-item" href="#" (click)="$event.preventDefault()">
+        <span class="material-icons" aria-hidden="true">settings</span>
+        <span class="gui-side-menu-label">Paramètres</span>
+      </a>
+    </li>
+  </ul>
+</nav>

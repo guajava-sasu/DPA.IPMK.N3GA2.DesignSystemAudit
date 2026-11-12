@@ -1,0 +1,29 @@
+<div class="gui-table">
+  <table mat-table [dataSource]="consignes" aria-label="Consignes de la recette">
+    <ng-container matColumnDef="parametre">
+      <th mat-header-cell *matHeaderCellDef>Paramètre</th>
+      <td mat-cell *matCellDef="let c" [attr.role]="'rowheader'" [id]="'ex-cons-' + c.id">
+        {{ c.parametre }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="consigne">
+      <th mat-header-cell *matHeaderCellDef>Consigne</th>
+      <td mat-cell *matCellDef="let c">
+        <mat-form-field>
+          <input
+            matInput
+            type="number"
+            [value]="c.valeur"
+            [attr.aria-labelledby]="'ex-cons-' + c.id"
+          />
+        </mat-form-field>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="unite">
+      <th mat-header-cell *matHeaderCellDef>Unité</th>
+      <td mat-cell *matCellDef="let c">{{ c.unite }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="colonnes"></tr>
+    <tr mat-row *matRowDef="let c; columns: colonnes"></tr>
+  </table>
+</div>

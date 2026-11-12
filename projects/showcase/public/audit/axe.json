@@ -1,5 +1,5 @@
 {
- "genere": "2026-11-12T19:12:41.425Z",
+ "genere": "2026-11-12T19:49:57.004Z",
  "outil": "axe-core 4.14.0",
  "regles": "wcag2a, wcag2aa, wcag21a, wcag21aa",
  "exceptions": [
@@ -236,6 +236,78 @@
    "incompletes": 1
   },
   {
+   "route": "/composants/tableau",
+   "titre": "Table",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 33,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/pagination",
+   "titre": "Pagination",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/fil-ariane",
+   "titre": "Breadcrumb",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/titre",
+   "titre": "Title",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/etapes",
+   "titre": "Stepper",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 29,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/accordeon",
+   "titre": "Accordion",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/liste",
+   "titre": "List",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/menu-lateral",
+   "titre": "Side Menu",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
    "route": "/mode-sombre",
    "titre": "Mode sombre audité",
    "mode": "clair",
@@ -303,6 +375,42 @@
    "exceptions": [],
    "reussies": 26,
    "incompletes": 2
+  },
+  {
+   "route": "/composants/tableau (panneau)",
+   "titre": "Paginateur : liste ouverte",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 34,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/fil-ariane (panneau)",
+   "titre": "Fil d’Ariane : niveaux repliés ouverts",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 27,
+   "incompletes": 3
+  },
+  {
+   "route": "/composants/menu-lateral (panneau)",
+   "titre": "Menu latéral replié",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/tableau (panneau)",
+   "titre": "Tableau : ligne repliée",
+   "mode": "clair",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 33,
+   "incompletes": 1
   },
   {
    "route": "/",
@@ -530,6 +638,78 @@
    "incompletes": 1
   },
   {
+   "route": "/composants/tableau",
+   "titre": "Table",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 33,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/pagination",
+   "titre": "Pagination",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/fil-ariane",
+   "titre": "Breadcrumb",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 24,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/titre",
+   "titre": "Title",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/etapes",
+   "titre": "Stepper",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 29,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/accordeon",
+   "titre": "Accordion",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 23,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/liste",
+   "titre": "List",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 22,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/menu-lateral",
+   "titre": "Side Menu",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
    "route": "/mode-sombre",
    "titre": "Mode sombre audité",
    "mode": "sombre",
@@ -597,6 +777,42 @@
    "exceptions": [],
    "reussies": 26,
    "incompletes": 2
+  },
+  {
+   "route": "/composants/tableau (panneau)",
+   "titre": "Paginateur : liste ouverte",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 34,
+   "incompletes": 2
+  },
+  {
+   "route": "/composants/fil-ariane (panneau)",
+   "titre": "Fil d’Ariane : niveaux repliés ouverts",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 27,
+   "incompletes": 3
+  },
+  {
+   "route": "/composants/menu-lateral (panneau)",
+   "titre": "Menu latéral replié",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 25,
+   "incompletes": 1
+  },
+  {
+   "route": "/composants/tableau (panneau)",
+   "titre": "Tableau : ligne repliée",
+   "mode": "sombre",
+   "violations": [],
+   "exceptions": [],
+   "reussies": 33,
+   "incompletes": 1
   }
  ]
 }

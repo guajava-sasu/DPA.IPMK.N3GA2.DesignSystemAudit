@@ -11,12 +11,14 @@
  * À importer dans les styles globaux de l'application :
  *   @import '<chemin>/galma-ui/tokens/galma-theme.css';
  * Fichiers : amf-tokens.css (généré), galma-material.css (composants Material), galma-formulaires.css (famille
- * formulaire : Select, Slider, Chip, Date et Time Picker, Menu, Button Dropdown, File Upload), galma-composants.css (Badge, Tag,
+ * formulaire : Select, Slider, Chip, Date et Time Picker, Menu, Button Dropdown, File Upload), galma-navigation.css
+ * (Table, Paginator, Pagination, Breadcrumb, Title, Stepper, Accordion, List, Side Menu), galma-composants.css (Badge, Tag,
  * Count, Status, typographie, icônes). Polices servies sous /galma/fonts (assets de angular.json). Mode sombre : classe `dark` sur <html>.
  */
 @import './amf-tokens.css';
 @import './galma-material.css';
 @import './galma-formulaires.css';
+@import './galma-navigation.css';
 @import './galma-composants.css';
 
 /* ── Police Roboto (AMF), variable 100 → 900, embarquée : pas de CDN sur les postes RDS ─ */

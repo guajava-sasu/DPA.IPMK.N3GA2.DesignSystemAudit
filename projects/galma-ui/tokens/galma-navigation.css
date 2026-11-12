@@ -1,0 +1,599 @@
+/*
+ * Famille navigation et contenus AMF v2.0 (lot 3) : Table et Paginator, Pagination, Breadcrumb, Title, Stepper,
+ * Expansion Panel et Accordion, List, Side Menu. Composants Angular Material habillés en CSS pur (jetons --mat-*
+ * reliés aux jetons --amf-*), sauf Pagination, Breadcrumb, Title et Side Menu, en classes gui-* (le Figma les
+ * marque « hors Angular Material » ou Material n'a pas d'équivalent).
+ * Chaque bloc cite la page 🆕 du Figma et l'entrée du journal dont il reprend les mesures.
+ */
+
+/* ── Table (page 🆕 Table, journal 16/09, 24/09, 05/10) ────────────────────────────────────────────────────────
+ * Conteneur <div class="gui-table"> : Background/Surface, Border/Strong 1 px, Radius/L. En-tête facultatif
+ * (.gui-table-header : titre Subtitle Medium, description Body 2, actions), puis <table mat-table>, puis
+ * <mat-paginator>. Densité Compact (40 px) : classe gui-compact sur le conteneur. */
+html {
+  --mat-table-background-color: var(--amf-background-surface);
+  --mat-table-header-container-height: 48px;
+  --mat-table-row-item-container-height: 48px;
+  --mat-table-footer-container-height: 48px;
+  --mat-table-header-headline-color: var(--amf-foreground-secondary);
+  --mat-table-header-headline-font: var(--amf-text-form-label-family);
+  --mat-table-header-headline-size: var(--amf-text-form-label-size);
+  --mat-table-header-headline-line-height: var(--amf-text-form-label-line-height);
+  --mat-table-header-headline-weight: var(--amf-text-form-label-weight);
+  --mat-table-header-headline-tracking: var(--amf-text-form-label-letter-spacing);
+  --mat-table-row-item-label-text-color: var(--amf-foreground-primary);
+  --mat-table-row-item-label-text-font: var(--amf-text-body-2-family);
+  --mat-table-row-item-label-text-size: var(--amf-text-body-2-size);
+  --mat-table-row-item-label-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-table-row-item-label-text-weight: var(--amf-text-body-2-weight);
+  --mat-table-row-item-label-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-table-footer-supporting-text-font: var(--amf-text-body-2-family);
+  --mat-table-footer-supporting-text-size: var(--amf-text-body-2-size);
+  --mat-table-footer-supporting-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-table-footer-supporting-text-weight: var(--amf-text-body-2-weight);
+  --mat-table-footer-supporting-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-table-row-item-outline-color: var(--amf-border-subtle);
+  --mat-table-row-item-outline-width: 1px;
+  --mat-sort-arrow-color: var(--amf-foreground-primary);
+}
+.gui-table {
+  background: var(--amf-background-surface);
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-l);
+  overflow: hidden;
+}
+.gui-table-scroll { overflow-x: auto; }
+.gui-table .mat-mdc-table { width: 100%; }
+.gui-table.gui-compact {
+  --mat-table-header-container-height: 40px;
+  --mat-table-row-item-container-height: 40px;
+  --mat-table-footer-container-height: 40px;
+}
+.gui-table-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--amf-border-default);
+}
+.gui-table-header-texts { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.gui-table-title {
+  margin: 0;
+  font: var(--amf-text-subtitle-medium-weight) var(--amf-text-subtitle-medium-size) / var(--amf-text-subtitle-medium-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-subtitle-medium-letter-spacing);
+  color: var(--amf-foreground-primary);
+}
+.gui-table-description {
+  margin: 0;
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font);
+  color: var(--amf-foreground-secondary);
+}
+.gui-table-actions { display: flex; align-items: center; gap: 8px; padding-block: 0; min-height: 40px; }
+
+/* Cellules : marge 16, Body 2 ; en-tête Background/Surface Subtle, séparateur Border/Default ; lignes Border/Subtle */
+.mat-mdc-header-row.mat-mdc-header-row,
+.mat-mdc-header-cell.mat-mdc-header-cell { background: var(--amf-background-surface-subtle); }
+.mat-mdc-header-cell.mat-mdc-header-cell { border-bottom-color: var(--amf-border-default); }
+.mat-mdc-header-cell.mat-mdc-header-cell,
+.mat-mdc-cell.mat-mdc-cell,
+.mat-mdc-footer-cell.mat-mdc-footer-cell { padding-inline: 16px; }
+.mat-mdc-table .gui-numeric { text-align: end; font-variant-numeric: tabular-nums; }
+.mat-mdc-table .gui-numeric .mat-sort-header-container { justify-content: flex-end; }
+/* Dernière ligne : pas de double trait contre le paginateur ou le bord du conteneur */
+.gui-table .mat-mdc-row:last-child .mat-mdc-cell { border-bottom: 0; }
+.gui-table .mat-mdc-table + .mat-mdc-paginator,
+.gui-table-scroll + .mat-mdc-paginator { border-top: 1px solid var(--amf-border-subtle); }
+
+/* États de ligne : survol Action/Neutral/Subtle, sélection Action/Secondary/Tint (journal 16/09) */
+.mat-mdc-row:hover { background: var(--amf-action-neutral-subtle); }
+.mat-mdc-row.gui-selected { background: var(--amf-action-secondary-tint); }
+/* Cases de sélection en Secondary (journal 16/09) : colonne de 56 px, marge 8 */
+.mat-mdc-table .mat-mdc-checkbox {
+  --gui-c: var(--amf-action-secondary-default);
+  --gui-c-hover: var(--amf-action-secondary-hover);
+  --gui-c-pressed: var(--amf-action-secondary-pressed);
+}
+.mat-mdc-table .gui-col-checkbox.gui-col-checkbox,
+.mat-mdc-table .gui-col-expand.gui-col-expand { width: 56px; padding-inline: 8px; box-sizing: border-box; }
+.mat-mdc-table .gui-col-actions.gui-col-actions { width: 96px; padding-inline: 8px; box-sizing: border-box; white-space: nowrap; }
+.mat-mdc-table .gui-col-actions.gui-numeric { text-align: end; }
+/* Type=Nested : retrait 32, flèche 16 px, libellé Foreground/Secondary */
+.mat-mdc-table .gui-nested.gui-nested { padding-inline-start: 32px; color: var(--amf-foreground-secondary); }
+.mat-mdc-table .gui-nested > .gui-nested-inner { display: inline-flex; align-items: center; gap: 8px; }
+.mat-mdc-table .gui-nested .material-icons { font-size: 16px; width: 16px; height: 16px; color: var(--amf-foreground-secondary); }
+.mat-mdc-row.gui-nested-row { background: var(--amf-background-surface-subtle); }
+.mat-mdc-row.gui-nested-row:hover { background: var(--amf-action-neutral-subtle); }
+/* Type=Input : champ Input Base Small dans la cellule */
+.mat-mdc-table .mat-mdc-form-field { --gui-field-h: 32px; --gui-field-px: 8px; width: 100%; }
+
+/* Tri (journal 24/09) : colonne triable non triée = unfold_more en Foreground/Disabled ; triée = libellé
+ * Foreground/Primary et flèche 16 px. Material n'affiche sa flèche qu'au survol : unfold_more la remplace. */
+.mat-sort-header-container { gap: 4px; }
+.mat-sort-header-arrow.mat-sort-header-arrow { margin: 0; width: 16px; height: 16px; }
+.mat-sort-header-arrow svg { width: 16px; height: 16px; }
+[aria-sort='ascending'] .mat-sort-header-content,
+[aria-sort='descending'] .mat-sort-header-content { color: var(--amf-foreground-primary); }
+.mat-sort-header:not([aria-sort='ascending']):not([aria-sort='descending']) .mat-sort-header-arrow { display: none; }
+.mat-sort-header:not([aria-sort='ascending']):not([aria-sort='descending']) .mat-sort-header-container::after {
+  content: 'unfold_more' / '';
+  font-family: 'Material Icons';
+  font-size: 16px;
+  line-height: 1;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  color: var(--amf-foreground-disabled);
+  font-feature-settings: 'liga';
+}
+.mat-sort-header-container.mat-focus-indicator::before { border-radius: var(--amf-radius-s); }
+
+/* ── Paginator (mat-paginator, journal 16/09) : 48 px, marge 16 / 8, écart 24 ; « Lignes par page » en Body 2
+ *    Foreground/Secondary, liste 80 × 32 Radius/M, boutons d'icône 32 (première, précédente, suivante, dernière) ── */
+html {
+  --mat-paginator-container-background-color: var(--amf-background-surface);
+  --mat-paginator-container-text-color: var(--amf-foreground-secondary);
+  --mat-paginator-container-text-font: var(--amf-text-body-2-family);
+  --mat-paginator-container-text-size: var(--amf-text-body-2-size);
+  --mat-paginator-container-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-paginator-container-text-weight: var(--amf-text-body-2-weight);
+  --mat-paginator-container-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-paginator-container-size: 48px;
+  --mat-paginator-enabled-icon-color: var(--amf-action-neutral-foreground);
+  --mat-paginator-disabled-icon-color: var(--amf-action-disabled-foreground);
+  --mat-paginator-form-field-container-height: 32px;
+  --mat-paginator-form-field-container-vertical-padding: 4px;
+  --mat-paginator-page-size-select-width: 80px;
+  --mat-paginator-select-trigger-text-size: var(--amf-text-body-2-size);
+  --mat-paginator-touch-target-display: none;
+}
+.mat-mdc-paginator-container.mat-mdc-paginator-container { padding: 8px 16px; gap: 24px; flex-wrap: wrap; }
+.mat-mdc-paginator-page-size.mat-mdc-paginator-page-size { margin: 0; gap: 8px; align-items: center; }
+.mat-mdc-paginator-page-size-label.mat-mdc-paginator-page-size-label { margin: 0; }
+.mat-mdc-paginator-page-size-select.mat-mdc-paginator-page-size-select { margin: 0; }
+.mat-mdc-paginator .mat-mdc-form-field { --gui-field-h: 32px; --gui-field-px: 8px; }
+.mat-mdc-paginator .mat-mdc-paginator-page-size-select .mat-mdc-text-field-wrapper { padding-inline: 8px; }
+.mat-mdc-paginator .mat-mdc-form-field-infix.mat-mdc-form-field-infix { padding-block: 4px; min-height: 32px; }
+.mat-mdc-paginator-range-actions.mat-mdc-paginator-range-actions { gap: 4px; }
+.mat-mdc-paginator-range-label.mat-mdc-paginator-range-label { margin: 0 20px 0 0; }
+.mat-mdc-paginator .mat-mdc-icon-button.mat-mdc-icon-button {
+  --gui-btn-h: 32px;
+  --gui-btn-icon: 20px;
+  --gui-c-subtle: var(--amf-action-neutral-subtle);
+  --gui-c-subtle-hover: var(--amf-action-neutral-subtle-hover);
+  --mat-icon-button-state-layer-size: 32px;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+}
+.mat-mdc-paginator .mat-mdc-icon-button svg { width: 20px; height: 20px; }
+
+/* ── Pagination (page 🆕 Pagination, « hors Angular Material, à coder à la main », journal 16/09) ───────────────
+ * <nav class="gui-pagination" aria-label="Pagination"> avec des <button> (ou <a>) gui-pagination-item :
+ * 40 px (32 en gui-sm), Radius/Button, écart 4 ; page courante (aria-current="page") pleine en Primary
+ * (gui-secondary : Secondary), libellé Form Label On Primary ; survol Action/Neutral/Subtle ; ellipse en
+ * Foreground/Secondary (span gui-pagination-ellipsis). */
+.gui-pagination {
+  --gui-pg-h: 40px;
+  --gui-pg-c: var(--amf-action-primary-default);
+  --gui-pg-c-hover: var(--amf-action-primary-hover);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.gui-pagination.gui-secondary { --gui-pg-c: var(--amf-action-secondary-default); --gui-pg-c-hover: var(--amf-action-secondary-hover); }
+.gui-pagination.gui-sm { --gui-pg-h: 32px; }
+.gui-pagination-item,
+.gui-pagination-ellipsis {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--gui-pg-h);
+  height: var(--gui-pg-h);
+  padding: 0 4px;
+  border: 0;
+  border-radius: var(--amf-radius-button);
+  background: transparent;
+  color: var(--amf-foreground-primary);
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+.gui-pagination-item { cursor: pointer; }
+.gui-pagination-ellipsis { color: var(--amf-foreground-secondary); }
+.gui-pagination-item .material-icons { font-size: 20px; width: 20px; height: 20px; color: var(--amf-action-neutral-foreground); }
+.gui-pagination-item:hover:not(:disabled):not([aria-disabled='true']):not([aria-current='page']) { background: var(--amf-action-neutral-subtle); }
+.gui-pagination-item:active:not(:disabled):not([aria-disabled='true']):not([aria-current='page']) { background: var(--amf-action-neutral-subtle-hover); }
+.gui-pagination-item:focus-visible {
+  outline: 2px solid var(--amf-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--amf-radius-button);
+}
+.gui-pagination-item[aria-current='page'] {
+  background: var(--gui-pg-c);
+  color: var(--amf-foreground-on-primary);
+  font-weight: var(--amf-text-form-label-weight);
+}
+.gui-pagination-item[aria-current='page']:hover { background: var(--gui-pg-c-hover); }
+.gui-pagination-item:is(:disabled, [aria-disabled='true']) { color: var(--amf-action-disabled-foreground); cursor: default; }
+.gui-pagination-item:is(:disabled, [aria-disabled='true']) .material-icons { color: var(--amf-action-disabled-foreground); }
+
+/* ── Breadcrumb (page 🆕 Breadcrumb, journal 16/09) : <nav class="gui-breadcrumb" aria-label="Fil d'Ariane"><ol>…
+ *    Items Body 2, marge 4 / 2, Radius/S ; liens Foreground/Link, page courante (aria-current="page")
+ *    Foreground/Secondary ; séparateur chevron_right 16 px, écart 4 ; anneau de focus 2 px à l'extérieur ;
+ *    au-delà de 4 niveaux, variante Collapsed : bouton gui-breadcrumb-ellipsis « … » (survol Neutral Subtle). ── */
+.gui-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gui-breadcrumb li { display: inline-flex; align-items: center; gap: 4px; }
+.gui-breadcrumb li + li::before {
+  content: 'chevron_right' / '';
+  font-family: 'Material Icons';
+  font-size: 16px;
+  line-height: 1;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  color: var(--amf-foreground-secondary);
+  font-feature-settings: 'liga';
+}
+.gui-breadcrumb :is(a, span, button) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 4px;
+  border: 0;
+  border-radius: var(--amf-radius-s);
+  background: transparent;
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+  color: var(--amf-foreground-link);
+  text-decoration: none;
+}
+.gui-breadcrumb a:hover { text-decoration: underline; }
+.gui-breadcrumb [aria-current='page'] { color: var(--amf-foreground-secondary); }
+.gui-breadcrumb .gui-breadcrumb-ellipsis { cursor: pointer; }
+.gui-breadcrumb .gui-breadcrumb-ellipsis:hover { background: var(--amf-action-neutral-subtle); }
+.gui-breadcrumb :is(a, button):focus-visible { outline: 2px solid var(--amf-border-focus); outline-offset: 0; }
+
+/* ── Title (page 🆕 Title, journal 16/09) : en-tête de page <header class="gui-title"> ─────────────────────────
+ *    Fil d'Ariane, écart 8, puis une rangée (écart 16) : bouton retour 48, titre Heading H4 en Desktop
+ *    (H5 en Tablet : classe gui-tablet) avec un Tag (écart 12), sous-titre Body 2 Foreground/Secondary,
+ *    actions à droite (Outlined Neutral puis Filled Primary, 40 px). */
+.gui-title { display: flex; flex-direction: column; gap: 8px; }
+.gui-title-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.gui-title-texts { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.gui-title-heading { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.gui-title-heading :is(h1, h2) {
+  margin: 0;
+  font: var(--amf-text-heading-h4-weight) var(--amf-text-heading-h4-size) / var(--amf-text-heading-h4-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-heading-h4-letter-spacing);
+  color: var(--amf-foreground-primary);
+}
+.gui-title.gui-tablet .gui-title-heading :is(h1, h2) {
+  font: var(--amf-text-heading-h5-weight) var(--amf-text-heading-h5-size) / var(--amf-text-heading-h5-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-heading-h5-letter-spacing);
+}
+.gui-title-subtitle {
+  margin: 0;
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font);
+  color: var(--amf-foreground-secondary);
+}
+.gui-title-actions { display: flex; align-items: center; gap: 8px; }
+
+/* ── Stepper (pages 🆕 Step et Stepper, journal 16/09) : mat-stepper ─────────────────────────────────────────
+ *    Conteneur Background/Surface, Border/Strong, Radius/L, marge 24, écart 24 ; indicateur 24 Radius/Full,
+ *    numéro Caption Medium en Foreground/Inverse ; active et terminée en Primary (coche 16), à venir en
+ *    Feedback/Neutral/Solid (libellé Foreground/Secondary), erreur en Feedback/Error/Solid ; libellé Form Label,
+ *    « Optionnel » en Caption ; liaisons 1 px Border/Default. Coche des étapes terminées : <ng-template
+ *    matStepperIcon="edit"> et "done" (voir l'exemple). */
+html {
+  --mat-stepper-container-color: var(--amf-background-surface);
+  --mat-stepper-line-color: var(--amf-border-default);
+  --mat-stepper-header-height: 24px;
+  --mat-stepper-header-icon-background-color: var(--amf-feedback-neutral-solid);
+  --mat-stepper-header-icon-foreground-color: var(--amf-foreground-inverse);
+  --mat-stepper-header-selected-state-icon-background-color: var(--amf-action-primary-default);
+  --mat-stepper-header-selected-state-icon-foreground-color: var(--amf-foreground-inverse);
+  --mat-stepper-header-done-state-icon-background-color: var(--amf-action-primary-default);
+  --mat-stepper-header-done-state-icon-foreground-color: var(--amf-foreground-inverse);
+  --mat-stepper-header-edit-state-icon-background-color: var(--amf-action-primary-default);
+  --mat-stepper-header-edit-state-icon-foreground-color: var(--amf-foreground-inverse);
+  --mat-stepper-header-error-state-icon-background-color: var(--amf-feedback-error-solid);
+  --mat-stepper-header-error-state-icon-foreground-color: var(--amf-feedback-error-on-solid);
+  --mat-stepper-header-error-state-label-text-color: var(--amf-feedback-error-foreground);
+  --mat-stepper-header-label-text-color: var(--amf-foreground-secondary);
+  --mat-stepper-header-label-text-font: var(--amf-text-form-label-family);
+  --mat-stepper-header-label-text-size: var(--amf-text-form-label-size);
+  --mat-stepper-header-label-text-weight: var(--amf-text-form-label-weight);
+  --mat-stepper-header-error-state-label-text-size: var(--amf-text-form-label-size);
+  --mat-stepper-header-selected-state-label-text-color: var(--amf-foreground-primary);
+  --mat-stepper-header-selected-state-label-text-size: var(--amf-text-form-label-size);
+  --mat-stepper-header-selected-state-label-text-weight: var(--amf-text-form-label-weight);
+  --mat-stepper-header-optional-label-text-color: var(--amf-foreground-secondary);
+  --mat-stepper-header-hover-state-layer-color: transparent;
+  --mat-stepper-header-focus-state-layer-color: transparent;
+  --mat-stepper-container-text-font: var(--gui-font);
+}
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-l);
+  padding: 24px;
+}
+.mat-step-header.mat-step-header { padding: 0; border-radius: var(--amf-radius-s); overflow: visible; }
+.mat-step-header .mat-step-icon.mat-step-icon { width: 24px; height: 24px; margin: 0; }
+.mat-step-header .mat-step-icon-content {
+  font: var(--amf-text-caption-medium-weight) var(--amf-text-caption-medium-size) / var(--amf-text-caption-medium-line-height) var(--gui-font);
+}
+.mat-step-header .mat-step-icon .mat-icon { font-size: 16px; width: 16px; height: 16px; }
+.mat-step-header .mat-step-label.mat-step-label { padding: 0; min-width: 0; }
+.mat-step-header .mat-step-icon + .mat-step-label.mat-step-label { margin-inline-start: 12px; }
+/* Étape terminée (déjà validée) : libellé Foreground/Primary comme l'active */
+.mat-step-header:has(.mat-step-icon-state-done, .mat-step-icon-state-edit) .mat-step-label { color: var(--amf-foreground-primary); }
+.mat-step-header .mat-step-optional {
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--gui-font);
+}
+.mat-step-header:focus-visible { outline: 2px solid var(--amf-border-focus); outline-offset: 4px; }
+.mat-step-header .mat-focus-indicator::before { display: none; }
+/* Désactivé (Step State=Disabled) : Action/Disabled */
+.mat-step-header[aria-disabled='true'] .mat-step-icon { background: var(--amf-action-disabled-background); color: var(--amf-action-disabled-foreground); }
+.mat-step-header[aria-disabled='true'] .mat-step-label { color: var(--amf-action-disabled-foreground); }
+/* Horizontal : liaisons 1 px, écart 16 ; contenu à 24 sous les étapes */
+.mat-horizontal-stepper-header-container.mat-horizontal-stepper-header-container { gap: 16px; padding: 0; }
+.mat-horizontal-stepper-header.mat-horizontal-stepper-header { height: auto; min-height: 24px; padding: 0; }
+.mat-stepper-horizontal-line.mat-stepper-horizontal-line { margin: 0; min-width: 16px; border-top-color: var(--amf-border-default); }
+.mat-stepper-horizontal .mat-horizontal-stepper-header::before,
+.mat-stepper-horizontal .mat-horizontal-stepper-header::after { display: none; }
+.mat-horizontal-content-container.mat-horizontal-content-container { padding: 24px 0 0; }
+/* Vertical : étape, écart 8, puis corps (colonne de liaison de 24, écart 24) ; écart 24 entre étapes */
+.mat-vertical-stepper-header.mat-vertical-stepper-header { padding: 0; height: auto; min-height: 24px; }
+.mat-stepper-vertical .mat-step + .mat-step { margin-top: 24px; }
+.mat-vertical-content-container.mat-vertical-content-container { margin-inline-start: 12px; margin-top: 8px; }
+.mat-vertical-content-container.mat-stepper-vertical-line { min-height: 16px; }
+.mat-vertical-content.mat-vertical-content { padding: 0 0 0 35px; }
+.mat-stepper-vertical-line.mat-stepper-vertical-line::before { top: 0; bottom: 0; border-left-color: var(--amf-border-default); }
+/* Contenu et actions (Continuer en Filled Primary, Précédent en Text) : écart 16, boutons écart 8 */
+.gui-step-content { display: flex; flex-direction: column; gap: 16px; }
+.gui-step-actions { display: flex; gap: 8px; }
+
+/* ── Expansion Panel et Accordion (pages 🆕 Expansion Panel et Accordion, journal 16/09) ─────────────────────
+ *    En-tête 48 px, marge 24 / 8 (16 en gui-compact), écart 16, titre Body 1, description Body 2
+ *    Foreground/Secondary, icône facultative 24, chevron 24 ; contenu Body 2, marge 0 24 16 ; survol de
+ *    l'en-tête Action/Neutral/Subtle. Accordion : <mat-accordion class="gui-accordion">, Border/Strong,
+ *    Radius/L, panneaux séparés par Border/Subtle. */
+html {
+  --mat-expansion-container-background-color: var(--amf-background-surface);
+  --mat-expansion-container-text-color: var(--amf-foreground-primary);
+  --mat-expansion-container-shape: var(--amf-radius-l);
+  --mat-expansion-container-elevation-shadow: none;
+  --mat-expansion-container-text-font: var(--amf-text-body-2-family);
+  --mat-expansion-container-text-size: var(--amf-text-body-2-size);
+  --mat-expansion-container-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-expansion-container-text-weight: var(--amf-text-body-2-weight);
+  --mat-expansion-container-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-expansion-header-collapsed-state-height: 48px;
+  --mat-expansion-header-expanded-state-height: 48px;
+  --mat-expansion-header-text-color: var(--amf-foreground-primary);
+  --mat-expansion-header-text-font: var(--amf-text-body-1-family);
+  --mat-expansion-header-text-size: var(--amf-text-body-1-size);
+  --mat-expansion-header-text-line-height: var(--amf-text-body-1-line-height);
+  --mat-expansion-header-text-weight: var(--amf-text-body-1-weight);
+  --mat-expansion-header-text-tracking: var(--amf-text-body-1-letter-spacing);
+  --mat-expansion-header-description-color: var(--amf-foreground-secondary);
+  --mat-expansion-header-indicator-color: var(--amf-foreground-secondary);
+  --mat-expansion-header-disabled-state-text-color: var(--amf-foreground-disabled);
+  --mat-expansion-header-hover-state-layer-color: var(--amf-action-neutral-subtle);
+  --mat-expansion-header-focus-state-layer-color: var(--amf-action-neutral-subtle);
+  --mat-expansion-actions-divider-color: var(--amf-border-subtle);
+}
+.mat-expansion-panel.mat-expansion-panel { border: 1px solid var(--amf-border-strong); }
+.mat-expansion-panel-header.mat-expansion-panel-header { padding: 8px 24px; gap: 16px; }
+.mat-expansion-panel-header:not([aria-disabled='true']):hover { background: var(--amf-action-neutral-subtle) !important; }
+.mat-expansion-panel-header.cdk-keyboard-focused { background: transparent !important; }
+.mat-expansion-panel-header:focus-visible { outline: 2px solid var(--amf-border-focus); outline-offset: -2px; }
+.mat-expansion-panel-header .mat-content.mat-content { gap: 16px; align-items: center; }
+.mat-expansion-panel-header-title.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description.mat-expansion-panel-header-description { margin-right: 0; }
+.mat-expansion-panel-header-title.mat-expansion-panel-header-title { align-items: center; gap: 16px; }
+.mat-expansion-panel-header-description {
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font);
+}
+.mat-expansion-panel-header .mat-icon { color: var(--amf-foreground-secondary); }
+.mat-expansion-indicator { display: inline-flex; }
+.mat-expansion-indicator svg { width: 24px; height: 24px; margin: 0; }
+.mat-expansion-panel-body.mat-expansion-panel-body { padding: 0 24px 16px; }
+.mat-expansion-panel.gui-compact .mat-expansion-panel-header.mat-expansion-panel-header,
+.gui-accordion.gui-compact .mat-expansion-panel-header.mat-expansion-panel-header { padding-inline: 16px; }
+.mat-expansion-panel.gui-compact .mat-expansion-panel-body.mat-expansion-panel-body,
+.gui-accordion.gui-compact .mat-expansion-panel-body.mat-expansion-panel-body.mat-expansion-panel-body { padding-inline: 16px; }
+.gui-accordion {
+  display: block;
+  border: 1px solid var(--amf-border-strong);
+  border-radius: var(--amf-radius-l);
+  overflow: hidden;
+}
+.gui-accordion .mat-expansion-panel.mat-expansion-panel {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+}
+.gui-accordion .mat-expansion-panel + .mat-expansion-panel { border-top: 1px solid var(--amf-border-subtle); }
+
+/* ── List (pages 🆕 List Item et List, journal 18/09, 24/09, 29/09) : mat-list, mat-nav-list, mat-action-list ──
+ *    Une ligne 48 (40 en gui-compact), deux lignes 64 ; marge 16 / 8, écart 16, icône 24, titre Body 2,
+ *    sous-titre Caption Foreground/Secondary, élément de fin 24 ; survol Action/Neutral/Subtle, élément
+ *    courant (activated) Action/Secondary/Tint ; liste délimitée par Border/Strong (gui-outlined), ou élevée
+ *    (gui-elevated : Background/Surface, Radius/M, ombre Lv2). */
+html {
+  --mat-list-list-item-container-color: transparent;
+  --mat-list-list-item-container-shape: 0;
+  --mat-list-list-item-one-line-container-height: 48px;
+  --mat-list-list-item-two-line-container-height: 64px;
+  --mat-list-list-item-three-line-container-height: 88px;
+  --mat-list-list-item-label-text-color: var(--amf-foreground-primary);
+  --mat-list-list-item-label-text-font: var(--amf-text-body-2-family);
+  --mat-list-list-item-label-text-size: var(--amf-text-body-2-size);
+  --mat-list-list-item-label-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-list-list-item-label-text-weight: var(--amf-text-body-2-weight);
+  --mat-list-list-item-label-text-tracking: var(--amf-text-body-2-letter-spacing);
+  --mat-list-list-item-supporting-text-color: var(--amf-foreground-secondary);
+  --mat-list-list-item-supporting-text-font: var(--amf-text-caption-family);
+  --mat-list-list-item-supporting-text-size: var(--amf-text-caption-size);
+  --mat-list-list-item-supporting-text-line-height: var(--amf-text-body-2-line-height);
+  --mat-list-list-item-supporting-text-weight: var(--amf-text-caption-weight);
+  --mat-list-list-item-supporting-text-tracking: var(--amf-text-caption-letter-spacing);
+  --mat-list-list-item-trailing-supporting-text-color: var(--amf-foreground-secondary);
+  --mat-list-list-item-trailing-supporting-text-font: var(--amf-text-caption-family);
+  --mat-list-list-item-trailing-supporting-text-size: var(--amf-text-caption-size);
+  --mat-list-list-item-trailing-supporting-text-line-height: var(--amf-text-caption-line-height);
+  --mat-list-list-item-trailing-supporting-text-weight: var(--amf-text-caption-weight);
+  --mat-list-list-item-leading-icon-color: var(--amf-foreground-secondary);
+  --mat-list-list-item-leading-icon-size: 24px;
+  --mat-list-list-item-leading-icon-start-space: 16px;
+  --mat-list-list-item-leading-icon-end-space: 16px;
+  --mat-list-list-item-trailing-icon-color: var(--amf-foreground-secondary);
+  --mat-list-list-item-trailing-icon-size: 24px;
+  --mat-list-list-item-hover-label-text-color: var(--amf-foreground-primary);
+  --mat-list-list-item-hover-leading-icon-color: var(--amf-foreground-secondary);
+  --mat-list-list-item-hover-trailing-icon-color: var(--amf-foreground-secondary);
+  --mat-list-list-item-focus-label-text-color: var(--amf-foreground-primary);
+  --mat-list-list-item-hover-state-layer-color: transparent;
+  --mat-list-list-item-focus-state-layer-color: transparent;
+  --mat-list-list-item-disabled-label-text-color: var(--amf-foreground-disabled);
+  --mat-list-list-item-disabled-label-text-opacity: 1;
+  --mat-list-list-item-disabled-leading-icon-color: var(--amf-foreground-disabled);
+  --mat-list-list-item-disabled-leading-icon-opacity: 1;
+  --mat-list-list-item-disabled-trailing-icon-color: var(--amf-foreground-disabled);
+  --mat-list-list-item-disabled-trailing-icon-opacity: 1;
+  --mat-list-list-item-disabled-state-layer-opacity: 0;
+  --mat-list-list-item-selected-container-color: var(--amf-action-secondary-tint);
+  --mat-list-active-indicator-color: var(--amf-action-secondary-tint);
+  --mat-list-active-indicator-shape: 0;
+}
+.mat-mdc-list-base.mat-mdc-list-base { padding: 0; }
+.mat-mdc-list-base .mat-mdc-list-item .mdc-list-item__end.mdc-list-item__end { margin-inline-start: 16px; align-self: center; }
+.mat-mdc-list-base .mat-mdc-list-item .mdc-list-item__end.mat-icon { width: 24px; height: 24px; font: normal 400 24px / 1 'Material Icons'; letter-spacing: normal; }
+.mat-mdc-list-base .mat-mdc-list-item.mdc-list-item--disabled .mdc-list-item__end { color: var(--amf-foreground-disabled); }
+.mat-mdc-list-base .mat-mdc-list-item .mdc-list-item__end:not(.mat-icon) {
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--gui-font);
+  color: var(--amf-foreground-secondary);
+}
+.mat-mdc-list-base .mat-mdc-list-item .mdc-list-item__start.mdc-list-item__start { align-self: center; margin-top: 0; }
+.mat-mdc-list-base.gui-compact { --mat-list-list-item-one-line-container-height: 40px; }
+:is(.mat-mdc-nav-list, .mat-mdc-action-list) .mat-mdc-list-item:not(.mdc-list-item--disabled):hover { background: var(--amf-action-neutral-subtle); }
+:is(.mat-mdc-nav-list, .mat-mdc-action-list) .mat-mdc-list-item:focus-visible { outline: 2px solid var(--amf-border-focus); outline-offset: -2px; }
+.mat-mdc-nav-list .mat-mdc-list-item.mdc-list-item--activated,
+.mat-mdc-nav-list .mat-mdc-list-item.mdc-list-item--activated:hover { background: var(--amf-action-secondary-tint); }
+.mat-mdc-nav-list .mat-mdc-list-item.mdc-list-item--activated .mdc-list-item__primary-text { color: var(--amf-action-secondary-on-tint); font-weight: var(--amf-text-form-label-weight); }
+.mat-mdc-list-base .mat-mdc-subheader.mat-mdc-subheader {
+  margin: 0;
+  padding: 12px 16px 4px;
+  font: var(--amf-text-form-label-caps-weight) var(--amf-text-form-label-caps-size) / var(--amf-text-form-label-caps-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-form-label-caps-letter-spacing);
+  text-transform: var(--amf-text-form-label-caps-transform, uppercase);
+  color: var(--amf-foreground-secondary);
+}
+.mat-mdc-list-base .mat-divider { border-top-color: var(--amf-border-subtle); }
+.mat-mdc-list-base.gui-outlined { border: 1px solid var(--amf-border-strong); border-radius: var(--amf-radius-m); overflow: hidden; }
+.mat-mdc-list-base.gui-elevated {
+  background: var(--amf-background-surface);
+  border-radius: var(--amf-radius-m);
+  box-shadow: var(--amf-shadow-lv2);
+  overflow: hidden;
+}
+
+/* ── Side Menu (pages 🆕 Side Menu et Side Menu Item, journal 25/09, 28/09) : <nav class="gui-side-menu"> ──────
+ *    Panneau 240 (replié : gui-collapsed, 64), marge 8, écart 4, Background/Surface, Border/Default ; lien
+ *    retour facultatif (arrow_back, Form Label Foreground/Link) et bouton de repli 40 ; items L 48 / M 40
+ *    (gui-md) / S 32 (gui-sm, Caption), icônes 24 / 20 / 20, Radius/M, marge 12, écart 12, Body 2 ; item actif
+ *    (aria-current="page") en pilule Primary, Form Label On Primary ; survol Action/Neutral/Subtle ; Count
+ *    Grey et icône de fin chevron_right facultatifs. Replié : items 48 centrés, Count en haut à droite. */
+.gui-side-menu {
+  --gui-sm-h: 48px;
+  --gui-sm-icon: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 240px;
+  padding: 8px;
+  background: var(--amf-background-surface);
+  border-inline-end: 1px solid var(--amf-border-default);
+}
+.gui-side-menu.gui-md { --gui-sm-h: 40px; --gui-sm-icon: 20px; }
+.gui-side-menu.gui-sm { --gui-sm-h: 32px; --gui-sm-icon: 20px; }
+.gui-side-menu-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px; padding-inline: 4px 0; }
+.gui-side-menu-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--amf-radius-m);
+  font: var(--amf-text-form-label-weight) var(--amf-text-form-label-size) / var(--amf-text-form-label-line-height) var(--gui-font);
+  color: var(--amf-foreground-link);
+  text-decoration: none;
+}
+.gui-side-menu-back .material-icons { font-size: 20px; width: 20px; height: 20px; }
+.gui-side-menu-back:hover { background: var(--amf-action-neutral-subtle); }
+.gui-side-menu-back:focus-visible { outline: 2px solid var(--amf-border-focus); outline-offset: 0; }
+.gui-side-menu-items { display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.gui-side-menu-items.gui-end { margin-top: auto; }
+.gui-side-menu-item {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: var(--gui-sm-h);
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--amf-radius-m);
+  background: transparent;
+  color: var(--amf-foreground-primary);
+  font: var(--amf-text-body-2-weight) var(--amf-text-body-2-size) / var(--amf-text-body-2-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-body-2-letter-spacing);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}
+.gui-side-menu.gui-sm .gui-side-menu-item {
+  font: var(--amf-text-caption-weight) var(--amf-text-caption-size) / var(--amf-text-caption-line-height) var(--gui-font);
+  letter-spacing: var(--amf-text-caption-letter-spacing);
+}
+.gui-side-menu-item > .material-icons { flex: none; font-size: var(--gui-sm-icon); width: var(--gui-sm-icon); height: var(--gui-sm-icon); color: var(--amf-foreground-secondary); }
+.gui-side-menu-label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gui-side-menu-item:hover:not([aria-current='page']):not([aria-disabled='true']) { background: var(--amf-action-neutral-subtle); }
+.gui-side-menu-item:focus-visible { outline: 2px solid var(--amf-border-focus); outline-offset: -2px; }
+.gui-side-menu-item[aria-current='page'] {
+  background: var(--amf-action-primary-default);
+  color: var(--amf-foreground-on-primary);
+  font-weight: var(--amf-text-form-label-weight);
+}
+.gui-side-menu-item[aria-current='page'] > .material-icons { color: var(--amf-foreground-on-primary); }
+.gui-side-menu-item[aria-current='page']:focus-visible { outline-offset: 2px; }
+.gui-side-menu-item[aria-disabled='true'] { color: var(--amf-foreground-disabled); cursor: default; }
+.gui-side-menu-item[aria-disabled='true'] > .material-icons { color: var(--amf-foreground-disabled); }
+/* Replié : 64 de large, items carrés de 48 centrés, libellé masqué (gardé pour les aides techniques) */
+.gui-side-menu.gui-collapsed { width: 64px; align-items: center; }
+.gui-side-menu.gui-collapsed .gui-side-menu-top { flex-direction: column; padding: 0; min-height: 0; }
+.gui-side-menu.gui-collapsed .gui-side-menu-item { width: var(--gui-sm-h); padding: 0; justify-content: center; }
+.gui-side-menu.gui-collapsed :is(.gui-side-menu-label, .gui-side-menu-trailing, .gui-side-menu-back-label) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.gui-side-menu.gui-collapsed .gui-side-menu-back { width: 40px; height: 40px; justify-content: center; padding: 0; }
+.gui-side-menu.gui-collapsed .gui-side-menu-item > .gui-count { position: absolute; top: 4px; right: 4px; }

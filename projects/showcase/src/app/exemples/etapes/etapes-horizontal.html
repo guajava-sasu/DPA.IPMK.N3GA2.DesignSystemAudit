@@ -1,0 +1,30 @@
+<mat-stepper [selectedIndex]="1">
+  <ng-template matStepperIcon="edit"><mat-icon>check</mat-icon></ng-template>
+  <ng-template matStepperIcon="done"><mat-icon>check</mat-icon></ng-template>
+  <mat-step label="Bobine" [completed]="true">
+    <div class="gui-step-content">
+      <p class="contenu">Choix de la bobine mère à engager.</p>
+      <div class="gui-step-actions">
+        <button matButton="filled" matStepperNext>Continuer</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="Contrôles" optional>
+    <div class="gui-step-content">
+      <p class="contenu">Contrôles d'aspect avant soudure.</p>
+      <div class="gui-step-actions">
+        <button matButton="filled" matStepperNext>Continuer</button>
+        <button matButton matStepperPrevious>Précédent</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="Validation">
+    <div class="gui-step-content">
+      <p class="contenu">Récapitulatif et validation de l'engagement.</p>
+      <div class="gui-step-actions">
+        <button matButton="filled">Valider</button>
+        <button matButton matStepperPrevious>Précédent</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>

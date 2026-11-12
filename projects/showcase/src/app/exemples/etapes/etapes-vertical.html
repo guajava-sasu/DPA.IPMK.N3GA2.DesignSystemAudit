@@ -1,0 +1,32 @@
+<mat-stepper orientation="vertical" [selectedIndex]="2" #etapes>
+  <ng-template matStepperIcon="edit"><mat-icon>check</mat-icon></ng-template>
+  <ng-template matStepperIcon="done"><mat-icon>check</mat-icon></ng-template>
+  <ng-template matStepperIcon="error"><mat-icon>priority_high</mat-icon></ng-template>
+  <mat-step label="Identification" [completed]="true">
+    <div class="gui-step-content">
+      <p class="contenu">Opérateur et poste.</p>
+    </div>
+  </mat-step>
+  <mat-step
+    label="Mesures"
+    [hasError]="true"
+    errorMessage="2 mesures hors tolérance"
+    [completed]="false"
+  >
+    <div class="gui-step-content">
+      <p class="contenu">Épaisseur de zinc et planéité.</p>
+      <div class="gui-step-actions">
+        <button matButton="filled" matStepperNext>Continuer</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="Décision">
+    <div class="gui-step-content">
+      <p class="contenu">Libérer, déclasser ou bloquer la bobine.</p>
+      <div class="gui-step-actions">
+        <button matButton="filled">Enregistrer</button>
+        <button matButton matStepperPrevious>Précédent</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>

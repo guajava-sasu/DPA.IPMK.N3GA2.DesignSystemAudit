@@ -1,0 +1,17 @@
+<mat-nav-list class="gui-outlined" aria-label="Fiches de la bobine">
+  @for (f of fiches; track f.titre) {
+    <a
+      mat-list-item
+      href="#"
+      (click)="$event.preventDefault(); courante.set(f.titre)"
+      [activated]="courante() === f.titre"
+      [attr.aria-current]="courante() === f.titre ? 'page' : null"
+      [disabled]="f.inactive"
+    >
+      <mat-icon matListItemIcon>{{ f.icone }}</mat-icon>
+      <span matListItemTitle>{{ f.titre }}</span>
+      <span matListItemLine>{{ f.detail }}</span>
+      <mat-icon matListItemMeta>chevron_right</mat-icon>
+    </a>
+  }
+</mat-nav-list>

@@ -1,0 +1,37 @@
+<div class="gui-table gui-compact">
+  <table
+    mat-table
+    [dataSource]="source"
+    matSort
+    matSortActive="heure"
+    matSortDirection="desc"
+    aria-label="Événements de la ligne"
+  >
+    <ng-container matColumnDef="heure">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Heure</th>
+      <td mat-cell *matCellDef="let e">{{ e.heure }}</td>
+    </ng-container>
+    <ng-container matColumnDef="zone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Zone</th>
+      <td mat-cell *matCellDef="let e">{{ e.zone }}</td>
+    </ng-container>
+    <ng-container matColumnDef="evenement">
+      <th mat-header-cell *matHeaderCellDef>Événement</th>
+      <td mat-cell *matCellDef="let e">{{ e.evenement }}</td>
+    </ng-container>
+    <ng-container matColumnDef="duree">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        arrowPosition="before"
+        class="gui-numeric"
+      >
+        Durée (min)
+      </th>
+      <td mat-cell *matCellDef="let e" class="gui-numeric">{{ e.duree }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="colonnes"></tr>
+    <tr mat-row *matRowDef="let e; columns: colonnes"></tr>
+  </table>
+</div>

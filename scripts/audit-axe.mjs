@@ -86,6 +86,26 @@ const PANNEAUX = [
     titre: 'Button Dropdown ouvert',
     ouvrir: '[aria-haspopup="menu"]',
   },
+  {
+    route: '/composants/tableau',
+    titre: 'Paginateur : liste ouverte',
+    ouvrir: '.mat-mdc-paginator mat-select',
+  },
+  {
+    route: '/composants/fil-ariane',
+    titre: 'Fil d’Ariane : niveaux repliés ouverts',
+    ouvrir: '.gui-breadcrumb-ellipsis',
+  },
+  {
+    route: '/composants/menu-lateral',
+    titre: 'Menu latéral replié',
+    ouvrir: '.gui-side-menu-top button',
+  },
+  {
+    route: '/composants/tableau',
+    titre: 'Tableau : ligne repliée',
+    ouvrir: 'ex-tableau-depliable button[aria-expanded="true"]',
+  },
 ];
 
 const version = JSON.parse(

@@ -1,0 +1,32 @@
+<nav class="gui-pagination" aria-label="Pagination des fiches">
+  <button
+    class="gui-pagination-item"
+    [disabled]="page() === 1"
+    (click)="aller(page() - 1)"
+    aria-label="Page précédente"
+  >
+    <span class="material-icons" aria-hidden="true">chevron_left</span>
+  </button>
+  @for (p of pages(); track $index) {
+    @if (p === 0) {
+      <span class="gui-pagination-ellipsis" aria-hidden="true">…</span>
+    } @else {
+      <button
+        class="gui-pagination-item"
+        [attr.aria-current]="p === page() ? 'page' : null"
+        [attr.aria-label]="'Page ' + p"
+        (click)="aller(p)"
+      >
+        {{ p }}
+      </button>
+    }
+  }
+  <button
+    class="gui-pagination-item"
+    [disabled]="page() === total"
+    (click)="aller(page() + 1)"
+    aria-label="Page suivante"
+  >
+    <span class="material-icons" aria-hidden="true">chevron_right</span>
+  </button>
+</nav>

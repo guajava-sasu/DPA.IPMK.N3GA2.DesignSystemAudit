@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDatepickerIntl } from '@angular/material/datepicker';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatStepperIntl } from '@angular/material/stepper';
 
 /**
  * Libellés accessibles du Date Picker en français (Material les fournit en anglais).
@@ -36,4 +38,33 @@ export class GalmaDatepickerIntl extends MatDatepickerIntl {
   override formatYearRangeLabel(start: string, end: string): string {
     return `de ${start} à ${end}`;
   }
+}
+
+/**
+ * Libellés du Paginator en français (« Lignes par page », « 1 à 10 sur 42 », journal du 16/09).
+ * MatPaginatorModule ne refournit pas ses libellés : un fournisseur à la racine (provideGalmaMaterial) suffit.
+ */
+@Injectable()
+export class GalmaPaginatorIntl extends MatPaginatorIntl {
+  override itemsPerPageLabel = 'Lignes par page';
+  override nextPageLabel = 'Page suivante';
+  override previousPageLabel = 'Page précédente';
+  override firstPageLabel = 'Première page';
+  override lastPageLabel = 'Dernière page';
+  override getRangeLabel = (page: number, pageSize: number, length: number): string => {
+    if (length === 0 || pageSize === 0) {
+      return `0 sur ${length}`;
+    }
+    const debut = page * pageSize;
+    const fin = debut < length ? Math.min(debut + pageSize, length) : debut + pageSize;
+    return `${debut + 1} à ${fin} sur ${length}`;
+  };
+}
+
+/** Libellés du Stepper en français (Step : « Optionnel » au Figma). Fournisseur à la racine suffisant. */
+@Injectable()
+export class GalmaStepperIntl extends MatStepperIntl {
+  override optionalLabel = 'Optionnel';
+  override completedLabel = 'Terminée';
+  override editableLabel = 'Modifiable';
 }

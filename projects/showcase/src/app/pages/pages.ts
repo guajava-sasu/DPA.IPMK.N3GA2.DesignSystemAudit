@@ -238,4 +238,89 @@ export const PAGES: PageComposant[] = [
       'Menu Material (mat-menu) : panneau Radius/M bordé Border/Strong, ombre Lv2, items 40 px avec icône 20 px, raccourci en Caption, action destructive isolée en Action/Error, choix courant marqué (Selected).',
     material: "import { MatMenuModule } from '@angular/material/menu';",
   },
+  {
+    id: 'tableau',
+    titre: 'Table',
+    famille: 'Navigation et contenus',
+    figma:
+      '🆕 Table, Table Column, Table Cell et Table Header Cell (journal des 16/09, 24/09 et 05/10)',
+    resume:
+      'Tableau Material (mat-table) dans un conteneur gui-table (Border/Strong, Radius/L) : en-tête facultatif (titre Subtitle Medium, description, actions), en-têtes de colonne 48 px en Form Label sur Background/Surface Subtle, lignes 48 px (40 en Compact) en Body 2 séparées par Border/Subtle, survol Neutral Subtle, sélection Secondary Tint, tri mat-sort et paginateur mat-paginator en français.',
+    material:
+      "import { MatTableModule } from '@angular/material/table';\nimport { MatSortModule } from '@angular/material/sort';\nimport { MatPaginatorModule } from '@angular/material/paginator';",
+    ecarts: [
+      'Tri : Material n’affiche sa flèche qu’au survol ; galma-ui montre unfold_more (Foreground/Disabled) sur les colonnes triables non triées, comme le Figma (journal du 24/09).',
+      'Lignes dépliables (Expand, Nested) : Material n’a pas de lignes filles ; la liste à plat est calculée par le composant (exemple).',
+      'Nombres au format français : LOCALE_ID « fr » et registerLocaleData(localeFr) dans la configuration de l’application.',
+    ],
+  },
+  {
+    id: 'pagination',
+    titre: 'Pagination',
+    famille: 'Navigation et contenus',
+    figma: '🆕 Pagination et Pagination Item (custom), journal du 16/09',
+    resume:
+      'Pagination « hors Angular Material, à coder à la main » (Figma) : <nav class="gui-pagination"> et boutons gui-pagination-item de 40 px (32 en gui-sm), page courante pleine en Primary ou Secondary, ellipse en Foreground/Secondary. Sous un tableau, préférer le Paginator Material (page Table).',
+  },
+  {
+    id: 'fil-ariane',
+    titre: 'Breadcrumb',
+    famille: 'Navigation et contenus',
+    figma: '🆕 Breadcrumb et Breadcrumb Item (Link, Current, Ellipsis), journal du 16/09',
+    resume:
+      'Fil d’Ariane en CSS pur (<nav class="gui-breadcrumb"><ol>) : Body 2, liens Foreground/Link, page courante Foreground/Secondary, chevron 16 px, anneau de focus 2 px ; niveaux repliés derrière un bouton « … » qui ouvre un mat-menu.',
+    material: "import { MatMenuModule } from '@angular/material/menu';",
+  },
+  {
+    id: 'titre',
+    titre: 'Title',
+    famille: 'Navigation et contenus',
+    figma: '🆕 Title (Desktop, Tablet), journal du 16/09',
+    resume:
+      'En-tête de page en CSS pur (<header class="gui-title">) : fil d’Ariane, bouton retour 48, titre Heading H4 (H5 en Tablet) avec Tag, sous-titre, actions.',
+  },
+  {
+    id: 'etapes',
+    titre: 'Stepper',
+    famille: 'Navigation et contenus',
+    figma: '🆕 Step et Stepper (horizontal, vertical), journal du 16/09',
+    resume:
+      'Stepper Material (mat-stepper) dans un conteneur Border/Strong Radius/L : indicateurs 24 px Radius/Full, Primary pour l’étape active et les terminées (coche), Feedback/Neutral/Solid pour celles à venir, Feedback/Error/Solid en erreur, libellés Form Label, liaisons Border/Default.',
+    material:
+      "import { MatStepperModule } from '@angular/material/stepper';\nimport { MatIconModule } from '@angular/material/icon';",
+    ecarts: [
+      'Coche des étapes terminées : Material affiche un crayon (edit) ; galma-ui fournit la coche par <ng-template matStepperIcon="edit"> et "done" dans chaque stepper.',
+      'Step State=Disabled : Material n’a pas d’étape désactivée ; en mode linear, les étapes suivantes ne sont pas atteignables. Le style Action/Disabled est prêt pour un en-tête aria-disabled.',
+    ],
+  },
+  {
+    id: 'accordeon',
+    titre: 'Accordion',
+    famille: 'Navigation et contenus',
+    figma: '🆕 Expansion Panel et Accordion (Default, Compact), journal du 16/09',
+    resume:
+      'Panneaux Material (mat-expansion-panel) : en-tête 48 px en Body 1, description Body 2 Foreground/Secondary, chevron 24, survol Neutral Subtle, contenu Body 2 ; mat-accordion.gui-accordion bordé Border/Strong Radius/L, panneaux séparés par Border/Subtle ; Compact par gui-compact.',
+    material: "import { MatExpansionModule } from '@angular/material/expansion';",
+  },
+  {
+    id: 'liste',
+    titre: 'List',
+    famille: 'Navigation et contenus',
+    figma:
+      '🆕 List et List Item (une ou deux lignes, Default / Compact), journal des 18/09, 24/09 et 29/09',
+    resume:
+      'Listes Material (mat-list, mat-nav-list, mat-action-list) : éléments 48 px (40 en Compact) ou 64 px sur deux lignes, icône 24 Foreground/Secondary, titre Body 2, sous-titre Caption, survol Neutral Subtle, élément courant Secondary Tint ; liste délimitée (gui-outlined) ou élevée (gui-elevated).',
+    material: "import { MatListModule } from '@angular/material/list';",
+  },
+  {
+    id: 'menu-lateral',
+    titre: 'Side Menu',
+    famille: 'Navigation et contenus',
+    figma:
+      '🆕 Side Menu et Side Menu Item (Expanded, Collapsed, tailles L / M / S), journal des 25/09 et 28/09',
+    resume:
+      'Menu latéral en CSS pur (<nav class="gui-side-menu">) : 240 px (64 replié), items de 48 / 40 / 32 px Radius/M, item actif en pilule Primary, Count Grey, icône de fin, lien retour et bouton de repli. Material (mat-sidenav) ne fournit que le tiroir, pas le contenu du menu.',
+    material:
+      "import { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';",
+  },
 ];

@@ -1,0 +1,31 @@
+<div class="ex">
+  @for (t of tailles; track t.classe) {
+    <nav class="gui-side-menu" [class]="t.classe" [attr.aria-label]="'Menu taille ' + t.nom">
+      <ul class="gui-side-menu-items">
+        <li>
+          <a
+            class="gui-side-menu-item"
+            href="#"
+            (click)="$event.preventDefault()"
+            aria-current="page"
+          >
+            <span class="material-icons" aria-hidden="true">dashboard</span>
+            <span class="gui-side-menu-label">Synoptique</span>
+          </a>
+        </li>
+        <li>
+          <a class="gui-side-menu-item" href="#" (click)="$event.preventDefault()">
+            <span class="material-icons" aria-hidden="true">inventory_2</span>
+            <span class="gui-side-menu-label">Bobines</span>
+          </a>
+        </li>
+        <li>
+          <a class="gui-side-menu-item" href="#" (click)="$event.preventDefault()">
+            <span class="material-icons" aria-hidden="true">report</span>
+            <span class="gui-side-menu-label">Défauts</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  }
+</div>
