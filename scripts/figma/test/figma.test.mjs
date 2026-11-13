@@ -12,6 +12,7 @@ import { spawnSync } from 'node:child_process';
 import { comparer, rapportMarkdown, nombreDeDifferences } from '../comparer.mjs';
 import { ouvrirFig } from '../lire-fig.mjs';
 import { construireInstantane, verifierInstantane } from '../instantane.mjs';
+import { nomCss } from '../jetons.mjs';
 import { ecrireFig } from './ecrire-fig.mjs';
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -88,13 +89,17 @@ test('jetons : ajout, suppression, modification et renommage probable', () => {
   );
   const md = rapportMarkdown(r, {
     usagesJetons: new Map([['--amf-c', ['a/x.css:3', 'a/x.css:9', 'b/y.ts:1']]]),
+    usagesConstruits: new Map([['--amf-b', ['c/z.ts:8']]]),
     commandeAppliquer: 'node scripts/amf-figma.mjs appliquer "v2.1.fig"',
   });
   assert.match(
     md,
     /`--amf-c` \(var\(--amf-a\)\) — \*\*encore utilisé\*\* : a\/x\.css:3,9 ; b\/y\.ts:1/,
   );
-  assert.match(md, /`--amf-b` → `--amf-b2`/);
+  assert.match(
+    md,
+    /`--amf-b` → `--amf-b2`.*\*\*nom construit par morceaux\*\* \(à vérifier\) : c\/z\.ts:8/,
+  );
   assert.match(md, /`node scripts\/amf-figma\.mjs appliquer "v2\.1\.fig"`/);
 });
 
@@ -277,7 +282,31 @@ test(
       a: 1,
     };
     // 2. Jeton sémantique renommé (utilisé dans le dépôt)
-    variable('Background/Surface Subtle').name = 'Background/Surface Muted';
+    // (jeton choisi parmi ceux que le dépôt utilise encore, pour que l'essai survive aux vrais renommages)
+    const material = readFileSync(
+      join(racine, 'projects/amf-design-system/tokens/amf-material.css'),
+      'utf8',
+    );
+    const semantique = N.find(
+      (n) => n.type === 'VARIABLE_SET' && vivant(n) && n.name === 'AMF Semantic',
+    );
+    const cite = (n) => new RegExp(`${nomCss(n.name)}(?![\\w-])`).test(material);
+    const aRenommer =
+      [variable('Background/Surface Subtle')].find((n) => n && cite(n)) ??
+      N.find(
+        (n) =>
+          n.type === 'VARIABLE' &&
+          vivant(n) &&
+          n.variableSetID?.guid &&
+          gid(n.variableSetID.guid) === gid(semantique.guid) &&
+          cite(n),
+      );
+    assert.ok(aRenommer, 'un jeton sémantique cité par amf-material.css est attendu');
+    const nomFigma = aRenommer.name;
+    const ancien = nomCss(nomFigma);
+    aRenommer.name = `${nomFigma} Renamed`;
+    const nouveau = nomCss(aRenommer.name);
+    const motif = (t) => t.replace(/[-/[\]]/g, '\\$&');
     // 3. Rayon d'une variante de Task Card, et page du composant renommée
     const set = N.find((n) => n.isStateGroup && vivant(n) && n.name === 'Task Card');
     const variante = N.find(
@@ -317,7 +346,7 @@ test(
     assert.match(md, /`--amf-color-blue-500` : #0072ce → #0066cc/);
     assert.match(
       md,
-      /`--amf-background-surface-subtle` → `--amf-background-surface-muted`.*\*\*encore utilisé\*\*/,
+      new RegExp(`\`${motif(ancien)}\` → \`${motif(nouveau)}\`.*\\*\\*encore utilisé\\*\\*`),
     );
     assert.match(md, /Page renommée : Task Card 🆕 → Task Card/);
     assert.match(md, /### Task Card › Task Card — vitrine : `carte-tache`/);
@@ -327,7 +356,7 @@ test(
     );
     assert.doesNotMatch(md, /Supprimés :/, 'la page renommée ne supprime aucun composant');
     assert.match(md, /attribut\(s\) de calque ne changent que par un jeton renommé/);
-    assert.doesNotMatch(md, /Surface Subtle\] \*\*→\*\*/);
+    assert.doesNotMatch(md, new RegExp(`${motif(nomFigma)}\\] \\*\\*→\\*\\*`));
     assert.match(md, /Nouveau : 13\/11 : entrée de test\./);
 
     // appliquer refuse d'écrire tant qu'un jeton renommé est encore utilisé
@@ -346,7 +375,9 @@ test(
       );
     const refus = appliquer();
     assert.equal(refus.status, 1, 'un jeton renommé encore utilisé doit faire échouer appliquer');
-    assert.match(refus.stderr, /--amf-background-surface-subtle : projects\//);
+    assert.match(refus.stderr, new RegExp(`${motif(ancien)} : projects/`));
+    if (ancien === '--amf-background-surface-subtle')
+      assert.match(refus.stderr, /audit-contrastes\.mjs:\d+ \(nom construit\)/);
     assert.ok(!existsSync(css), 'rien n’est écrit');
     assert.equal(
       JSON.parse(readFileSync(cheminRef, 'utf8')).source.exporte_le,
@@ -357,7 +388,8 @@ test(
     assert.equal(force.status, 0, force.stderr);
     assert.match(force.stdout, /Audit des contrastes sauté : --sortie-css/);
     const genere = readFileSync(css, 'utf8');
-    assert.match(genere, /--amf-background-surface-muted: var\(--amf-color-steel-50\);/);
+    assert.match(genere, new RegExp(`${motif(nouveau)}: `));
+    assert.doesNotMatch(genere, new RegExp(`${motif(ancien)}: `));
     assert.match(genere, /--amf-color-blue-500: #0066cc;/);
     assert.equal(
       JSON.parse(readFileSync(cheminRef, 'utf8')).source.exporte_le,

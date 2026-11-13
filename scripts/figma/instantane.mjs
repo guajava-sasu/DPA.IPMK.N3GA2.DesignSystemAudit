@@ -9,7 +9,8 @@
 //     composant qu'elles citent a sa propre entrée ;
 //   - journal : textes de la page Changelog, dans l'ordre, retours à la ligne gardés.
 
-import { basename } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { basename, join, resolve } from 'node:path';
 import { extraireJetons } from './jetons.mjs';
 
 export const FORMAT_INSTANTANE = 2;
@@ -394,6 +395,28 @@ export function construireInstantane(message, meta, source) {
     composants: Object.fromEntries(composants),
     journal,
   };
+}
+
+/**
+ * .fig de la version de référence, cherché dans le dossier parent du dépôt sous le nom noté dans l'instantané (sans
+ * instantané : « AMF Design System [v2.0].fig »). Sert de valeur par défaut à « npm run jetons » et à « instantane ».
+ * Si le fichier nommé manque, erreur plutôt qu'un retour silencieux à une ancienne version.
+ */
+export function figDeReference(racine, cheminReference = join(racine, 'figma/instantane.json')) {
+  let nom = null;
+  if (existsSync(cheminReference)) {
+    try {
+      nom = JSON.parse(readFileSync(cheminReference, 'utf8')).source?.fichier ?? null;
+    } catch {
+      nom = null;
+    }
+  }
+  const p = resolve(racine, '..', nom ?? 'AMF Design System [v2.0].fig');
+  if (!existsSync(p))
+    throw new Error(
+      `${p} introuvable : le .fig de la version de référence${nom ? ` (nommé dans ${basename(cheminReference)})` : ''} doit être dans le dossier parent du dépôt, ou donner son chemin en argument`,
+    );
+  return p;
 }
 
 /** Vérifie qu'un objet lu sur disque est bien un instantané de ce format. */

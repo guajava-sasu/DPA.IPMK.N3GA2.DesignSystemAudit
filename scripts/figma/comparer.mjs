@@ -300,12 +300,13 @@ const enLigne = (t) => t.replace(/\s*\n\s*/g, ' / ');
 
 /**
  * Rapport Markdown.
- * @param impacts { usagesJetons: Map<nom, string[]> (« fichier:ligne »), pagesVitrine: (nom, page) => string[],
- *   commandeAppliquer: string }
+ * @param impacts { usagesJetons: Map<nom, string[]> (« fichier:ligne »), usagesConstruits: Map<nom, string[]> (noms
+ *   construits par morceaux), pagesVitrine: (nom, page) => string[], commandeAppliquer: string }
  */
 export function rapportMarkdown(r, impacts = {}, options = {}) {
   const max = options.maxCalques ?? 15;
   const usages = impacts.usagesJetons ?? new Map();
+  const construits = impacts.usagesConstruits ?? new Map();
   const vitrine = impacts.pagesVitrine ?? (() => []);
   const appliquer =
     impacts.commandeAppliquer ?? 'node scripts/amf-figma.mjs appliquer "<fichier.fig>"';
@@ -336,7 +337,7 @@ export function rapportMarkdown(r, impacts = {}, options = {}) {
   o.push('## À faire', '');
   const afaire = [];
   const casses = [...j.supprimes.map((x) => x.nom), ...j.renommes.map((x) => x.de)].filter(
-    (n) => usages.get(n)?.length,
+    (n) => usages.get(n)?.length || construits.get(n)?.length,
   );
   if (casses.length)
     afaire.push(
@@ -359,17 +360,19 @@ export function rapportMarkdown(r, impacts = {}, options = {}) {
 
   if (j.renommes.length || j.supprimes.length || j.ajoutes.length || j.modifies.length) {
     o.push('## Jetons', '');
-    // Tous les usages, regroupés par fichier
-    const ligneUsages = (nom) => {
-      const u = usages.get(nom) ?? [];
-      if (!u.length) return '';
-      const parFichier = new Map();
+    // Tous les usages, regroupés par fichier ; les noms construits par morceaux à part
+    const parFichier = (u) => {
+      const m = new Map();
       for (const x of u) {
         const i = x.lastIndexOf(':');
-        const f = x.slice(0, i);
-        parFichier.set(f, [...(parFichier.get(f) ?? []), x.slice(i + 1)]);
+        m.set(x.slice(0, i), [...(m.get(x.slice(0, i)) ?? []), x.slice(i + 1)]);
       }
-      return ` — **encore utilisé** : ${[...parFichier].map(([f, l]) => `${f}:${l.join(',')}`).join(' ; ')}`;
+      return [...m].map(([f, l]) => `${f}:${l.join(',')}`).join(' ; ');
+    };
+    const ligneUsages = (nom) => {
+      const u = usages.get(nom) ?? [],
+        c = construits.get(nom) ?? [];
+      return `${u.length ? ` — **encore utilisé** : ${parFichier(u)}` : ''}${c.length ? ` — **nom construit par morceaux** (à vérifier) : ${parFichier(c)}` : ''}`;
     };
     if (j.renommes.length) {
       o.push('Renommages probables (même valeur) :', '');

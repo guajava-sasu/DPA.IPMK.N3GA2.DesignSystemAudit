@@ -3,9 +3,10 @@
 //
 //   node scripts/amf-jetons.mjs [chemin/vers/AMF Design System.fig] [--dtcg sortie.json]
 //
-// Sans argument, lit « ../AMF Design System [v2.0].fig » (dossier parent du dépôt) : pour une nouvelle version du Figma,
-// donner son chemin, ou mieux passer par « node scripts/amf-figma.mjs appliquer <fichier.fig> » (rapport des
-// évolutions et contrôle des jetons encore utilisés avant d'écrire).
+// Sans argument, lit le .fig de la version de référence (nom noté dans figma/instantane.json, cherché dans le dossier
+// parent du dépôt ; à défaut « ../AMF Design System [v2.0].fig »). Pour une nouvelle version du Figma, passer par
+// « node scripts/amf-figma.mjs appliquer <fichier.fig> » (rapport des évolutions et contrôle des jetons encore
+// utilisés avant d'écrire).
 // Aucune dépendance : Node ≥ 22.15 (zstd natif). Lecture du .fig : scripts/figma/lire-fig.mjs ; extraction des
 // jetons : scripts/figma/jetons.mjs. Pour comparer deux versions du Figma avant de régénérer : scripts/amf-figma.mjs.
 //
@@ -21,20 +22,26 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { lireFig } from './figma/lire-fig.mjs';
 import { extraireJetons } from './figma/jetons.mjs';
+import { figDeReference } from './figma/instantane.mjs';
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
 const iDtcg = args.indexOf('--dtcg');
 const sortieDtcg = iDtcg >= 0 ? args.splice(iDtcg, 2)[1] : null;
-const source = resolve(args[0] ?? resolve(racine, '..', 'AMF Design System [v2.0].fig'));
 const sortieCss = resolve(racine, 'projects/amf-design-system/tokens/amf-tokens.css');
 
-const { meta, message } = lireFig(source);
-const { css, dtcg, jetons, modesIgnores } = extraireJetons(message, meta, source);
-writeFileSync(sortieCss, css);
-if (sortieDtcg) writeFileSync(resolve(sortieDtcg), `${JSON.stringify(dtcg, null, 2)}\n`);
-console.log(`${sortieCss} : ${jetons.size} jetons`);
-if (modesIgnores.length)
-  console.warn(
-    `Mode(s) non générés dans le CSS : ${modesIgnores.join(', ')} (à reporter à la main)`,
-  );
+try {
+  const source = resolve(args[0] ?? figDeReference(racine));
+  const { meta, message } = lireFig(source);
+  const { css, dtcg, jetons, modesIgnores } = extraireJetons(message, meta, source);
+  writeFileSync(sortieCss, css);
+  if (sortieDtcg) writeFileSync(resolve(sortieDtcg), `${JSON.stringify(dtcg, null, 2)}\n`);
+  console.log(`${sortieCss} : ${jetons.size} jetons`);
+  if (modesIgnores.length)
+    console.warn(
+      `Mode(s) non générés dans le CSS : ${modesIgnores.join(', ')} (à reporter à la main)`,
+    );
+} catch (e) {
+  console.error(`amf-jetons : ${e.message}`);
+  process.exit(1);
+}

@@ -36,7 +36,7 @@ npm start                  # vitrine sur http://localhost:4200
 npm run build              # exemples + audit des contrastes (échoue sous les seuils) + vitrine dans dist/showcase
 npm run build:lib          # bibliothèque dans dist/amf-design-system
 npx ng test amf-design-system --watch=false && npx ng test showcase --watch=false
-npm run jetons             # régénère amf-tokens.css depuis ../AMF Design System [v2.0].fig (sans argument)
+npm run jetons             # régénère amf-tokens.css depuis le .fig de la référence (figma/instantane.json)
 npm run figma:comparer -- <nouveau.fig>   # évolutions du Figma (voir ci-dessous)
 npm run audit:contrastes   # contrastes WCAG 2.1 (+ APCA indicatif) des jetons, clair et sombre
 npm run audit:axe          # axe-core sur la vitrine servie (voir ci-dessous)
@@ -75,6 +75,9 @@ conviennent à Material 19 et plus ; Material 18 demanderait un adaptateur Sass.
 
 ## Suivre une nouvelle version du Figma
 
+Guide pas à pas, du .fig reçu jusqu'au commit : [docs/suivi-figma.md](docs/suivi-figma.md) (avec
+[un rapport d'exemple](docs/suivi-figma-exemple-rapport.md)).
+
 La version de référence du Figma est décrite par `figma/instantane.json` (jetons, pages, composants calque par calque,
 journal), rangée par identifiant Figma : un composant, une variante, une page ou un calque renommé reste reconnu. Pour
 une nouvelle version exportée en .fig :
@@ -84,22 +87,15 @@ npm run figma:comparer -- "../AMF Design System [v2.1].fig"    # rapport dans fi
 npm run figma:appliquer -- "../AMF Design System [v2.1].fig"   # rapport + amf-tokens.css + instantané + contrastes
 ```
 
-`comparer` ne modifie rien d'autre que le rapport (aucun s'il n'y a pas de différence ; un rapport existant n'est pas
-écrasé, le nouveau est suffixé -2, -3…) : jetons ajoutés, supprimés, modifiés et renommages probables (même valeur),
-modes supplémentaires compris, avec tous les fichiers du dépôt qui utilisent encore un jeton supprimé ou renommé ;
-pages ajoutées, supprimées ou renommées ; composants ajoutés, supprimés, renommés, déplacés ou modifiés, attribut par
-attribut (taille, contraintes de mise en page, marges, rayons, couleurs, traits, styles avec leur valeur, effets,
-textes, propriétés et surcharges des instances ; variables liées entre crochets), avec les pages de la vitrine
-concernées ; entrées du journal nouvelles ou réécrites, ligne à ligne.
+`comparer` ne modifie rien d'autre que le rapport (aucun s'il n'y a pas de différence ; relancé sur la même version,
+il remplace le précédent) : jetons ajoutés, supprimés, modifiés et renommages probables, avec les fichiers du dépôt qui
+utilisent encore un jeton supprimé ou renommé ; pages ; composants calque par calque, avec les pages de la vitrine
+concernées ; entrées du journal nouvelles ou réécrites.
 
 `appliquer` fait en plus ce qui est automatique : `amf-tokens.css` régénéré, instantané de référence remplacé, audit des
-contrastes. Tant qu'un jeton supprimé ou renommé est utilisé dans le dépôt, il n'écrit rien et échoue (`--force` pour
-passer outre). Un mode de variables autre que Default et Rounded (un futur mode sombre) est signalé mais pas généré.
-Les composants (fichiers
-`tokens/amf-*.css`, exemples) et la conformité au journal restent à reporter à la main d'après le rapport, puis
-`npm test`, `npm run audit:axe` et une relecture de la page Mode sombre (ses surcharges ne viennent pas du Figma).
-Committer le rapport avec l'instantané. Tests de l'outil : `npm run test:figma` (lit le .fig de référence s'il est dans
-le dossier parent, sinon l'essai de bout en bout est sauté).
+contrastes. Il n'écrit rien tant qu'un jeton supprimé ou renommé est utilisé dans le dépôt, et revient en arrière si
+l'audit échoue (`--force` pour passer outre). Les composants et la conformité au journal restent à reporter à la main
+d'après le rapport. Tests de l'outil : `npm run test:figma`.
 
 ## Ajouter un exemple à la vitrine
 
