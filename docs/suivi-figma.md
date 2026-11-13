@@ -9,10 +9,10 @@ Un rapport produit par l'outil sur une v2.1 fictive est dans
 En résumé :
 
 ```bash
-npm run figma:comparer -- "../AMF Design System [v2.1].fig"    # 1. comparer : rapport, rien d'autre ne change
+npm run figma:comparer -- "figma/sources/AMF Design System [v2.1].fig"    # 1. comparer : rapport, rien d'autre ne change
 # 2. lire le rapport
 # 3. remplacer les jetons renommés ou supprimés encore utilisés, relancer comparer
-npm run figma:appliquer -- "../AMF Design System [v2.1].fig"   # 4. appliquer : jetons, référence, contrastes
+npm run figma:appliquer -- "figma/sources/AMF Design System [v2.1].fig"   # 4. appliquer : jetons, référence, contrastes
 # 5. reporter les composants et le journal à la main
 # 6. vérifier (tests, build, axe)
 # 7. committer
@@ -24,14 +24,14 @@ npm run figma:appliquer -- "../AMF Design System [v2.1].fig"   # 4. appliquer : 
   lui-même n'a aucune dépendance ; les étapes 5 et 6 demandent les dépendances du dépôt (`npm ci`).
 - **Dépôt propre** (`git status` vide) : on peut alors tout annuler en une commande (voir « Annuler ») et le commit ne
   contient que la mise à jour du Figma.
-- **Le .fig** : dans Figma, Fichier › Enregistrer une copie locale. Le poser dans le dossier parent du dépôt, à côté de
-  la version précédente, sans l'écraser. Le nom contient des espaces et des crochets : toujours le mettre entre
-  guillemets dans les commandes.
+- **Le .fig** : dans Figma, Fichier › Enregistrer une copie locale. Le poser dans `figma/sources/`, à côté de la
+  version précédente, sans l'écraser ni la supprimer : il sera committé avec la mise à jour (étape 7). Le nom contient
+  des espaces et des crochets : toujours le mettre entre guillemets dans les commandes.
 
 ## 1. Comparer
 
 ```bash
-npm run figma:comparer -- "../AMF Design System [v2.1].fig"
+npm run figma:comparer -- "figma/sources/AMF Design System [v2.1].fig"
 ```
 
 La console résume les différences, puis donne le chemin du rapport :
@@ -139,7 +139,7 @@ rapport est remplacé par cette version à jour.
 ## 4. Appliquer
 
 ```bash
-npm run figma:appliquer -- "../AMF Design System [v2.1].fig"
+npm run figma:appliquer -- "figma/sources/AMF Design System [v2.1].fig"
 ```
 
 Dans l'ordre :
@@ -231,7 +231,8 @@ du Figma).
 
 ## 7. Committer
 
-Tout ce que `git status` montre appartient à la mise à jour : `amf-tokens.css`, `figma/instantane.json`, le rapport
+Tout ce que `git status` montre appartient à la mise à jour : le nouveau .fig dans `figma/sources/`, `amf-tokens.css`,
+`figma/instantane.json`, le rapport
 `figma/rapports/<date>.md`, les fichiers corrigés à l'étape 3 (`.css`, `.ts`, `scripts/audit-contrastes.mjs`), les CSS
 et exemples de l'étape 5, la conformité, et les fichiers régénérés (`contrastes.generated.ts`,
 `catalogue.generated.ts`, `axe.json`).
@@ -240,8 +241,8 @@ Mettre aussi à jour les mentions de la version du Figma (« v2.0 ») : début d
 (`projects/showcase/src/app/pages/accueil.ts`), en-têtes de `conformite-donnees.ts` et de
 `docs/conformite-journal-figma.md`, et ce guide. Les commandes sans argument (`npm run jetons`,
 `node scripts/amf-figma.mjs instantane`) suivent toutes seules : elles lisent le .fig nommé dans `figma/instantane.json`,
-dans le dossier parent du dépôt, et s'arrêtent avec « … introuvable » s'il n'y est pas (jamais de retour silencieux à une
-version plus ancienne). Garder aussi le .fig v2.0 : l'essai de bout en bout de `npm run test:figma` en dépend.
+cherché dans `figma/sources/` puis dans le dossier parent du dépôt, et s'arrêtent avec « … introuvable » s'il n'y est pas (jamais de retour silencieux à une
+version plus ancienne). Garder aussi le .fig v2.0 dans `figma/sources/` : l'essai de bout en bout de `npm run test:figma` en dépend.
 
 Monter la version du paquet si la charte change pour les applications : `package.json`,
 `projects/amf-design-system/package.json`, les premières lignes de `package-lock.json`, l'en-tête de `accueil.ts`, de
@@ -288,8 +289,8 @@ Les messages de l'outil commencent par `amf-figma :`.
 
 | Message                                                                  | Cause et remède                                                                                                           |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `argument en trop : Design`                                              | Chemin du .fig sans guillemets : `"../AMF Design System [v2.1].fig"`.                                                     |
-| `… introuvable`                                                          | Chemin du .fig faux, ou .fig de la référence absent du dossier parent (commandes sans argument).                          |
+| `argument en trop : Design`                                              | Chemin du .fig sans guillemets : `"figma/sources/AMF Design System [v2.1].fig"`.                                          |
+| `… introuvable`                                                          | Chemin du .fig faux, ou .fig de la référence absent de `figma/sources/` (commandes sans argument).                        |
 | `… figma/instantane.json absent`                                         | Référence manquante : la reconstruire avec `instantane` sur le .fig de la version de référence.                           |
 | `instantané au format 1, 2 attendu`                                      | Référence produite par une version plus ancienne de l'outil : la reconstruire avec `instantane` sur le .fig de référence. |
 | `pas une archive zip (.fig attendu)` ou `canvas.fig absent ou inattendu` | Fichier qui n'est pas un export .fig de Figma (lien, PDF, .fig corrompu).                                                 |
@@ -303,6 +304,6 @@ Les messages de l'outil commencent par `amf-figma :`.
 `npm run test:figma` : comparaisons sur des instantanés construits à la main, contrôles de la ligne de commande, et un
 essai de bout en bout qui modifie le .fig de référence (couleur, renommage d'un jeton que le dépôt utilise, rayon, page
 renommée, journal) puis lance `comparer` et `appliquer` dans un dossier temporaire (le dépôt n'est pas modifié). L'essai de bout en bout lit
-`../AMF Design System [v2.0].fig`, ou le fichier donné par la variable `AMF_FIG` ; sans lui, il est sauté. Il est écrit
+`figma/sources/AMF Design System [v2.0].fig` (à défaut, le même nom dans le dossier parent), ou le fichier donné par la variable `AMF_FIG` ; sans lui, il est sauté. Il est écrit
 pour le contenu de la v2.0 (page « Task Card 🆕 », couleur de Blue/500, rayons de Task Card) : `AMF_FIG` doit désigner
 la v2.0, pas la nouvelle version.

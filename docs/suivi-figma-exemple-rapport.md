@@ -20,7 +20,7 @@
 ## À faire
 
 1. Remplacer 1 jeton(s) supprimé(s) ou renommé(s) encore utilisé(s) dans le dépôt (détail plus bas) : tant qu'il en reste, `appliquer` n'écrit rien (sauf avec `--force`).
-2. Régénérer `amf-tokens.css` et l'instantané : `node scripts/amf-figma.mjs appliquer "../AMF Design System [v2.1].fig"` (relance l'audit des contrastes). Vérifier ensuite la page Mode sombre : les surcharges sombres de `amf-theme.css` ne viennent pas du Figma.
+2. Régénérer `amf-tokens.css` et l'instantané : `node scripts/amf-figma.mjs appliquer "figma/sources/AMF Design System [v2.1].fig"` (relance l'audit des contrastes). Vérifier ensuite la page Mode sombre : les surcharges sombres de `amf-theme.css` ne viennent pas du Figma.
 3. Reporter à la main les changements de composants dans les fichiers `tokens/amf-*.css` et les exemples de la vitrine, puis lancer les tests et `npm run audit:axe`.
 4. Lire les entrées nouvelles ou réécrites du journal et compléter `conformite-donnees.ts` et `docs/conformite-journal-figma.md`.
 

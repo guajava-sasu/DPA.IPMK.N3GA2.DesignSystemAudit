@@ -1,7 +1,7 @@
 # Conformité d'amf-design-system 0.9.0 au journal du Figma AMF v2.0 (2026-11-12)
 
 Source : page Changelog du .fig (entrées du 12/09 au 26/10/2026), extraite dans
-un fichier texte hors dépôt. Détail ligne à ligne : page « Conformité au journal » de la vitrine
+`figma/extraits-v2.0/changelog.txt`. Détail ligne à ligne : page « Conformité au journal » de la vitrine
 (`projects/showcase/src/app/pages/conformite-donnees.ts`).
 
 124 décisions retenues (fondations, lot 1, lot 2 famille formulaire, lot 3 navigation et contenus, lot 4 messages et

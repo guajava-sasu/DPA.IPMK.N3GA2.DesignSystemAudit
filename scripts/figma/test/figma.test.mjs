@@ -1,6 +1,6 @@
 // Tests du suivi des évolutions du Figma : npm run test:figma (node --test scripts/figma/test/figma.test.mjs).
-// Les essais de bout en bout lisent « ../AMF Design System [v2.0].fig » (dossier parent du dépôt) ou le fichier
-// donné par AMF_FIG ; sans lui, ils sont sautés.
+// Les essais de bout en bout lisent « figma/sources/AMF Design System [v2.0].fig » (à défaut, le même nom dans le
+// dossier parent du dépôt) ou le fichier donné par AMF_FIG ; sans lui, ils sont sautés.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -16,7 +16,14 @@ import { nomCss } from '../jetons.mjs';
 import { ecrireFig } from './ecrire-fig.mjs';
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
-const FIG = resolve(process.env.AMF_FIG ?? join(racine, '..', 'AMF Design System [v2.0].fig'));
+const FIG_V20 = 'AMF Design System [v2.0].fig';
+const FIG = resolve(
+  process.env.AMF_FIG ??
+    [join(racine, 'figma/sources', FIG_V20), join(racine, '..', FIG_V20)].find((c) =>
+      existsSync(c),
+    ) ??
+    join(racine, 'figma/sources', FIG_V20),
+);
 const CLI = join(racine, 'scripts/amf-figma.mjs');
 const cli = (...a) => spawnSync(process.execPath, [CLI, ...a], { encoding: 'utf8' });
 const dossierTemporaire = (t) => {

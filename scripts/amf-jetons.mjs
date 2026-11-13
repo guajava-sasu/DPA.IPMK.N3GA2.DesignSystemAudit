@@ -3,8 +3,8 @@
 //
 //   node scripts/amf-jetons.mjs [chemin/vers/AMF Design System.fig] [--dtcg sortie.json]
 //
-// Sans argument, lit le .fig de la version de référence (nom noté dans figma/instantane.json, cherché dans le dossier
-// parent du dépôt ; à défaut « ../AMF Design System [v2.0].fig »). Pour une nouvelle version du Figma, passer par
+// Sans argument, lit le .fig de la version de référence (nom noté dans figma/instantane.json, à défaut « AMF Design
+// System [v2.0].fig »), cherché dans figma/sources/ puis dans le dossier parent du dépôt. Pour une nouvelle version du Figma, passer par
 // « node scripts/amf-figma.mjs appliquer <fichier.fig> » (rapport des évolutions et contrôle des jetons encore
 // utilisés avant d'écrire).
 // Aucune dépendance : Node ≥ 22.15 (zstd natif). Lecture du .fig : scripts/figma/lire-fig.mjs ; extraction des

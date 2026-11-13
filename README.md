@@ -27,6 +27,12 @@ Les composants propres à une application (états process, synoptique…) vivent
   - `assets/` : Roboto (OFL) et Material Icons (Apache 2.0) embarquées, logos.
 - `projects/showcase` : la vitrine. Une page par composant AMF, code HTML / TypeScript / CSS à copier, couleurs,
   typographie, mode sombre audité, conformité au journal du Figma.
+- `figma/` : le Figma lui-même (voir [figma/README.md](figma/README.md)) : les .fig reçus (`figma/sources/`), la
+  référence `instantane.json`, les rapports d'évolution et les extraits texte de la v2.0 (journal, composants, variables).
+- `scripts/` : génération des jetons (`amf-jetons.mjs`), suivi des évolutions du Figma (`amf-figma.mjs`, `figma/`),
+  audits de contraste et d'accessibilité.
+- `outils/analyse-figma/` : scripts Python d'analyse détaillée d'un .fig (spécifications calque par calque, textes,
+  variables), utilisés pour construire les composants. Voir son README.
 
 ## Commandes
 
@@ -83,8 +89,8 @@ journal), rangée par identifiant Figma : un composant, une variante, une page o
 une nouvelle version exportée en .fig :
 
 ```bash
-npm run figma:comparer -- "../AMF Design System [v2.1].fig"    # rapport dans figma/rapports/<date d'export>.md
-npm run figma:appliquer -- "../AMF Design System [v2.1].fig"   # rapport + amf-tokens.css + instantané + contrastes
+npm run figma:comparer -- "figma/sources/AMF Design System [v2.1].fig"    # rapport dans figma/rapports/<date d'export>.md
+npm run figma:appliquer -- "figma/sources/AMF Design System [v2.1].fig"   # rapport + amf-tokens.css + instantané + contrastes
 ```
 
 `comparer` ne modifie rien d'autre que le rapport (aucun s'il n'y a pas de différence ; relancé sur la même version,

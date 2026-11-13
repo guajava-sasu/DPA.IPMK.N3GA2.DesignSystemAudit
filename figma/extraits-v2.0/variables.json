@@ -1,0 +1,3726 @@
+{
+ "Colors - Charts & Diagrams": {
+  "modes": [
+   "Mode 1"
+  ],
+  "deleted": true,
+  "variables": {
+   "Red - 100%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#E63C41"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Red - 20%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#E63C4133"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   }
+  }
+ },
+ "Colors - Primary": {
+  "modes": [
+   "Mode 1"
+  ],
+  "deleted": true,
+  "variables": {
+   "Hot Orange - 100%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#FF3700"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Dark Steel Grey - 100%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#414141"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Dark Steel Grey - 80%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#414141CC"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Dark Steel Grey - 40%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#41414166"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Hot Orange - 20%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#FF370033"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "White - 100%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#FFFFFF"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Black - 100%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#000000"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   }
+  }
+ },
+ "Colors - Additionnal": {
+  "modes": [
+   "Mode 1"
+  ],
+  "deleted": true,
+  "variables": {
+   "Light Grey - 100%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#B4C3C8"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   },
+   "Light Grey - 80%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#B4C3C8CC"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   },
+   "Light Grey - 60%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#B4C3C899"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   },
+   "Light Grey - 40%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#B4C3C866"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   },
+   "Light Grey - 20%": {
+    "type": "COLOR",
+    "values": {
+     "Mode 1": "#B4C3C833"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   }
+  }
+ },
+ "AMF Theme": {
+  "modes": [
+   "Light"
+  ],
+  "deleted": true,
+  "variables": {
+   "Brand/Primary/Primary Hot Orange 0": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#FF3700"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Brand/Secondary/Secondary Sky Blue 0": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#0072CE"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Brand/Secondary/Secondary Sky Blue 1": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#0063B3"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Brand/Steel Grey/Dark Steel Grey 0": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#414141"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Brand/Steel Grey/Dark Steel Grey 5": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#B6B6B6"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Brand/Steel Grey/Dark Steel Grey 60%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#41414199"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Brand/Steel Grey/Dark Steel Grey 40%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#41414166"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Neutral/Neutral 100": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#000000"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Neutral/Neutral 80": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#444444"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Neutral/Neutral 30": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#BDBDBD"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Neutral/Neutral 20": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#D3D3D3"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Neutral/Neutral 5": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#F0F0F0"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Neutral/Neutral 0": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#FFFFFF"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Feedback/Confirmation/Feedback Confirmation 1": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#23B47D"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Feedback/Confirmation/Feedback Confirmation 4": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#176648"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Feedback/Error/Feedback Error 1": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#E63C41"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Feedback/Error/Feedback Error 20%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#E63C4133"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Feedback/Informative/Feedback Informative 5": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#98AAB5"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Feedback/Informative/Feedback Informative 20%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#1E4B6933"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Additionnal/Light Grey/Light Grey 100%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#B4C3C8"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Additionnal/Light Grey/Light Grey 80%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#B4C3C8CC"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Additionnal/Light Grey/Light Grey 60%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#B4C3C899"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Additionnal/Light Grey/Light Grey 40%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#B4C3C866"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Additionnal/Light Grey/Light Grey 20%": {
+    "type": "COLOR",
+    "values": {
+     "Light": "#B4C3C833"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   }
+  }
+ },
+ "AMF Primitives": {
+  "modes": [
+   "Value"
+  ],
+  "deleted": false,
+  "variables": {
+   "Color/Orange/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFEFEA"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFD7CC"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/200": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFAE98"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FF8563"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/400": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FF5F33"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FF3700"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/600": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#B34C00"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#8F3D00"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#6F2F00"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Orange/900": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#571604"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#EBF4FB"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#C3E4FF"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/200": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#99C7EB"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#6AB0E9"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/400": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#338ED8"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#0072CE"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/600": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#0063B3"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#00569B"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#003967"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Blue/900": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#023761"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/0": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFFFFF"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/25": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F6F9FB"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#EEF2F6"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": "Gris clair bleuté accordé au fond de page Cool/50 (#EEF2F6)."
+   },
+   "Color/Steel/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#E1E7ED"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": "Gris clair bleuté accordé au fond de page Cool/50 (#E1E7ED)."
+   },
+   "Color/Steel/200": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#CDD5DD"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": "Gris clair bleuté accordé au fond de page Cool/50 (#CDD5DD)."
+   },
+   "Color/Steel/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#B8C1C9"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": "Gris moyen-clair bleuté accordé au fond de page (#B8C1C9) : délimitation des conteneurs."
+   },
+   "Color/Steel/400": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#ACACAC"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#939393"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/600": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#7E7E7E"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#656565"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#414141"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/900": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#292929"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/1000": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#000000"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Cool/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F6F9FB"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": "Fond de page, gris bleuté très clair (#F6F9FB). Remplace Warm/50 (#FAF9F7)."
+   },
+   "Color/Green/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#EDF9F5"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#BCF0DC"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/200": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#9ADCC3"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#7BD2B1"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/400": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#4FC397"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#23B47D"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/600": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#0B7F50"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#176648"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#125A3E"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Green/900": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#0C3D2A"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Gold/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FDF6ED"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FAE9D1"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/200": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F6D3A3"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFBE6E"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/400": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#EDA648"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#E8901A"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/600": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#B45309"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#995F11"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#74480D"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Gold/900": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#4F3109"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FDEFF0"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FAC1C2"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/200": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F5A8AA"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F08A8D"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/400": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#EB6367"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#E63C41"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/600": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#D42027"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#A8161D"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#8B0105"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Ruby/900": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#4E1416"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": ""
+   },
+   "Color/Navy/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#EDF1F3"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#A8BECC"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/200": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#86A5BA"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#7893A5"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/400": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#4B6F87"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#1E4B69"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/600": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#193E56"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#143245"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#092C44"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Navy/900": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#0A1A24"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Purple/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#ECE6F2"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Purple/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#D1C2DD"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Purple/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#906CAE"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Purple/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#460A78"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Purple/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#2E064E"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Violet/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F8EAF2"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Violet/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#EFC9DD"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Violet/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#D87EAE"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Violet/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#BE2878"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Violet/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#7C1A4E"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Yellow/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFF8F0"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Yellow/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFEFDB"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Yellow/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFD8A8"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Yellow/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFBE6E"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Yellow/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#A67C48"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Light Grey/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F8F9FA"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Light Grey/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#ECF0F1"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Light Grey/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#D2DBDE"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Light Grey/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#B4C3C8"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Light Grey/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#757F82"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Green/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FBFBF0"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Green/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F6F4DB"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Green/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#E9E6A8"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Green/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#DBD56E"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Green/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#8E8A48"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Brown/50": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#F1E7E8"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Brown/100": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#DCC4C6"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Brown/300": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#AC7177"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Brown/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#74121D"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Brown/700": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#4B0C13"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Alpha/Overlay 37": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#1E21235E"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS"
+    ],
+    "description": null
+   },
+   "Color/Alpha/Black 8": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#00000014"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS"
+    ],
+    "description": null
+   },
+   "Color/Alpha/Black 12": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#0000001F"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS"
+    ],
+    "description": null
+   },
+   "Color/Alpha/White 12": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#FFFFFF1F"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS"
+    ],
+    "description": null
+   },
+   "Color/Yellow/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#805F37"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Light Grey/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#5A6264"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Shiny Green/800": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#6E6A37"
+    },
+    "deleted": false,
+    "scopes": [
+     "ALL_FILLS",
+     "STROKE",
+     "EFFECT_COLOR"
+    ],
+    "description": null
+   },
+   "Color/Steel/550": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#8A8A8A"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": "Gris intermédiaire pour la délimitation des conteneurs : 3,4:1 sur blanc, 3,2:1 sur le fond de page, 3,05:1 sur Surface Subtle."
+   },
+   "Color/Cool/500": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#8A94A0"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": "Gris bleuté moyen pour la délimitation des conteneurs : 3,08:1 sur blanc, au seuil de 3:1."
+   },
+   "Color/Cool/600": {
+    "type": "COLOR",
+    "values": {
+     "Value": "#818C98"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": "Gris bleuté pour le contour des champs et contrôles : 3,42:1 sur blanc, 3,1:1 sur Surface Subtle."
+   }
+  }
+ },
+ "AMF Semantic": {
+  "modes": [
+   "Default"
+  ],
+  "deleted": false,
+  "variables": {
+   "Background/Page": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Cool/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": "Fond de page des applications : Cool/50 #F6F9FB."
+   },
+   "Background/Surface": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Background/Surface Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Background/Disabled": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/100}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Background/Inverse": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/900}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Background/Overlay": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Alpha/Overlay 37}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Foreground/Placeholder": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Text/Inverse": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": true,
+    "scopes": [
+     "TEXT_FILL"
+    ],
+    "description": null
+   },
+   "Foreground/On Primary": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Foreground/Primary": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Foreground/Secondary": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Foreground/Disabled": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Foreground/Inverse": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Border/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/100}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Border/Default": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/200}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Border/Input": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Cool/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": "Contour des champs, cases, radios, toggles et items de Toggle Button : Cool/600, 3,4:1 sur blanc (exigence 1.4.11 pour les contrôles)."
+   },
+   "Border/Input Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Border/Focus": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Border/Error": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Border/Disabled": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/200}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/Primary/Default": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Primary/Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Primary/Pressed": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Primary/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Primary/Subtle Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/100}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Primary/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/Secondary/Default": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Secondary/Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Secondary/Pressed": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Secondary/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Secondary/Subtle Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/100}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Secondary/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/Neutral/Default": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Neutral/Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/900}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Neutral/Pressed": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/1000}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Neutral/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Neutral/Subtle Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/100}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Neutral/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/Disabled/Background": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/100}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Disabled/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/Disabled/Border": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/200}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Success/Background": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Green/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Feedback/Success/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Green/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Success/Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Green/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Feedback/Warning/Background": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Gold/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Feedback/Warning/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Gold/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Warning/Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Gold/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Feedback/Error/Background": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Feedback/Error/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Error/Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Feedback/Info/Background": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": "Fond des messages Info en style Soft : Blue/50, teinte franchement bleue pour se distinguer du fond de page et du Neutral (Navy/50 était quasi identique aux deux)."
+   },
+   "Feedback/Info/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Navy/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Info/Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Navy/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Feedback/Neutral/Background": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Feedback/Neutral/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Neutral/Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Orange/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Orange/On Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Blue/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Blue/On Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Green/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Green/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Green/On Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Green/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Navy/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Navy/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Navy/On Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Navy/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Purple/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Purple/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Purple/On Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Purple/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Grey/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Light Grey/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Grey/On Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Light Grey/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Orange/Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Blue/Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Green/Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Green/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Navy/Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Navy/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Purple/Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Purple/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Accent/Grey/Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Light Grey/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Tag/Brand/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Action/Primary/Foreground}"
+    },
+    "deleted": true,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/State Layer/Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Alpha/Black 8}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/State Layer/Pressed": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Alpha/Black 12}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Error/Default": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Error/Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Error/Pressed": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Error/Subtle": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Error/Subtle Hover": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/100}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Error/Foreground": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/700}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/Primary/Tint": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/100}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Primary/On Tint": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/Secondary/Tint": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/50}"
+    },
+    "deleted": false,
+    "scopes": [
+     "FRAME_FILL",
+     "SHAPE_FILL"
+    ],
+    "description": null
+   },
+   "Action/Secondary/On Tint": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/800}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Action/Neutral/On Tint": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/800}"
+    },
+    "deleted": true,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Foreground/Brand": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Foreground/Link": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Orange/600}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Info/On Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Success/On Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Warning/On Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Error/On Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Neutral/On Solid": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Info/Inverse": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Blue/300}"
+    },
+    "deleted": true,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Success/Inverse": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Green/300}"
+    },
+    "deleted": true,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Warning/Inverse": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Gold/300}"
+    },
+    "deleted": true,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Error/Inverse": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Ruby/300}"
+    },
+    "deleted": true,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Feedback/Neutral/Inverse": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/300}"
+    },
+    "deleted": true,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Orange/On Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Blue/On Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Green/On Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Navy/On Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Purple/On Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/0}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Accent/Grey/On Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Steel/900}"
+    },
+    "deleted": false,
+    "scopes": [
+     "SHAPE_FILL",
+     "TEXT_FILL",
+     "STROKE"
+    ],
+    "description": null
+   },
+   "Border/Strong": {
+    "type": "COLOR",
+    "values": {
+     "Default": "{Color/Cool/500}"
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE"
+    ],
+    "description": "Délimitation de conteneur (cartes, tableaux, listes, panneaux) : Cool/500, teinte du fond de page, au seuil de 3:1."
+   },
+   "Effect/Shadow": {
+    "type": "COLOR",
+    "values": {
+     "Default": "#29292933"
+    },
+    "deleted": false,
+    "scopes": [
+     "EFFECT_COLOR"
+    ],
+    "description": "Couleur des ombres Lv1 à Lv3 : Steel/900 à 20 %. Remplace la variable v1 Feedback Informative 20 % que les styles d&#39;effet consommaient."
+   }
+  }
+ },
+ "AMF Dimensions": {
+  "modes": [
+   "Default",
+   "Rounded"
+  ],
+  "deleted": false,
+  "variables": {
+   "Spacing/0": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 0.0,
+     "Rounded": 0.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/2": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 2.0,
+     "Rounded": 2.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/4": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 4.0,
+     "Rounded": 4.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/8": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 8.0,
+     "Rounded": 8.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/12": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 12.0,
+     "Rounded": 12.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/16": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 16.0,
+     "Rounded": 16.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/24": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 24.0,
+     "Rounded": 24.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/32": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 32.0,
+     "Rounded": 32.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/48": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 48.0,
+     "Rounded": 48.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Spacing/64": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 64.0,
+     "Rounded": 64.0
+    },
+    "deleted": false,
+    "scopes": [
+     "GAP"
+    ],
+    "description": null
+   },
+   "Radius/XS": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 2.0,
+     "Rounded": 2.0
+    },
+    "deleted": false,
+    "scopes": [
+     "CORNER_RADIUS"
+    ],
+    "description": null
+   },
+   "Radius/S": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 4.0,
+     "Rounded": 4.0
+    },
+    "deleted": false,
+    "scopes": [
+     "CORNER_RADIUS"
+    ],
+    "description": null
+   },
+   "Radius/M": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 8.0,
+     "Rounded": 8.0
+    },
+    "deleted": false,
+    "scopes": [
+     "CORNER_RADIUS"
+    ],
+    "description": null
+   },
+   "Radius/L": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 10.0,
+     "Rounded": 10.0
+    },
+    "deleted": false,
+    "scopes": [
+     "CORNER_RADIUS"
+    ],
+    "description": null
+   },
+   "Radius/Full": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 999.0,
+     "Rounded": 999.0
+    },
+    "deleted": false,
+    "scopes": [
+     "CORNER_RADIUS"
+    ],
+    "description": null
+   },
+   "Size/Icon/XS": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 16.0,
+     "Rounded": 16.0
+    },
+    "deleted": true,
+    "scopes": [
+     "WIDTH_HEIGHT"
+    ],
+    "description": null
+   },
+   "Size/Icon/S": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 20.0,
+     "Rounded": 20.0
+    },
+    "deleted": true,
+    "scopes": [
+     "WIDTH_HEIGHT"
+    ],
+    "description": null
+   },
+   "Size/Icon/M": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 24.0,
+     "Rounded": 24.0
+    },
+    "deleted": true,
+    "scopes": [
+     "WIDTH_HEIGHT"
+    ],
+    "description": null
+   },
+   "Border Width/Thin": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 1.0,
+     "Rounded": 1.0
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE_FLOAT"
+    ],
+    "description": null
+   },
+   "Border Width/Medium": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 2.0,
+     "Rounded": 2.0
+    },
+    "deleted": false,
+    "scopes": [
+     "STROKE_FLOAT"
+    ],
+    "description": null
+   },
+   "Radius/Button": {
+    "type": "FLOAT",
+    "values": {
+     "Default": "{Radius/M}",
+     "Rounded": "{Radius/Full}"
+    },
+    "deleted": false,
+    "scopes": [
+     "CORNER_RADIUS"
+    ],
+    "description": "Rayon des boutons, toggles et champs de formulaire : Radius/M (8 px) en mode Default, Radius/Full (pilule) en mode Rounded."
+   },
+   "Radius/Button Focus": {
+    "type": "FLOAT",
+    "values": {
+     "Default": "{Radius/L}",
+     "Rounded": "{Radius/Full}"
+    },
+    "deleted": false,
+    "scopes": [
+     "CORNER_RADIUS"
+    ],
+    "description": "Rayon de l&#39;anneau de focus externe (décalé de 4 px) : Radius/L en Default, Full en Rounded."
+   },
+   "Size/8": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 8.0,
+     "Rounded": 8.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/10": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 10.0,
+     "Rounded": 10.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/12": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 12.0,
+     "Rounded": 12.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/16": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 16.0,
+     "Rounded": 16.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/18": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 18.0,
+     "Rounded": 18.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/20": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 20.0,
+     "Rounded": 20.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/24": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 24.0,
+     "Rounded": 24.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/32": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 32.0,
+     "Rounded": 32.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/40": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 40.0,
+     "Rounded": 40.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/44": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 44.0,
+     "Rounded": 44.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/48": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 48.0,
+     "Rounded": 48.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   },
+   "Size/64": {
+    "type": "FLOAT",
+    "values": {
+     "Default": 64.0,
+     "Rounded": 64.0
+    },
+    "deleted": false,
+    "scopes": [
+     "WIDTH_HEIGHT",
+     "GAP"
+    ],
+    "description": null
+   }
+  }
+ },
+ "(bibliothèque externe)": {
+  "modes": [],
+  "deleted": false,
+  "variables": {
+   "Hot Orange - 100%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#FF3700"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Dark Steel Grey - 100%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#414141"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Dark Steel Grey - 80%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#414141CC"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Dark Steel Grey - 60%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#41414199"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Hot Orange - 80%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#FF3700CC"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Hot Orange - 20%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#FF370033"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Sky Blue - 100%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#0072CE"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Sky Blue - 80%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#0072CECC"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "White - 100%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#FFFFFF"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": null
+   },
+   "Light Grey - 100%": {
+    "type": "COLOR",
+    "values": {
+     "40:0": "#B4C3C8"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   },
+   "Light Grey - 20%": {
+    "type": "COLOR",
+    "values": {
+     "40:0": "#B4C3C833"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   },
+   "Black - 100%": {
+    "type": "COLOR",
+    "values": {
+     "23:1": "#000000"
+    },
+    "deleted": false,
+    "scopes": null,
+    "description": ""
+   }
+  }
+ }
+}

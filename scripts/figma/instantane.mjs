@@ -398,8 +398,9 @@ export function construireInstantane(message, meta, source) {
 }
 
 /**
- * .fig de la version de référence, cherché dans le dossier parent du dépôt sous le nom noté dans l'instantané (sans
- * instantané : « AMF Design System [v2.0].fig »). Sert de valeur par défaut à « npm run jetons » et à « instantane ».
+ * .fig de la version de référence, sous le nom noté dans l'instantané (sans instantané : « AMF Design System [v2.0].fig »),
+ * cherché dans figma/sources/ puis dans le dossier parent du dépôt. Sert de valeur par défaut à « npm run jetons » et à
+ * « instantane ».
  * Si le fichier nommé manque, erreur plutôt qu'un retour silencieux à une ancienne version.
  */
 export function figDeReference(racine, cheminReference = join(racine, 'figma/instantane.json')) {
@@ -411,10 +412,12 @@ export function figDeReference(racine, cheminReference = join(racine, 'figma/ins
       nom = null;
     }
   }
-  const p = resolve(racine, '..', nom ?? 'AMF Design System [v2.0].fig');
-  if (!existsSync(p))
+  const fichier = nom ?? 'AMF Design System [v2.0].fig';
+  const candidats = [join(racine, 'figma/sources', fichier), resolve(racine, '..', fichier)];
+  const p = candidats.find((c) => existsSync(c));
+  if (!p)
     throw new Error(
-      `${p} introuvable : le .fig de la version de référence${nom ? ` (nommé dans ${basename(cheminReference)})` : ''} doit être dans le dossier parent du dépôt, ou donner son chemin en argument`,
+      `« ${fichier} » introuvable : le .fig de la version de référence${nom ? ` (nommé dans ${basename(cheminReference)})` : ''} doit être dans figma/sources/ ou dans le dossier parent du dépôt, ou donner son chemin en argument`,
     );
   return p;
 }
