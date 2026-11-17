@@ -1,7 +1,7 @@
 // GÉNÉRÉ par scripts/audit-contrastes.mjs : ne pas modifier à la main.
 export interface MesureContraste { groupe: string; type: 'texte' | 'graphique'; fg: string; bg: string; sous: string; usage: string; avant: string; arriere: string; ratio: number; seuil: number; ok: boolean; apca: number; }
 export const CONTRASTES: { genere: string; clair: MesureContraste[]; sombre: MesureContraste[]; fondsClairsSombre: { jeton: string; couleur: string; luminance: number }[] } = {
- "genere": "2026-11-17T10:18:25.958Z",
+ "genere": "2026-11-17T10:31:02.126Z",
  "clair": [
   {
    "groupe": "Textes",

@@ -24,7 +24,7 @@ Les composants propres à une application (états process, synoptique…) vivent
     les postes RDS sans GPU : ni transition ni animation infinie), champs outlined, réglages AMF,
     libellés du Date Picker, du Paginator et du Stepper en français (`AmfDatepickerIntl`, `AmfPaginatorIntl`,
     `AmfStepperIntl`).
-  - `assets/` : Roboto (OFL) et Material Icons (Apache 2.0) embarquées, logos.
+  - `assets/` : Gilroy Regular et SemiBold (fichiers issus du dossier Branding; licence web à confirmer), Material Icons (Apache 2.0), logos.
 - `projects/showcase` : la vitrine. Une page par composant AMF, code HTML / TypeScript / CSS à copier, couleurs,
   typographie, mode sombre audité, conformité au journal du Figma.
 - `figma/` : le Figma lui-même (voir [figma/README.md](figma/README.md)) : les .fig reçus (`figma/sources/`), la

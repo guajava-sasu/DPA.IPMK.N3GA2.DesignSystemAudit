@@ -26,8 +26,8 @@ const STYLES = [
       <p class="gui-overline gui-secondary-text">Fondations</p>
       <h1 class="gui-h4">Typographie et dimensions</h1>
       <p class="gui-body-1">
-        Roboto variable embarquée. Styles de texte AMF exposés en classes <code>gui-*</code> et en
-        jetons <code>--amf-text-*</code>.
+        Gilroy Regular pour le corps et SemiBold pour les titres. Styles de texte exposés en classes
+        <code>gui-*</code> et en jetons <code>--amf-text-*</code>.
       </p>
     </header>
     <section aria-labelledby="t-styles">

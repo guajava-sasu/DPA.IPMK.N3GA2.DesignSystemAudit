@@ -25,45 +25,71 @@
 @import './amf-metier.css';
 @import './amf-composants.css';
 
-/* ── Police Roboto (AMF), variable 100 → 900, embarquée : pas de CDN sur les postes RDS ─ */
+/* ── Typographie Branding : Gilroy Regular pour le corps, SemiBold pour les titres ─ */
 @font-face {
-  font-family: 'Roboto';
-  src: url('/amf/fonts/roboto-latin-wght-normal.woff2') format('woff2-variations');
-  font-weight: 100 900;
+  font-family: 'Gilroy';
+  src: url('/amf/fonts/GilroyW05-Regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: 'Roboto';
-  src: url('/amf/fonts/roboto-latin-wght-italic.woff2') format('woff2-variations');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Roboto';
-  src: url('/amf/fonts/roboto-latin-ext-wght-normal.woff2') format('woff2-variations');
-  font-weight: 100 900;
+  font-family: 'Gilroy';
+  src: url('/amf/fonts/GilroyW05-SemiBold.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-@font-face {
-  font-family: 'Roboto';
-  src: url('/amf/fonts/roboto-latin-ext-wght-italic.woff2') format('woff2-variations');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
 
 /* ── Mode clair : complément AMF ─────────────────────────────────────────────── */
 :root {
   color-scheme: light;
-  --gui-font: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  --gui-font: 'Gilroy', sans-serif;
+
+  --amf-text-heading-h1-family: 'Gilroy';
+  --amf-text-heading-h2-family: 'Gilroy';
+  --amf-text-heading-h3-family: 'Gilroy';
+  --amf-text-heading-h4-family: 'Gilroy';
+  --amf-text-heading-h5-family: 'Gilroy';
+  --amf-text-heading-h6-family: 'Gilroy';
+  --amf-text-subtitle-1-family: 'Gilroy';
+  --amf-text-subtitle-2-family: 'Gilroy';
+  --amf-text-body-1-family: 'Gilroy';
+  --amf-text-body-2-family: 'Gilroy';
+  --amf-text-button-family: 'Gilroy';
+  --amf-text-caption-family: 'Gilroy';
+  --amf-text-overline-family: 'Gilroy';
+  --amf-text-button-2-family: 'Gilroy';
+  --amf-text-form-label-family: 'Gilroy';
+  --amf-text-alert-title-family: 'Gilroy';
+  --amf-text-caption-italic-family: 'Gilroy';
+  --amf-text-heading-h6-medium-family: 'Gilroy';
+  --amf-text-form-label-caps-family: 'Gilroy';
+  --amf-text-body-1-medium-family: 'Gilroy';
+  --amf-text-caption-medium-family: 'Gilroy';
+  --amf-text-label-11-medium-family: 'Gilroy';
+  --amf-text-label-11-family: 'Gilroy';
+  --amf-text-label-10-medium-family: 'Gilroy';
+  --amf-text-subtitle-medium-family: 'Gilroy';
+
+  --amf-text-heading-h1-weight: 600;
+  --amf-text-heading-h2-weight: 600;
+  --amf-text-heading-h3-weight: 600;
+  --amf-text-heading-h4-weight: 600;
+  --amf-text-heading-h5-weight: 600;
+  --amf-text-heading-h6-weight: 600;
+  --amf-text-subtitle-2-weight: 600;
+  --amf-text-button-weight: 600;
+  --amf-text-button-2-weight: 600;
+  --amf-text-form-label-weight: 600;
+  --amf-text-alert-title-weight: 600;
+  --amf-text-heading-h6-medium-weight: 600;
+  --amf-text-form-label-caps-weight: 600;
+  --amf-text-body-1-medium-weight: 600;
+  --amf-text-caption-medium-weight: 600;
+  --amf-text-label-11-medium-weight: 600;
+  --amf-text-label-10-medium-weight: 600;
+  --amf-text-subtitle-medium-weight: 600;
 
   --series-1: var(--amf-color-blue-500);
   --series-2: #00838f;
@@ -251,60 +277,60 @@
   --mat-sys-neutral10: var(--amf-color-steel-900);
   --mat-sys-neutral-variant20: var(--amf-color-steel-800);
 
-  /* Typographie : échelle AMF (Roboto) sur les rôles M3 */
-  --mat-sys-display-large: 400 80px / 96px var(--gui-font);
+  /* Typographie Branding sur les rôles M3 : Gilroy SemiBold pour les titres. */
+  --mat-sys-display-large: 600 80px / 96px var(--gui-font);
   --mat-sys-display-large-font: var(--gui-font);
   --mat-sys-display-large-size: 80px;
   --mat-sys-display-large-line-height: 96px;
-  --mat-sys-display-large-weight: 400;
+  --mat-sys-display-large-weight: 600;
   --mat-sys-display-large-tracking: 1.5px;
-  --mat-sys-display-medium: 400 56px / 60px var(--gui-font);
+  --mat-sys-display-medium: 600 56px / 60px var(--gui-font);
   --mat-sys-display-medium-font: var(--gui-font);
   --mat-sys-display-medium-size: 56px;
   --mat-sys-display-medium-line-height: 60px;
-  --mat-sys-display-medium-weight: 400;
+  --mat-sys-display-medium-weight: 600;
   --mat-sys-display-medium-tracking: 0.5px;
-  --mat-sys-display-small: 400 40px / 50px var(--gui-font);
+  --mat-sys-display-small: 600 40px / 50px var(--gui-font);
   --mat-sys-display-small-font: var(--gui-font);
   --mat-sys-display-small-size: 40px;
   --mat-sys-display-small-line-height: 50px;
-  --mat-sys-display-small-weight: 400;
+  --mat-sys-display-small-weight: 600;
   --mat-sys-display-small-tracking: 0px;
-  --mat-sys-headline-large: 400 32px / 40px var(--gui-font);
+  --mat-sys-headline-large: 600 32px / 40px var(--gui-font);
   --mat-sys-headline-large-font: var(--gui-font);
   --mat-sys-headline-large-size: 32px;
   --mat-sys-headline-large-line-height: 40px;
-  --mat-sys-headline-large-weight: 400;
+  --mat-sys-headline-large-weight: 600;
   --mat-sys-headline-large-tracking: 0.25px;
-  --mat-sys-headline-medium: 400 28px / 36px var(--gui-font);
+  --mat-sys-headline-medium: 600 28px / 36px var(--gui-font);
   --mat-sys-headline-medium-font: var(--gui-font);
   --mat-sys-headline-medium-size: 28px;
   --mat-sys-headline-medium-line-height: 36px;
-  --mat-sys-headline-medium-weight: 400;
+  --mat-sys-headline-medium-weight: 600;
   --mat-sys-headline-medium-tracking: 0px;
-  --mat-sys-headline-small: 400 24px / 32px var(--gui-font);
+  --mat-sys-headline-small: 600 24px / 32px var(--gui-font);
   --mat-sys-headline-small-font: var(--gui-font);
   --mat-sys-headline-small-size: 24px;
   --mat-sys-headline-small-line-height: 32px;
-  --mat-sys-headline-small-weight: 400;
+  --mat-sys-headline-small-weight: 600;
   --mat-sys-headline-small-tracking: 0px;
-  --mat-sys-title-large: 400 20px / 32px var(--gui-font);
+  --mat-sys-title-large: 600 20px / 32px var(--gui-font);
   --mat-sys-title-large-font: var(--gui-font);
   --mat-sys-title-large-size: 20px;
   --mat-sys-title-large-line-height: 32px;
-  --mat-sys-title-large-weight: 400;
+  --mat-sys-title-large-weight: 600;
   --mat-sys-title-large-tracking: 0.25px;
-  --mat-sys-title-medium: 500 16px / 24px var(--gui-font);
+  --mat-sys-title-medium: 600 16px / 24px var(--gui-font);
   --mat-sys-title-medium-font: var(--gui-font);
   --mat-sys-title-medium-size: 16px;
   --mat-sys-title-medium-line-height: 24px;
-  --mat-sys-title-medium-weight: 500;
+  --mat-sys-title-medium-weight: 600;
   --mat-sys-title-medium-tracking: 0.15px;
-  --mat-sys-title-small: 500 14px / 20px var(--gui-font);
+  --mat-sys-title-small: 600 14px / 20px var(--gui-font);
   --mat-sys-title-small-font: var(--gui-font);
   --mat-sys-title-small-size: 14px;
   --mat-sys-title-small-line-height: 20px;
-  --mat-sys-title-small-weight: 500;
+  --mat-sys-title-small-weight: 600;
   --mat-sys-title-small-tracking: 0px;
   --mat-sys-body-large: 400 16px / 24px var(--gui-font);
   --mat-sys-body-large-font: var(--gui-font);
@@ -324,26 +350,26 @@
   --mat-sys-body-small-line-height: 20px;
   --mat-sys-body-small-weight: 400;
   --mat-sys-body-small-tracking: 0.4px;
-  --mat-sys-label-large: 500 14px / 20px var(--gui-font);
+  --mat-sys-label-large: 600 14px / 20px var(--gui-font);
   --mat-sys-label-large-font: var(--gui-font);
   --mat-sys-label-large-size: 14px;
   --mat-sys-label-large-line-height: 20px;
-  --mat-sys-label-large-weight: 500;
+  --mat-sys-label-large-weight: 600;
   --mat-sys-label-large-tracking: 1.25px;
-  --mat-sys-label-medium: 500 12px / 16px var(--gui-font);
+  --mat-sys-label-medium: 600 12px / 16px var(--gui-font);
   --mat-sys-label-medium-font: var(--gui-font);
   --mat-sys-label-medium-size: 12px;
   --mat-sys-label-medium-line-height: 16px;
-  --mat-sys-label-medium-weight: 500;
+  --mat-sys-label-medium-weight: 600;
   --mat-sys-label-medium-tracking: 0.4px;
-  --mat-sys-label-small: 500 11px / 14px var(--gui-font);
+  --mat-sys-label-small: 600 11px / 14px var(--gui-font);
   --mat-sys-label-small-font: var(--gui-font);
   --mat-sys-label-small-size: 11px;
   --mat-sys-label-small-line-height: 14px;
-  --mat-sys-label-small-weight: 500;
+  --mat-sys-label-small-weight: 600;
   --mat-sys-label-small-tracking: 0.4px;
-  --mat-sys-label-large-weight-prominent: 700;
-  --mat-sys-label-medium-weight-prominent: 700;
+  --mat-sys-label-large-weight-prominent: 600;
+  --mat-sys-label-medium-weight-prominent: 600;
 
   /* Formes : Radius AMF */
   --mat-sys-corner-none: 0;
