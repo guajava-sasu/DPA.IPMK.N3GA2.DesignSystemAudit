@@ -25,8 +25,7 @@ import { BlocCode } from '../commun/bloc-code';
       <h2 class="gui-h6">2. Polices et icônes embarquées</h2>
       <p class="gui-body-2">
         Gilroy Regular et SemiBold, ainsi que Material Icons, sont servis par l’application (pas de
-        CDN sur les postes RDS).
-        Dans <code>angular.json</code>, assets du projet :
+        CDN sur les postes RDS). Dans <code>angular.json</code>, assets du projet :
       </p>
       <vt-bloc-code langue="json" [code]="assets" />
     </section>

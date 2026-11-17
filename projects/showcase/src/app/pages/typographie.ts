@@ -46,8 +46,9 @@ const STYLES = [
       <div class="rangee">
         @for (r of rayons; track r) {
           <div class="carre" [style.border-radius]="'var(--amf-radius-' + r + ')'">
-            <span class="gui-caption">{{ r }}</span
-            ><span class="gui-caption gui-secondary-text">{{ valeur('--amf-radius-' + r) }}</span>
+            <span class="gui-caption">{{ r }}</span><span class="gui-caption gui-secondary-text">{{
+              valeur('--amf-radius-' + r)
+            }}</span>
           </div>
         }
         <div class="carre" style="border-radius: var(--amf-radius-button)">

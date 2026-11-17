@@ -55,9 +55,7 @@
                 "output": "amf"
               }
             ],
-            "styles": [
-              "projects/showcase/src/styles.css"
-            ]
+            "styles": ["projects/showcase/src/styles.css"]
           },
           "configurations": {
             "production": {
