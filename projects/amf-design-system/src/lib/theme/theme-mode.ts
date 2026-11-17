@@ -1,4 +1,4 @@
-/** Mode d'affichage : clair (AMF) ou sombre (proposition amf-design-system, classe `dark` sur <html>). */
+/** Mode d'affichage : clair (AMF) ou sombre (proposition n3ga2-ds-audit, classe `dark` sur <html>). */
 export type AmfThemeMode = 'light' | 'dark';
 
 export function setAmfThemeMode(

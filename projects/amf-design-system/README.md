@@ -1,4 +1,4 @@
-# amf-design-system
+# n3ga2-ds-audit
 
 Bibliothèque du design system AMF v2.0 sur Angular Material 22, en CSS pur (ni Sass ni Tailwind) : jetons, thème
 Material, composants habillés par classes `gui-*`.
@@ -7,11 +7,11 @@ Material, composants habillés par classes `gui-*`.
 
 ```css
 /* styles.css */
-@import 'amf-design-system/tokens/amf-theme.css';
+@import 'n3ga2-ds-audit/tokens/amf-theme.css';
 ```
 
 ```json
-"assets": [{ "glob": "**/*", "input": "node_modules/amf-design-system/assets", "output": "amf" }]
+"assets": [{ "glob": "**/*", "input": "node_modules/n3ga2-ds-audit/assets", "output": "amf" }]
 ```
 
 ```ts
@@ -28,9 +28,9 @@ dans un composant qui importe `MatDatepickerModule`.
 ## Développer
 
 Le mode d'emploi complet, la vitrine et la liste des fichiers sont dans le README à la racine du dépôt
-AMF-Design-System.
+n3ga2-ds-audit.
 
 ```bash
-ng build amf-design-system                         # paquet dans dist/amf-design-system
-npx ng test amf-design-system --watch=false        # tests unitaires (Vitest)
+ng build n3ga2-ds-audit                         # paquet dans dist/n3ga2-ds-audit
+npx ng test n3ga2-ds-audit --watch=false        # tests unitaires (Vitest)
 ```

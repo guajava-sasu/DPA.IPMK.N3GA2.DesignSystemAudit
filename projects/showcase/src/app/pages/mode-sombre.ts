@@ -25,11 +25,11 @@ interface ResultatAxe {
   imports: [MatButtonToggleModule, MatButtonModule],
   template: `
     <header class="tete">
-      <p class="gui-overline gui-secondary-text">Proposition amf-design-system</p>
+      <p class="gui-overline gui-secondary-text">Proposition n3ga2-ds-audit</p>
       <h1 class="gui-h4">Mode sombre audité</h1>
       <p class="gui-body-1">
         AMF v2.0 n’a pas de mode sombre : le journal le prévoit en modes de variables (« Original
-        Dark ») sans l’avoir dessiné. amf-design-system en propose un, en surchargeant les seuls
+        Dark ») sans l’avoir dessiné. n3ga2-ds-audit en propose un, en surchargeant les seuls
         jetons sémantiques AMF ; les composants n’ont aucune variante. Il reste à faire valider par
         le comité de relecture AMF, avec les mesures ci-dessous.
       </p>

@@ -1,5 +1,5 @@
 {
-  "name": "amf-design-system",
+  "name": "n3ga2-ds-audit",
   "version": "0.9.0",
   "peerDependencies": {
     "@angular/common": "^22.2.0",

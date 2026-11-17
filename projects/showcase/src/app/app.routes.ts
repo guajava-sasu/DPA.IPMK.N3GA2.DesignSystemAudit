@@ -7,15 +7,15 @@ import { ModeSombre } from './pages/mode-sombre';
 import { Conformite } from './pages/conformite';
 
 export const routes: Routes = [
-  { path: '', component: Accueil, title: 'amf-design-system · Installation' },
-  { path: 'couleurs', component: Couleurs, title: 'amf-design-system · Couleurs' },
+  { path: '', component: Accueil, title: 'n3ga2-ds-audit · Installation' },
+  { path: 'couleurs', component: Couleurs, title: 'n3ga2-ds-audit · Couleurs' },
   {
     path: 'typographie',
     component: Typographie,
-    title: 'amf-design-system · Typographie et dimensions',
+    title: 'n3ga2-ds-audit · Typographie et dimensions',
   },
-  { path: 'composants/:page', component: PageComposantVue, title: 'amf-design-system · Composant' },
-  { path: 'mode-sombre', component: ModeSombre, title: 'amf-design-system · Mode sombre' },
-  { path: 'conformite', component: Conformite, title: 'amf-design-system · Conformité au journal' },
+  { path: 'composants/:page', component: PageComposantVue, title: 'n3ga2-ds-audit · Composant' },
+  { path: 'mode-sombre', component: ModeSombre, title: 'n3ga2-ds-audit · Mode sombre' },
+  { path: 'conformite', component: Conformite, title: 'n3ga2-ds-audit · Conformité au journal' },
   { path: '**', redirectTo: '' },
 ];

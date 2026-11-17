@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
-import { AmfDatepickerIntl } from 'amf-design-system';
+import { AmfDatepickerIntl } from 'n3ga2-ds-audit';
 
 /**
  * Plage de dates

@@ -18,7 +18,7 @@ import { FAMILLES, Famille, PAGES } from './pages/pages';
         class="logo"
       />
       <div class="marque">
-        <span class="gui-subtitle-1">amf-design-system</span>
+        <span class="gui-subtitle-1">n3ga2-ds-audit</span>
         <span class="gui-caption gui-secondary-text"
           >Design system AMF v2.0 · Angular Material 22</span
         >

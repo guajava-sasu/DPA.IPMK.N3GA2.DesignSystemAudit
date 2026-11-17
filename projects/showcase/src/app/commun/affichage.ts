@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { AmfThemeMode, setAmfThemeMode } from 'amf-design-system';
+import { AmfThemeMode, setAmfThemeMode } from 'n3ga2-ds-audit';
 
 /**
  * Animations Material de la vitrine (réglage lu au démarrage : provideAmfMaterial ne change pas à chaud).

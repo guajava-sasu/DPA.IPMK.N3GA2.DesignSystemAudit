@@ -28,7 +28,7 @@ import { construireInstantane, verifierInstantane, figDeReference } from './figm
 import { comparer, rapportMarkdown, nombreDeDifferences } from './figma/comparer.mjs';
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const CSS_DEPOT = join(racine, 'projects/amf-design-system/tokens/amf-tokens.css');
+const CSS_DEPOT = join(racine, 'projects/n3ga2-ds-audit/tokens/amf-tokens.css');
 const CONTRASTES_GENERES = join(racine, 'projects/showcase/src/app/audit/contrastes.generated.ts');
 const versDepot = (p) => relative(racine, p).split(sep).join('/');
 

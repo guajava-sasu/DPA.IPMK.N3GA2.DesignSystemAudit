@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { TestBed } from '@angular/core/testing';
-import { provideAmfMaterial } from 'amf-design-system';
+import { provideAmfMaterial } from 'n3ga2-ds-audit';
 import { EXEMPLES } from './catalogue.generated';
 import { PAGES } from '../pages/pages';
 

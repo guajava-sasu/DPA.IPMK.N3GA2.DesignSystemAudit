@@ -1,5 +1,5 @@
 /*
- * Thème amf-design-system : design system AMF v2.0 sur Angular Material (M3), en CSS pur, sans Tailwind.
+ * Thème n3ga2-ds-audit : design system AMF v2.0 sur Angular Material (M3), en CSS pur, sans Tailwind.
  *
  *   amf-tokens.css  jetons AMF GÉNÉRÉS depuis le Figma (npm run jetons) : ne jamais recopier une valeur à la main ;
  *   ce fichier       mode sombre (AMF n'en a pas : surcharge des jetons sémantiques AMF sous .dark), variables
@@ -7,7 +7,7 @@
  *                    et ce qu'AMF ne couvre pas : séries de données (graphiques, coloration du code).
  *
  * À importer dans les styles globaux de l'application :
- *   @import '<chemin>/amf-design-system/tokens/amf-theme.css';
+ *   @import '<chemin>/n3ga2-ds-audit/tokens/amf-theme.css';
  * Fichiers : amf-tokens.css (généré), amf-material.css (composants Material), amf-formulaires.css (famille
  * formulaire : Select, Slider, Chip, Date et Time Picker, Menu, Button Dropdown, File Upload), amf-navigation.css
  * (Table, Paginator, Pagination, Breadcrumb, Title, Stepper, Accordion, List, Side Menu), amf-messages.css (Alert,

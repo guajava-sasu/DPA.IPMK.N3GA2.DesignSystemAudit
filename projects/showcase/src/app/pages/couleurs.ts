@@ -64,7 +64,7 @@ const GROUPES: { titre: string; prefixe: string; noms: string[] }[] = [
       <h1 class="gui-h4">Couleurs sémantiques</h1>
       <p class="gui-body-1">
         Jetons AMF Semantic, alias des primitives (collection AMF Primitives). En mode sombre, les
-        valeurs sont celles de la proposition amf-design-system. Valeurs lues dans la page :
+        valeurs sont celles de la proposition n3ga2-ds-audit. Valeurs lues dans la page :
         {{ mode() === 'dark' ? 'mode sombre' : 'mode clair' }}.
       </p>
     </header>

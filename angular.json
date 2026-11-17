@@ -6,20 +6,20 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "amf-design-system": {
+    "n3ga2-ds-audit": {
       "projectType": "library",
-      "root": "projects/amf-design-system",
-      "sourceRoot": "projects/amf-design-system/src",
+      "root": "projects/n3ga2-ds-audit",
+      "sourceRoot": "projects/n3ga2-ds-audit/src",
       "prefix": "gui",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/amf-design-system/tsconfig.lib.prod.json"
+              "tsConfig": "projects/n3ga2-ds-audit/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/amf-design-system/tsconfig.lib.json"
+              "tsConfig": "projects/n3ga2-ds-audit/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/amf-design-system/tsconfig.spec.json"
+            "tsConfig": "projects/n3ga2-ds-audit/tsconfig.spec.json"
           }
         }
       }
@@ -51,7 +51,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "projects/amf-design-system/assets",
+                "input": "projects/n3ga2-ds-audit/assets",
                 "output": "amf"
               }
             ],

@@ -1,8 +1,8 @@
-# Mode sombre amf-design-system : proposition et audit (2026-11-12, mis à jour avec les lots 2 à 6)
+# Mode sombre n3ga2-ds-audit : proposition et audit (2026-11-12, mis à jour avec les lots 2 à 6)
 
 AMF v2.0 n'a pas de mode sombre. Son journal le prévoit en modes de variables sur AMF Semantic (« Original Dark »,
-12/09/2026), avec des calques d'état en Alpha/White, sans l'avoir dessiné. amf-design-system en propose un : surcharge des seuls
-jetons sémantiques AMF sous `:root.dark` (`projects/amf-design-system/tokens/amf-theme.css`), aucune variante de composant.
+12/09/2026), avec des calques d'état en Alpha/White, sans l'avoir dessiné. n3ga2-ds-audit en propose un : surcharge des seuls
+jetons sémantiques AMF sous `:root.dark` (`projects/n3ga2-ds-audit/tokens/amf-theme.css`), aucune variante de composant.
 **Proposition à soumettre au comité de relecture AMF.**
 
 ## Principes

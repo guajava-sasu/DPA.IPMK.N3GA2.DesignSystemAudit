@@ -1,10 +1,10 @@
-# AMF-Design-System
+# n3ga2-ds-audit
 
 Design system AMF v2.0 (fichier Figma « AMF Design System [v2.0].fig ») appliqué à **Angular Material 22**, en **CSS pur**
 (ni Sass ni Tailwind). Ce dépôt se limite à la charte graphique : jetons, thème, composants habillés et vitrine.
 Les composants propres à une application (états process, synoptique…) vivent dans les dépôts qui le consomment.
 
-- `projects/amf-design-system` : la bibliothèque (paquet `amf-design-system`).
+- `projects/n3ga2-ds-audit` : la bibliothèque (paquet `n3ga2-ds-audit`).
   - `tokens/amf-tokens.css` : jetons AMF **générés** depuis le .fig (`npm run jetons`). Ne jamais modifier à la main.
   - `tokens/amf-material.css` : composants Material habillés AMF (jetons `--mat-*` reliés aux jetons `--amf-*`).
   - `tokens/amf-formulaires.css` : famille formulaire (lot 2) : Textarea, Select, groupes de cases et de radios,
@@ -40,8 +40,8 @@ Les composants propres à une application (états process, synoptique…) vivent
 npm ci
 npm start                  # vitrine sur http://localhost:4200
 npm run build              # exemples + audit des contrastes (échoue sous les seuils) + vitrine dans dist/showcase
-npm run build:lib          # bibliothèque dans dist/amf-design-system
-npx ng test amf-design-system --watch=false && npx ng test showcase --watch=false
+npm run build:lib          # bibliothèque dans dist/n3ga2-ds-audit
+npx ng test n3ga2-ds-audit --watch=false && npx ng test showcase --watch=false
 npm run jetons             # régénère amf-tokens.css depuis le .fig de la référence (figma/instantane.json)
 npm run figma:comparer -- <nouveau.fig>   # évolutions du Figma (voir ci-dessous)
 npm run audit:contrastes   # contrastes WCAG 2.1 (+ APCA indicatif) des jetons, clair et sombre
@@ -56,11 +56,11 @@ sombre de la vitrine (`projects/showcase/public/audit/axe.json`).
 
 ```css
 /* styles.css */
-@import 'amf-design-system/tokens/amf-theme.css';
+@import 'n3ga2-ds-audit/tokens/amf-theme.css';
 ```
 
 ```json
-"assets": [{ "glob": "**/*", "input": "node_modules/amf-design-system/assets", "output": "amf" }]
+"assets": [{ "glob": "**/*", "input": "node_modules/n3ga2-ds-audit/assets", "output": "amf" }]
 ```
 
 ```ts

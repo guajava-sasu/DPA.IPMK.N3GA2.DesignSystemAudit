@@ -6,7 +6,7 @@ import { BlocCode } from '../commun/bloc-code';
   imports: [BlocCode],
   template: `
     <header class="tete">
-      <p class="gui-overline gui-secondary-text">amf-design-system 0.9.0</p>
+      <p class="gui-overline gui-secondary-text">n3ga2-ds-audit 0.9.0</p>
       <h1 class="gui-h4">Thème AMF v2.0 sur Angular Material</h1>
       <p class="gui-body-1">
         Le design system AMF « officiel » (fichier Figma v2.0) appliqué à Angular Material 22, en
@@ -40,7 +40,7 @@ import { BlocCode } from '../commun/bloc-code';
     <section>
       <h2 class="gui-h6">4. Mode sombre</h2>
       <p class="gui-body-2">
-        AMF n’a pas de mode sombre : amf-design-system en propose un, audité (page Mode sombre). Il
+        AMF n’a pas de mode sombre : n3ga2-ds-audit en propose un, audité (page Mode sombre). Il
         s’active par la classe <code>dark</code> sur <code>&lt;html&gt;</code> :
       </p>
       <vt-bloc-code langue="typescript" [code]="sombre" />
@@ -68,7 +68,7 @@ import { BlocCode } from '../commun/bloc-code';
         <li>
           Partage avec les autres applications AMF : <code>amf-tokens.css</code> et la
           correspondance <code>--mat-sys-*</code> conviennent à Angular Material 19 et plus ; les
-          composants amf-design-system (Angular 22) ne se partagent pas.
+          composants n3ga2-ds-audit (Angular 22) ne se partagent pas.
         </li>
       </ul>
     </section>
@@ -107,13 +107,13 @@ import { BlocCode } from '../commun/bloc-code';
   `,
 })
 export class Accueil {
-  protected readonly styles = `@import 'amf-design-system/tokens/amf-theme.css';
-/* ou, dans le dépôt AMF-Design-System : @import '../../amf-design-system/tokens/amf-theme.css'; */`;
+  protected readonly styles = `@import 'n3ga2-ds-audit/tokens/amf-theme.css';
+/* ou, dans le dépôt n3ga2-ds-audit : @import '../../n3ga2-ds-audit/tokens/amf-theme.css'; */`;
   protected readonly assets = `"assets": [
-  { "glob": "**/*", "input": "node_modules/amf-design-system/assets", "output": "amf" }
+  { "glob": "**/*", "input": "node_modules/n3ga2-ds-audit/assets", "output": "amf" }
 ]`;
   protected readonly config = `import { ApplicationConfig } from '@angular/core';
-import { provideAmfMaterial } from 'amf-design-system';
+import { provideAmfMaterial } from 'n3ga2-ds-audit';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -121,7 +121,7 @@ export const appConfig: ApplicationConfig = {
     // postes sans GPU (RDS) : provideAmfMaterial({ animations: false })
   ],
 };`;
-  protected readonly sombre = `import { setAmfThemeMode } from 'amf-design-system';
+  protected readonly sombre = `import { setAmfThemeMode } from 'n3ga2-ds-audit';
 
 setAmfThemeMode('dark'); // ou 'light'`;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "amf-design-system-workspace",
+  "name": "n3ga2-ds-audit-workspace",
   "version": "0.9.0",
   "scripts": {
     "ng": "ng",
@@ -14,7 +14,7 @@
     "exemples": "node scripts/exemples.mjs",
     "prestart": "node scripts/exemples.mjs",
     "prebuild": "node scripts/exemples.mjs && node scripts/audit-contrastes.mjs",
-    "build:lib": "ng build amf-design-system",
+    "build:lib": "ng build n3ga2-ds-audit",
     "audit:contrastes": "node scripts/audit-contrastes.mjs",
     "audit:axe": "node scripts/audit-axe.mjs"
   },

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Audit des contrastes du thème amf-design-system, en clair (AMF) et en sombre (proposition amf-design-system).
+ * Audit des contrastes du thème n3ga2-ds-audit, en clair (AMF) et en sombre (proposition n3ga2-ds-audit).
  * Lit les jetons CSS (amf-tokens.css généré + amf-theme.css), résout les var(), compose les couleurs
  * translucides sur leur fond, et calcule le ratio WCAG 2.1 de chaque paire d'usage des composants.
  * Seuils AMF (journal du Figma, 12/09/2026) : texte 4,5:1 ; bordures de champ, focus et éléments graphiques 3:1.
@@ -14,7 +14,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
-const jetons = join(racine, 'projects/amf-design-system/tokens');
+const jetons = join(racine, 'projects/n3ga2-ds-audit/tokens');
 const css =
   readFileSync(join(jetons, 'amf-tokens.css'), 'utf8') +
   '\n' +

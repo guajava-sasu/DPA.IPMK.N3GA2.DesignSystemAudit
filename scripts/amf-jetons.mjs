@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Génère projects/amf-design-system/tokens/amf-tokens.css depuis le Figma du design system AMF.
+// Génère projects/n3ga2-ds-audit/tokens/amf-tokens.css depuis le Figma du design system AMF.
 //
 //   node scripts/amf-jetons.mjs [chemin/vers/AMF Design System.fig] [--dtcg sortie.json]
 //
@@ -28,7 +28,7 @@ const racine = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
 const iDtcg = args.indexOf('--dtcg');
 const sortieDtcg = iDtcg >= 0 ? args.splice(iDtcg, 2)[1] : null;
-const sortieCss = resolve(racine, 'projects/amf-design-system/tokens/amf-tokens.css');
+const sortieCss = resolve(racine, 'projects/n3ga2-ds-audit/tokens/amf-tokens.css');
 
 try {
   const source = resolve(args[0] ?? figDeReference(racine));

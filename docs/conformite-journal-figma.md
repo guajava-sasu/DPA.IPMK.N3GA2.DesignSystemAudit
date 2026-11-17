@@ -1,4 +1,4 @@
-# Conformité d'amf-design-system 0.9.0 au journal du Figma AMF v2.0 (2026-11-12)
+# Conformité d'n3ga2-ds-audit 0.9.0 au journal du Figma AMF v2.0 (2026-11-12)
 
 Source : page Changelog du .fig (entrées du 12/09 au 26/10/2026), extraite dans
 `figma/extraits-v2.0/changelog.txt`. Détail ligne à ligne : page « Conformité au journal » de la vitrine
@@ -28,10 +28,10 @@ Adaptées :
   Gunther malgré ses réserves esthétiques, à signaler au comité AMF.
 - Alert Dark : icônes en Feedback/<Type>/Inverse, variables supprimées du .fig mais toujours référencées ; teintes 300 de ces
   variables reprises et, en mode sombre, pleins du mode clair.
-- Message Info et Disclaimer : largeurs laissées en dur dans le Figma (480 et 800), largeur du conteneur dans amf-design-system.
+- Message Info et Disclaimer : largeurs laissées en dur dans le Figma (480 et 800), largeur du conteneur dans n3ga2-ds-audit.
 - Tooltip : flèche ajoutée par le CSS (Material n'en a pas) ; Rich en toggletip ouvert au clic (overlay CDK).
 - Rating : Material n'a pas de note, CSS pur et boutons radio natifs masqués ; étoile pleine en Gold/600, primitive sans
-  jeton sémantique (variable `--gui-rating-filled`), Gold/300 en mode sombre (proposition amf-design-system).
+  jeton sémantique (variable `--gui-rating-filled`), Gold/300 en mode sombre (proposition n3ga2-ds-audit).
 - Selectable Card : CSS pur autour d'un `mat-radio-button` ou d'un `mat-checkbox`, clic sur la carte relayé par
   l'application.
 - Section : pastille d'en-tête au même dégradé hors jetons que celle de Table.

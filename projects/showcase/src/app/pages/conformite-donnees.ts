@@ -1,5 +1,5 @@
 /*
- * Contrôle d'amf-design-system 0.9.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
+ * Contrôle d'n3ga2-ds-audit 0.9.0 par rapport au journal (Changelog) du Figma AMF v2.0, entrées du 12/09 au 26/10/2026.
  * Une ligne par décision du journal qui touche les fondations ou un composant des lots 1 à 6 (famille formulaire, navigation et contenus, messages et overlays, structure et affichage, composants métier). Statuts :
  *   conforme  : implémenté comme le journal le décrit (valeur venue des jetons générés quand c'est une couleur ou une mesure)
  *   adapte    : même résultat visuel, obtenu autrement à cause de Material (expliqué)
@@ -31,7 +31,7 @@ export const CONFORMITE: LigneConformite[] = [
       'Mode sombre prévu en modes de variables sur AMF Semantic, sans variante de composant.',
     statut: 'adapte',
     realisation:
-      'Le .fig n’a pas ces modes : amf-design-system surcharge les jetons sémantiques sous :root.dark, les composants ne changent pas. Proposition à faire valider (page Mode sombre).',
+      'Le .fig n’a pas ces modes : n3ga2-ds-audit surcharge les jetons sémantiques sous :root.dark, les composants ne changent pas. Proposition à faire valider (page Mode sombre).',
   },
   {
     date: '12/09',
@@ -169,7 +169,7 @@ export const CONFORMITE: LigneConformite[] = [
     decision: 'Libellé au-dessus du champ en Form Label, aide / erreur en Caption, compteur.',
     statut: 'adapte',
     realisation:
-      'Material fait flotter le libellé : amf-design-system place un <label for> au-dessus (gui-field-label) et un mat-form-field sans mat-label ; compteur par mat-hint align="end".',
+      'Material fait flotter le libellé : n3ga2-ds-audit place un <label for> au-dessus (gui-field-label) et un mat-form-field sans mat-label ; compteur par mat-hint align="end".',
   },
   {
     date: '12/09',
@@ -639,7 +639,7 @@ export const CONFORMITE: LigneConformite[] = [
       'Sort=Sortable : unfold_more en Foreground/Disabled sur les colonnes triables non triées.',
     statut: 'adapte',
     realisation:
-      'Material n’affiche sa flèche qu’au survol : amf-design-system ajoute unfold_more par le CSS tant que la colonne n’est pas triée ; flèche avant le libellé des colonnes numériques (arrowPosition="before").',
+      'Material n’affiche sa flèche qu’au survol : n3ga2-ds-audit ajoute unfold_more par le CSS tant que la colonne n’est pas triée ; flèche avant le libellé des colonnes numériques (arrowPosition="before").',
   },
   {
     date: '24/09',
@@ -741,7 +741,7 @@ export const CONFORMITE: LigneConformite[] = [
       'Background/Inverse en Steel/900 ; icônes de l’Alert Dark en Feedback/<Type>/Inverse (≥ 5,9:1).',
     statut: 'adapte',
     realisation:
-      'Les variables Feedback/<Type>/Inverse sont supprimées du .fig mais toujours référencées : amf-design-system reprend les teintes 300 (Blue, Green, Gold, Ruby, Steel) ; en mode sombre, où le fond inverse devient clair, les pleins du mode clair (audit de contraste).',
+      'Les variables Feedback/<Type>/Inverse sont supprimées du .fig mais toujours référencées : n3ga2-ds-audit reprend les teintes 300 (Blue, Green, Gold, Ruby, Steel) ; en mode sombre, où le fond inverse devient clair, les pleins du mode clair (audit de contraste).',
   },
   {
     date: '14/09',
@@ -807,7 +807,7 @@ export const CONFORMITE: LigneConformite[] = [
       'Alert sans disparition automatique, Fermer toujours présent ; hasTitle vrai par défaut, titre = mot du type.',
     statut: 'conforme',
     realisation:
-      'Aucune minuterie dans amf-design-system ; exemples titrés Information, Succès, Attention, Erreur.',
+      'Aucune minuterie dans n3ga2-ds-audit ; exemples titrés Information, Succès, Attention, Erreur.',
   },
   {
     date: '24/09',
@@ -866,7 +866,7 @@ export const CONFORMITE: LigneConformite[] = [
       'Étoiles pleines en Amber/600 (Gold/600 après renommage), contours en Foreground/Secondary.',
     statut: 'adapte',
     realisation:
-      'Gold/600 est une primitive sans jeton sémantique : variable --gui-rating-filled ; Gold/300 en mode sombre (proposition amf-design-system, audit de contraste).',
+      'Gold/600 est une primitive sans jeton sémantique : variable --gui-rating-filled ; Gold/300 en mode sombre (proposition n3ga2-ds-audit, audit de contraste).',
   },
   {
     date: '29/09',
@@ -994,7 +994,7 @@ export const CONFORMITE: LigneConformite[] = [
     entree: 'Login Panel',
     decision: 'Rayon des champs passé à Radius/M (8 px), Login compris.',
     statut: 'conforme',
-    realisation: 'Form Fields Large d’amf-design-system à Radius/M.',
+    realisation: 'Form Fields Large d’n3ga2-ds-audit à Radius/M.',
   },
   {
     date: '25/09',

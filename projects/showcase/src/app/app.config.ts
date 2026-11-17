@@ -2,7 +2,7 @@ import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { provideRouter, withHashLocation, withInMemoryScrolling } from '@angular/router';
-import { provideAmfMaterial } from 'amf-design-system';
+import { provideAmfMaterial } from 'n3ga2-ds-audit';
 import { routes } from './app.routes';
 import { animationsVitrine } from './commun/affichage';
 

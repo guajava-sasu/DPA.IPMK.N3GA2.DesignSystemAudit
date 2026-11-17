@@ -146,7 +146,7 @@ Dans l'ordre :
 
 1. le rapport est réécrit (il remplace celui de l'étape 3) ;
 2. si un jeton supprimé ou renommé est encore utilisé, la commande s'arrête sans rien écrire d'autre (voir plus bas) ;
-3. `projects/amf-design-system/tokens/amf-tokens.css` est régénéré (ne jamais le modifier à la main) ;
+3. `projects/n3ga2-ds-audit/tokens/amf-tokens.css` est régénéré (ne jamais le modifier à la main) ;
 4. `figma/instantane.json` est remplacé : la nouvelle version devient la référence ;
 5. l'audit des contrastes est lancé (le même que `npm run audit:contrastes`, clair et sombre). Il réécrit
    `projects/showcase/src/app/audit/contrastes.generated.ts`, lu par la vitrine. Il échoue si des paires passent sous
@@ -159,7 +159,7 @@ Refus quand un jeton est encore utilisé :
 
 ```
 1 jeton(s) supprimé(s) ou renommé(s) encore utilisé(s) :
-  --amf-background-surface-subtle : projects/amf-design-system/tokens/amf-material.css:265, …
+  --amf-background-surface-subtle : projects/n3ga2-ds-audit/tokens/amf-material.css:265, …
 
 Rien n’a été écrit (amf-tokens.css et instantané inchangés) : remplacer ces jetons, ou relancer avec --force.
 ```
@@ -197,7 +197,7 @@ Pour chaque composant du rapport :
 
 1. ouvrir sa page dans la vitrine (`npm start`, puis `http://localhost:4200/#/composants/<id>`, `id` donné par le
    rapport) et la page du Figma ;
-2. retrouver ses règles dans `projects/amf-design-system/tokens/amf-*.css` (rechercher la classe `gui-…` ou le
+2. retrouver ses règles dans `projects/n3ga2-ds-audit/tokens/amf-*.css` (rechercher la classe `gui-…` ou le
    composant Material) et les mettre à jour, en jetons `var(--amf-…)` plutôt qu'en valeurs ;
 3. mettre à jour l'exemple dans `projects/showcase/src/app/exemples/<id>/` si le changement est visible (nouvelle
    variante, nouvelle propriété), puis `npm run exemples` (réécrit `catalogue.generated.ts`) ;
@@ -212,7 +212,7 @@ conforme, adapté, écart ou hors lot) et mettre à jour les totaux et les liste
 ## 6. Vérifier
 
 ```bash
-npx ng test amf-design-system --watch=false && npx ng test showcase --watch=false
+npx ng test n3ga2-ds-audit --watch=false && npx ng test showcase --watch=false
 npm run test:figma                 # tests de l'outil (voir la dernière section)
 npm run build                      # exemples + contrastes + vitrine dans dist/showcase
 ```
@@ -245,7 +245,7 @@ cherché dans `figma/sources/` puis dans le dossier parent du dépôt, et s'arr�
 version plus ancienne). Garder aussi le .fig v2.0 dans `figma/sources/` : l'essai de bout en bout de `npm run test:figma` en dépend.
 
 Monter la version du paquet si la charte change pour les applications : `package.json`,
-`projects/amf-design-system/package.json`, les premières lignes de `package-lock.json`, l'en-tête de `accueil.ts`, de
+`projects/n3ga2-ds-audit/package.json`, les premières lignes de `package-lock.json`, l'en-tête de `accueil.ts`, de
 `conformite-donnees.ts` et de `docs/conformite-journal-figma.md`.
 
 ## Annuler
@@ -258,7 +258,7 @@ git clean -fd figma/rapports   # rapports pas encore committés
 ```
 
 Pour n'annuler que ce qu'a écrit `appliquer` :
-`git restore projects/amf-design-system/tokens/amf-tokens.css figma/instantane.json projects/showcase/src/app/audit/contrastes.generated.ts`.
+`git restore projects/n3ga2-ds-audit/tokens/amf-tokens.css figma/instantane.json projects/showcase/src/app/audit/contrastes.generated.ts`.
 
 ## Autres usages
 

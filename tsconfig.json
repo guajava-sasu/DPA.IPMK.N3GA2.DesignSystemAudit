@@ -5,7 +5,7 @@
   "compilerOptions": {
     "noImplicitOverride": true,
     "paths": {
-      "amf-design-system": ["./projects/amf-design-system/src/public-api.ts"]
+      "n3ga2-ds-audit": ["./projects/n3ga2-ds-audit/src/public-api.ts"]
     },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -25,10 +25,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/amf-design-system/tsconfig.lib.json"
+      "path": "./projects/n3ga2-ds-audit/tsconfig.lib.json"
     },
     {
-      "path": "./projects/amf-design-system/tsconfig.spec.json"
+      "path": "./projects/n3ga2-ds-audit/tsconfig.spec.json"
     },
     {
       "path": "./projects/showcase/tsconfig.app.json"

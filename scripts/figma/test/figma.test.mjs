@@ -291,7 +291,7 @@ test(
     // 2. Jeton sémantique renommé (utilisé dans le dépôt)
     // (jeton choisi parmi ceux que le dépôt utilise encore, pour que l'essai survive aux vrais renommages)
     const material = readFileSync(
-      join(racine, 'projects/amf-design-system/tokens/amf-material.css'),
+      join(racine, 'projects/n3ga2-ds-audit/tokens/amf-material.css'),
       'utf8',
     );
     const semantique = N.find(
