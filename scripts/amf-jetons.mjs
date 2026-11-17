@@ -20,9 +20,9 @@
 import { writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { lireFig } from './figma/lire-fig.mjs';
-import { extraireJetons } from './figma/jetons.mjs';
 import { figDeReference } from './figma/instantane.mjs';
+import { extraireJetons } from './figma/jetons.mjs';
+import { lireFig } from './figma/lire-fig.mjs';
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);

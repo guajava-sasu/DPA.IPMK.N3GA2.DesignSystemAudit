@@ -4,13 +4,13 @@
  * et écrit catalogue.generated.ts (composant + sources affichées et copiables). Titre et description : premier
  * commentaire JSDoc de la classe (première ligne = titre). Ordre : ordre.txt du dossier de la page. Lancé par `npm run exemples` (et avant build/start).
  */
-import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dossier = join(racine, 'projects/showcase/src/app/exemples');
-const lire = (f) => (existsSync(f) ? readFileSync(f, 'utf8') : '');
+const lire = (f) => (existsSync(f) ? readFileSync(f, 'utf8').replaceAll('\r\n', '\n') : '');
 const imports = [];
 const entrees = [];
 for (const page of readdirSync(dossier, { withFileTypes: true })

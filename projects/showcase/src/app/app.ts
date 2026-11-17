@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Affichage } from './commun/affichage';
 import { FAMILLES, Famille, PAGES } from './pages/pages';
 
@@ -10,18 +10,20 @@ import { FAMILLES, Famille, PAGES } from './pages/pages';
   template: `
     <a class="evitement" href="#contenu" (click)="allerAuContenu($event)">Aller au contenu</a>
     <header class="barre">
-      <img
-        [src]="
-          affichage.mode() === 'dark' ? 'amf/logos/logo-white.svg' : 'amf/logos/logo-primary.svg'
-        "
-        alt=""
-        class="logo"
-      />
-      <div class="marque">
-        <span class="gui-subtitle-1">n3ga2-ds-audit</span>
-        <span class="gui-caption gui-secondary-text"
-          >Design system AMF v2.0 · Angular Material 22</span
-        >
+      <div class="gui-header-brand">
+        <img
+          [src]="
+            affichage.mode() === 'dark' ? 'amf/logos/logo-white.svg' : 'amf/logos/logo-primary.svg'
+          "
+          alt="ArcelorMittal"
+          class="logo"
+        />
+        <div class="marque">
+          <span class="gui-subtitle-1">n3ga2-ds-audit</span>
+          <span class="gui-caption gui-secondary-text"
+            >Design system AMF v2.0 · Angular Material 22</span
+          >
+        </div>
       </div>
       <div class="reglages">
         <mat-button-toggle-group
@@ -101,15 +103,19 @@ import { FAMILLES, Famille, PAGES } from './pages/pages';
       z-index: 5;
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 8px 24px;
+      gap: 24px;
+      padding: 0 24px;
+      height: 64px;
       min-height: 64px;
       box-sizing: border-box;
       background: var(--amf-background-surface);
       border-bottom: 1px solid var(--amf-border-default);
     }
     .logo {
-      height: 28px;
+      display: block;
+      height: 40px;
+      width: auto;
+      flex: 0 0 auto;
     }
     .marque {
       display: flex;
@@ -172,6 +178,27 @@ import { FAMILLES, Famille, PAGES } from './pages/pages';
       outline: none;
     }
     @media (max-width: 800px) {
+      .barre {
+        height: auto;
+        min-height: 56px;
+        padding: 8px 12px;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .logo {
+        height: 32px;
+      }
+      .reglages {
+        width: 100%;
+        margin-left: 0;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        gap: 8px;
+        padding-bottom: 2px;
+      }
+      .reglages mat-button-toggle-group {
+        flex: 0 0 auto;
+      }
       .corps {
         grid-template-columns: 1fr;
       }
@@ -183,6 +210,47 @@ import { FAMILLES, Famille, PAGES } from './pages/pages';
       }
       main {
         padding: 16px;
+      }
+    }
+    @media (min-width: 801px) and (max-width: 959px) {
+      .barre {
+        height: auto;
+        min-height: 120px;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .reglages {
+        width: 100%;
+        margin-left: 0;
+      }
+      nav {
+        top: 120px;
+        height: calc(100vh - 120px);
+      }
+    }
+    @media (min-width: 960px) and (max-width: 1100px) {
+      .barre {
+        height: 56px;
+        min-height: 56px;
+        gap: 16px;
+      }
+      .logo {
+        height: 32px;
+      }
+      .reglages {
+        width: auto;
+        min-width: 0;
+        flex: 0 1 auto;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        gap: 8px;
+      }
+      .reglages mat-button-toggle-group {
+        flex: 0 0 auto;
+      }
+      nav {
+        top: 56px;
+        height: calc(100vh - 56px);
       }
     }
   `,

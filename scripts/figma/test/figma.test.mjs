@@ -2,17 +2,17 @@
 // Les essais de bout en bout lisent « figma/sources/AMF Design System [v2.0].fig » (à défaut, le même nom dans le
 // dossier parent du dépôt) ou le fichier donné par AMF_FIG ; sans lui, ils sont sautés.
 
-import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
+import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { spawnSync } from 'node:child_process';
-import { comparer, rapportMarkdown, nombreDeDifferences } from '../comparer.mjs';
-import { ouvrirFig } from '../lire-fig.mjs';
+import { comparer, nombreDeDifferences, rapportMarkdown } from '../comparer.mjs';
 import { construireInstantane, verifierInstantane } from '../instantane.mjs';
 import { nomCss } from '../jetons.mjs';
+import { ouvrirFig } from '../lire-fig.mjs';
 import { ecrireFig } from './ecrire-fig.mjs';
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');

@@ -9,8 +9,8 @@
  *   node scripts/audit-contrastes.mjs            → écrit le rapport, code de sortie 1 si une paire échoue
  *   node scripts/audit-contrastes.mjs --sans-echec
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), '..');

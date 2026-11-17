@@ -17,15 +17,15 @@
 // Ce qui reste manuel : les composants (CSS des fichiers tokens/amf-*.css, exemples de la vitrine) et la conformité
 // au journal ; le rapport les liste calque par calque. Aucune dépendance : Node ≥ 22.15.
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, existsSync } from 'node:fs';
-import { dirname, resolve, relative, join, basename, sep } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { basename, dirname, join, relative, resolve, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
-import { lireFig } from './figma/lire-fig.mjs';
+import { comparer, nombreDeDifferences, rapportMarkdown } from './figma/comparer.mjs';
+import { construireInstantane, figDeReference, verifierInstantane } from './figma/instantane.mjs';
 import { extraireJetons } from './figma/jetons.mjs';
-import { construireInstantane, verifierInstantane, figDeReference } from './figma/instantane.mjs';
-import { comparer, rapportMarkdown, nombreDeDifferences } from './figma/comparer.mjs';
+import { lireFig } from './figma/lire-fig.mjs';
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CSS_DEPOT = join(racine, 'projects/n3ga2-ds-audit/tokens/amf-tokens.css');
